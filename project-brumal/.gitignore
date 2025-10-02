@@ -1,3 +1,20 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Godot-specific ignores
+.import/
+.export/
+mono/
+data_*/
+*.import
+
+# OS-specific ignores
+.DS_Store
+Thumbs.db
+
+# Build outputs
+*.exe
+*.apk
+*.zip
+*.tar.gz
