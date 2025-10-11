@@ -5,11 +5,11 @@ using System.Runtime.CompilerServices;
 
 public partial class playerone : CharacterBody3D
 {
-	public const float Speed = 3.0f;
-	public const float JumpVelocity = 4.5f;
-	public const float sensitivity = 0.003f;
-
-
+	[Export] public float Speed = 3.0f;
+	[Export] public float JumpVelocity = 4.5f;
+	[Export] public float sensitivity = 0.003f;
+	
+	Node3D Player; // Scene root reference
 	Node3D head; // head reference
 	Camera3D camera; // camera reference
 
@@ -18,7 +18,7 @@ public partial class playerone : CharacterBody3D
 
 		base._Ready();
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-
+		Player = GetNode<Node3D>("."); // initialize player node
 		head = GetNode<Node3D>("head_pivot"); // initialize head node
 		camera = GetNode<Camera3D>("head_pivot/head_camera"); // initialize camera node
 		
@@ -31,25 +31,11 @@ public partial class playerone : CharacterBody3D
 		if (@event is InputEventMouseMotion mouseMotion)
 		{
 
-			head.RotateY(-mouseMotion.Relative.X * sensitivity);
-			camera.RotateX(-mouseMotion.Relative.Y * sensitivity);
-
-			var camerasRotationValue = camera.Rotation; // get camera rotation
-			/* explaination in pseudocode:
-				Mathf.Clamp(
-					value to limit,
-					minimum value (-90) which is straight down,
-					maximum value (90) straight up
-				);
-			*/
-			camerasRotationValue.X = Mathf.Clamp( // set rotation x up/down
-				camerasRotationValue.X, // get value of x
-				-Mathf.DegToRad(80), // min value (radians not degrees)
-				Mathf.DegToRad(80) // max value
-			);
-
-			camera.Rotation = camerasRotationValue; // now value is locked.
+			head.RotateX(-mouseMotion.Relative.Y * sensitivity);
+			Player.RotateY(-mouseMotion.Relative.X * sensitivity);
 			
+			head.RotationDegrees = new Vector3(Mathf.Clamp(head.RotationDegrees.X, -90, 90),head.RotationDegrees.Y,head.RotationDegrees.Z);
+			// ^^ Clamps head_Pivot(head) X so it can only rotate 180 degrees in total
 		}
    
    
@@ -62,7 +48,7 @@ public partial class playerone : CharacterBody3D
 
 		// takes the characterbody3D's velocity
 		Vector3 velocity = this.Velocity;
-
+		
 		// if not on floor add gravity to player.
 		if (!IsOnFloor())
 		{
@@ -82,7 +68,7 @@ public partial class playerone : CharacterBody3D
 		// close window
 		if ( Input.IsActionJustPressed("escape") )
 		{
-
+			//Input.MouseMode = MouseMode.MOUSE_MODE_VISIBLE;
 			GetTree().Quit();
 
 		}
@@ -111,7 +97,7 @@ public partial class playerone : CharacterBody3D
 
 		}
 
-		Velocity = velocity;
+		Velocity = velocity.Normalized() * Speed;
 		MoveAndSlide();
 
 
