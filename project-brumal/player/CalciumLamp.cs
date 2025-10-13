@@ -15,21 +15,27 @@ public partial class CalciumLamp : Node3D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-	{	double randomFloat = GD.Randfn(0.0, 1.0);
+
+	{	
+		double randomFloat = GD.Randfn(0.0, 1.0);
 		// this has to be here for the random number to update, which helps make the flicker effect
 		float lightFlicker = (float)(2 + (randomFloat * .2));
+
 		// ^^ the random float is added to the base brightness of the light and the intensity of the flicker 
 		// decided by the second value to the right of the randomFloat (the .2 in this case)
 		//  I loveee furriesss - Edgaaaa 
-		if(Input.IsActionJustPressed("FlashLight")){
+		if( Input.IsActionJustPressed("FlashLight") ) 
+		{
 			light = !light;
 			// simple toggle
 		}
-		if(light){
+		if (light) 
+		{
 			CLLight.LightEnergy = lightFlicker;
 			
 		
-		}else {
+		} else
+		{
 			// turn off light 
 			CLLight.LightEnergy = 0;
 		}

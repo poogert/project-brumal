@@ -9,12 +9,9 @@ public partial class playerone : CharacterBody3D
 	public enum MovementState
 	{
 		idle,
-		//walk,
 		running,
 		crouching,
-		crawling,
-		jumping,
-		leaning
+		crawling
 
 	}
 
@@ -24,12 +21,24 @@ public partial class playerone : CharacterBody3D
 	[Export] public float sensitivity = 0.003f;
 
 	public MovementState currentState = MovementState.idle; // default state
+	bool leaningcheck = false;
 
 	CollisionShape3D StandCol; // stand collision root reference
 	CollisionShape3D CrouchCol; // crouch collision root reference
 	Node3D Player; // Scene root reference
 	Node3D head; // head reference
 	Camera3D camera; // camera reference
+
+
+// rotation lerping
+	float targetRotationZ = 0;
+	float currentRotationZ = 0;
+	const float rotationAmount = 35;
+
+	// crouch crawl lerping, not yet implemented
+	float targetHeight = 0;
+	float currentHeight = 0;
+
 
 
 
@@ -88,10 +97,51 @@ public partial class playerone : CharacterBody3D
 	}
 
 
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
+
+	}
+
+
 
 	public override void _PhysicsProcess(double delta)
 	{
-		
+
+
+		if (leaningcheck) // if leaning, lerp to target
+		{
+			// lerping
+			currentRotationZ = Mathf.Lerp(currentRotationZ, targetRotationZ, 9f * (float)delta);
+
+			// using basis to rotate ONLY Z, not x, y.
+			Basis basis = Basis.FromEuler(new Vector3(0, 0, Mathf.DegToRad(currentRotationZ)));
+			head.Transform = new Transform3D(basis, head.Transform.Origin);
+
+		}
+		else // if not leaning lerp to 0 degrees
+		{
+
+			currentRotationZ = Mathf.Lerp(currentRotationZ, 0, 9f * (float)delta);
+
+			Basis basis = Basis.FromEuler(new Vector3(0, 0, Mathf.DegToRad(currentRotationZ)));
+			head.Transform = new Transform3D(basis, head.Transform.Origin);
+
+		}
+
+
+		// NOT YET IMPLEMENTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		if (currentState == MovementState.crouching || currentState == MovementState.crawling)
+		{
+			// interp from regular height to crouch/crawl height
+		}
+		else
+		{
+			// interp back to norm	
+		}
+
+
+
 		// takes the characterbody3D's velocity
 		Vector3 velocity = this.Velocity;
 
@@ -112,9 +162,9 @@ public partial class playerone : CharacterBody3D
 			SetState(MovementState.crouching);
 			StandCol.Disabled = true;
 			// basically makes player overall hitbox smaller
-			Speed = Speed / 2.0f;
+			Speed = 2f;
 			// makes speed half 
-			head.Transform = head.Transform.Translated(new Vector3(0, -0.3f, 0));
+			head.Transform = head.Transform.Translated(new Vector3(0, -0.6f, 0));
 			// moves head pivot down thus moving camera down 
 		}
 		if (Input.IsActionJustReleased("crouch"))
@@ -122,9 +172,9 @@ public partial class playerone : CharacterBody3D
 			SetDefaultState();
 			StandCol.Disabled = false;
 			// returns overall hitbox to normal
-			Speed = Speed * 2.0f;
+			Speed = 3f;
 			// makes speed normal
-			head.Transform = head.Transform.Translated(new Vector3(0, 0.3f, 0));
+			head.Transform = head.Transform.Translated(new Vector3(0, 0.6f, 0));
 			// moves head pivot up again
 		}
 		// ------------------------------------------------------------------------------------
@@ -136,45 +186,65 @@ public partial class playerone : CharacterBody3D
 		{
 			SetState(MovementState.crawling);
 			StandCol.Disabled = true;
-			Speed /= 3.0f;
-			head.Transform = head.Transform.Translated(new Vector3(0, -0.5f, 0));
+			Speed = 1f;
+			head.Transform = head.Transform.Translated(new Vector3(0, -1.2f, 0));
 		}
 		if (Input.IsActionJustReleased("crawl"))
 		{
 			SetDefaultState();
 			StandCol.Disabled = false;
-			Speed *= 3.0f;
-			head.Transform = head.Transform.Translated(new Vector3(0, 0.8f, 0));
+			Speed = 1f;
+			head.Transform = head.Transform.Translated(new Vector3(0, 1.2f, 0));
+		}
+
+		// ------------------------------------------------------------------------------------
+
+		// Action -> sprinting ---------------------------------------------------------------
+
+		if (Input.IsActionPressed("sprint"))
+		{
+			SetState(MovementState.running);
+			Speed = 6f;
+			camera.Fov = 80;
+
+		}
+		if (Input.IsActionJustReleased("sprint"))
+		{
+			SetDefaultState();
+			Speed = 3f;
+			camera.Fov = 75;
 		}
 
 		// ------------------------------------------------------------------------------------
 
 
+
 		// Action -> leaning ---------------------------------------------------------------
-		
-		if (Input.IsActionJustPressed("LeanLeft"))
+
+		if (Input.IsActionPressed("LeanLeft"))
 		{
-			SetState(MovementState.leaning);
-			head.RotateZ(-30f);
-			// leans left
+			//SetState(MovementState.leaning);
+			leaningcheck = true;
+			targetRotationZ = rotationAmount;
 		}
 		if (Input.IsActionJustReleased("LeanLeft"))
 		{
-			SetDefaultState();
-			head.RotateZ(30f);
-			// leans it back to normal
+			//SetDefaultState();
+			leaningcheck = false;
+			targetRotationZ = 0f;
 		}
-		
-		if(Input.IsActionJustPressed("LeanRight")){
-			SetState(MovementState.leaning);
-			head.RotateZ(30f);
-			// leans right
+
+		if (Input.IsActionPressed("LeanRight"))
+		{
+			//SetState(MovementState.leaning);
+			leaningcheck = true;
+			targetRotationZ = -rotationAmount;
 		}
 		if (Input.IsActionJustReleased("LeanRight"))
 		{
-			SetDefaultState();
-			head.RotateZ(-30f);
-			// leans it back to normal
+			//SetDefaultState();
+			leaningcheck = false;
+			targetRotationZ = 0f;
 		}
 
 		// ------------------------------------------------------------------------------------

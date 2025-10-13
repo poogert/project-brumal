@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cti7pj4dw0gj1"]
+[gd_scene load_steps=18 format=4 uid="uid://cti7pj4dw0gj1"]
 
 [ext_resource type="Script" uid="uid://cmo1vq0u4jar" path="res://scripts/playerone.cs" id="1_0khpw"]
 [ext_resource type="Texture2D" uid="uid://up7ba4raci7x" path="res://Models/Objects/CalciumLamp_LampBody.png" id="2_qvpcs"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://g06fdu6ue64r" path="res://Models/Objects/CalciumLamp_Untitled.png" id="4_ulli2"]
 [ext_resource type="Texture2D" uid="uid://do3ddibah611g" path="res://Models/Objects/CalciumLamp_LampCover.png" id="5_0la1k"]
 [ext_resource type="Texture2D" uid="uid://d046014sntiyp" path="res://Models/Objects/CalciumLamp_LampHandle.png" id="6_3jmlc"]
-[ext_resource type="Texture2D" uid="uid://dj4dnbaxaxnvd" path="res://Models/Objects/flight-reacts-flight-tongue.png" id="8_ulli2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ciewh"]
 
@@ -180,8 +179,6 @@ shadow_mesh = SubResource("ArrayMesh_hhomj")
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 slide_on_ceiling = false
 script = ExtResource("1_0khpw")
-Speed = 5.0
-JumpVelocity = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 visible = false
@@ -211,10 +208,11 @@ skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/head_pivot/head_camera/CalciumLamp"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2892074, 0.097062916, -0.018284917)
-light_color = Color(0.914958, 0.8989915, 0.7496226, 1)
-light_energy = 2.0
-light_projector = ExtResource("8_ulli2")
+light_color = Color(0.8830419, 0.91966236, 0.6640573, 1)
+light_energy = 6.491
+light_indirect_energy = 14.923
+light_specular = 0.0
 shadow_enabled = true
 distance_fade_enabled = true
 spot_range = 20.0
-spot_angle = 30.0
+spot_angle = 52.72055

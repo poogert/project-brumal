@@ -14,8 +14,10 @@ ground_horizon_color = Color(0.10594369, 0.13935487, 0.21515432, 1)
 sky_material = SubResource("ProceduralSkyMaterial_s7hj5")
 
 [sub_resource type="Environment" id="Environment_1rsa4"]
-background_mode = 2
+background_mode = 1
+background_energy_multiplier = 0.2
 sky = SubResource("Sky_hluil")
+sky_rotation = Vector3(-1.0384709, 0, 0)
 tonemap_mode = 2
 glow_enabled = true
 
@@ -96,6 +98,7 @@ data = PackedVector3Array(-3.4599998, 1.8054999, -7.9756, -3.8332999, 1.7206999,
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.7071068, 0.49999994, -0.49999994, 0, 0.70710677, 0.70710677, 0.7071067, 0.5, -0.5, 0, 0, 0)
+light_color = Color(0.721221, 0.9999998, 0.9954718, 1)
 shadow_enabled = true
 shadow_blur = 0.2
 
@@ -103,7 +106,7 @@ shadow_blur = 0.2
 environment = SubResource("Environment_1rsa4")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, -0.037080765, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, -0.09723723, -0.06482029, -0.028619766)
 use_collision = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
