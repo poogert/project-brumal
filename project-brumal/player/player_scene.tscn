@@ -177,6 +177,7 @@ shadow_mesh = SubResource("ArrayMesh_hhomj")
 [node name="Player" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+disable_mode = 2
 slide_on_ceiling = false
 script = ExtResource("1_0khpw")
 
@@ -187,6 +188,7 @@ mesh = SubResource("CapsuleMesh_ciewh")
 [node name="StandingCollision" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_0khpw")
+debug_color = Color(1, 0.5224338, 0.6987175, 0.41960785)
 
 [node name="CrouchedCollision" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -207,7 +209,7 @@ mesh = SubResource("ArrayMesh_8p4xc")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/head_pivot/head_camera/CalciumLamp"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2892074, 0.097062916, -0.018284917)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.28920734, 0.097062916, -0.018284917)
 light_color = Color(0.8830419, 0.91966236, 0.6640573, 1)
 light_energy = 6.491
 light_indirect_energy = 14.923

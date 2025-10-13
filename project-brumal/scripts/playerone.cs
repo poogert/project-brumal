@@ -107,7 +107,8 @@ public partial class playerone : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
-
+		//GD.Print(IsOnFloor());
+		//GD.Print(Velocity.Y);
 
 		if (leaningcheck) // if leaning, lerp to target
 		{
@@ -149,9 +150,9 @@ public partial class playerone : CharacterBody3D
 		// if not on floor add gravity to player.
 		if (!IsOnFloor())
 		{
-
+			//velocity.Y -= .05f;
 			velocity += GetGravity() * (float)delta;
-
+			GD.Print("IsOnFloorGravityWorking");
 		}
 
 
@@ -253,6 +254,7 @@ public partial class playerone : CharacterBody3D
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
+			//GD.Print("IsjumpingWorking");
 
 		}
 
@@ -282,6 +284,7 @@ public partial class playerone : CharacterBody3D
 		else
 		{
 			velocity.X = 0;
+
 			// Mathf.MoveToward(Velocity.X, 0, Speed); 
 			// supposedly for slowing player down if no input
 			// we dont want that cuz it simulates slipping/sliding instead of instant stop after no input.
@@ -290,7 +293,8 @@ public partial class playerone : CharacterBody3D
 
 		}
 
-		Velocity = velocity.Normalized() * Speed;
+		Velocity = velocity;
+		// this had a normalize and *speed along with it but i removed it
 		MoveAndSlide();
 
 
