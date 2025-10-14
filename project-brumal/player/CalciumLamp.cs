@@ -9,6 +9,8 @@ public partial class CalciumLamp : Node3D
 	[Export] public double FlickerThreshHold = .6;
 	new bool light = false;
 	// initializing toggle boolean
+
+
 	public override void _Ready()
 	{
 		CLLight = GetNode<SpotLight3D>("SpotLight3D");// initializing the light
@@ -17,13 +19,18 @@ public partial class CalciumLamp : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 
-	{	float lightFlicker = 0.0f;
+	{	
+		
+		float lightFlicker = 0.0f;
 		double flickerRan = GD.Randfn(0.0, 1.0);
 		double flickerRan2 = GD.Randfn(0.0, 1.0);
 		// this has to be here for the random number to update, which helps make the flicker effect
-		if (flickerRan > FlickerThreshHold){
+		if (flickerRan > FlickerThreshHold)
+		{
 			lightFlicker = (float)(2 + (flickerRan2 * FlickerIntensity));
-		}else{
+		}
+		else
+		{
 			lightFlicker = 2;
 		}
 		
@@ -36,15 +43,16 @@ public partial class CalciumLamp : Node3D
 			light = !light;
 			// simple toggle
 		}
-		if (light) 
+		if (light)
 		{
-			CLLight.LightEnergy = lightFlicker;
 			
+			CLLight.LightEnergy = lightFlicker;
 		
 		} else
 		{
 			// turn off light 
 			CLLight.LightEnergy = 0;
+			
 		}
 	}
 	

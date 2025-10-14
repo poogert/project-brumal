@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://5qbfx160dbvp" path="res://Models/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
 [ext_resource type="Texture2D" uid="uid://pfek5hrhdkmq" path="res://Models/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
-[ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://WallLamp.tscn" id="4_rsmj0"]
+[ext_resource type="PackedScene" path="res://WallLamp.tscn" id="4_rsmj0"]
 [ext_resource type="PackedScene" uid="uid://bpj3ag7x4qw2q" path="res://Models/Objects/WorldProps/Fence.glb" id="5_epj0r"]
 [ext_resource type="PackedScene" uid="uid://dn7tjb2kcg5ps" path="res://Models/Objects/WorldProps/Crate.glb" id="6_g6lwf"]
 
@@ -109,7 +109,7 @@ shadow_blur = 0.2
 environment = SubResource("Environment_1rsa4")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, -0.09723723, -0.06482029, -0.028619766)
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, -0.08036649, -0.07419598, 0.010324717)
 use_collision = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
