@@ -30,6 +30,10 @@ public partial class playerone : CharacterBody3D
 	Node3D Player; // Scene root reference
 	Node3D head; // head reference
 	Camera3D camera; // camera reference
+	Node3D headeffects;
+
+	// bobbing point
+	private float bobTime = 0f;
 
 
 	// rotation lerping
@@ -39,6 +43,7 @@ public partial class playerone : CharacterBody3D
 
 	// this is to determine if the player has finished lowering -> crawling/crouching
 	bool finishedLowering = false;
+	bool HeightAdjustmentsRunning = false;
 
 
 	// fov lerping
@@ -78,7 +83,8 @@ public partial class playerone : CharacterBody3D
 
 		Player = GetNode<Node3D>("."); // initialize player node
 		head = GetNode<Node3D>("head_pivot"); // initialize head node
-		camera = GetNode<Camera3D>("head_pivot/head_camera"); // initialize camera node
+		camera = GetNode<Camera3D>("head_pivot/head_adjustments/head_camera"); // initialize camera node
+		headeffects = GetNode<Node3D>("head_pivot/head_adjustments");
 
 	}
 
@@ -132,11 +138,8 @@ public partial class playerone : CharacterBody3D
 		}
 
 
-
-
 		// takes the characterbody3D's velocity
 		Vector3 velocity = this.Velocity;
-
 
 		if (targetFOV != camera.Fov) // camera lerp
 		{
@@ -158,8 +161,9 @@ public partial class playerone : CharacterBody3D
 		if (Input.IsActionJustPressed("debug print"))
 		{
 			GD.Print("--- Debugging Statistics ---\n");
-			GD.Print("relative head height: " + head.Transform.Origin.Y);
-			GD.Print("absolute head height: " + head.GlobalTransform.Origin.Y);
+
+
+
 			GD.Print("\n");
 			GD.Print("----------------------------\n");
 		}
@@ -189,7 +193,7 @@ public partial class playerone : CharacterBody3D
 			}
 			else
 			{
-			
+
 				finishedLowering = true;
 				SetDefaultState();
 
@@ -197,20 +201,20 @@ public partial class playerone : CharacterBody3D
 				Speed = 3f;
 
 				ResetHeadHeight();
-				
+
 			}
-			
+
 		}
 		// ------------------------------------------------------------------------------------
 
 
 		// Action -> crawl ---------------------------------------------------------------
-		
+
 		if (Input.IsActionJustPressed("crawl"))
 		{
-			if ( currentState == MovementState.idle)
+			if (currentState == MovementState.idle)
 			{
-				
+
 				finishedLowering = false;
 				SetState(MovementState.crawling);
 
@@ -330,6 +334,27 @@ public partial class playerone : CharacterBody3D
 		MoveAndSlide();
 
 
+
+		// head bobbing ------------------------------------------------------
+		float actualSpeed = new Vector2(velocity.X, velocity.Z).Length();
+
+		if (actualSpeed > 0.01f && IsOnFloor())
+		{
+			bobTime += (float)delta * actualSpeed * 5f;  // frequency multiplier
+			float bob = Mathf.Sin(bobTime) * 0.06f; // amplitude scales with speed
+
+			var het = headeffects.Transform;
+			het.Origin.Y = bob;
+			headeffects.Transform = het;
+		}
+		else
+		{
+			bobTime = 0f; // reset phase when standing still
+		}
+		// ------------------------------------------------------------------------------------
+
+
+
 	}
 
 	private async void LerpHeadHeight(float offset)
@@ -350,8 +375,10 @@ public partial class playerone : CharacterBody3D
 		*/
 		while (Mathf.Abs(ht.Origin.Y - target) > 0.01f)
 		{
+			HeightAdjustmentsRunning = true;
 			if (finishedLowering)
 			{
+				HeightAdjustmentsRunning = false;
 				return;
 			}
 
@@ -371,6 +398,7 @@ public partial class playerone : CharacterBody3D
 		// edit y, then snap
 		ht.Origin.Y = target;
 		head.Transform = ht;
+		HeightAdjustmentsRunning = false;
 
 	}
 
@@ -381,10 +409,12 @@ public partial class playerone : CharacterBody3D
 
 		while (Mathf.Abs(ht.Origin.Y) > 0.01f)
 		{
+			HeightAdjustmentsRunning = true;
 			if (!finishedLowering)
 			{
 				ht.Origin.Y = 0;
 				head.Transform = ht;
+				HeightAdjustmentsRunning = false;
 				return;
 			}
 
@@ -397,7 +427,7 @@ public partial class playerone : CharacterBody3D
 
 		ht.Origin.Y = 0;
 		head.Transform = ht;
-
+		HeightAdjustmentsRunning = false;
 	}
 
 
