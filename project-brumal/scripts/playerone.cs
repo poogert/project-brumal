@@ -39,7 +39,8 @@ public partial class playerone : CharacterBody3D
 	float targetHeight = 0;
 	float currentHeight = 0;
 
-
+	// 
+	float targetFOV = 70;
 
 
 	void SetState(MovementState state)
@@ -108,6 +109,7 @@ public partial class playerone : CharacterBody3D
 	public override void _PhysicsProcess(double delta)
 	{
 		//GD.Print(IsOnFloor());
+		GD.Print(camera.Fov);
 		//GD.Print(Velocity.Y);
 
 		if (leaningcheck) // if leaning, lerp to target
@@ -194,7 +196,7 @@ public partial class playerone : CharacterBody3D
 		{
 			SetDefaultState();
 			StandCol.Disabled = false;
-			Speed = 1f;
+			Speed = 3f;
 			head.Transform = head.Transform.Translated(new Vector3(0, 1.2f, 0));
 		}
 
@@ -203,22 +205,25 @@ public partial class playerone : CharacterBody3D
 		// Action -> sprinting ---------------------------------------------------------------
 
 		if (Input.IsActionPressed("sprint"))
-		{
+		{	
+			//float CurrentFOV = camera.Fov;
 			SetState(MovementState.running);
 			Speed = 6f;
-			camera.Fov = 80;
+			targetFOV = 85f;
 
 		}
 		if (Input.IsActionJustReleased("sprint"))
-		{
+		{	//float CurrentFOV = camera.Fov;
 			SetDefaultState();
 			Speed = 3f;
-			camera.Fov = 75;
+			targetFOV = 70f;
 		}
 
 		// ------------------------------------------------------------------------------------
-
-
+		
+		if (targetFOV != camera.Fov){
+			camera.Fov = Mathf.Lerp(camera.Fov,targetFOV, .1f);
+		}
 
 		// Action -> leaning ---------------------------------------------------------------
 
