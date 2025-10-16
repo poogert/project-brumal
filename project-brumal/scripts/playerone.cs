@@ -1,8 +1,8 @@
 using Godot;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Net.Http;
-//using System.Numerics;
 using System.Runtime.CompilerServices;
 
 public partial class playerone : CharacterBody3D
@@ -25,12 +25,14 @@ public partial class playerone : CharacterBody3D
 	public MovementState currentState = MovementState.idle; // default state
 	bool leaningcheck = false;
 
+
 	CollisionShape3D StandCol; // stand collision root reference
 	CollisionShape3D CrouchCol; // crouch collision root reference
 	Node3D Player; // Scene root reference
 	Node3D head; // head reference
 	Camera3D camera; // camera reference
 	Node3D headeffects;
+
 
 	// bobbing point
 	private float bobTime = 0f;
@@ -40,6 +42,7 @@ public partial class playerone : CharacterBody3D
 	float targetRotationZ = 0;
 	float currentRotationZ = 0;
 	const float rotationAmount = 35;
+
 
 	// this is to determine if the player has finished lowering -> crawling/crouching
 	bool finishedLowering = false;
@@ -84,7 +87,7 @@ public partial class playerone : CharacterBody3D
 		Player = GetNode<Node3D>("."); // initialize player node
 		head = GetNode<Node3D>("head_pivot"); // initialize head node
 		camera = GetNode<Camera3D>("head_pivot/head_adjustments/head_camera"); // initialize camera node
-		headeffects = GetNode<Node3D>("head_pivot/head_adjustments");
+		headeffects = GetNode<Node3D>("head_pivot/head_adjustments"); // adjustments so it doesnt collide with rotations
 
 	}
 
@@ -97,9 +100,10 @@ public partial class playerone : CharacterBody3D
 
 			camera.RotateX(-mouseMotion.Relative.Y * sensitivity);
 			Player.RotateY(-mouseMotion.Relative.X * sensitivity);
-
+			
+			// Clamps head_Pivot(head) X so it can only rotate 180 degrees in total
 			camera.RotationDegrees = new Vector3(Mathf.Clamp(camera.RotationDegrees.X, -89, 89), camera.RotationDegrees.Y, camera.RotationDegrees.Z);
-			// ^^ Clamps head_Pivot(head) X so it can only rotate 180 degrees in total
+			
 		}
 
 
@@ -108,6 +112,7 @@ public partial class playerone : CharacterBody3D
 
 	public override void _Process(double delta)
 	{
+		
 		base._Process(delta);
 
 	}
@@ -175,7 +180,7 @@ public partial class playerone : CharacterBody3D
 		}
 
 
-		// Action -> crouch ---------------------------------------------------------------
+		// Action -> crouching ---------------------------------------------------------------
 		if (Input.IsActionJustPressed("crouch"))
 		{
 
@@ -208,7 +213,7 @@ public partial class playerone : CharacterBody3D
 		// ------------------------------------------------------------------------------------
 
 
-		// Action -> crawl ---------------------------------------------------------------
+		// Action -> crawling ---------------------------------------------------------------
 
 		if (Input.IsActionJustPressed("crawl"))
 		{
@@ -290,12 +295,15 @@ public partial class playerone : CharacterBody3D
 		// ------------------------------------------------------------------------------------
 
 
+		// Action -> jumping ------------------------------------------------------------------
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
 			//GD.Print("IsjumpingWorking");
 
 		}
+
+		// ------------------------------------------------------------------------------------
 
 
 		// close window
@@ -329,11 +337,10 @@ public partial class playerone : CharacterBody3D
 
 		}
 
+
+		// speed physics
 		Velocity = velocity;
-		// this had a normalize and *speed along with it but i removed it
 		MoveAndSlide();
-
-
 
 		// head bobbing ------------------------------------------------------
 		float actualSpeed = new Vector2(velocity.X, velocity.Z).Length();
@@ -352,8 +359,6 @@ public partial class playerone : CharacterBody3D
 			bobTime = 0f; // reset phase when standing still
 		}
 		// ------------------------------------------------------------------------------------
-
-
 
 	}
 
@@ -383,7 +388,7 @@ public partial class playerone : CharacterBody3D
 			}
 
 			// lerp Y to target
-			ht.Origin.Y = Mathf.Lerp(ht.Origin.Y, target, 15f * (float)GetProcessDeltaTime());
+			ht.Origin.Y = Mathf.Lerp(ht.Origin.Y, target, 7f * (float)GetProcessDeltaTime());
 
 			// move entire head
 			head.Transform = ht;

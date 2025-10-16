@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cti7pj4dw0gj1"]
+[gd_scene load_steps=19 format=4 uid="uid://cti7pj4dw0gj1"]
 
 [ext_resource type="Script" uid="uid://cmo1vq0u4jar" path="res://scripts/playerone.cs" id="1_0khpw"]
 [ext_resource type="Texture2D" uid="uid://up7ba4raci7x" path="res://Models/Objects/CalciumLamp_LampBody.png" id="2_qvpcs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://g06fdu6ue64r" path="res://Models/Objects/CalciumLamp_Untitled.png" id="4_ulli2"]
 [ext_resource type="Texture2D" uid="uid://do3ddibah611g" path="res://Models/Objects/CalciumLamp_LampCover.png" id="5_0la1k"]
 [ext_resource type="Texture2D" uid="uid://d046014sntiyp" path="res://Models/Objects/CalciumLamp_LampHandle.png" id="6_3jmlc"]
+[ext_resource type="PackedScene" uid="uid://h4wvm1qcl6i1" path="res://scripts/interactLogic/interactray.tscn" id="8_ulli2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ciewh"]
 
@@ -220,3 +221,20 @@ shadow_enabled = true
 distance_fade_enabled = true
 spot_range = 20.0
 spot_angle = 52.72055
+
+[node name="interactray" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera" instance=ExtResource("8_ulli2")]
+
+[node name="center" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
