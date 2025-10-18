@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=18 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://5qbfx160dbvp" path="res://Models/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
 [ext_resource type="Texture2D" uid="uid://pfek5hrhdkmq" path="res://Models/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
+[ext_resource type="PackedScene" uid="uid://cmxjrtxt3e6l" path="res://Switch.tscn" id="4_1tbxl"]
 [ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://WallLamp.tscn" id="4_rsmj0"]
 [ext_resource type="PackedScene" uid="uid://bpj3ag7x4qw2q" path="res://Models/Objects/WorldProps/Fence.glb" id="5_epj0r"]
 [ext_resource type="PackedScene" uid="uid://dn7tjb2kcg5ps" path="res://Models/Objects/WorldProps/Crate.glb" id="6_g6lwf"]
@@ -150,10 +151,18 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="HallwayCaveSegmentTest4/Plane_036"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HallwayCaveSegmentTest4/Plane_036/StaticBody3D"]
+transform = Transform3D(1, 0, -2.842171e-14, 0, 1, 0, 2.842171e-14, 0, 1, 0.00061869615, -0.006151676, -0.0003528595)
 shape = SubResource("ConcavePolygonShape3D_epj0r")
 
-[node name="WallLampBody" parent="." instance=ExtResource("4_rsmj0")]
+[node name="Switch" parent="HallwayCaveSegmentTest4" instance=ExtResource("4_1tbxl")]
+transform = Transform3D(0.97568774, 0.1376693, -0.17053045, -0.13561352, 0.9904783, 0.023702495, 0.1721698, 0, 0.9850673, -0.011066437, -0.77371573, -1.6240354)
+
+[node name="Switch2" parent="HallwayCaveSegmentTest4" instance=ExtResource("4_1tbxl")]
+transform = Transform3D(0.99971855, 0.016867328, -0.01667671, -0.016679391, 0.9997965, 0.011342935, 0.016864609, -0.011061582, 0.9997965, 0.034023285, -0.77371573, -2.4433987)
+
+[node name="WallLampBody" parent="." node_paths=PackedStringArray("_Switch") instance=ExtResource("4_rsmj0")]
 transform = Transform3D(0.29999998, 0, 0, 0, 0.2936923, -0.061195042, 0, 0.061195042, 0.2936923, 19.626217, 4.157125, 2.1900342)
+_Switch = NodePath("../HallwayCaveSegmentTest4/Switch")
 
 [node name="Fence" parent="." instance=ExtResource("5_epj0r")]
 transform = Transform3D(0.9977603, -0.0544439, -0.03886217, 0.053139616, 0.99801356, -0.033841416, 0.04062744, 0.031700503, 0.9986714, 15.086374, 1.55369, 0.8939854)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://qbyx7k7uun84"]
+[gd_scene load_steps=11 format=4 uid="uid://qbyx7k7uun84"]
 
 [ext_resource type="Texture2D" uid="uid://ekihetbxwkvc" path="res://Models/Objects/WorldProps/WallLampBody_WallLamp.png" id="1_4nayi"]
+[ext_resource type="Script" uid="uid://b4xhodsfwwfkb" path="res://WallLamp.cs" id="1_qr4pg"]
 [ext_resource type="Texture2D" uid="uid://dj6133w2utlal" path="res://Models/Objects/WorldProps/LightBulb_Bulb.png" id="2_qr4pg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3s6l"]
@@ -115,6 +116,7 @@ shadow_mesh = SubResource("ArrayMesh_lsd80")
 
 [node name="WallLampBody" type="Node3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("1_qr4pg")
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_lp76w")

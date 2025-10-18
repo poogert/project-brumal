@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvn4v80jti17j"]
 
-[ext_resource type="Script" uid="uid://dgc4jxe1vtyi0" path="res://scripts/interactLogic/interactablebox.cs" id="1_qo54l"]
+[ext_resource type="Script" uid="uid://dgc4jxe1vtyi0" path="res://scripts/interactLogic/InteractableBox.cs" id="1_qo54l"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hjb34"]
 

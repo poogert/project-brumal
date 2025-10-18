@@ -16,10 +16,10 @@ public partial class Interactray : RayCast3D
 		{
 
 			Node nodeobject = GetCollider() as Node3D;
-
+			
 			if (nodeobject.GetParent() is Interactable interactable)
 			{
-				
+				interactable.Touching();
 				if (Input.IsActionJustPressed("interact"))
 				{
 					interactable.Interact();

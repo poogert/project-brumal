@@ -11,6 +11,11 @@ public partial class InteractableBox : Node3D, Interactable
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+			
+	}
+
+	public void Touching(){
+		GD.Print("XRAY");	
 	}
 
 	public void Interact()
