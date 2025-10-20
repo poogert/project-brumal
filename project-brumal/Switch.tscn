@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cmxjrtxt3e6l"]
+[gd_scene load_steps=25 format=4 uid="uid://c5cwdcujmfd8v"]
 
 [ext_resource type="Texture2D" uid="uid://dm27foysxsdym" path="res://Models/Objects/WorldProps/SwitchHandle_Switch.png" id="1_aiv04"]
 [ext_resource type="Script" uid="uid://75pm5avj1uds" path="res://Switch.cs" id="1_tu2mf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bu30qrtj07ppx" path="res://Models/Objects/WorldProps/SwitchHousing_Conduit.png" id="3_eajty"]
 [ext_resource type="Texture2D" uid="uid://c7bmd0wpcnjr8" path="res://Models/Objects/WorldProps/SwitchHousing_Bolts.png" id="4_8xb4j"]
 [ext_resource type="Texture2D" uid="uid://cgjogs6kwyulg" path="res://Models/Objects/WorldProps/SwitchHousingBrass_Bolts.png" id="6_eqp7c"]
+[ext_resource type="Shader" uid="uid://du01ihu8fuowh" path="res://experiments/outline.gdshader" id="6_svf6b"]
 [ext_resource type="Texture2D" uid="uid://xsn226dbarq8" path="res://Models/Objects/WorldProps/SwitchHousingBrass_BrassHousing.png" id="7_svf6b"]
 [ext_resource type="Texture2D" uid="uid://uqlu2ppfvcis" path="res://Models/Objects/WorldProps/SwitchHousingBrass_Conduit.png" id="8_hvhsp"]
 
@@ -151,6 +152,12 @@ shadow_mesh = SubResource("ArrayMesh_qmuul")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eqp7c"]
 points = PackedVector3Array(0.53999996, 0.11313373, -0.00014489889, 0.53999996, -0.14274997, -0.00014489889, 0.38172317, 0.11313373, -0.38187942, 0.3121637, 0.19118524, -0.31219655, 0.4413823, 0.19118524, -0.00014489889, 0.3121637, 0.19118524, 0.31205165, 0.38172317, 0.11313373, 0.3817345, 0.38172317, -0.14274997, 0.3817345, 0.040483177, -0.64069766, 0.65858257, 0.023254037, -0.66564286, 0.6485865, 0.023254037, -0.66564286, -0.6487314, 0.040483177, -0.64069766, -0.6587275, 0.38172317, -0.14274997, -0.38187942, -1.8179417e-05, 0.11313373, -0.5400783, 0.08252746, -0.14274997, -0.7058105, 0.06748408, -0.07252103, -0.6743735, -1.8179417e-05, -0.07252103, -0.7133438, -1.8179417e-05, 0.19118524, -0.44156617, 0.26214778, 0.22230154, -0.26236102, 0.3707943, 0.22230154, -0.00014489889, 0.26214778, 0.22230154, 0.2622161, -1.8179417e-05, 0.19118524, 0.44142127, -1.8179417e-05, 0.11313373, 0.53993344, -1.8179417e-05, -0.07252103, 0.7131989, 0.06748408, -0.07252103, 0.67422867, 0.08252746, -0.14274997, 0.7056656, 0.08252746, -0.21002376, 0.70450664, -1.8179417e-05, -0.64069766, 0.68205166, -1.8179417e-05, -0.66564286, 0.66205955, -1.8179417e-05, -0.66564286, -0.6622044, -1.8179417e-05, -0.64069766, -0.68219656, 0.08252746, -0.21002376, -0.70465153, -0.3818881, 0.11313373, -0.38187942, -1.8179417e-05, -0.21002376, -0.7389859, -1.8179417e-05, -0.14274997, -0.74, -0.082692385, -0.14274997, -0.7058105, -0.06764901, -0.07252103, -0.6743735, -0.31220004, 0.19118524, -0.31219655, -0.26231265, 0.22230154, -0.26236102, -1.8179417e-05, 0.22230154, -0.37086922, -1.8179417e-05, 0.22230154, 0.37072432, -0.26231265, 0.22230154, 0.2622161, -0.31220004, 0.19118524, 0.31205165, -0.3818881, 0.11313373, 0.3817345, -0.082692385, -0.14274997, 0.7056656, -1.8179417e-05, -0.14274997, 0.74, -0.06764901, -0.07252103, 0.67422867, -1.8179417e-05, -0.21002376, 0.7386962, -0.082692385, -0.21002376, 0.70450664, -0.040648103, -0.64069766, 0.65858257, -0.023290396, -0.66564286, 0.6485865, -0.040648103, -0.64069766, -0.6587275, -0.023290396, -0.66564286, -0.6487314, -0.082692385, -0.21002376, -0.70465153, -0.7532148, -0.015329599, -0.16805011, -0.7532148, 0.13016951, -0.084025085, -0.37095916, 0.22230154, -0.00014489889, -0.7532148, 0.13016951, 0.083880186, -0.7532148, -0.015329599, 0.16790527, -0.7532148, -0.16082871, 0.083880186, -0.7532148, -0.16082871, -0.084025085, -0.77352977, -0.138578, -0.07127643, -0.77352977, -0.015329599, -0.14240801, -0.77352977, 0.10791874, -0.07127643, -0.77352977, 0.10791874, 0.07113153, -0.77352977, -0.015329599, 0.14226311, -0.77352977, -0.138578, 0.07113153)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svf6b"]
+render_priority = 0
+shader = ExtResource("6_svf6b")
+shader_parameter/outline_color = Color(0.36589682, 0.5627717, 1, 1)
+shader_parameter/outline_width = 5.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyylr"]
 resource_name = "Material.006"
 cull_mode = 2
@@ -277,5 +284,7 @@ shape = SubResource("ConvexPolygonShape3D_eqp7c")
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="BrassHousingMesh" type="MeshInstance3D" parent="SwitchHousingBrass"]
+material_overlay = SubResource("ShaderMaterial_svf6b")
+gi_mode = 2
 mesh = SubResource("ArrayMesh_6cbuc")
 skeleton = NodePath("")

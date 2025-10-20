@@ -17,21 +17,32 @@ public partial class playerone : CharacterBody3D
 
 	}
 
+	public enum Items
+	{
+		flashlight, // 1
+		pickaxe, // 2
+		flare, // 3
+		ghook, // 4
+		map // 5
 
+	}
+
+	[Export] public Node3D lampparent;
 	[Export] public float Speed = 3.0f;
 	[Export] public float JumpVelocity = 4.5f;
 	[Export] public float sensitivity = 0.003f;
 
 	public MovementState currentState = MovementState.idle; // default state
+	public Items currentItem = Items.flashlight;
 	bool leaningcheck = false;
 
 
-	CollisionShape3D StandCol; // stand collision root reference
-	CollisionShape3D CrouchCol; // crouch collision root reference
-	Node3D Player; // Scene root reference
-	Node3D head; // head reference
-	Camera3D camera; // camera reference
-	Node3D headeffects;
+	[Export] CollisionShape3D StandCol; // stand collision root reference
+	[Export] CollisionShape3D CrouchCol; // crouch collision root reference
+	[Export] Node3D Player; // Scene root reference
+	[Export] Node3D head; // head reference
+	[Export] Camera3D camera; // camera reference
+	[Export] Node3D headeffects;
 
 
 	// bobbing point
@@ -52,6 +63,11 @@ public partial class playerone : CharacterBody3D
 	// fov lerping
 	float targetFOV = 70;
 
+
+	void SetItem(Items selecteditem)
+	{
+		currentItem = selecteditem;
+	}
 
 	void SetState(MovementState state)
 	{
@@ -80,7 +96,8 @@ public partial class playerone : CharacterBody3D
 		base._Ready();
 
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-
+		
+/*
 		StandCol = GetNode<CollisionShape3D>("StandingCollision");  // initialize Standing collision
 		CrouchCol = GetNode<CollisionShape3D>("CrouchedCollision"); // initialize crouch collision
 
@@ -88,7 +105,7 @@ public partial class playerone : CharacterBody3D
 		head = GetNode<Node3D>("head_pivot"); // initialize head node
 		camera = GetNode<Camera3D>("head_pivot/head_adjustments/head_camera"); // initialize camera node
 		headeffects = GetNode<Node3D>("head_pivot/head_adjustments"); // adjustments so it doesnt collide with rotations
-
+*/
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -97,12 +114,12 @@ public partial class playerone : CharacterBody3D
 
 		if (@event is InputEventMouseMotion mouseMotion)
 		{
-
+			
 			camera.RotateX(-mouseMotion.Relative.Y * sensitivity);
 			Player.RotateY(-mouseMotion.Relative.X * sensitivity);
 			
 			// Clamps head_Pivot(head) X so it can only rotate 180 degrees in total
-			camera.RotationDegrees = new Vector3(Mathf.Clamp(camera.RotationDegrees.X, -89, 89), camera.RotationDegrees.Y, camera.RotationDegrees.Z);
+			camera.RotationDegrees = new Vector3(Mathf.Clamp(camera.RotationDegrees.X, -90, 90), camera.RotationDegrees.Y, camera.RotationDegrees.Z);
 			
 		}
 

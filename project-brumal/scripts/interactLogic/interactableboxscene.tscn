@@ -1,17 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvn4v80jti17j"]
+[gd_scene load_steps=6 format=3 uid="uid://cvn4v80jti17j"]
 
 [ext_resource type="Script" uid="uid://dgc4jxe1vtyi0" path="res://scripts/interactLogic/InteractableBox.cs" id="1_qo54l"]
+[ext_resource type="Shader" uid="uid://du01ihu8fuowh" path="res://experiments/outline.gdshader" id="2_tkg2c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gc7m7"]
+render_priority = 0
+shader = ExtResource("2_tkg2c")
+shader_parameter/outline_color = Color(0.17168882, 0.40397066, 1, 1)
+shader_parameter/outline_width = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_hjb34"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qo54l"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mesh")]
 script = ExtResource("1_qo54l")
+mesh = NodePath("StaticBody3D")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="boxmesh" type="MeshInstance3D" parent="StaticBody3D"]
+material_overlay = SubResource("ShaderMaterial_gc7m7")
 mesh = SubResource("BoxMesh_hjb34")
 skeleton = NodePath("../..")
 

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cqben50e2tqmk"]
+
+[resource]
+blend_mode = 4
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.33742774, 0.5819345, 1, 1)
+grow = true
+grow_amount = 0.02
