@@ -66,23 +66,33 @@ public partial class playerone : CharacterBody3D
 
 	void SetItem(Items selecteditem)
 	{
-		currentItem = selecteditem;
+		switch (selecteditem)
+		{
+			case Items.flashlight:
+				lampparent.Visible = true;
+				break;
+
+			case Items.pickaxe:
+				break;
+
+			case Items.flare:
+				break;
+
+			default:
+				currentItem = Items.flashlight;
+				break;
+			
+		}
 	}
 
 	void SetState(MovementState state)
 	{
-		if (
-			(state == MovementState.crouching && currentState == MovementState.crawling) ||
-			(state == MovementState.crawling && currentState == MovementState.crouching) ||
-			(state == MovementState.running && currentState == MovementState.crouching) ||
-			(state == MovementState.running && currentState == MovementState.crawling)
-			)
+		if (currentState == MovementState.idle)
 		{
-			// basically if you change state, and it collides with these things ^^ then nothing will happen.
-			return;
+			currentState = state;
 		}
 
-		currentState = state;
+		
 	}
 
 	void SetDefaultState()
@@ -92,20 +102,10 @@ public partial class playerone : CharacterBody3D
 
 	public override void _Ready()
 	{
-
 		base._Ready();
 
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		
-/*
-		StandCol = GetNode<CollisionShape3D>("StandingCollision");  // initialize Standing collision
-		CrouchCol = GetNode<CollisionShape3D>("CrouchedCollision"); // initialize crouch collision
-
-		Player = GetNode<Node3D>("."); // initialize player node
-		head = GetNode<Node3D>("head_pivot"); // initialize head node
-		camera = GetNode<Camera3D>("head_pivot/head_adjustments/head_camera"); // initialize camera node
-		headeffects = GetNode<Node3D>("head_pivot/head_adjustments"); // adjustments so it doesnt collide with rotations
-*/
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -138,6 +138,8 @@ public partial class playerone : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+
+		
 
 		if (leaningcheck) // if leaning, lerp to target
 		{
@@ -263,17 +265,18 @@ public partial class playerone : CharacterBody3D
 
 		// Action -> sprinting ---------------------------------------------------------------
 
-		if (Input.IsActionPressed("sprint"))
+		if (Input.IsActionPressed("sprint") && currentState == MovementState.idle)
 		{
 			//float CurrentFOV = camera.Fov;
-			//SetState(MovementState.running);
+			SetState(MovementState.running);
 			Speed = 6f;
 			targetFOV = 85f;
 
 		}
-		if (Input.IsActionJustReleased("sprint"))
-		{   //float CurrentFOV = camera.Fov;
-			//SetDefaultState();
+		if (Input.IsActionJustReleased("sprint") && currentState == MovementState.running)
+		{   
+			//float CurrentFOV = camera.Fov;
+			SetDefaultState();
 			Speed = 3f;
 			targetFOV = 70f;
 		}
@@ -376,7 +379,7 @@ public partial class playerone : CharacterBody3D
 			bobTime = 0f; // reset phase when standing still
 		}
 		// ------------------------------------------------------------------------------------
-
+		GD.Print("current state:" + currentState);
 	}
 
 	private async void LerpHeadHeight(float offset)

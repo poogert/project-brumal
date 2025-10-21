@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cti7pj4dw0gj1"]
+[gd_scene load_steps=22 format=4 uid="uid://cti7pj4dw0gj1"]
 
 [ext_resource type="Script" uid="uid://cmo1vq0u4jar" path="res://scripts/playerone.cs" id="1_0khpw"]
 [ext_resource type="Texture2D" uid="uid://up7ba4raci7x" path="res://Models/Objects/CalciumLamp_LampBody.png" id="2_qvpcs"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://h4wvm1qcl6i1" path="res://scripts/interactLogic/interactray.tscn" id="8_ulli2"]
 [ext_resource type="PackedScene" uid="uid://cyppyujdwyh48" path="res://3D Assets/Items/pickaxe.glb" id="9_0la1k"]
 [ext_resource type="PackedScene" uid="uid://bjw5pyx6j3u2s" path="res://3D Assets/Items/flare.glb" id="10_3jmlc"]
+[ext_resource type="Texture2D" uid="uid://dj2k1ywdicf6k" path="res://2D Assets/UI assets/crosshari.png" id="11_x61a0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ciewh"]
 
@@ -213,16 +214,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="CalciumLamp" type="Node3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.24933472, -0.7321433, -0.6849874)
-visible = false
 script = ExtResource("2_tr6w4")
 
 [node name="Cylinder_004" type="MeshInstance3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera/CalciumLamp"]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.10504174, 0.19080603, -0.02000004)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_8p4xc")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera/CalciumLamp"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.3753091, 0.6995992, 0.24833888)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.490112, 0.6150805, 0.24833885)
 light_color = Color(0.8830419, 0.91966236, 0.6640573, 1)
 light_energy = 6.491
 light_indirect_energy = 20.0
@@ -230,7 +231,7 @@ light_specular = 0.0
 shadow_enabled = true
 distance_fade_enabled = true
 spot_range = 10.0
-spot_angle = 52.72055
+spot_angle = 115.29
 
 [node name="interactray" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera" instance=ExtResource("8_ulli2")]
 
@@ -240,13 +241,32 @@ visible = false
 
 [node name="pickaxeglb" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera/Pickaxe" instance=ExtResource("9_0la1k")]
 transform = Transform3D(0.4, -6.0953966e-09, -4.3635535e-09, 7.496297e-09, 0.32524845, 0.2328378, 7.1054275e-16, -0.2328378, 0.32524845, 0.022607744, -0.4576051, -0.62725925)
+visible = false
 
 [node name="flare" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera" instance=ExtResource("10_3jmlc")]
 transform = Transform3D(0.75, 0, 0, 0, 0.45239556, 0.59819585, 0, -0.59819585, 0.45239556, 0.54582727, -0.54713213, -0.7842924)
+visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera/flare"]
 transform = Transform3D(1.3333334, 0, 0, 0, 0.7784707, -1.0824792, 0, 1.0824792, 0.7784707, 0, 0.67014426, 0.0019931197)
+visible = false
 light_color = Color(1, 0.16007765, 0, 1)
 light_energy = 6.197
 spot_range = 7.0
 spot_angle = 180.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_x61a0")
