@@ -4,7 +4,7 @@ using System;
 public partial class CalciumLamp : Node3D
 {
 
-	bool isEquipped = false;
+	bool isEquipped = true;
 
 	SpotLight3D CLLight; // light reference
 	[Export] public float FlickerIntensity = .3f;
