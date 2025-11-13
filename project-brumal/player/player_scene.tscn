@@ -241,7 +241,6 @@ visible = false
 
 [node name="pickaxeglb" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera/Pickaxe" instance=ExtResource("9_0la1k")]
 transform = Transform3D(0.4, -6.0953966e-09, -4.3635535e-09, 7.496297e-09, 0.32524845, 0.2328378, 7.1054275e-16, -0.2328378, 0.32524845, 0.022607744, -0.4576051, -0.62725925)
-visible = false
 
 [node name="flare" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera" instance=ExtResource("10_3jmlc")]
 transform = Transform3D(0.75, 0, 0, 0, 0.45239556, 0.59819585, 0, -0.59819585, 0.45239556, 0.54582727, -0.54713213, -0.7842924)
@@ -254,6 +253,9 @@ light_color = Color(1, 0.16007765, 0, 1)
 light_energy = 6.197
 spot_range = 7.0
 spot_angle = 180.0
+
+[node name="Hand" type="Node3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24933472, -0.7321433, -0.6849874)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

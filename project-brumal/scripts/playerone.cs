@@ -23,14 +23,16 @@ public partial class playerone : CharacterBody3D
 		pickaxe, // 2
 		flare, // 3
 		ghook, // 4
-		map // 5
+		map, // 5
+		empty
 
 	}
 
-	[Export] public Node3D lampparent;
+	
 	[Export] public float Speed = 3.0f;
 	[Export] public float JumpVelocity = 4.5f;
 	[Export] public float sensitivity = 0.003f;
+
 
 	public MovementState currentState = MovementState.idle; // default state
 	public Items currentItem = Items.flashlight;
@@ -55,7 +57,7 @@ public partial class playerone : CharacterBody3D
 	const float rotationAmount = 35;
 
 
-	// this is to determine if the player has finished lowering -> crawling/crouching
+	// crawl/crouch lerping
 	bool finishedLowering = false;
 	bool HeightAdjustmentsRunning = false;
 
@@ -66,24 +68,9 @@ public partial class playerone : CharacterBody3D
 
 	void SetItem(Items selecteditem)
 	{
-		switch (selecteditem)
-		{
-			case Items.flashlight:
-				lampparent.Visible = true;
-				break;
 
-			case Items.pickaxe:
-				break;
-
-			case Items.flare:
-				break;
-
-			default:
-				currentItem = Items.flashlight;
-				break;
-			
-		}
 	}
+	
 
 	void SetState(MovementState state)
 	{
