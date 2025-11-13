@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://do3ddibah611g" path="res://Models/Objects/CalciumLamp_LampCover.png" id="5_0la1k"]
 [ext_resource type="Texture2D" uid="uid://d046014sntiyp" path="res://Models/Objects/CalciumLamp_LampHandle.png" id="6_3jmlc"]
 [ext_resource type="PackedScene" uid="uid://h4wvm1qcl6i1" path="res://scripts/interactLogic/interactray.tscn" id="8_ulli2"]
-[ext_resource type="PackedScene" uid="uid://cyppyujdwyh48" path="res://3D Assets/Items/pickaxe.glb" id="9_0la1k"]
-[ext_resource type="PackedScene" uid="uid://bjw5pyx6j3u2s" path="res://3D Assets/Items/flare.glb" id="10_3jmlc"]
-[ext_resource type="Texture2D" uid="uid://dj2k1ywdicf6k" path="res://2D Assets/UI assets/crosshari.png" id="11_x61a0"]
+[ext_resource type="PackedScene" uid="uid://k7sutjoicl1" path="res://3D Assets/Items/pickaxe.glb" id="9_0la1k"]
+[ext_resource type="PackedScene" uid="uid://coxkg4n412503" path="res://3D Assets/Items/flare.glb" id="10_3jmlc"]
+[ext_resource type="Texture2D" uid="uid://b7qgkdjgifqix" path="res://2D Assets/UI assets/crosshari.png" id="11_x61a0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ciewh"]
 
@@ -223,7 +223,7 @@ mesh = SubResource("ArrayMesh_8p4xc")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera/CalciumLamp"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.490112, 0.6150805, 0.24833885)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.490112, 0.6150805, 0.24833885)
 light_color = Color(0.8830419, 0.91966236, 0.6640573, 1)
 light_energy = 6.491
 light_indirect_energy = 20.0
