@@ -44,7 +44,7 @@ sky = SubResource("Sky_hluil")
 sky_rotation = Vector3(-1.0384709, 0, 0)
 tonemap_mode = 2
 glow_enabled = true
-volumetric_fog_enabled = true
+fog_enabled = true
 volumetric_fog_density = 0.021
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gbt6"]
@@ -166,8 +166,6 @@ script = SubResource("CSharpScript_nqael")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.7071068, 0.49999994, -0.49999994, 0, 0.70710677, 0.70710677, 0.7071067, 0.5, -0.5, 0, 0, 0)
-light_color = Color(0.721221, 0.9999998, 0.9954718, 1)
-light_angular_distance = 79.57
 shadow_enabled = true
 shadow_blur = 0.2
 

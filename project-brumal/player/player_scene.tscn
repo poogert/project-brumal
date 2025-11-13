@@ -223,15 +223,14 @@ mesh = SubResource("ArrayMesh_8p4xc")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera/CalciumLamp"]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.490112, 0.6150805, 0.24833885)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.490112, 0.6150805, 0.24833885)
 light_color = Color(0.8830419, 0.91966236, 0.6640573, 1)
 light_energy = 6.491
 light_indirect_energy = 20.0
-light_specular = 0.0
 shadow_enabled = true
 distance_fade_enabled = true
 spot_range = 10.0
-spot_angle = 115.29
+spot_angle = 51.15685
 
 [node name="interactray" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera" instance=ExtResource("8_ulli2")]
 
