@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bpj3ag7x4qw2q" path="res://Models/Objects/WorldProps/Fence.glb" id="5_epj0r"]
 [ext_resource type="PackedScene" uid="uid://dn7tjb2kcg5ps" path="res://Models/Objects/WorldProps/Crate.glb" id="6_g6lwf"]
 [ext_resource type="PackedScene" uid="uid://cvn4v80jti17j" path="res://scripts/interactLogic/interactableboxscene.tscn" id="8_52sjw"]
-[ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://SnowSprice.tscn" id="9_52sjw"]
+[ext_resource type="PackedScene" path="res://SnowSprice.tscn" id="9_52sjw"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_nqael"]
 script/source = "using Godot;
@@ -166,6 +166,7 @@ script = SubResource("CSharpScript_nqael")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.7071068, 0.49999994, -0.49999994, 0, 0.70710677, 0.70710677, 0.7071067, 0.5, -0.5, 0, 0, 0)
+light_energy = 0.0
 shadow_enabled = true
 shadow_blur = 0.2
 
