@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmihgh6q7jbu5"]
+
+[ext_resource type="Script" uid="uid://ckfgcobsrrv1a" path="res://scripts/game-tools/LeveLoadScript.cs" id="1_f040d"]
+[ext_resource type="Script" uid="uid://cevcg6p1pb46y" path="res://scripts/game-tools/SetLevelField.cs" id="1_knaxd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5t12s"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_knaxd")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_f040d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_5t12s")
+
+[node name="Label3D" type="Label3D" parent="."]
+text = "this is the next level:
+loads testLevel.tscn rn"
+
+[connection signal="body_entered" from="Area3D" to="Area3D/CollisionShape3D" method="body_entered"]

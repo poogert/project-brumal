@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 
 project/assembly_name="project_brumal"
 
+[global_group]
+
+Player=""
+
 [input]
 
 left={

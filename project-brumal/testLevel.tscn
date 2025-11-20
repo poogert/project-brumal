@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://x5t500dddovd"]
+
+[ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8a0p6"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="Environment" id="Environment_aldhi"]
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 0.0
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
+fog_light_energy = 0.25
+fog_density = 0.5
+volumetric_fog_density = 0.021
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("BoxMesh_kn04o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_8a0p6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071068, 0.49999994, -0.49999994, 0, 0.70710677, 0.70710677, 0.7071067, 0.5, -0.5, 0, 0, 0)
+light_energy = 0.0
+light_angular_distance = 44.54
+shadow_enabled = true
+shadow_blur = 0.2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aldhi")
+
+[node name="Player" parent="." instance=ExtResource("1_8a0p6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7648681, 7.928536, 3.100956)
