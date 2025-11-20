@@ -222,7 +222,7 @@ mesh = SubResource("ArrayMesh_8p4xc")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera/CalciumLamp"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.5123247, 0.38601828, -0.024630725)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.33240473, 0.34226555, 1.4901161e-08)
 light_color = Color(0.8830419, 0.91966236, 0.6640573, 1)
 light_energy = 6.491
 light_indirect_energy = 20.0
