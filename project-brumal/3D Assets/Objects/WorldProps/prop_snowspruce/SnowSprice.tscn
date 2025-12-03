@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://4a1fr51i7cu3"]
 
-[ext_resource type="Texture2D" uid="uid://b3hq8wsh0nil4" path="res://Models/Objects/WorldProps/SnowSpruce_BARK.png" id="1_iewh0"]
-[ext_resource type="Texture2D" uid="uid://dlsje1vhkuk3y" path="res://Models/Objects/WorldProps/SnowSpruce_LeavesPineSnowAl2t.png" id="2_pkdaf"]
+[ext_resource type="Texture2D" uid="uid://b3hq8wsh0nil4" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSpruce_BARK.png" id="1_iewh0"]
+[ext_resource type="Texture2D" uid="uid://dlsje1vhkuk3y" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSpruce_LeavesPineSnowAl2t.png" id="2_pkdaf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xwhp"]
 resource_name = "Material.017"

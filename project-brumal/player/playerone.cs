@@ -28,17 +28,16 @@ public partial class playerone : CharacterBody3D
 
 	}
 
+	// default enum states
+	public MovementState currentState = MovementState.idle; // default state
+	public Items currentItem = Items.flashlight;
 	
+	bool leaningcheck = false;
+
+	// exports
 	[Export] public float Speed = 3.0f;
 	[Export] public float JumpVelocity = 4.5f;
 	[Export] public float sensitivity = 0.003f;
-
-
-	public MovementState currentState = MovementState.idle; // default state
-	public Items currentItem = Items.flashlight;
-	bool leaningcheck = false;
-
-
 	[Export] CollisionShape3D StandCol; // stand collision root reference
 	[Export] CollisionShape3D CrouchCol; // crouch collision root reference
 	[Export] Node3D Player; // Scene root reference
@@ -46,32 +45,26 @@ public partial class playerone : CharacterBody3D
 	[Export] Camera3D camera; // camera reference
 	[Export] Node3D headeffects;
 
-
 	// bobbing point
 	private float bobTime = 0f;
-
 
 	// rotation lerping
 	float targetRotationZ = 0;
 	float currentRotationZ = 0;
 	const float rotationAmount = 35;
 
-
 	// crawl/crouch lerping
 	bool finishedLowering = false;
 	bool HeightAdjustmentsRunning = false;
 
-
 	// fov lerping
 	float targetFOV = 70;
-
 
 	void SetItem(Items selecteditem)
 	{
 
 	}
 	
-
 	void SetState(MovementState state)
 	{
 		if (currentState == MovementState.idle)
@@ -113,21 +106,10 @@ public partial class playerone : CharacterBody3D
 
 	}
 
-
-	public override void _Process(double delta)
-	{
-		
-		base._Process(delta);
-
-	}
-
-
+	public override void _Process(double delta) { base._Process(delta); }
 
 	public override void _PhysicsProcess(double delta)
 	{
-
-		
-
 		if (leaningcheck) // if leaning, lerp to target
 		{
 			// lerping
@@ -147,7 +129,6 @@ public partial class playerone : CharacterBody3D
 			head.Transform = new Transform3D(basis, head.Transform.Origin);
 
 		}
-
 
 		// takes the characterbody3D's velocity
 		Vector3 velocity = this.Velocity;

@@ -1,14 +1,14 @@
 [gd_scene load_steps=25 format=4 uid="uid://c5cwdcujmfd8v"]
 
-[ext_resource type="Texture2D" uid="uid://dm27foysxsdym" path="res://Models/Objects/WorldProps/SwitchHandle_Switch.png" id="1_aiv04"]
-[ext_resource type="Script" uid="uid://75pm5avj1uds" path="res://Switch.cs" id="1_tu2mf"]
-[ext_resource type="Texture2D" uid="uid://bi2eoasruawf7" path="res://Models/Objects/WorldProps/SwitchHousing_SwitchHousing.png" id="2_tu2mf"]
-[ext_resource type="Texture2D" uid="uid://bu30qrtj07ppx" path="res://Models/Objects/WorldProps/SwitchHousing_Conduit.png" id="3_eajty"]
-[ext_resource type="Texture2D" uid="uid://c7bmd0wpcnjr8" path="res://Models/Objects/WorldProps/SwitchHousing_Bolts.png" id="4_8xb4j"]
-[ext_resource type="Texture2D" uid="uid://cgjogs6kwyulg" path="res://Models/Objects/WorldProps/SwitchHousingBrass_Bolts.png" id="6_eqp7c"]
-[ext_resource type="Shader" uid="uid://du01ihu8fuowh" path="res://experiments/outline.gdshader" id="6_svf6b"]
-[ext_resource type="Texture2D" uid="uid://xsn226dbarq8" path="res://Models/Objects/WorldProps/SwitchHousingBrass_BrassHousing.png" id="7_svf6b"]
-[ext_resource type="Texture2D" uid="uid://uqlu2ppfvcis" path="res://Models/Objects/WorldProps/SwitchHousingBrass_Conduit.png" id="8_hvhsp"]
+[ext_resource type="Texture2D" uid="uid://dm27foysxsdym" path="res://3D Assets/Objects/WorldProps/prop_switch/switchhandle/SwitchHandle_Switch.png" id="1_aiv04"]
+[ext_resource type="Script" uid="uid://75pm5avj1uds" path="res://3D Assets/Objects/WorldProps/prop_switch/Switch.cs" id="1_tu2mf"]
+[ext_resource type="Texture2D" uid="uid://bi2eoasruawf7" path="res://3D Assets/Objects/WorldProps/prop_switch/switchhousing/SwitchHousing_SwitchHousing.png" id="2_tu2mf"]
+[ext_resource type="Texture2D" uid="uid://bu30qrtj07ppx" path="res://3D Assets/Objects/WorldProps/prop_switch/switchhousing/SwitchHousing_Conduit.png" id="3_eajty"]
+[ext_resource type="Texture2D" uid="uid://c7bmd0wpcnjr8" path="res://3D Assets/Objects/WorldProps/prop_switch/switchhousing/SwitchHousing_Bolts.png" id="4_8xb4j"]
+[ext_resource type="Texture2D" uid="uid://cgjogs6kwyulg" path="res://3D Assets/Objects/WorldProps/prop_switch/switchhousing/SwitchHousingBrass_Bolts.png" id="6_eqp7c"]
+[ext_resource type="Shader" uid="uid://du01ihu8fuowh" path="res://experiments/highlight_shader/outline.gdshader" id="6_svf6b"]
+[ext_resource type="Texture2D" uid="uid://xsn226dbarq8" path="res://3D Assets/Objects/WorldProps/prop_switch/switchhousing/SwitchHousingBrass_BrassHousing.png" id="7_svf6b"]
+[ext_resource type="Texture2D" uid="uid://uqlu2ppfvcis" path="res://3D Assets/Objects/WorldProps/prop_switch/switchhousing/SwitchHousingBrass_Conduit.png" id="8_hvhsp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ysy0"]
 resource_name = "Material.005"

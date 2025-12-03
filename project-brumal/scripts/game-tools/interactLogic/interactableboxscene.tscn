@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvn4v80jti17j"]
 
-[ext_resource type="Script" uid="uid://dgc4jxe1vtyi0" path="res://scripts/interactLogic/InteractableBox.cs" id="1_qo54l"]
-[ext_resource type="Shader" uid="uid://du01ihu8fuowh" path="res://experiments/outline.gdshader" id="2_tkg2c"]
+[ext_resource type="Script" uid="uid://dgc4jxe1vtyi0" path="res://scripts/game-tools/interactLogic/InteractableBox.cs" id="1_qo54l"]
+[ext_resource type="Shader" uid="uid://du01ihu8fuowh" path="res://experiments/highlight_shader/outline.gdshader" id="2_tkg2c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gc7m7"]
 render_priority = 0

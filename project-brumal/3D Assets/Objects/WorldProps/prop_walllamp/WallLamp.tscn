@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=4 uid="uid://qbyx7k7uun84"]
 
-[ext_resource type="Texture2D" uid="uid://ekihetbxwkvc" path="res://Models/Objects/WorldProps/WallLampBody_WallLamp.png" id="1_4nayi"]
-[ext_resource type="Script" uid="uid://b4xhodsfwwfkb" path="res://WallLamp.cs" id="1_qr4pg"]
-[ext_resource type="Texture2D" uid="uid://dj6133w2utlal" path="res://Models/Objects/WorldProps/LightBulb_Bulb.png" id="2_qr4pg"]
+[ext_resource type="Texture2D" uid="uid://ekihetbxwkvc" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLampBody_WallLamp.png" id="1_4nayi"]
+[ext_resource type="Script" uid="uid://b4xhodsfwwfkb" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.cs" id="1_qr4pg"]
+[ext_resource type="Texture2D" path="res://Models/Objects/WorldProps/LightBulb_Bulb.png" id="2_qr4pg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3s6l"]
 resource_name = "Material.004"
