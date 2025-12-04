@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=29 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://5qbfx160dbvp" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cxv5e357tvvs1" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
 [ext_resource type="PackedScene" uid="uid://dmihgh6q7jbu5" path="res://scripts/game-tools/tool_levelloader/LoadLevelCollision.tscn" id="12_p6wwr"]
 [ext_resource type="PackedScene" uid="uid://x5t500dddovd" path="res://maps/testLevel.tscn" id="13_j0qli"]
+[ext_resource type="PackedScene" uid="uid://dinscgucgqm5p" path="res://3D Assets/Items/item_flare/throwable_flare.tscn" id="14_vfsg6"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_nqael"]
 script/source = "using Godot;
@@ -326,3 +327,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6161299, 0.92580366, -6.03
 [node name="testlevelload" parent="World/OGTestMap" instance=ExtResource("12_p6wwr")]
 transform = Transform3D(3.4064636, 0, 0, 0, 2.6372397, 0, 0, 0, 1.8967273, 19.063076, 2.408854, -5.119117)
 next_level = ExtResource("13_j0qli")
+
+[node name="flare" parent="." instance=ExtResource("14_vfsg6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0069134, 5.0591536, -2.730864)

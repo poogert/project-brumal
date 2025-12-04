@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=4 uid="uid://dinscgucgqm5p"]
+
+[ext_resource type="Texture2D" uid="uid://sn1wkeqawtrf" path="res://3D Assets/Items/item_flare/flare_model_FLARE.png" id="1_uhjpo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ioeh"]
+resource_name = "Material.055"
+cull_mode = 2
+albedo_texture = ExtResource("1_uhjpo")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ugv4s"]
+_surfaces = [{
+"aabb": AABB(-0.12427583, -0.54691505, -0.14350137, 0.24855167, 1.0938301, 0.28700274),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIABQADAAAABQACAAYAAwAHAAQACAAFAAYAAwAFAAkACQAFAAgAAwAJAAcABwAKAAQABwAJAAoAAgAEAAsAAgALAAYACwAEAAoACAAGAAsACQALAAoACQAIAAsA"),
+"name": "Material.055",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAAAAAAD//////z8AAP9///8AAAAA//8AAP8/AAD//////78AAAAAAAD/PwAAAAD///8/AAD//wAA/78AAAAAAAD/vwAA/38AAP//AAD/f/////8AAAAA////vwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y44eh"]
+resource_name = "flare_model_Cylinder_001"
+_surfaces = [{
+"aabb": AABB(-0.12427583, -0.54691505, -0.14350137, 0.24855167, 1.0938301, 0.28700274),
+"attribute_data": PackedByteArray("AAAzAzMzmP0AAJj9MzMzAzMzMwNmZpj9MzOY/WZmMwNmZjMDmZmY/WZmmP2ZmTMDmZUzA8zImP2ZlZj9zMgzAwkBpcO9Uh/m7x937L5HII7wFHmUpGbztlvDGQOO9nn9W8N5/Y72GQPMzDMD//+Y/czMmP3//zMDCGbAHClkxQAsbTgO3UxhEOBV1B0BVNkB"),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEQAQABMAEwAQABQAEQATABUAFgAXABgAFgAZABcAGgAbABwAGgAdABsAHgAfACAAHwAeACEAIQAeACIAHwAhACMA"),
+"material": SubResource("StandardMaterial3D_7ioeh"),
+"name": "Material.055",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("/38AAAAA/////////z////9///8AAP////8AAP8//////wAA/z//////////v/////////8//////wAA/7//////AAD/v////3///////////////7////9/AAD//////38AAP////8AAP///7////9/////////AAAAAP+//////////79/7f9///8AAH/t//////8/f+0AAP///79/7f9//////3/tAAD///8/f+0AAAAA/7///wAA////P///AAD///+///8AAAAA/z///wAAAAD/P////3///wAA//8AAP///z////9/AAAAAP//AAAAAP8/6tb//wAA/z/q1v9/AAAAAOrW/38AAP//6tYAAAAA/7/q1v//AAD/v+rW8uT/f/Lk/3/y5P9/8uT/f/+//3//v/9//7//f/+//38Mm/9/DJv/fwyb/38Mm/9/8mT/f/Jk/3/yZP9/8mT/fzLJZhIyyWYSMslmEjLJZhIyyWYSMslmEv8//3//P/9//z//f/8//3///wyb//8Mm///DJv//wybNVdkVDVXZFQ1V2RUNVdkVDVXZFQ1V2RU")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ugv4s")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_resfx"]
+points = PackedVector3Array(0.023260891, -0.5555809, -0.15218095, 0.0059006875, 0.5555809, 0.16033332, -0.011434025, 0.5555809, 0.16033332, 0.0059006875, -0.5555809, 0.16033332, -0.13298094, -0.5555809, 0.09086191, -0.11559525, 0.5555809, -0.10008504, 0.110061914, 0.5555809, -0.10008504, 0.1274476, -0.5555809, 0.09086191, -0.11559525, -0.5555809, -0.10008504, 0.1274476, 0.5555809, 0.09086191, -0.13298094, 0.5555809, 0.09086191, 0.110061914, -0.5555809, -0.10008504, -0.028794229, 0.5555809, -0.15218095, 0.023260891, 0.5555809, -0.15218095, -0.028794229, -0.5555809, -0.15218095, 0.11721272, 0.51191205, -0.07588816, -0.04612894, -0.5555809, 0.14295782, 0.07531601, -0.5555809, 0.12558232, 0.11721272, -0.51191205, -0.07588816, -0.120178886, -0.5009588, -0.07417718, 0.0579813, 0.5555809, -0.13480546, 0.07531601, 0.5555809, 0.12558232, -0.120178886, 0.5009588, -0.07417718, -0.011434025, -0.5555809, 0.16033332, 0.0579813, -0.5555809, -0.13480546, -0.04612894, 0.5555809, 0.14295782)
+
+[node name="flare" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="flare_model" type="Node3D" parent="RigidBody3D"]
+transform = Transform3D(0.59999996, 0, 0, 0, 0.59999996, 0, 0, 0, 0.59999996, 0, 0, 0)
+
+[node name="Flare_001" type="MeshInstance3D" parent="RigidBody3D/flare_model"]
+transform = Transform3D(1, 0, 0, 0, -1, 1.509958e-07, 0, -1.509958e-07, -1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_y44eh")
+skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="RigidBody3D/flare_model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6110839, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 3.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.59999996, 0, 0, 0, -0.59999996, 9.0597474e-08, 0, -9.0597474e-08, -0.59999996, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_resfx")

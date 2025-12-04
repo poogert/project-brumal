@@ -166,16 +166,13 @@ public partial class playerone : CharacterBody3D
 			// using basis to rotate ONLY Z, not x, y.
 			Basis basis = Basis.FromEuler(new Vector3(0, 0, Mathf.DegToRad(currentRotationZ)));
 			head.Transform = new Transform3D(basis, head.Transform.Origin);
-
 		}
 		else // if not leaning lerp to 0 degrees
 		{
-
 			currentRotationZ = Mathf.Lerp(currentRotationZ, 0, 9f * (float)delta);
 
 			Basis basis = Basis.FromEuler(new Vector3(0, 0, Mathf.DegToRad(currentRotationZ)));
 			head.Transform = new Transform3D(basis, head.Transform.Origin);
-
 		}
 
 		// takes the characterbody3D's velocity
@@ -183,18 +180,14 @@ public partial class playerone : CharacterBody3D
 
 		if (targetFOV != camera.Fov) // camera lerp
 		{
-
 			camera.Fov = Mathf.Lerp(camera.Fov, targetFOV, .1f);
-
 		}
 
 
 		// if not on floor add gravity to player.
 		if (!IsOnFloor())
 		{
-
 			velocity += GetGravity() * (float)delta;
-
 		}
 
 
@@ -202,8 +195,6 @@ public partial class playerone : CharacterBody3D
 		if (Input.IsActionJustPressed("debug print"))
 		{
 			GD.Print("--- Debugging Statistics ---\n");
-
-
 
 			GD.Print("\n");
 			GD.Print("----------------------------\n");
@@ -222,7 +213,6 @@ public partial class playerone : CharacterBody3D
 		{
 			
 			SetItem(Items.lamp, lamp);
-
 			GD.Print("our current item is : " + currentItem);
 
 		}
@@ -233,7 +223,6 @@ public partial class playerone : CharacterBody3D
 		{
 			
 			SetItem(Items.pickaxe, pickaxe);
-
 			GD.Print("our current item is : " + currentItem);
 
 		}
@@ -244,7 +233,6 @@ public partial class playerone : CharacterBody3D
 		{
 			
 			SetItem(Items.flare, flare);
-
 			GD.Print("our current item is : " + currentItem);
 
 		}
@@ -432,8 +420,6 @@ public partial class playerone : CharacterBody3D
 		{
 			bobTime = 0f; // reset phase when standing still
 		}
-		// ------------------------------------------------------------------------------------
-		GD.Print("current state:" + currentState);
 	}
 
 	private async void LerpHeadHeight(float offset)
