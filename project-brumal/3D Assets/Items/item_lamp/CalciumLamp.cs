@@ -22,7 +22,7 @@ public partial class CalciumLamp : Node3D
 
 	public override void _Ready()
 	{
-		CLLight = GetNode<SpotLight3D>("SpotLight3D");// initializing the light
+		CLLight = GetNode<SpotLight3D>("light");// initializing the light
 	}
 
 

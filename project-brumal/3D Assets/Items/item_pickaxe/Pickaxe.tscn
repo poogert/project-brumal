@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci7t4slbk4i2b"]
+
+[ext_resource type="PackedScene" uid="uid://cyppyujdwyh48" path="res://3D Assets/Items/item_pickaxe/pickaxe.glb" id="1_yr4s1"]
+
+[node name="pickaxe" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9114679, -0.41137117, 0, 0.41137117, 0.9114679, 0, 0, 0)
+
+[node name="pickaxe_model" parent="." instance=ExtResource("1_yr4s1")]
+transform = Transform3D(0.5373699, 0.058610693, 0.27170393, -0.2502965, 0.3592134, 0.41754323, -0.120871276, -0.4832758, 0.34330642, 0, -0.041457407, -0.29360306)

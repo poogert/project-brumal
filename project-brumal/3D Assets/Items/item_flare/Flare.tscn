@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdetuqiat7x7p"]
+
+[ext_resource type="PackedScene" uid="uid://bjw5pyx6j3u2s" path="res://3D Assets/Items/item_flare/flare.glb" id="1_ihtwa"]
+
+[node name="flare" type="Node3D"]
+
+[node name="flare_model" parent="." instance=ExtResource("1_ihtwa")]
+transform = Transform3D(0.7, 0, 0, 0, 0.5683158, 0.40867725, 0, -0.40867725, 0.5683158, 0, 0, 0)
+
+[node name="light" type="OmniLight3D" parent="flare_model"]
+transform = Transform3D(1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0, 1.4285715, 0, 0.575236, 0)
+light_color = Color(1, 0.13816993, 0, 1)
+light_energy = 5.0

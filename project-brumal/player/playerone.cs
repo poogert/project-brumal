@@ -19,7 +19,7 @@ public partial class playerone : CharacterBody3D
 
 	public enum Items
 	{
-		flashlight, // 1
+		lamp, // 1
 		pickaxe, // 2
 		flare, // 3
 		ghook, // 4
@@ -30,7 +30,8 @@ public partial class playerone : CharacterBody3D
 
 	// default enum states
 	public MovementState currentState = MovementState.idle; // default state
-	public Items currentItem = Items.flashlight;
+	
+	public Items currentItem = Items.empty;
 	
 	bool leaningcheck = false;
 
@@ -44,6 +45,15 @@ public partial class playerone : CharacterBody3D
 	[Export] Node3D head; // head reference
 	[Export] Camera3D camera; // camera reference
 	[Export] Node3D headeffects;
+	[Export] Node3D handeffects;
+
+
+	// item scenes
+	[Export] PackedScene lamp;
+	[Export] PackedScene pickaxe;
+	[Export] PackedScene flare;
+
+
 
 	// bobbing point
 	private float bobTime = 0f;
@@ -60,25 +70,63 @@ public partial class playerone : CharacterBody3D
 	// fov lerping
 	float targetFOV = 70;
 
-	void SetItem(Items selecteditem)
+	void SetItem(Items selecteditem, PackedScene item)
 	{
 
+		if (selecteditem == currentItem)
+		{
+			currentItem = Items.empty;
+			RemoveItem();
+
+			return;
+		} 
+
+		RemoveItem();
+		currentItem = selecteditem;
+		
+		Node itemInstance = item.Instantiate();
+		Node3D itemReference = itemInstance as Node3D; 
+		
+		if (itemReference == null) 
+		{ 
+			GD.Print("item ref null boah");
+			return;
+		}
+
+		handeffects.AddChild(itemReference); 
+
 	}
-	
+
+	void RemoveItem()
+	{
+		
+		if (handeffects.GetChildCount() > 0)
+		{
+
+			Node child = handeffects.GetChild(0);
+			handeffects.RemoveChild(child);
+
+			child.QueueFree();
+
+		}
+		else
+		{
+			return;
+		}
+
+	}
+
 	void SetState(MovementState state)
 	{
 		if (currentState == MovementState.idle)
 		{
 			currentState = state;
 		}
-
 		
 	}
 
-	void SetDefaultState()
-	{
-		currentState = MovementState.idle;
-	}
+	// default = idle
+	void SetDefaultState() { currentState = MovementState.idle; }
 
 	public override void _Ready()
 	{
@@ -140,6 +188,7 @@ public partial class playerone : CharacterBody3D
 
 		}
 
+
 		// if not on floor add gravity to player.
 		if (!IsOnFloor())
 		{
@@ -163,8 +212,43 @@ public partial class playerone : CharacterBody3D
 		// press o, this is meant to execute a function for testing
 		if (Input.IsActionJustPressed("debug print"))
 		{
+			
+			GD.Print("our current item is : " + currentItem);
 
 		}
+
+		// item one
+		if ( Input.IsActionJustPressed("itemone") )
+		{
+			
+			SetItem(Items.lamp, lamp);
+
+			GD.Print("our current item is : " + currentItem);
+
+		}
+
+
+		// item two
+		if ( Input.IsActionJustPressed("itemtwo") )
+		{
+			
+			SetItem(Items.pickaxe, pickaxe);
+
+			GD.Print("our current item is : " + currentItem);
+
+		}
+
+
+		// item three
+		if ( Input.IsActionJustPressed("itemthree") )
+		{
+			
+			SetItem(Items.flare, flare);
+
+			GD.Print("our current item is : " + currentItem);
+
+		}
+
 
 
 		// Action -> crouching ---------------------------------------------------------------
@@ -197,11 +281,9 @@ public partial class playerone : CharacterBody3D
 			}
 
 		}
-		// ------------------------------------------------------------------------------------
 
 
 		// Action -> crawling ---------------------------------------------------------------
-
 		if (Input.IsActionJustPressed("crawl"))
 		{
 			if (currentState == MovementState.idle)
@@ -229,7 +311,6 @@ public partial class playerone : CharacterBody3D
 
 		}
 
-		// ------------------------------------------------------------------------------------
 
 		// Action -> sprinting ---------------------------------------------------------------
 
@@ -241,6 +322,7 @@ public partial class playerone : CharacterBody3D
 			targetFOV = 85f;
 
 		}
+		
 		if (Input.IsActionJustReleased("sprint") && currentState == MovementState.running)
 		{   
 			//float CurrentFOV = camera.Fov;
@@ -248,8 +330,6 @@ public partial class playerone : CharacterBody3D
 			Speed = 3f;
 			targetFOV = 70f;
 		}
-
-		// ------------------------------------------------------------------------------------
 
 
 		// Action -> leaning ---------------------------------------------------------------
@@ -280,8 +360,6 @@ public partial class playerone : CharacterBody3D
 			targetRotationZ = 0f;
 		}
 
-		// ------------------------------------------------------------------------------------
-
 
 		// Action -> jumping ------------------------------------------------------------------
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
@@ -290,8 +368,6 @@ public partial class playerone : CharacterBody3D
 			//GD.Print("IsjumpingWorking");
 
 		}
-
-		// ------------------------------------------------------------------------------------
 
 
 		// close window
@@ -338,9 +414,19 @@ public partial class playerone : CharacterBody3D
 			bobTime += (float)delta * actualSpeed * 5f;  // frequency multiplier
 			float bob = Mathf.Sin(bobTime) * 0.06f; // amplitude scales with speed
 
+			const float hand_offset = Mathf.Pi/ 4f; 
+			float bobHand = Mathf.Sin(bobTime + hand_offset) * 0.06f;
+
+			// head moving
 			var het = headeffects.Transform;
 			het.Origin.Y = bob;
 			headeffects.Transform = het;
+
+			// hand moving
+			var hand = handeffects.Transform;
+			hand.Origin.Y = bobHand;
+			handeffects.Transform = hand;
+
 		}
 		else
 		{
