@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=26 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://bi7n3ro3v7uon" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
@@ -9,11 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprice.tscn" id="9_52sjw"]
 [ext_resource type="Texture2D" uid="uid://dlpqhmxwhxie3" path="res://3D Assets/MapChunks/fakemountains_FakeMountains.png" id="10_ud8pw"]
 [ext_resource type="PackedScene" uid="uid://douchrf7oc5hr" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
-[ext_resource type="PackedScene" uid="uid://brk8k6vgaaogx" path="res://3D Assets/Objects/WorldProps/prop_fence/fence.tscn" id="12_j0qli"]
 [ext_resource type="PackedScene" uid="uid://dmihgh6q7jbu5" path="res://scripts/game-tools/tool_levelloader/LoadLevelCollision.tscn" id="12_p6wwr"]
 [ext_resource type="PackedScene" uid="uid://x5t500dddovd" path="res://maps/testLevel.tscn" id="13_j0qli"]
-[ext_resource type="PackedScene" uid="uid://b3em27gyxvvw8" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate.tscn" id="13_vfsg6"]
-[ext_resource type="PackedScene" uid="uid://dinscgucgqm5p" path="res://3D Assets/Items/item_flare/throwable_flare.tscn" id="14_vfsg6"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_nqael"]
 script/source = "using Godot;
@@ -303,7 +300,7 @@ transform = Transform3D(0.97568774, 0.1376693, -0.17053045, -0.13561352, 0.99047
 transform = Transform3D(0.99971855, 0.016867328, -0.01667671, -0.016679391, 0.9997965, 0.011342935, 0.016864609, -0.011061582, 0.9997965, 0.034023285, -0.77371573, -2.4433987)
 
 [node name="WallLampBody" parent="World/OGTestMap" node_paths=PackedStringArray("_Switch") instance=ExtResource("4_rsmj0")]
-transform = Transform3D(0.29999998, 0, 0, 0, 0.2936923, -0.061195042, 0, 0.061195042, 0.2936923, 19.626217, 4.157125, 2.1900342)
+transform = Transform3D(0.29999998, 0, 0, 0, 0.2936923, -0.061195042, 0, 0.061195042, 0.2936923, 19.383831, 4.157125, 2.1900342)
 _Switch = NodePath("../HallwayCaveSegmentTest4/Switch")
 
 [node name="interactablebox" parent="World/OGTestMap" instance=ExtResource("8_52sjw")]
