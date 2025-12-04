@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=4 uid="uid://b3em27gyxvvw8"]
+
+[ext_resource type="Texture2D" uid="uid://ci0a8hjhvqi3g" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate_Box.png" id="1_dwi5y"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e34xa"]
+points = PackedVector3Array(1.9171008, 0.9549836, 0.8211678, 1.9171008, 0.9549836, -1.1788322, -1.9171008, 0.9549836, 0.8211678, 1.9171008, -1.0450164, 0.8211678, 1.9171008, -1.0450164, -1.1788322, -1.9171008, 0.9549836, -1.1788322, -1.9171008, -1.0450164, 0.8211678, -1.9171008, -1.0450164, -1.1788322)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4esi"]
+resource_name = "Material.014"
+cull_mode = 2
+albedo_texture = ExtResource("1_dwi5y")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rdts2"]
+_surfaces = [{
+"aabb": AABB(-1.9171008, -1.0450164, -1.1788322, 3.8342016, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.014",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_evk3k"]
+resource_name = "Crate_Cube_025"
+_surfaces = [{
+"aabb": AABB(-1.9171008, -1.0450164, -1.1788322, 3.8342016, 2, 2),
+"attribute_data": PackedByteArray("/////x7U/9/////fHtT///9//58e1P+//3//vx7U/58e1P+//v//3x7U/9////+/HtT///9//98e1P/f/3////9//58e1P9/HtT/n/9//38e1P+//3//3/9//78e1P/f"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_u4esi"),
+"name": "Material.014",
+"primitive": 3,
+"uv_scale": Vector4(1.4585508, 2, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///78AAP//AAD/vwAA//////+/AAAAAAAA/78AAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAP//////////////////AAD/////AAD///////8AAP//AIAAAP////8AgP///////wCAAAAAAP//AIAAAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP+/AAD//////78AAP//AAD/v/////////+//3////9/////f////3///////3////9//v//f////3//v/9//7//f/+//3//v/9//3////9/////f////3///wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_rdts2")
+
+[node name="Crate" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, -1.509958e-07, 0, 1.509958e-07, -1, 0, 0, 0)
+mass = 10.0
+can_sleep = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_e34xa")
+
+[node name="Cube_033" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D2"]
+mesh = SubResource("ArrayMesh_evk3k")
+skeleton = NodePath("")
