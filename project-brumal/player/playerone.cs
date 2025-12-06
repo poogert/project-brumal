@@ -53,11 +53,8 @@ public partial class playerone : CharacterBody3D
 	[Export] PackedScene pickaxe;
 	[Export] PackedScene flare;
 
-
-
 	// bobbing point
 	private float bobTime = 0f;
-
 	// rotation lerping
 	float targetRotationZ = 0;
 	float currentRotationZ = 0;
@@ -402,6 +399,7 @@ public partial class playerone : CharacterBody3D
 			bobTime += (float)delta * actualSpeed * 5f;  // frequency multiplier
 			float bob = Mathf.Sin(bobTime) * 0.06f; // amplitude scales with speed
 
+			
 			const float hand_offset = Mathf.Pi/ 4f; 
 			float bobHand = Mathf.Sin(bobTime + hand_offset) * 0.06f;
 

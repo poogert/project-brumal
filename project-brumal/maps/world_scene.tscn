@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=28 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://5qbfx160dbvp" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="4_rsmj0"]
 [ext_resource type="PackedScene" uid="uid://cvn4v80jti17j" path="res://scripts/game-tools/interactLogic/interactableboxscene.tscn" id="8_52sjw"]
 [ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprice.tscn" id="9_52sjw"]
+[ext_resource type="AudioStream" uid="uid://k333f6ct1lp4" path="res://sounds/output.wav" id="10_j0qli"]
 [ext_resource type="Texture2D" uid="uid://p0g3uglh6bub" path="res://3D Assets/MapChunks/fakemountains_FakeMountains.png" id="10_ud8pw"]
 [ext_resource type="PackedScene" uid="uid://cxv5e357tvvs1" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
 [ext_resource type="PackedScene" uid="uid://b3em27gyxvvw8" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate.tscn" id="12_j0qli"]
@@ -304,8 +305,15 @@ transform = Transform3D(0.99971855, 0.016867328, -0.01667671, -0.016679391, 0.99
 transform = Transform3D(0.29999998, 0, 0, 0, 0.2936923, -0.061195042, 0, 0.061195042, 0.2936923, 19.383831, 4.157125, 2.1900342)
 _Switch = NodePath("../HallwayCaveSegmentTest4/Switch")
 
-[node name="interactablebox" parent="World/OGTestMap" instance=ExtResource("8_52sjw")]
+[node name="interactablebox" parent="World/OGTestMap" node_paths=PackedStringArray("sound") instance=ExtResource("8_52sjw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6161299, 0.92580366, -6.0355654)
+sound = NodePath("AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="World/OGTestMap/interactablebox"]
+stream = ExtResource("10_j0qli")
+volume_db = -10.0
+max_distance = 100.0
+attenuation_filter_db = -30.0
 
 [node name="testlevelload" parent="World/OGTestMap" instance=ExtResource("12_p6wwr")]
 transform = Transform3D(3.4064636, 0, 0, 0, 2.6372397, 0, 0, 0, 1.8967273, 19.063076, 2.408854, -5.119117)
