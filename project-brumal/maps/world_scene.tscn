@@ -1,18 +1,19 @@
-[gd_scene load_steps=28 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=29 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
-[ext_resource type="Texture2D" uid="uid://5qbfx160dbvp" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
-[ext_resource type="Texture2D" uid="uid://pfek5hrhdkmq" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
+[ext_resource type="Texture2D" uid="uid://bi7n3ro3v7uon" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
+[ext_resource type="Texture2D" uid="uid://c7o511ftojbd8" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
 [ext_resource type="PackedScene" uid="uid://c5cwdcujmfd8v" path="res://3D Assets/Objects/WorldProps/prop_switch/Switch.tscn" id="4_1tbxl"]
 [ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="4_rsmj0"]
 [ext_resource type="PackedScene" uid="uid://cvn4v80jti17j" path="res://scripts/game-tools/interactLogic/interactableboxscene.tscn" id="8_52sjw"]
 [ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprice.tscn" id="9_52sjw"]
 [ext_resource type="AudioStream" uid="uid://k333f6ct1lp4" path="res://sounds/output.wav" id="10_j0qli"]
-[ext_resource type="Texture2D" uid="uid://p0g3uglh6bub" path="res://3D Assets/MapChunks/fakemountains_FakeMountains.png" id="10_ud8pw"]
-[ext_resource type="PackedScene" uid="uid://cxv5e357tvvs1" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
+[ext_resource type="Texture2D" uid="uid://dlpqhmxwhxie3" path="res://3D Assets/MapChunks/fakemountains_FakeMountains.png" id="10_ud8pw"]
+[ext_resource type="PackedScene" uid="uid://douchrf7oc5hr" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
 [ext_resource type="PackedScene" uid="uid://b3em27gyxvvw8" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate.tscn" id="12_j0qli"]
 [ext_resource type="PackedScene" uid="uid://dmihgh6q7jbu5" path="res://scripts/game-tools/tool_levelloader/LoadLevelCollision.tscn" id="12_p6wwr"]
 [ext_resource type="PackedScene" uid="uid://x5t500dddovd" path="res://maps/testLevel.tscn" id="13_j0qli"]
+[ext_resource type="PackedScene" uid="uid://iwf5gtpuwcof" path="res://Models/Characters/Boris/boris.tscn" id="14_vfsg6"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_nqael"]
 script/source = "using Godot;
@@ -327,3 +328,6 @@ transform = Transform3D(-0.1915628, 0, -0.98148036, 0, 1, 0, 0.98148036, 0, -0.1
 
 [node name="Crate3" parent="." instance=ExtResource("12_j0qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.860978, 0.80779743, -2.9054508)
+
+[node name="boris" parent="." instance=ExtResource("14_vfsg6")]
+transform = Transform3D(0.14144102, 0, -0.15522382, 0, 0.21, 0, 0.15522382, 0, 0.14144102, -2.88199, 1.3089637, -4.3537917)
