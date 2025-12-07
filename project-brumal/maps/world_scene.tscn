@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=29 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://5qbfx160dbvp" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dmihgh6q7jbu5" path="res://scripts/game-tools/tool_levelloader/LoadLevelCollision.tscn" id="12_p6wwr"]
 [ext_resource type="PackedScene" uid="uid://x5t500dddovd" path="res://maps/testLevel.tscn" id="13_j0qli"]
 [ext_resource type="PackedScene" uid="uid://iwf5gtpuwcof" path="res://Models/Characters/Boris/boris.tscn" id="14_vfsg6"]
-[ext_resource type="PackedScene" uid="uid://cwyc0x00st8qm" path="res://3D Assets/Objects/WorldProps/prop_boombox/BoomBox.glb" id="15_38b5b"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_nqael"]
 script/source = "using Godot;
@@ -308,7 +307,7 @@ transform = Transform3D(0.29999998, 0, 0, 0, 0.2936923, -0.061195042, 0, 0.06119
 _Switch = NodePath("../HallwayCaveSegmentTest4/Switch")
 
 [node name="interactablebox" parent="World/OGTestMap" node_paths=PackedStringArray("sound") instance=ExtResource("8_52sjw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6161299, 0.92580366, -6.0355654)
+transform = Transform3D(0.7350448, 0, 0.67801857, 0, 1, 0, -0.67801857, 0, 0.7350448, -7.9385033, 0.7554387, -8.228663)
 sound = NodePath("coolio")
 
 [node name="coolio" type="AudioStreamPlayer3D" parent="World/OGTestMap/interactablebox"]
@@ -331,11 +330,4 @@ transform = Transform3D(-0.1915628, 0, -0.98148036, 0, 1, 0, 0.98148036, 0, -0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.860978, 0.80779743, -2.9054508)
 
 [node name="boris" parent="." instance=ExtResource("14_vfsg6")]
-<<<<<<< HEAD
-transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, -6.9308414, 1.3089635, -2.6872072)
-=======
-transform = Transform3D(0.14144102, 0, -0.15522382, 0, 0.21, 0, 0.15522382, 0, 0.14144102, -2.88199, 1.3089637, -4.3537917)
-
-[node name="BoomBox" parent="." instance=ExtResource("15_38b5b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4596877, 1.5583649, -6.247957)
->>>>>>> fea0fa255cb2c868c9d5afbeb842ccd819420a0c
+transform = Transform3D(0.17361477, 0, 0.11814357, 0, 0.20999998, 0, -0.11814357, 0, 0.17361477, -8.804415, 1.3089637, 0.58295393)

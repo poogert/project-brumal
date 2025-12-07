@@ -3,15 +3,7 @@ using System;
 
 public partial class InteractableBox : Node3D, Interactable
 {
-	// Called when the node enters the scene tree for the first time.
-
-	[Export] StaticBody3D mesh;
 	[Export] AudioStreamPlayer3D sound;
-
-	public override void _Ready()
-	{
-
-	}
 
 	public void PlaySound()
 	{
