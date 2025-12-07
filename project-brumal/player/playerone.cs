@@ -418,6 +418,22 @@ public partial class playerone : CharacterBody3D
 		{
 			bobTime = 0f; // reset phase when standing still
 		}
+
+		updatePlayerInfo();
+	}
+
+	private void updatePlayerInfo()
+	{
+		// position in map
+		PlayerData.player_position = GlobalPosition; 
+
+		// direction looking
+		PlayerData.look_direction = camera.GlobalTransform.Basis.Z * -1.0f;
+
+		// looking in a x,y axis
+		PlayerData.rot_horizontal = Player.Rotation.Y;
+		PlayerData.rot_vertical = camera.Rotation.X;
+
 	}
 
 	private async void LerpHeadHeight(float offset)

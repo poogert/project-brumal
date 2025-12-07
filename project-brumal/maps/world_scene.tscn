@@ -308,9 +308,9 @@ _Switch = NodePath("../HallwayCaveSegmentTest4/Switch")
 
 [node name="interactablebox" parent="World/OGTestMap" node_paths=PackedStringArray("sound") instance=ExtResource("8_52sjw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6161299, 0.92580366, -6.0355654)
-sound = NodePath("AudioStreamPlayer3D")
+sound = NodePath("coolio")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="World/OGTestMap/interactablebox"]
+[node name="coolio" type="AudioStreamPlayer3D" parent="World/OGTestMap/interactablebox"]
 stream = ExtResource("10_j0qli")
 volume_db = -10.0
 max_distance = 100.0

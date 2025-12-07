@@ -29,10 +29,8 @@ public partial class InteractableBox : Node3D, Interactable
 
 	public void Interact()
 	{
-
 		PlaySound();	
 		
-
 	}
 
 }
