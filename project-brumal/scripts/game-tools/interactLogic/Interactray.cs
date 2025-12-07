@@ -17,17 +17,26 @@ public partial class Interactray : RayCast3D
 		{
 
 			Node nodeobject = GetCollider() as Node;
-			
-			if (nodeobject.GetParent() is Interactable interactable)
-			{
-				
-				if (Input.IsActionJustPressed("interact"))
-				{
-					interactable.Interact();
-				}
+			Interactable interactable = findInteractable(nodeobject);
 
+			if (interactable != null)
+			{
+				if (Input.IsActionJustPressed("interact")) interactable.Interact();
 			}
+
 		}
+	}
+
+	// recursion to find an interactable part of the the node
+	// edge case to fix later : if the node adjacent to the scan has an interactable script
+	// this will fail...
+	private Interactable findInteractable(Node target) 
+	{
+		if (target == null) return null;
+
+		if (target is Interactable interactable) return interactable;
+
+		return findInteractable(target.GetParent());
 	}
 
 }
