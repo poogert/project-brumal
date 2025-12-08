@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxlggn0na2ylr"]
+
+[ext_resource type="Script" uid="uid://dhujr4q7tnpn6" path="res://3D Assets/Items/item_flare/flarebundle.cs" id="1_df6h2"]
+[ext_resource type="PackedScene" uid="uid://nf57xp2ahc7e" path="res://3D Assets/Items/item_flare/flare_model_with_collision.tscn" id="2_df6h2"]
+
+[node name="Flarebundle" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_df6h2")
+
+[node name="flare_model" parent="." instance=ExtResource("2_df6h2")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="flare_model2" parent="." instance=ExtResource("2_df6h2")]
+transform = Transform3D(-4.222196e-08, -0.9659258, 0.25881904, 1, -4.371139e-08, 0, 1.131334e-08, 0.25881904, 0.9659258, 0, 0, -0.4001161)
+
+[node name="flare_model3" parent="." instance=ExtResource("2_df6h2")]
+transform = Transform3D(-2.3135033e-08, -0.5292678, 0.8484549, 1, -4.371139e-08, 0, 3.7087144e-08, 0.8484549, 0.5292678, 0.80694675, 0, 0.056599498)
+
+[node name="flare_model4" parent="." instance=ExtResource("2_df6h2")]
+transform = Transform3D(2.9935297e-08, 0.6848397, 0.7286937, 1, -4.371139e-08, 0, 3.1852213e-08, 0.7286937, -0.6848397, 0.3378919, 0.2567284, -0.04428464)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, -1.0927848e-07, 2.5, 0, -2.5, -1.0927848e-07, 0, 2.5, 0)
+light_color = Color(0.46564317, 0.707025, 7.70092e-07, 1)
+light_energy = 2.0
+spot_range = 1.314
+spot_angle = 35.0

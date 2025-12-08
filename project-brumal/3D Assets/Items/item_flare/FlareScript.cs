@@ -13,12 +13,11 @@ public partial class FlareScript : Node3D
 
 	private Vector3 playerposition;
 
-	public int flareCount = 200;
 	public override void _Ready() {}
 
 	public override void _Process(double delta)
 	{
-		if ( Input.IsActionJustPressed("leftclick") && flareCount > 0 )
+		if ( Input.IsActionJustPressed("leftclick") && PlayerData.flare_count > 0 )
 		{
 
 			Node flare = throwable.Instantiate(); 
@@ -43,8 +42,8 @@ public partial class FlareScript : Node3D
 			RigidBody3D rigidBody3D = flare3D.GetNode<RigidBody3D>("RigidBody3D");
 			rigidBody3D.ApplyImpulse(direction * 16.0f);
 
-			flareCount -= 1;
-			GD.Print("flares : " + flareCount);
+			PlayerData.flare_count -= 1;
+			GD.Print("flares : " + PlayerData.flare_count);
 
 		}
 	}

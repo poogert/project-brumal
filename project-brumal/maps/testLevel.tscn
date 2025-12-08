@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://x5t500dddovd"]
+[gd_scene load_steps=6 format=3 uid="uid://x5t500dddovd"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
+[ext_resource type="PackedScene" uid="uid://cxlggn0na2ylr" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="2_862cc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
 
@@ -40,3 +41,9 @@ environment = SubResource("Environment_aldhi")
 
 [node name="Player" parent="." instance=ExtResource("1_8a0p6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7648681, 7.928536, 3.100956)
+
+[node name="Flarebundle" parent="." instance=ExtResource("2_862cc")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7, 0.5229696, 4.5611916)
+
+[node name="Flarebundle2" parent="." instance=ExtResource("2_862cc")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7.939993, 0.5229696, 3.402772)

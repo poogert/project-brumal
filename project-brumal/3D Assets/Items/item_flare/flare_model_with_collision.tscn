@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://nf57xp2ahc7e"]
+
+[ext_resource type="PackedScene" uid="uid://d0to1v3y70u6e" path="res://3D Assets/Items/item_flare/flare_model.glb" id="1_aprdr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_itbef"]
+points = PackedVector3Array(-2.4326146e-05, 0.54691505, 0.1434733, 0.12427585, 0.54691505, 0.0717226, -0.12427583, 0.54691505, 0.0717226, -2.4326146e-05, -0.54691505, 0.1434733, 0.12427585, -0.54691505, 0.0717226, 0.12427585, 0.54691505, -0.071778774, -0.12427583, 0.54691505, -0.071778774, -0.12427583, -0.54691505, 0.0717226, 0.12427585, -0.54691505, -0.071778774, -2.4326146e-05, 0.54691505, -0.14350137, -0.12427583, -0.54691505, -0.071778774, -2.4326146e-05, -0.54691505, -0.14350137)
+
+[node name="flare_model" instance=ExtResource("1_aprdr")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Flare_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flare_001/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_itbef")
