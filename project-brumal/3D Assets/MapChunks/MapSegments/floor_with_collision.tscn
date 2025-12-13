@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgqvjbnpjutvo"]
+
+[ext_resource type="PackedScene" uid="uid://cemeclkjm2yvn" path="res://3D Assets/MapChunks/MapSegments/FloorSegment.glb" id="1_mbcpv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ort14"]
+points = PackedVector3Array(-10.948457, 0.10581702, -4.522227, -12.215784, -2.4065375e-05, -4.500094, -13.566534, 0.17206356, -4.5151443, 1.946682, 0.10581702, -4.522227, -10.925383, -0.15440759, -3.2172613, -13.50086, -2.4065375e-05, -3.2146053, 3.2140083, -2.4065375e-05, -4.500094, -13.566534, 0.17206356, 4.51426, 4.56476, 0.17206356, -4.5151443, -12.217559, -0.116666555, 0.64363, -3.2184734, -0.117082, -3.2172613, 3.215784, -0.116666555, -0.6445141, 1.9236078, -0.15440759, 3.2163773, -13.50086, -2.4065375e-05, 3.2137213, 4.4990864, -2.4065375e-05, -3.2146053, 3.2140083, -0.043133855, -3.2154908, -12.215784, -2.4065375e-05, 4.49921, -10.948457, 0.10581702, 4.522228, 4.56476, 0.17206356, 4.51426, -12.215784, -0.043133855, 3.2146068, -5.7833014, -0.117082, 3.2163773, 4.4990864, -2.4065375e-05, 3.2137213, 3.2140083, -2.4065375e-05, 4.49921, -7.052403, 0.10581702, 4.522228, 1.946682, 0.10581702, 4.5213428)
+
+[node name="FloorSegment" instance=ExtResource("1_mbcpv")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_032" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_032/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_ort14")

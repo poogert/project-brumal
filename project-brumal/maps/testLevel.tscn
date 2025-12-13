@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://x5t500dddovd"]
+[gd_scene load_steps=7 format=3 uid="uid://x5t500dddovd"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
 [ext_resource type="PackedScene" uid="uid://cxlggn0na2ylr" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="2_862cc"]
+[ext_resource type="PackedScene" uid="uid://cn5g0fxy36s5w" path="res://3D Assets/MapChunks/MapSegments/cave_slice.tscn" id="3_db1us"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
 
@@ -15,7 +16,7 @@ tonemap_mode = 2
 fog_enabled = true
 fog_light_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
 fog_light_energy = 0.25
-fog_density = 0.5
+fog_density = 0.25
 volumetric_fog_density = 0.021
 
 [node name="Node3D" type="Node3D"]
@@ -40,10 +41,19 @@ shadow_blur = 0.2
 environment = SubResource("Environment_aldhi")
 
 [node name="Player" parent="." instance=ExtResource("1_8a0p6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7648681, 7.928536, 3.100956)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.7648683, 2.928536, 5.100956)
 
 [node name="Flarebundle" parent="." instance=ExtResource("2_862cc")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7, 0.5229696, 4.5611916)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7, 1.2971406, 4.5611916)
 
 [node name="Flarebundle2" parent="." instance=ExtResource("2_862cc")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7.939993, 0.5229696, 3.402772)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7.939993, 1.2971406, 3.402772)
+
+[node name="CaveSlice" parent="." instance=ExtResource("3_db1us")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.110379, 1.1549938, 5.099657)
+
+[node name="CaveSlice2" parent="." instance=ExtResource("3_db1us")]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -18.010721, 1.3099875, 7.2100363)
+
+[node name="CaveSlice3" parent="." instance=ExtResource("3_db1us")]
+transform = Transform3D(-0.86602545, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, -0.86602545, -25.010721, 1.3099875, 14.210036)

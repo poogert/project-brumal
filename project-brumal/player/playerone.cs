@@ -1,12 +1,17 @@
 using Godot;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections;
-using System.Net.Http;
-using System.Runtime.CompilerServices;
 
 public partial class playerone : CharacterBody3D
 {
+	private const float DEFAULT_SPEED = 3.0f;
+	private const float CROUCH_SPEED = 2.0f;
+	private const float CRAWL_SPEED = 1.0f;
+	private const float SPRINT_SPEED = 6.0f;
+	private const float HEAD_CROUCH_OFFSET = -0.6f;
+	private const float HEAD_CRAWL_OFFSET = -1.2f;
+	private const float FOV_DEFAULT = 70f;
+	private const float FOV_SPRINT = 85f;
+	private const float ROTATION_AMOUNT = 35f;
+
 
 	public enum MovementState
 	{
@@ -33,19 +38,19 @@ public partial class playerone : CharacterBody3D
 	
 	public Items currentItem = Items.empty;
 	
-	bool leaningcheck = false;
+
 
 	// exports
-	[Export] public float Speed = 3.0f;
-	[Export] public float JumpVelocity = 4.5f;
-	[Export] public float sensitivity = 0.003f;
-	[Export] CollisionShape3D StandCol; // stand collision root reference
-	[Export] CollisionShape3D CrouchCol; // crouch collision root reference
-	[Export] Node3D Player; // Scene root reference
-	[Export] Node3D head; // head reference
-	[Export] Camera3D camera; // camera reference
-	[Export] Node3D headeffects;
-	[Export] Node3D handeffects;
+	[Export] public float SPEED = 3.0f;
+	[Export] public float JUMP_VELOCITY = 4.5f;
+	[Export] public float SENSITIVITY = 0.003f;
+	[Export] public CollisionShape3D StandCol; // stand collision root reference
+	[Export] public CollisionShape3D CrouchCol; // crouch collision root reference
+	[Export] public Node3D Player; // Scene root reference
+	[Export] public Node3D head; // head reference
+	[Export] public Camera3D camera; // camera reference
+	[Export] public Node3D headeffects; // HEAD
+	[Export] public Node3D handeffects; // HAND
 
 
 	// item scenes
@@ -55,18 +60,21 @@ public partial class playerone : CharacterBody3D
 
 	// bobbing point
 	private float bobTime = 0f;
+
 	// rotation lerping
 	float targetRotationZ = 0;
 	float currentRotationZ = 0;
-	const float rotationAmount = 35;
+	
+	bool leaningcheck = false;
 
 	// crawl/crouch lerping
 	bool finishedLowering = false;
 	bool HeightAdjustmentsRunning = false;
 
-	// fov lerping
-	float targetFOV = 70;
 
+	float targetFOV = 70; 	// fov lerping
+
+	// ENUM FUNCTIONS
 	void SetItem(Items selecteditem, PackedScene item)
 	{
 
@@ -90,8 +98,7 @@ public partial class playerone : CharacterBody3D
 			return;
 		}
 
-		handeffects.AddChild(itemReference); 
-
+		handeffects.AddChild(itemReference);
 	}
 
 	void RemoveItem()
@@ -115,15 +122,11 @@ public partial class playerone : CharacterBody3D
 
 	void SetState(MovementState state)
 	{
-		if (currentState == MovementState.idle)
-		{
-			currentState = state;
-		}
-		
+		if (currentState == MovementState.idle) currentState = state;
 	}
 
-	// default = idle
 	void SetDefaultState() { currentState = MovementState.idle; }
+
 
 	public override void _Ready()
 	{
@@ -139,26 +142,37 @@ public partial class playerone : CharacterBody3D
 		if (@event is InputEventMouseMotion mouseMotion)
 		{
 			
-			camera.RotateX(-mouseMotion.Relative.Y * sensitivity);
-			Player.RotateY(-mouseMotion.Relative.X * sensitivity);
+			camera.RotateX(-mouseMotion.Relative.Y * SENSITIVITY);
+			Player.RotateY(-mouseMotion.Relative.X * SENSITIVITY);
 			
 			// Clamps head_Pivot(head) X so it can only rotate 180 degrees in total
 			camera.RotationDegrees = new Vector3(Mathf.Clamp(camera.RotationDegrees.X, -90, 90), camera.RotationDegrees.Y, camera.RotationDegrees.Z);
 			
 		}
-
-
 	}
 
-	public override void _Process(double delta) { base._Process(delta); }
+	public override void _Process(double delta) 
+	{ 
+		base._Process(delta); 
+	}
 
 	public override void _PhysicsProcess(double delta)
+	{
+		_HandleLeaning(delta);
+		_HandleFOV();
+		_HandleInput();
+		_HandleMovement(delta);
+		_HandleBobbing(delta);
+		updatePlayerInfo();
+	}
+
+
+	private void _HandleLeaning(double delta)
 	{
 		if (leaningcheck) // if leaning, lerp to target
 		{
 			// lerping
 			currentRotationZ = Mathf.Lerp(currentRotationZ, targetRotationZ, 9f * (float)delta);
-
 			// using basis to rotate ONLY Z, not x, y.
 			Basis basis = Basis.FromEuler(new Vector3(0, 0, Mathf.DegToRad(currentRotationZ)));
 			head.Transform = new Transform3D(basis, head.Transform.Origin);
@@ -166,102 +180,53 @@ public partial class playerone : CharacterBody3D
 		else // if not leaning lerp to 0 degrees
 		{
 			currentRotationZ = Mathf.Lerp(currentRotationZ, 0, 9f * (float)delta);
-
 			Basis basis = Basis.FromEuler(new Vector3(0, 0, Mathf.DegToRad(currentRotationZ)));
 			head.Transform = new Transform3D(basis, head.Transform.Origin);
 		}
+	}
 
-		// takes the characterbody3D's velocity
-		Vector3 velocity = this.Velocity;
-
+	private void _HandleFOV()
+	{
 		if (targetFOV != camera.Fov) // camera lerp
 		{
 			camera.Fov = Mathf.Lerp(camera.Fov, targetFOV, .1f);
 		}
+	}
 
-
-		// if not on floor add gravity to player.
-		if (!IsOnFloor())
-		{
-			velocity += GetGravity() * (float)delta;
-		}
-
-
-		// press p, this is meant for printing stats
-		if (Input.IsActionJustPressed("debug print"))
-		{
-			GD.Print("--- Debugging Statistics ---\n");
-
-			GD.Print("\n");
-			GD.Print("----------------------------\n");
-		}
+	private void _HandleInput()
+	{
+		// close window
+		if (Input.IsActionJustPressed("escape")) GetTree().Quit();
 
 		// press o, this is meant to execute a function for testing
-		if (Input.IsActionJustPressed("debug print"))
-		{
-			
-			GD.Print("our current item is : " + currentItem);
+		if (Input.IsActionJustPressed("debug print")) {}
 
-		}
+		// items
+		if ( Input.IsActionJustPressed("itemone") ) SetItem(Items.lamp, lamp);
+		if ( Input.IsActionJustPressed("itemtwo") ) SetItem(Items.pickaxe, pickaxe);
+		if ( Input.IsActionJustPressed("itemthree") ) SetItem(Items.flare, flare);
 
-		// item one
-		if ( Input.IsActionJustPressed("itemone") )
-		{
-			
-			SetItem(Items.lamp, lamp);
-			GD.Print("our current item is : " + currentItem);
-
-		}
-
-
-		// item two
-		if ( Input.IsActionJustPressed("itemtwo") )
-		{
-			
-			SetItem(Items.pickaxe, pickaxe);
-			GD.Print("our current item is : " + currentItem);
-
-		}
-
-
-		// item three
-		if ( Input.IsActionJustPressed("itemthree") )
-		{
-			
-			SetItem(Items.flare, flare);
-			GD.Print("our current item is : " + currentItem);
-
-		}
-
-
-
-		// Action -> crouching ---------------------------------------------------------------
+		// crouching
 		if (Input.IsActionJustPressed("crouch"))
 		{
 
 			if (currentState == MovementState.idle)
 			{
-
 				finishedLowering = false;
 				SetState(MovementState.crouching);
-
 				StandCol.Disabled = true;
-				Speed = 2f;
+				SPEED = CROUCH_SPEED;
 
-				LerpHeadHeight(-0.6f);
-
+				LerpHeadHeight(HEAD_CROUCH_OFFSET);
 			}
 			else
 			{
-
 				finishedLowering = true;
 				SetDefaultState();
-
 				StandCol.Disabled = false;
-				Speed = 3f;
+				SPEED = DEFAULT_SPEED;
 
 				ResetHeadHeight();
-
 			}
 
 		}
@@ -272,23 +237,19 @@ public partial class playerone : CharacterBody3D
 		{
 			if (currentState == MovementState.idle)
 			{
-
 				finishedLowering = false;
 				SetState(MovementState.crawling);
-
 				StandCol.Disabled = true;
-				Speed = 1f;
+				SPEED = CRAWL_SPEED;
 
-				LerpHeadHeight(-1.2f);
-
+				LerpHeadHeight(HEAD_CRAWL_OFFSET);
 			}
 			else
 			{
 				finishedLowering = true;
-
 				SetDefaultState();
 				StandCol.Disabled = false;
-				Speed = 3f;
+				SPEED = DEFAULT_SPEED;
 
 				ResetHeadHeight();
 			}
@@ -297,13 +258,12 @@ public partial class playerone : CharacterBody3D
 
 
 		// Action -> sprinting ---------------------------------------------------------------
-
 		if (Input.IsActionPressed("sprint") && currentState == MovementState.idle)
 		{
 			//float CurrentFOV = camera.Fov;
 			SetState(MovementState.running);
-			Speed = 6f;
-			targetFOV = 85f;
+			SPEED = SPRINT_SPEED;
+			targetFOV = FOV_SPRINT;
 
 		}
 		
@@ -311,8 +271,8 @@ public partial class playerone : CharacterBody3D
 		{   
 			//float CurrentFOV = camera.Fov;
 			SetDefaultState();
-			Speed = 3f;
-			targetFOV = 70f;
+			SPEED = DEFAULT_SPEED;
+			targetFOV = FOV_DEFAULT;
 		}
 
 
@@ -320,26 +280,22 @@ public partial class playerone : CharacterBody3D
 
 		if (Input.IsActionPressed("LeanLeft"))
 		{
-			//SetState(MovementState.leaning);
 			leaningcheck = true;
-			targetRotationZ = rotationAmount;
+			targetRotationZ = ROTATION_AMOUNT;
 		}
 		if (Input.IsActionJustReleased("LeanLeft"))
 		{
-			//SetDefaultState();
+
 			leaningcheck = false;
 			targetRotationZ = 0f;
 		}
-
 		if (Input.IsActionPressed("LeanRight"))
 		{
-			//SetState(MovementState.leaning);
 			leaningcheck = true;
-			targetRotationZ = -rotationAmount;
+			targetRotationZ = -ROTATION_AMOUNT;
 		}
 		if (Input.IsActionJustReleased("LeanRight"))
 		{
-			//SetDefaultState();
 			leaningcheck = false;
 			targetRotationZ = 0f;
 		}
@@ -348,20 +304,19 @@ public partial class playerone : CharacterBody3D
 		// Action -> jumping ------------------------------------------------------------------
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
-			velocity.Y = JumpVelocity;
-			//GD.Print("IsjumpingWorking");
-
+			Velocity = new Vector3(Velocity.X, JUMP_VELOCITY, Velocity.Z);
 		}
 
+	}
 
-		// close window
-		if (Input.IsActionJustPressed("escape"))
+	private void _HandleMovement(double delta)
+	{
+		Vector3 velocity = Velocity;
+
+		if (!IsOnFloor()) // if not on floor add gravity to player.
 		{
-			//Input.MouseMode = MouseMode.MOUSE_MODE_VISIBLE;
-			GetTree().Quit();
-
+			velocity += GetGravity() * (float)delta;
 		}
-
 
 		// Get the input direction and handle the movement/deceleration.
 		Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
@@ -369,28 +324,25 @@ public partial class playerone : CharacterBody3D
 
 		if (direction != Vector3.Zero)
 		{
-			velocity.X = direction.X * Speed;
-			velocity.Z = direction.Z * Speed;
-
+			velocity.X = direction.X * SPEED;
+			velocity.Z = direction.Z * SPEED;
 		}
 		else
 		{
 			velocity.X = 0;
-
-			// Mathf.MoveToward(Velocity.X, 0, Speed); 
-			// supposedly for slowing player down if no input
-			// we dont want that cuz it simulates slipping/sliding instead of instant stop after no input.
 			velocity.Z = 0;
-			// Mathf.MoveToward(Velocity.Z, 0, Speed);
-
 		}
-
 
 		// speed physics
 		Velocity = velocity;
 		MoveAndSlide();
+	}
 
-		// head bobbing ------------------------------------------------------
+	private void _HandleBobbing(double delta)
+	{
+		Vector3 velocity = Velocity;
+
+		// head/hand bobbing ------------------------------------------------------
 		float actualSpeed = new Vector2(velocity.X, velocity.Z).Length();
 
 		if (actualSpeed > 0.01f && IsOnFloor())
@@ -400,6 +352,7 @@ public partial class playerone : CharacterBody3D
 
 			
 			const float hand_offset = Mathf.Pi/ 4f; 
+
 			float bobHand = Mathf.Sin(bobTime + hand_offset) * 0.06f;
 
 			// head moving
@@ -411,14 +364,13 @@ public partial class playerone : CharacterBody3D
 			var hand = handeffects.Transform;
 			hand.Origin.Y = bobHand;
 			handeffects.Transform = hand;
-
+		
 		}
 		else
 		{
 			bobTime = 0f; // reset phase when standing still
 		}
 
-		updatePlayerInfo();
 	}
 
 	private void updatePlayerInfo()
@@ -484,7 +436,6 @@ public partial class playerone : CharacterBody3D
 	{
 		var ht = head.Transform;
 
-
 		while (Mathf.Abs(ht.Origin.Y) > 0.01f)
 		{
 			HeightAdjustmentsRunning = true;
@@ -508,6 +459,32 @@ public partial class playerone : CharacterBody3D
 		HeightAdjustmentsRunning = false;
 	}
 
+	private async void HandEffectsLerp()
+	{
+		var he = headeffects.Transform;
 
+		float originalY = he.Origin.Y; // save og point
+
+		// -1 below normal position
+		float target = originalY - 5;
+		he.Origin.Y = target;
+
+		handeffects.Transform = he; // starting spot
+
+
+		while (Mathf.Abs(he.Origin.Y - target) > 0.01f)
+		{
+
+			he.Origin.Y = Mathf.Lerp(he.Origin.Y, target, 7f * (float)GetProcessDeltaTime());
+			handeffects.Transform = he;
+
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+			he = handeffects.Transform;
+		}
+
+		// snap back
+		he.Origin.Y = target;
+		handeffects.Transform = he;
+	}
 
 }
