@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://x5t500dddovd"]
+[gd_scene load_steps=9 format=3 uid="uid://x5t500dddovd"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
+[ext_resource type="Script" uid="uid://cin1c7ymt2yim" path="res://maps/TestLevelScript.cs" id="1_tgtyk"]
 [ext_resource type="PackedScene" uid="uid://cxlggn0na2ylr" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="2_862cc"]
 [ext_resource type="PackedScene" uid="uid://cn5g0fxy36s5w" path="res://3D Assets/MapChunks/MapSegments/cave_slice.tscn" id="3_db1us"]
+[ext_resource type="AudioStream" uid="uid://cfl0xpynoyjo1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
 
@@ -19,7 +21,9 @@ fog_light_energy = 0.25
 fog_density = 0.25
 volumetric_fog_density = 0.021
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("sound")]
+script = ExtResource("1_tgtyk")
+sound = NodePath("AudioStreamPlayer3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
@@ -57,3 +61,7 @@ transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50
 
 [node name="CaveSlice3" parent="." instance=ExtResource("3_db1us")]
 transform = Transform3D(-0.86602545, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, -0.86602545, -25.010721, 1.3099875, 14.210036)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_a0rh3")
+attenuation_model = 3

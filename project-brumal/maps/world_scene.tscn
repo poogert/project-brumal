@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="4_rsmj0"]
 [ext_resource type="PackedScene" uid="uid://cvn4v80jti17j" path="res://scripts/game-tools/interactLogic/interactableboxscene.tscn" id="8_52sjw"]
 [ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprice.tscn" id="9_52sjw"]
-[ext_resource type="AudioStream" uid="uid://k333f6ct1lp4" path="res://sounds/output.wav" id="10_j0qli"]
+[ext_resource type="AudioStream" uid="uid://cfl0xpynoyjo1" path="res://sounds/niceandscary.wav" id="10_38b5b"]
 [ext_resource type="Texture2D" uid="uid://p0g3uglh6bub" path="res://3D Assets/MapChunks/fakemountains_FakeMountains.png" id="10_ud8pw"]
 [ext_resource type="PackedScene" uid="uid://cxv5e357tvvs1" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
 [ext_resource type="PackedScene" uid="uid://b3em27gyxvvw8" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate.tscn" id="12_j0qli"]
@@ -293,7 +293,7 @@ transform = Transform3D(0.7350448, 0, 0.67801857, 0, 1, 0, -0.67801857, 0, 0.735
 sound = NodePath("coolio")
 
 [node name="coolio" type="AudioStreamPlayer3D" parent="World/OGTestMap/interactablebox"]
-stream = ExtResource("10_j0qli")
+stream = ExtResource("10_38b5b")
 volume_db = -10.0
 max_distance = 100.0
 attenuation_filter_cutoff_hz = 20500.0
