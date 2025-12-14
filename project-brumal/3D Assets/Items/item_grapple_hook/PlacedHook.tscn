@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl37mp14gs4rb"]
+
+[ext_resource type="PackedScene" uid="uid://6xgt4bomya37" path="res://3D Assets/Items/item_grapple_hook/grapple_hook_with_collision.tscn" id="1_m7mym"]
+
+[node name="PlacedHook" type="Node3D"]
+
+[node name="GrappleHook" parent="." instance=ExtResource("1_m7mym")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

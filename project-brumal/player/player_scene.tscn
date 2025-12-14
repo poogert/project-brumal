@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cti7pj4dw0gj1"]
+[gd_scene load_steps=12 format=3 uid="uid://cti7pj4dw0gj1"]
 
 [ext_resource type="Script" uid="uid://cmo1vq0u4jar" path="res://player/playerone.cs" id="1_0khpw"]
 [ext_resource type="PackedScene" uid="uid://kanh0xk5woki" path="res://3D Assets/Items/item_lamp/Lamp.tscn" id="3_qcawg"]
 [ext_resource type="PackedScene" uid="uid://ci7t4slbk4i2b" path="res://3D Assets/Items/item_pickaxe/Pickaxe.tscn" id="3_qvpcs"]
 [ext_resource type="PackedScene" uid="uid://cdetuqiat7x7p" path="res://3D Assets/Items/item_flare/Flare.tscn" id="4_tr6w4"]
+[ext_resource type="PackedScene" uid="uid://dpjqjwkbd81rt" path="res://3D Assets/Items/item_grapple_hook/GrappleHook.tscn" id="5_tr6w4"]
+[ext_resource type="Script" uid="uid://lqf6nkq3t8nc" path="res://player/GrapplePointScript.cs" id="7_ulli2"]
 [ext_resource type="PackedScene" uid="uid://h4wvm1qcl6i1" path="res://scripts/game-tools/interactLogic/interactray.tscn" id="8_ulli2"]
 [ext_resource type="Texture2D" uid="uid://dj2k1ywdicf6k" path="res://2D Assets/UI assets/crosshari.png" id="11_x61a0"]
 
@@ -31,6 +33,7 @@ handeffects = NodePath("head_pivot/head_adjustments/head_camera/hand_root/hand_r
 lamp = ExtResource("3_qcawg")
 pickaxe = ExtResource("3_qvpcs")
 flare = ExtResource("4_tr6w4")
+ghook = ExtResource("5_tr6w4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 visible = false
@@ -58,6 +61,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24933472, -0.6431068, -0.96922857)
 
 [node name="hand_root_bobbing" type="Node3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera/hand_root"]
+
+[node name="grapplepoint" type="RayCast3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera"]
+target_position = Vector3(0, 0, -10)
+script = ExtResource("7_ulli2")
 
 [node name="crosshair_layer_container" type="CanvasLayer" parent="."]
 

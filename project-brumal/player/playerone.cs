@@ -1,4 +1,5 @@
 using Godot;
+using System.Threading.Tasks;
 
 public partial class playerone : CharacterBody3D
 {
@@ -11,7 +12,9 @@ public partial class playerone : CharacterBody3D
 	private const float FOV_DEFAULT = 70f;
 	private const float FOV_SPRINT = 85f;
 	private const float ROTATION_AMOUNT = 35f;
+	private const float ITEM_OUT_OFFSET = -1.0f;
 
+	private float _itemRestY; // rest
 
 	public enum MovementState
 	{
@@ -53,10 +56,12 @@ public partial class playerone : CharacterBody3D
 	[Export] public Node3D handeffects; // HAND
 
 
+
 	// item scenes
 	[Export] PackedScene lamp;
 	[Export] PackedScene pickaxe;
 	[Export] PackedScene flare;
+	[Export] PackedScene ghook;
 
 	// bobbing point
 	private float bobTime = 0f;
@@ -71,34 +76,42 @@ public partial class playerone : CharacterBody3D
 	bool finishedLowering = false;
 	bool HeightAdjustmentsRunning = false;
 
+	bool itemsetting = false;
 
 	float targetFOV = 70; 	// fov lerping
 
 	// ENUM FUNCTIONS
-	void SetItem(Items selecteditem, PackedScene item)
+	private async Task SetItem(Items selectedItem, PackedScene item)
 	{
+		if (itemsetting) return;
+		itemsetting = true;
 
-		if (selecteditem == currentItem)
+		try
 		{
-			currentItem = Items.empty;
-			RemoveItem();
+			if (currentItem != Items.empty)
+			{
+				await ItemSwitchTween(true); // out
+				RemoveItem();
+			}
 
-			return;
-		} 
+			if (selectedItem == currentItem)
+			{
+				currentItem = Items.empty;
+				return;
+			}
+			
+			currentItem = selectedItem;
 
-		RemoveItem();
-		currentItem = selecteditem;
-		
-		Node itemInstance = item.Instantiate();
-		Node3D itemReference = itemInstance as Node3D; 
-		
-		if (itemReference == null) 
-		{ 
-			GD.Print("item ref null boah");
-			return;
+			var itemInstance = item.Instantiate();
+			if (itemInstance is not Node3D itemReference) return;
+			
+			handeffects.AddChild(itemReference);
+			await ItemSwitchTween(false);
 		}
-
-		handeffects.AddChild(itemReference);
+		finally
+		{
+			itemsetting = false;
+		}
 	}
 
 	void RemoveItem()
@@ -132,6 +145,7 @@ public partial class playerone : CharacterBody3D
 	{
 		base._Ready();
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+		_itemRestY = handeffects.Transform.Origin.Y;
 		
 	}
 
@@ -193,7 +207,7 @@ public partial class playerone : CharacterBody3D
 		}
 	}
 
-	private void _HandleInput()
+	private async Task _HandleInput()
 	{
 		// close window
 		if (Input.IsActionJustPressed("escape")) GetTree().Quit();
@@ -202,9 +216,10 @@ public partial class playerone : CharacterBody3D
 		if (Input.IsActionJustPressed("debug print")) {}
 
 		// items
-		if ( Input.IsActionJustPressed("itemone") ) SetItem(Items.lamp, lamp);
-		if ( Input.IsActionJustPressed("itemtwo") ) SetItem(Items.pickaxe, pickaxe);
-		if ( Input.IsActionJustPressed("itemthree") ) SetItem(Items.flare, flare);
+		if ( Input.IsActionJustPressed("itemone") ) await SetItem(Items.lamp, lamp);
+		if ( Input.IsActionJustPressed("itemtwo") ) await SetItem(Items.pickaxe, pickaxe);
+		if ( Input.IsActionJustPressed("itemthree") ) await SetItem(Items.flare, flare);
+		if ( Input.IsActionJustPressed("itemfour") ) await SetItem(Items.ghook, ghook);
 
 		// crouching
 		if (Input.IsActionJustPressed("crouch"))
@@ -387,104 +402,99 @@ public partial class playerone : CharacterBody3D
 
 	}
 
-	private async void LerpHeadHeight(float offset)
+	private async Task LerpHeadHeight(float offset)
 	{
-		var ht = head.Transform; // set head tranform variable
+		if (HeightAdjustmentsRunning) return;
 
-		/*
-		when this function is ran. we want to save the starting y value
-		otherwise y will always be updated and lerp will never reach the intended target
-		causing lerp to move you down infinitely
-		*/
-		float start = ht.Origin.Y;
-		float target = start + offset;
+		HeightAdjustmentsRunning = true;
 
-		/* 
-		lerp will infinitley go to target, once we get close enough 
-		we snap and we check using while loop
-		*/
-		while (Mathf.Abs(ht.Origin.Y - target) > 0.01f)
+		var transform = head.Transform;
+
+		float startY = transform.Origin.Y;
+		float targetY = startY + offset;
+
+		float duration = 0.15f;
+		float elapsed = 0f;
+
+		while (elapsed < duration)
 		{
-			HeightAdjustmentsRunning = true;
-			if (finishedLowering)
-			{
-				HeightAdjustmentsRunning = false;
-				return;
-			}
+			if (finishedLowering) break;
 
-			// lerp Y to target
-			ht.Origin.Y = Mathf.Lerp(ht.Origin.Y, target, 7f * (float)GetProcessDeltaTime());
+			elapsed += (float)GetProcessDeltaTime();
+			float t = elapsed / duration;
 
-			// move entire head
-			head.Transform = ht;
-
-			// without this the while loop instantly processes in the span of a frame
-			// if this runs, the while loop does one iteration per frame
-			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-
-			// adjust ht for next iteration
-			ht = head.Transform;
-		}
-		// edit y, then snap
-		ht.Origin.Y = target;
-		head.Transform = ht;
-		HeightAdjustmentsRunning = false;
-
-	}
-
-	private async void ResetHeadHeight()
-	{
-		var ht = head.Transform;
-
-		while (Mathf.Abs(ht.Origin.Y) > 0.01f)
-		{
-			HeightAdjustmentsRunning = true;
-			if (!finishedLowering)
-			{
-				ht.Origin.Y = 0;
-				head.Transform = ht;
-				HeightAdjustmentsRunning = false;
-				return;
-			}
-
-			ht.Origin.Y = Mathf.Lerp(ht.Origin.Y, 0f, 10f * (float)GetProcessDeltaTime());
-			head.Transform = ht;
+			transform.Origin.Y = Mathf.Lerp(startY, targetY, t);
+			head.Transform = transform;
 
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-			ht = head.Transform;
 		}
 
-		ht.Origin.Y = 0;
-		head.Transform = ht;
+		transform.Origin.Y = targetY;
+		head.Transform = transform;
+
 		HeightAdjustmentsRunning = false;
 	}
 
-	private async void HandEffectsLerp()
+	private async Task ResetHeadHeight()
 	{
-		var he = headeffects.Transform;
+		if (HeightAdjustmentsRunning) return;
 
-		float originalY = he.Origin.Y; // save og point
+		HeightAdjustmentsRunning = true;
 
-		// -1 below normal position
-		float target = originalY - 5;
-		he.Origin.Y = target;
+		var transform = head.Transform;
+		float startY = transform.Origin.Y;
+		float targetY = 0f;
 
-		handeffects.Transform = he; // starting spot
+		float duration = 0.12f;
+		float elapsed = 0f;
 
-
-		while (Mathf.Abs(he.Origin.Y - target) > 0.01f)
+		while (elapsed < duration)
 		{
+			if (!finishedLowering) break;
 
-			he.Origin.Y = Mathf.Lerp(he.Origin.Y, target, 7f * (float)GetProcessDeltaTime());
-			handeffects.Transform = he;
+			elapsed += (float)GetProcessDeltaTime();
+			float t = elapsed / duration;
+
+			transform.Origin.Y = Mathf.Lerp(startY, targetY, t);
+			head.Transform = transform;
 
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-			he = handeffects.Transform;
 		}
 
-		// snap back
-		he.Origin.Y = target;
-		handeffects.Transform = he;
+		transform.Origin.Y = 0f;
+		head.Transform = transform;
+
+		HeightAdjustmentsRunning = false;
 	}
+
+	
+
+	private async Task ItemSwitchTween(bool moveOut)
+	{
+		var transform = handeffects.Transform;
+
+		float startY = transform.Origin.Y;
+		float targetY = moveOut ? (_itemRestY + ITEM_OUT_OFFSET) : _itemRestY;
+
+		float duration = 0.15f;
+		float elapsed = 0f;
+
+		while (elapsed < duration)
+		{
+			elapsed += (float)GetProcessDeltaTime();
+			float t = elapsed / duration;
+
+			transform.Origin.Y = Mathf.Lerp(startY, targetY, t);
+			handeffects.Transform = transform;
+
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		}
+
+		transform.Origin.Y = targetY;
+		handeffects.Transform = transform;
+	}
+
+
+
 
 }

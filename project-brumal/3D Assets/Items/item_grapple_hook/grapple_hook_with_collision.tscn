@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://6xgt4bomya37"]
+
+[ext_resource type="PackedScene" uid="uid://h5lwn0itqewr" path="res://3D Assets/Items/item_grapple_hook/GrappleHook.glb" id="1_tjs6w"]
+
+[node name="GrappleHook" instance=ExtResource("1_tjs6w")]

@@ -6,4 +6,5 @@ public partial class PlayerData : Node
     public static float rot_horizontal;
     public static float rot_vertical; 
     public static int flare_count = 5;
+    public static (bool colliding, Vector3? point) ray;
 }
