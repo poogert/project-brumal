@@ -168,16 +168,17 @@ public partial class playerone : CharacterBody3D
 	public override void _Process(double delta) 
 	{ 
 		base._Process(delta); 
+		_HandleFOV();
+		_HandleInput();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		_HandleLeaning(delta);
-		_HandleFOV();
-		_HandleInput();
 		_HandleMovement(delta);
+		_HandleLeaning(delta);
 		_HandleBobbing(delta);
 		updatePlayerInfo();
+		
 	}
 
 
@@ -213,7 +214,10 @@ public partial class playerone : CharacterBody3D
 		if (Input.IsActionJustPressed("escape")) GetTree().Quit();
 
 		// press o, this is meant to execute a function for testing
-		if (Input.IsActionJustPressed("debug print")) {}
+		if (Input.IsActionJustPressed("debug print"))
+		{
+			GD.Print("raycast is hitting -> " + PlayerData.collider.GetParent().GetParent().Name);
+		}
 
 		// items
 		if ( Input.IsActionJustPressed("itemone") ) await SetItem(Items.lamp, lamp);

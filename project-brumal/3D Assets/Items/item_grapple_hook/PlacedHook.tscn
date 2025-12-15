@@ -5,4 +5,4 @@
 [node name="PlacedHook" type="Node3D"]
 
 [node name="GrappleHook" parent="." instance=ExtResource("1_m7mym")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(7.6427423e-16, -1.7484556e-08, 0.4, -0.4, -1.7484556e-08, 0, 1.7484556e-08, -0.4, -1.7484556e-08, 0, 0, 0)

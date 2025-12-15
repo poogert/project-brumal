@@ -3,119 +3,170 @@ using System;
 
 public partial class CalciumLamp : Node3D
 {
-	SpotLight3D CLLight; // light reference
-	[Export] public float FlickerIntensity = .3f;
-	[Export] public double FlickerThreshHold = .6;
+	// ==========================
+	// References
+	// ==========================
+	private SpotLight3D _light;
 
-	bool light = false;
+	[Export] private Timer FuelTimer;
 
-	// flashing variables
-	bool flickerable = true;
-	bool flashing = false;
-	const float defaultSpotAngle = 52.72f;
-	float lightFlicker = 0.0f;
+	// ==========================
+	// Configuration
+	// ==========================
+	[Export] public float FlickerIntensity = 0.3f;
+	[Export] public double FlickerThreshold = 0.6;
 
+	private const float DefaultSpotAngle = 52.72f;
+	private const float DefaultRange = 15f;
 
+	// ==========================
+	// State
+	// ==========================
+	private bool isOn = false;
+	private bool flickerEnabled = true;
+	private bool isFlashing = false;
+
+	// ==========================
+	// Lifecycle
+	// ==========================
 	public override void _Ready()
 	{
-		// initializing the light
-		CLLight = GetNode<SpotLight3D>("light");
-	}
+		_light = GetNode<SpotLight3D>("light");
+		FuelTimer.Timeout += OnFuelTimerTimeout;
 
+		TurnLightOff();
+	}
 
 	public override void _Process(double delta)
 	{
-		if (flickerable)
-		{
+		HandleInput();
+		UpdateFlash((float)delta);
+		UpdateLightVisuals();
+	}
 
-			// the random float is added to the base brightness of the light and the intensity of the flicker 
-			// decided by the second value to the right of the randomFloat (the .2 in this case)
-			lightFlicker = 0.0f;
-			double flickerRan = GD.Randfn(0.0, 1.0);
-
-			// this has to be here for the random number to update
-			double flickerRan2 = GD.Randfn(0.0, 1.0);
-
-			if (flickerRan > FlickerThreshHold)
-			{
-				lightFlicker = (float)(2 + (flickerRan2 * FlickerIntensity));
-			}
-			else
-			{
-				lightFlicker = 2;
-			}
-
-		}
-
-
+	// ==========================
+	// Input
+	// ==========================
+	private void HandleInput()
+	{
 		if (Input.IsActionJustPressed("leftclick"))
 		{
-
-			light = !light;
-
+			if (isOn) TurnLightOff();
+			else TurnLightOn();
 		}
 
-		if (Input.IsActionJustPressed("special") && !flashing) // special use -> flash
-
+		if (Input.IsActionJustPressed("special"))
 		{
-
-			// not flickerable = flash 
-			flickerable = !flickerable; 
-			light = !light;
-
+			StartFlash();
 		}
+	}
 
+	// ==========================
+	// Light State
+	// ==========================
+	private void TurnLightOn()
+	{
+		if (isOn || PlayerData.calcium_fuel <= 0) return;
 
-		// if special is used. flickerable turns off. it stops flickering and initiates a flash+angle lerp
-		if (!flickerable)
+		isOn = true;
+		FuelTimer.Start();
+	}
+
+	private void TurnLightOff()
+	{
+		if (!isOn) return;
+
+		isOn = false;
+		FuelTimer.Stop();
+		_light.LightEnergy = 0;
+	}
+
+	// ==========================
+	// Flicker
+	// ==========================
+	private float CalculateFlicker()
+	{
+		double r1 = GD.Randfn(0.0, 1.0);
+		double r2 = GD.Randfn(0.0, 1.0);
+
+		return (r1 > FlickerThreshold) ? (float)(2 + r2 * FlickerIntensity) : 2f;
+	}
+
+	// ==========================
+	// Flash Ability
+	// ==========================
+	private void StartFlash()
+	{
+		if (isFlashing || PlayerData.calcium_fuel < 20) return;
+
+		isFlashing = true;
+		flickerEnabled = false;
+
+		TurnLightOn();
+		PlayerData.calcium_fuel -= 20f;
+
+		_light.LightEnergy = 3000f;
+		_light.SpotAngle = 179f;
+		_light.SpotRange = 60f;
+	}
+
+	private void UpdateFlash(float delta)
+	{
+		if (!isFlashing) return;
+
+		_light.LightEnergy = Mathf.Lerp(_light.LightEnergy, 1f, 15f * delta);
+		_light.SpotAngle = Mathf.Lerp(_light.SpotAngle, DefaultSpotAngle, 15f * delta);
+		_light.SpotRange = Mathf.Lerp(_light.SpotRange, DefaultRange, 15f * delta);
+
+		if (_light.LightEnergy <= 2f) EndFlash();
+		
+	}
+
+	private void EndFlash()
+	{
+		_light.LightEnergy = 0;
+		_light.SpotAngle = DefaultSpotAngle;
+		_light.SpotRange = DefaultRange;
+
+		flickerEnabled = true;
+		isFlashing = false;
+	}
+
+	// ==========================
+	// Visual Update
+	// ==========================
+	private void UpdateLightVisuals()
+	{
+		if (isFlashing) return;
+
+		if (!isOn)
 		{
-			
-			if (!flashing)
-			{
-				flashing = true;
-				CLLight.LightEnergy = 1500f; // insane light intensity
-				CLLight.SpotAngle = 179f; // flash all around the player
-				CLLight.SpotRange = 60f;
-			}
-
-			if (CLLight.LightEnergy > 2f)
-			{
-
-				// since nothing else is touching these values it can be lerped with no issues
-				CLLight.LightEnergy = Mathf.Lerp(CLLight.LightEnergy, 1f, 15f * (float)delta);
-				CLLight.SpotAngle = Mathf.Lerp(CLLight.SpotAngle, defaultSpotAngle, 15f * (float)delta);
-				CLLight.SpotRange = Mathf.Lerp(CLLight.SpotRange, 15, 15f * (float)delta);
-			}
-			else
-			{
-
-				/* 
-						RULE. 
-					whenever lerp is called. 
-					you MUST set an exact value afterwards
-					if you do not reset the value...
-					float-point value drifting will occur
-				*/
-				CLLight.SpotAngle = defaultSpotAngle;
-				CLLight.LightEnergy = 0;
-				CLLight.SpotRange = 15f;
-
-				flickerable = !flickerable;
-				light = !light;
-				flashing = false;
-			}
-
+			_light.LightEnergy = 0;
+			return;
 		}
 
-		// if light AND not flashing, set lightflicker/off.
-		if (light && !flashing)
+		if (flickerEnabled)
 		{
-			CLLight.LightEnergy = lightFlicker;
+			_light.LightEnergy = CalculateFlicker();
 		}
-		else if (!light && !flashing)
+		else
 		{
-			CLLight.LightEnergy = 0;
+			_light.LightEnergy = 6f;
 		}
+	}
 
+	// ==========================
+	// Fuel Drain
+	// ==========================
+	private void OnFuelTimerTimeout()
+	{
+		if (!isOn) return;
+
+		PlayerData.calcium_fuel = Mathf.Max(0, PlayerData.calcium_fuel - 1f);
+
+		if (PlayerData.calcium_fuel <= 0)
+		{
+			TurnLightOff();
+		}
 	}
 }

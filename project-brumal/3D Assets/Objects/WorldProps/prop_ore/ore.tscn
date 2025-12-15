@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcutbo6gb0hvk"]
+
+[ext_resource type="PackedScene" uid="uid://bqdpwgs2le3lm" path="res://3D Assets/Objects/WorldProps/prop_ore/ore_with_collision.tscn" id="1_aeuhn"]
+[ext_resource type="Script" uid="uid://dc5boqd8u3kcm" path="res://3D Assets/Objects/WorldProps/prop_ore/OreScript.cs" id="2_aeuhn"]
+
+[node name="Ore" type="Node3D"]
+
+[node name="ore" parent="." instance=ExtResource("1_aeuhn")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+script = ExtResource("2_aeuhn")

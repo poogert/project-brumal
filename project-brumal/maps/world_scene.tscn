@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=30 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://5qbfx160dbvp" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cxlggn0na2ylr" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="13_38b5b"]
 [ext_resource type="PackedScene" uid="uid://x5t500dddovd" path="res://maps/testLevel.tscn" id="13_j0qli"]
 [ext_resource type="PackedScene" uid="uid://iwf5gtpuwcof" path="res://Models/Characters/Boris/boris.tscn" id="14_vfsg6"]
+[ext_resource type="PackedScene" uid="uid://bcutbo6gb0hvk" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="16_ep2rr"]
 
 [sub_resource type="Environment" id="Environment_1rsa4"]
 background_color = Color(1, 1, 1, 1)
@@ -317,3 +318,12 @@ transform = Transform3D(0.17361477, 0, 0.11814357, 0, 0.20999998, 0, -0.11814357
 
 [node name="Flarebundle" parent="." instance=ExtResource("13_38b5b")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 13.5719595, 0.47551423, 4.0498157)
+
+[node name="Ore" parent="." instance=ExtResource("16_ep2rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.887019, 1.8899016, 4.7437706)
+
+[node name="Ore2" parent="." instance=ExtResource("16_ep2rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.448444, 1.8899016, 4.7437706)
+
+[node name="Ore3" parent="." instance=ExtResource("16_ep2rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.931895, 1.8899016, 4.7437706)

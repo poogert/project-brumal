@@ -60,7 +60,7 @@ skeleton = NodePath("")
 [node name="OmniLight3D" type="OmniLight3D" parent="RigidBody3D/flare_model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6110839, 0)
 light_color = Color(1, 0, 0, 1)
-light_energy = 3.0
+light_energy = 10.0
 
 [node name="FlareParticles" parent="RigidBody3D/flare_model/OmniLight3D" instance=ExtResource("2_resfx")]
 

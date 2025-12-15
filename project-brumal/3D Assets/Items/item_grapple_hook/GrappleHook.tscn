@@ -6,7 +6,8 @@
 
 [node name="GrappleHook" type="Node3D"]
 
-[node name="GrappleHook" parent="." instance=ExtResource("1_1akxa")]
+[node name="GrappleHook" parent="." node_paths=PackedStringArray("hook_holding") instance=ExtResource("1_1akxa")]
 transform = Transform3D(0.455, 0, 0, 0, 0.36288634, 0.27447867, 0, -0.27447867, 0.36288634, 0, 0.28176188, -0.2570926)
 script = ExtResource("2_gexwr")
 placed_hook = ExtResource("3_87mu6")
+hook_holding = NodePath(".")

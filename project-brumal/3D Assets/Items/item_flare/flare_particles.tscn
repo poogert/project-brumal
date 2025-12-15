@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo6db23py38y8"]
+[gd_scene load_steps=6 format=3 uid="uid://bo6db23py38y8"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_prink"]
 lifetime_randomness = 1.0
 emission_shape_scale = Vector3(0, 0, 0)
 angle_min = -346.3
 angle_max = 373.7
-spread = 5.0
-initial_velocity_min = 97.619995
-initial_velocity_max = 198.09999
-gravity = Vector3(0, 9, 0)
+spread = 2.0
+initial_velocity_min = 306.99
+initial_velocity_max = 407.47
+gravity = Vector3(0, 20, 0)
+damping_min = 26.186
+damping_max = 53.048004
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prink"]
 cull_mode = 2
@@ -27,15 +29,39 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_prink")
 size = Vector2(0.07, 0.07)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cldbv"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.1148968, 0.11489681, 0.1148968, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_prink"]
+material = SubResource("StandardMaterial3D_cldbv")
+size = Vector2(0.2, 0.2)
+
 [node name="FlareParticles" type="Node3D"]
 transform = Transform3D(-2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0, 0, 0, 0.05, 0, 0, 0)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="burn" type="GPUParticles3D" parent="."]
 gi_mode = 2
 amount = 750
-lifetime = 1.5
+lifetime = 0.09999999999999999
 preprocess = 0.32
 randomness = 1.0
+visibility_aabb = AABB(-50, -25, -25, 300, 50, 50)
 draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_prink")
 draw_pass_1 = SubResource("QuadMesh_cldbv")
+
+[node name="smoke" type="GPUParticles3D" parent="."]
+gi_mode = 2
+amount = 500
+lifetime = 2.0
+preprocess = 0.32
+speed_scale = 0.1
+randomness = 1.0
+visibility_aabb = AABB(0, -150, -150, 500, 300, 300)
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_prink")
+draw_pass_1 = SubResource("QuadMesh_prink")
