@@ -4,7 +4,7 @@ using System;
 public partial class PickaxeScript : Node3D
 {
 	
-	const double HOLD_TIME = 1.2; 
+	const double HOLD_TIME = .8; 
 	double holdingTimer = 0;
 	
 	private Tween swingTween;

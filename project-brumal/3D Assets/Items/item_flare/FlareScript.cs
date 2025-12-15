@@ -32,7 +32,7 @@ public partial class FlareScript : Node3D
 			
 			// height and spacing from player offset
 			spawn.Y += 0.5f; 
-			spawn += direction * .7f; 
+			spawn += direction * 1f; 
 
 			// spawn position
 			flare3D.GlobalPosition = spawn; 
@@ -40,7 +40,7 @@ public partial class FlareScript : Node3D
 			
 			// the throwable item currently has rigidbody as child
 			RigidBody3D rigidBody3D = flare3D.GetNode<RigidBody3D>("RigidBody3D");
-			rigidBody3D.ApplyImpulse(direction * 16.0f);
+			rigidBody3D.ApplyImpulse(direction * 2.0f);
 
 			PlayerData.flare_count -= 1;
 			GD.Print("flares : " + PlayerData.flare_count);

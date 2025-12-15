@@ -14,11 +14,11 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 
 [sub_resource type="Environment" id="Environment_aldhi"]
 background_color = Color(1, 1, 1, 1)
-background_energy_multiplier = 0.0
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 fog_enabled = true
 fog_light_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
-fog_light_energy = 0.25
+fog_light_energy = 0.1
 fog_density = 0.25
 volumetric_fog_density = 0.021
 
