@@ -145,8 +145,7 @@ public partial class playerone : CharacterBody3D
 	{
 		base._Ready();
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		_itemRestY = handeffects.Transform.Origin.Y;
-		
+		_itemRestY = handeffects.Transform.Origin.Y;		
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -180,6 +179,7 @@ public partial class playerone : CharacterBody3D
 		updatePlayerInfo();
 		
 	}
+
 
 
 	private void _HandleLeaning(double delta)
@@ -471,8 +471,6 @@ public partial class playerone : CharacterBody3D
 		HeightAdjustmentsRunning = false;
 	}
 
-	
-
 	private async Task ItemSwitchTween(bool moveOut)
 	{
 		var transform = handeffects.Transform;
@@ -497,8 +495,5 @@ public partial class playerone : CharacterBody3D
 		transform.Origin.Y = targetY;
 		handeffects.Transform = transform;
 	}
-
-
-
 
 }

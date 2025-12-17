@@ -55,13 +55,13 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7, 1.2971406, 4.561191
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7.939993, 1.2971406, 3.402772)
 
 [node name="CaveSlice" parent="." instance=ExtResource("3_db1us")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.112176, 1.1281984, 5.132859)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.131697, 0.48677802, 3.5586796)
 
 [node name="CaveSlice2" parent="." instance=ExtResource("3_db1us")]
-transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -18.010721, 1.3099875, 7.2100363)
+transform = Transform3D(-0.6800174, 0, 0.7331961, 0, 1, 0, -0.7331961, 0, -0.6800174, -61.007046, 0.6685653, 20.067749)
 
 [node name="CaveSlice3" parent="." instance=ExtResource("3_db1us")]
-transform = Transform3D(-0.86602545, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, -0.86602545, -25.010721, 1.3099875, 14.210036)
+transform = Transform3D(-0.4199749, 0, 0.90753573, 0, 1, 0, -0.90753573, 0, -0.4199749, -36.228874, 0.6685672, 6.661685)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_a0rh3")

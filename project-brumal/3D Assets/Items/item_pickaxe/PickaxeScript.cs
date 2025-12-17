@@ -4,7 +4,7 @@ using System;
 public partial class PickaxeScript : Node3D
 {
 	
-	const double HOLD_TIME = .8; 
+	const double HOLD_TIME = .5; 
 	double holdingTimer = 0;
 	
 	private Tween swingTween;
@@ -106,7 +106,7 @@ public partial class PickaxeScript : Node3D
 		swingTween?.Kill();
 		swingTween = CreateTween();
 
-		Vector3 windupOffset = new Vector3(0, 0, 0.4f);
+		Vector3 windupOffset = new Vector3(0, 0, 0.7f);
 
 		swingTween.TweenProperty(
 			this,
@@ -129,7 +129,7 @@ public partial class PickaxeScript : Node3D
 			this,
 			"position",
 			originalLocalPosition + strikeOffset,
-			0.08f
+			0.03f
 		).SetTrans(Tween.TransitionType.Quad)
 		.SetEase(Tween.EaseType.Out);
 

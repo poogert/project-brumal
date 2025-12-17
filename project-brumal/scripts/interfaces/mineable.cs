@@ -6,5 +6,4 @@ public interface Mineable
 
 {
 	public void Mine();
-
 }

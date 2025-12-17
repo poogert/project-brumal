@@ -114,9 +114,11 @@ public partial class CalciumLamp : Node3D
 	{
 		if (!isFlashing) return;
 
-		_light.LightEnergy = Mathf.Lerp(_light.LightEnergy, 1f, 15f * delta);
-		_light.SpotAngle = Mathf.Lerp(_light.SpotAngle, DefaultSpotAngle, 15f * delta);
-		_light.SpotRange = Mathf.Lerp(_light.SpotRange, DefaultRange, 15f * delta);
+		float time = 6f;
+
+		_light.LightEnergy = Mathf.Lerp(_light.LightEnergy, 1f, time * delta);
+		_light.SpotAngle = Mathf.Lerp(_light.SpotAngle, DefaultSpotAngle, time * delta);
+		_light.SpotRange = Mathf.Lerp(_light.SpotRange, DefaultRange, time * delta);
 
 		if (_light.LightEnergy <= 2f) EndFlash();
 		

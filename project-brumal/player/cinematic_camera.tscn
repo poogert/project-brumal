@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bv1s3ttdjglvf"]
+
+[node name="camera" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+fov = 54.673252
+size = 1.2

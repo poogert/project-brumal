@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://dinscgucgqm5p"]
+[gd_scene load_steps=8 format=4 uid="uid://dinscgucgqm5p"]
 
+[ext_resource type="Script" uid="uid://nqm158pgf5ux" path="res://3D Assets/Items/item_flare/ThrowableFlareScript.cs" id="1_hgnl6"]
 [ext_resource type="Texture2D" uid="uid://cnxwdwrtwto26" path="res://3D Assets/Items/item_flare/flareUpdated_NewFlare.png" id="1_resfx"]
 [ext_resource type="PackedScene" uid="uid://bo6db23py38y8" path="res://3D Assets/Items/item_flare/flare_particles.tscn" id="2_resfx"]
 
@@ -44,11 +45,15 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_s0rco")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_td65t"]
-radius = 0.1328125
-height = 1.6376953
+radius = 0.3095703
+height = 1.7626953
 
-[node name="flare" type="Node3D"]
+[node name="flare" type="Node3D" node_paths=PackedStringArray("timer", "light", "particles")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+script = ExtResource("1_hgnl6")
+timer = NodePath("Timer")
+light = NodePath("RigidBody3D/Cylinder/OmniLight3D")
+particles = NodePath("RigidBody3D/Cylinder/OmniLight3D/FlareParticles")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 0.1
@@ -67,5 +72,10 @@ omni_range = 15.0
 transform = Transform3D(-2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0, 0, 0, 0.05, 0, -0.2854697, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04526657, 0)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, -0.06382125, 0)
 shape = SubResource("CapsuleShape3D_td65t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
