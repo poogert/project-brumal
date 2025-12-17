@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://iwf5gtpuwcof"]
+[gd_scene load_steps=17 format=4 uid="uid://iwf5gtpuwcof"]
 
 [ext_resource type="Script" uid="uid://dorv5day0fyr4" path="res://Models/Characters/Boris/BorisScript.cs" id="1_ddx8q"]
 [ext_resource type="Texture2D" uid="uid://docdrl52gjqog" path="res://Models/Characters/Boris/boris3_OLDMANTEXTURE2.png" id="1_ga26f"]
 [ext_resource type="Texture2D" uid="uid://csocxh88ytitc" path="res://Models/Characters/Boris/boris3_beanER.png" id="2_j535s"]
 [ext_resource type="Texture2D" uid="uid://t7hvqrywfniw" path="res://Models/Characters/Boris/BorisLamp_Ucupaint Material.png" id="4_8kae6"]
+[ext_resource type="Script" uid="uid://cxb8fnrp0rms3" path="res://Models/Characters/Boris/BorisLookAt.cs" id="5_8ul2g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvdea"]
 resource_name = "Material.009"
@@ -214,6 +215,7 @@ shadow_mesh = SubResource("ArrayMesh_fcbbd")
 [sub_resource type="Animation" id="Animation_pfp8m"]
 resource_name = "Hunchback"
 length = 1.5
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -751,7 +753,7 @@ bones/13/parent = 12
 bones/13/rest = Transform3D(1, -5.419232e-07, -2.9955817e-07, 4.7179603e-07, 0.9801597, -0.19820951, 4.0102918e-07, 0.19820951, 0.9801597, 2.2351742e-08, 0.911977, 7.450581e-09)
 bones/13/enabled = true
 bones/13/position = Vector3(2.2351742e-08, 0.911977, 7.450581e-09)
-bones/13/rotation = Quaternion(0.3479384, 0.0027815548, -0.001025002, 0.9375127)
+bones/13/rotation = Quaternion(0.3479384, 0.002781555, -0.0010250021, 0.9375127)
 bones/13/scale = Vector3(0.9997784, 0.99094623, 1.0096139)
 bones/14/name = "DEF-shin.L.001"
 bones/14/parent = 13
@@ -793,7 +795,7 @@ bones/19/parent = 18
 bones/19/rest = Transform3D(0.99999994, 4.218761e-07, -1.2347786e-07, -4.3798042e-07, 0.98015964, -0.19820958, 3.7408114e-08, 0.1982096, 0.9801596, 6.519258e-08, 0.9119773, -7.450581e-09)
 bones/19/enabled = true
 bones/19/position = Vector3(6.519258e-08, 0.9119773, -7.450581e-09)
-bones/19/rotation = Quaternion(0.34793803, -0.00278155, 0.0010249848, 0.9375128)
+bones/19/rotation = Quaternion(0.34793806, -0.0027815502, 0.0010249848, 0.9375128)
 bones/19/scale = Vector3(0.99977934, 0.9909458, 1.0096142)
 bones/20/name = "DEF-shin.R.001"
 bones/20/parent = 19
@@ -828,7 +830,7 @@ bones/24/parent = 1
 bones/24/rest = Transform3D(-0.043146852, -0.11231404, 0.9927355, -0.9860811, -0.1549134, -0.06038387, 0.16056998, -0.98152316, -0.104066685, -0.2383472, 2.490893, -1.1077336)
 bones/24/enabled = true
 bones/24/position = Vector3(0.9079387, 1.6843865, -1.1420511)
-bones/24/rotation = Quaternion(0.44196242, -0.45482352, 0.77274495, 0.025886133)
+bones/24/rotation = Quaternion(0.44196245, -0.45482355, 0.772745, 0.025886152)
 bones/24/scale = Vector3(1.0083802, 0.983448, 1.0083802)
 bones/25/name = "DEF-upper_arm.L.001"
 bones/25/parent = 24
@@ -951,8 +953,19 @@ shadow_enabled = true
 omni_attenuation = 1.61
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="Skeleton3D"]
+target_node = NodePath("TargetNode")
 bone_name = "DEF-spine.005"
 bone = 7
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.9198622
+primary_damp_threshold = 1.0
+secondary_limit_angle = 1.9198622
+secondary_damp_threshold = 1.0
+
+[node name="TargetNode" type="Node3D" parent="Skeleton3D/LookAtModifier3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.391392, 0, 0)
+script = ExtResource("5_8ul2g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -3,7 +3,7 @@ using System;
 
 public partial class BorisScript : Node3D, Interactable
 {
-	
+	AnimationPlayer borisAP;
 	[Export] AudioStreamPlayer3D sound;
 	string[] lines =
 	{
@@ -13,10 +13,16 @@ public partial class BorisScript : Node3D, Interactable
 	};
 	int line = 0;
 
+	public override void _Ready()
+	{
+		borisAP = GetNode<AnimationPlayer>("AnimationPlayer");
+		borisAP.Play("Hunchback");
+	}
+
 	public void PlaySound()
 	{
 		if (line >= lines.Length) line = 0;
-
+		
 		sound.Stream = ResourceLoader.Load<AudioStream>(lines[line]);
 		GD.Print("sound : " + sound.Stream);
 		sound.Play();
