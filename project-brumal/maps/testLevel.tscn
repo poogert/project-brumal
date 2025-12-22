@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://bukty3jlgfmog"]
+
+[ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
+[ext_resource type="Script" path="res://maps/TestLevelScript.cs" id="1_tgtyk"]
+[ext_resource type="AudioStream" uid="uid://cfl0xpynoyjo1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8a0p6"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="Environment" id="Environment_aldhi"]
+background_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
+fog_light_energy = 0.1
+fog_density = 0.25
+volumetric_fog_density = 0.021
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("sound")]
+script = ExtResource("1_tgtyk")
+sound = NodePath("AudioStreamPlayer3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("BoxMesh_kn04o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_8a0p6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.7071068, 0.49999994, -0.49999994, 0, 0.70710677, 0.70710677, 0.7071067, 0.5, -0.5, 0, 0, 0)
+light_energy = 0.0
+light_angular_distance = 44.54
+shadow_enabled = true
+shadow_blur = 0.2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aldhi")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_a0rh3")
+attenuation_model = 3
+
+[node name="Player" parent="." instance=ExtResource("1_8a0p6")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.36954594, 1.500001, -0.8635464)

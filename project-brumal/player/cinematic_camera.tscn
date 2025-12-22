@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dcu48sj77xg8k"]
+
+[node name="camera" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+fov = 54.673252
+size = 1.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Camera3D")

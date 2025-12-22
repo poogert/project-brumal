@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://ycm8l333q1l4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ld537"]
+
+[node name="CaveSlice" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_ld537")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.016113e-14, 4.3711385e-08, 9.999999, 9.999999, -4.371139e-08, 0, 4.3711387e-07, 0.99999994, -4.3711384e-07, 2.1855695e-07, 4, 5)
+mesh = SubResource("BoxMesh_ld537")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.016113e-14, 4.3711385e-08, 9.999999, 9.999999, -4.371139e-08, 0, 4.3711387e-07, 0.99999994, -4.3711384e-07, -2.1855695e-07, 4, -5)
+mesh = SubResource("BoxMesh_ld537")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.3711395e-07, 1, -8.742278e-07, 10, -4.3711395e-08, 3.6705223e-21, -1.4479513e-13, -8.742278e-08, -10, 5, 4, -4.371139e-07)
+mesh = SubResource("BoxMesh_ld537")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.3711395e-07, 1, -8.742278e-07, 10, -4.3711395e-08, 3.6705223e-21, -1.4479513e-13, -8.742278e-08, -10, -5, 4, 4.371139e-07)
+mesh = SubResource("BoxMesh_ld537")

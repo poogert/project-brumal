@@ -1,14 +1,14 @@
 [gd_scene load_steps=24 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
-[ext_resource type="Texture2D" uid="uid://5qbfx160dbvp" path="res://Models/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
-[ext_resource type="Texture2D" uid="uid://pfek5hrhdkmq" path="res://Models/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
-[ext_resource type="PackedScene" uid="uid://c5cwdcujmfd8v" path="res://Switch.tscn" id="4_1tbxl"]
-[ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://WallLamp.tscn" id="4_rsmj0"]
-[ext_resource type="PackedScene" uid="uid://bpj3ag7x4qw2q" path="res://Models/Objects/WorldProps/Fence.glb" id="5_epj0r"]
-[ext_resource type="PackedScene" uid="uid://dn7tjb2kcg5ps" path="res://Models/Objects/WorldProps/Crate.glb" id="6_g6lwf"]
+[ext_resource type="Texture2D" uid="uid://bbb611iadfk1c" path="res://Models/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
+[ext_resource type="Texture2D" uid="uid://bcug0q85cj8h3" path="res://Models/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
+[ext_resource type="PackedScene" path="res://Switch.tscn" id="4_1tbxl"]
+[ext_resource type="PackedScene" path="res://WallLamp.tscn" id="4_rsmj0"]
+[ext_resource type="PackedScene" uid="uid://chxmn8pvt8agt" path="res://Models/Objects/WorldProps/Fence.glb" id="5_epj0r"]
+[ext_resource type="PackedScene" uid="uid://do62la4n8wwvi" path="res://Models/Objects/WorldProps/Crate.glb" id="6_g6lwf"]
 [ext_resource type="PackedScene" uid="uid://cvn4v80jti17j" path="res://scripts/interactLogic/interactableboxscene.tscn" id="8_52sjw"]
-[ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://SnowSprice.tscn" id="9_52sjw"]
+[ext_resource type="PackedScene" path="res://SnowSprice.tscn" id="9_52sjw"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_nqael"]
 script/source = "using Godot;
