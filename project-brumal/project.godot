@@ -16,7 +16,8 @@ config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 
 [autoload]
 
-Playerdata="*res://player/playerdata.cs"
+PlayerData="*res://player/playerdata.cs"
+PlayerStateController="*res://player/PlayerStateController.cs"
 
 [dotnet]
 

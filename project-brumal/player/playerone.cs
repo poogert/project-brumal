@@ -21,7 +21,9 @@ public partial class playerone : CharacterBody3D
 		idle,
 		running,
 		crouching,
-		crawling
+		crawling,
+		walking,
+		jumping
 
 	}
 
@@ -79,6 +81,7 @@ public partial class playerone : CharacterBody3D
 	bool itemsetting = false;
 
 	float targetFOV = 70; 	// fov lerping
+
 
 	// ENUM FUNCTIONS
 	private async Task SetItem(Items selectedItem, PackedScene item)
@@ -177,11 +180,11 @@ public partial class playerone : CharacterBody3D
 		_HandleLeaning(delta);
 		_HandleBobbing(delta);
 		updatePlayerInfo();
-		
+		GD.Print(PlayerData.currentItem + " " + PlayerData.currentState);
 	}
 
 
-
+	
 	private void _HandleLeaning(double delta)
 	{
 		if (leaningcheck) // if leaning, lerp to target
@@ -323,6 +326,7 @@ public partial class playerone : CharacterBody3D
 		// Action -> jumping ------------------------------------------------------------------
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
+			//SetState(MovementState.jumping);
 			Velocity = new Vector3(Velocity.X, JUMP_VELOCITY, Velocity.Z);
 		}
 
@@ -343,6 +347,7 @@ public partial class playerone : CharacterBody3D
 
 		if (direction != Vector3.Zero)
 		{
+			//SetState(MovementState.walking);
 			velocity.X = direction.X * SPEED;
 			velocity.Z = direction.Z * SPEED;
 		}
@@ -403,7 +408,12 @@ public partial class playerone : CharacterBody3D
 		// looking in a x,y axis
 		PlayerData.rot_horizontal = Player.Rotation.Y;
 		PlayerData.rot_vertical = camera.Rotation.X;
+		
+		string state = currentState.ToString();
+		string item = currentItem.ToString();
 
+		PlayerData.currentState = state;
+		PlayerData.currentItem = item;
 	}
 
 	private async Task LerpHeadHeight(float offset)

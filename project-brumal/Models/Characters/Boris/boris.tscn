@@ -947,9 +947,10 @@ skeleton = NodePath("")
 [node name="OmniLight3D" type="OmniLight3D" parent="Skeleton3D/ModifierBoneTarget3D/BorisLamp"]
 transform = Transform3D(4.8099246, -0.013801783, 0.11252802, -1.4901161e-08, 4.707399, -0.0868691, -5.9604645e-08, 1.8975697e-08, 4.765816, -0.0042341948, 0.35638994, -0.008649588)
 light_color = Color(0.5045139, 0.5346646, 0.35219973, 1)
-light_energy = 2.0
+light_energy = 10.0
 light_size = 1.0
 shadow_enabled = true
+omni_range = 11.0
 omni_attenuation = 1.61
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="Skeleton3D"]

@@ -1,11 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://x5t500dddovd"]
+[gd_scene load_steps=7 format=3 uid="uid://x5t500dddovd"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
 [ext_resource type="Script" uid="uid://cin1c7ymt2yim" path="res://maps/TestLevelScript.cs" id="1_tgtyk"]
-[ext_resource type="PackedScene" uid="uid://cxlggn0na2ylr" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="2_862cc"]
-[ext_resource type="PackedScene" uid="uid://cn5g0fxy36s5w" path="res://3D Assets/MapChunks/MapSegments/cave_slice.tscn" id="3_db1us"]
 [ext_resource type="AudioStream" uid="uid://cfl0xpynoyjo1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
-[ext_resource type="PackedScene" uid="uid://bcutbo6gb0hvk" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="6_a0rh3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
 
@@ -45,30 +42,9 @@ shadow_blur = 0.2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aldhi")
 
-[node name="Player" parent="." instance=ExtResource("1_8a0p6")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.7648683, 2.928536, 5.100956)
-
-[node name="Flarebundle" parent="." instance=ExtResource("2_862cc")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7, 1.2971406, 4.5611916)
-
-[node name="Flarebundle2" parent="." instance=ExtResource("2_862cc")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -7.939993, 1.2971406, 3.402772)
-
-[node name="CaveSlice" parent="." instance=ExtResource("3_db1us")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.131697, 0.48677802, 3.5586796)
-
-[node name="CaveSlice2" parent="." instance=ExtResource("3_db1us")]
-transform = Transform3D(-0.6800174, 0, 0.7331961, 0, 1, 0, -0.7331961, 0, -0.6800174, -61.007046, 0.6685653, 20.067749)
-
-[node name="CaveSlice3" parent="." instance=ExtResource("3_db1us")]
-transform = Transform3D(-0.4199749, 0, 0.90753573, 0, 1, 0, -0.90753573, 0, -0.4199749, -36.228874, 0.6685672, 6.661685)
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_a0rh3")
 attenuation_model = 3
 
-[node name="Ore" parent="." instance=ExtResource("6_a0rh3")]
-transform = Transform3D(2.265, 0, 0, 0, 2.265, 0, 0, 0, 2.265, 3.048345, 5.4289384, 5.1667266)
-
-[node name="Ore2" parent="." instance=ExtResource("6_a0rh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.365885, 4, -2.675945)
+[node name="Player" parent="." instance=ExtResource("1_8a0p6")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.36954594, 1.500001, -0.8635464)

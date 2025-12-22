@@ -1,24 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn5g0fxy36s5w"]
+[gd_scene load_steps=2 format=3 uid="uid://cn5g0fxy36s5w"]
 
-[ext_resource type="PackedScene" uid="uid://bgqvjbnpjutvo" path="res://3D Assets/MapChunks/MapSegments/floor_with_collision.tscn" id="1_57va3"]
-[ext_resource type="PackedScene" uid="uid://buaisnk0vi0il" path="res://3D Assets/MapChunks/MapSegments/wall_with_collision.tscn" id="2_y2hd5"]
+[sub_resource type="BoxMesh" id="BoxMesh_ld537"]
 
 [node name="CaveSlice" type="Node3D"]
 
-[node name="FloorSegment" parent="." instance=ExtResource("1_57va3")]
-transform = Transform3D(0.896, 0, 0, 0, 1, 0, 0, 0, 1.7570204, 4, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_ld537")
 
-[node name="WallSegment" parent="." instance=ExtResource("2_y2hd5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9, 8, 5, -8)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.016113e-14, 4.3711385e-08, 9.999999, 9.999999, -4.371139e-08, 0, 4.3711387e-07, 0.99999994, -4.3711384e-07, 2.1855695e-07, 4, 5)
+mesh = SubResource("BoxMesh_ld537")
 
-[node name="FloorSegment2" parent="." instance=ExtResource("1_57va3")]
-transform = Transform3D(0.896, 0, 0, 0, 1, 0, 0, 0, 1.7570204, 4, 0, -16)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.016113e-14, 4.3711385e-08, 9.999999, 9.999999, -4.371139e-08, 0, 4.3711387e-07, 0.99999994, -4.3711384e-07, -2.1855695e-07, 4, -5)
+mesh = SubResource("BoxMesh_ld537")
 
-[node name="WallSegment2" parent="." instance=ExtResource("2_y2hd5")]
-transform = Transform3D(-1, 0, -7.86805e-08, 0, 1, 0, 8.742278e-08, 0, -0.9, -7, 5, -8)
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.3711395e-07, 1, -8.742278e-07, 10, -4.3711395e-08, 3.6705223e-21, -1.4479513e-13, -8.742278e-08, -10, 5, 4, -4.371139e-07)
+mesh = SubResource("BoxMesh_ld537")
 
-[node name="WallSegment3" parent="." instance=ExtResource("2_y2hd5")]
-transform = Transform3D(0.5, -0.8660254, 0, 0.8660254, 0.5, 0, 0, 0, 0.9, 5, 13, -8)
-
-[node name="WallSegment4" parent="." instance=ExtResource("2_y2hd5")]
-transform = Transform3D(-0.5, -0.8660254, 0, 0.8660254, -0.5, 0, 0, 0, 0.9, -4, 13, -8)
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.3711395e-07, 1, -8.742278e-07, 10, -4.3711395e-08, 3.6705223e-21, -1.4479513e-13, -8.742278e-08, -10, -5, 4, 4.371139e-07)
+mesh = SubResource("BoxMesh_ld537")

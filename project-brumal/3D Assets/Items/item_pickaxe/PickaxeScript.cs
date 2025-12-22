@@ -18,6 +18,7 @@ public partial class PickaxeScript : Node3D
 
 	public override void _Process(double delta)
 	{
+
 		if (Input.IsActionPressed("leftclick"))
 		{
 			holdingTimer += delta;
