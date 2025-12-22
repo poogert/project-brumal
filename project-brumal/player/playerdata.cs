@@ -10,11 +10,13 @@ public partial class PlayerData : Node
 	// player resources
     public static int flare_count = 5;
     public static float calcium_fuel = 100;
-    public static int sprint = 100;
+    public static int stamina = 100;
     
 	// states
-	public static string currentState = "";
-    public static string currentItem = "";
+	public static string CurrentState = "";
+    public static string CurrentItem = "";
+    public static bool IsInAir = false;
+    public static bool[] hotbarinventory = {false, false, false, false, false};
 
 
     // raycast

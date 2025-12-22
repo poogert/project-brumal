@@ -7,9 +7,10 @@ public partial class BorisScript : Node3D, Interactable
 	[Export] AudioStreamPlayer3D sound;
 	string[] lines =
 	{
-		"res://Models/Characters/Boris/Voicelines/speech_one.wav",
-		"res://Models/Characters/Boris/Voicelines/speech_two.wav",
-		"res://Models/Characters/Boris/Voicelines/speech_three.wav"
+		"res://Models/Characters/Boris/Voicelines/items.mp3"
+		//"res://Models/Characters/Boris/Voicelines/speech_one.wav",
+		//"res://Models/Characters/Boris/Voicelines/speech_two.wav",
+		//"res://Models/Characters/Boris/Voicelines/speech_three.wav",
 	};
 	int line = 0;
 
@@ -17,6 +18,7 @@ public partial class BorisScript : Node3D, Interactable
 	{
 		borisAP = GetNode<AnimationPlayer>("AnimationPlayer");
 		borisAP.Play("Hunchback");
+
 	}
 
 	public void PlaySound()
@@ -34,6 +36,7 @@ public partial class BorisScript : Node3D, Interactable
 	public void Interact()
 	{
 		PlaySound();
+		playerone.equipItem(playerone.Items.all, true);
 	}
 
 }

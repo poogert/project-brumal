@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://iwf5gtpuwcof"]
+[gd_scene load_steps=17 format=4 uid="uid://cie8veob6lupg"]
 
 [ext_resource type="Script" uid="uid://dorv5day0fyr4" path="res://Models/Characters/Boris/BorisScript.cs" id="1_ddx8q"]
 [ext_resource type="Texture2D" uid="uid://docdrl52gjqog" path="res://Models/Characters/Boris/boris3_OLDMANTEXTURE2.png" id="1_ga26f"]
@@ -655,6 +655,10 @@ script = ExtResource("1_ddx8q")
 sound = NodePath("AudioStreamPlayer3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+pitch_scale = 0.95
+max_distance = 10.0
+attenuation_filter_cutoff_hz = 1.0
+attenuation_filter_db = -30.0
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
 bones/0/name = "hand_tweak.R"
