@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://ci7t4slbk4i2b"]
 
-[ext_resource type="PackedScene" uid="uid://tg3pjp4grua0" path="res://3D Assets/Items/item_pickaxe/PickaxeV1.glb" id="1_1senb"]
-[ext_resource type="Texture2D" uid="uid://dlftmv6igm8hd" path="res://player/PlayerArms/ArmsExportText_BlueDudeTexture256t.png" id="1_eurx3"]
+[ext_resource type="PackedScene" uid="uid://yamou6qbb8es" path="res://3D Assets/Items/item_pickaxe/PickaxeV1.glb" id="1_1senb"]
+[ext_resource type="Texture2D" uid="uid://bqcdky7jc8bvv" path="res://player/PlayerArms/ArmsExportText_BlueDudeTexture256t.png" id="1_eurx3"]
 [ext_resource type="Script" uid="uid://c5444pj2s87r2" path="res://3D Assets/Items/item_pickaxe/PickaxeScript.cs" id="2_1senb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjdix"]
@@ -1848,13 +1848,17 @@ _data = {
 [node name="pickaxe" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.9114679, -0.41137117, 0, 0.41137117, 0.9114679, 0, 0, 0)
 
-[node name="ArmsExportText" type="Node3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.45570165, 0.20575716, 0, -0.20575716, 0.45570165, -0.26727778, -0.075279266, -1.2111874)
+[node name="PickaxeV1" parent="." instance=ExtResource("1_1senb")]
+transform = Transform3D(0.4167667, 0.050617043, 0.008826909, -0.029065002, 0.40136814, -0.12403938, -0.038143665, 0.119302735, 0.3981168, 0.3086303, 1.2527757, -0.22510493)
+script = ExtResource("2_1senb")
 
-[node name="rig" type="Node3D" parent="ArmsExportText"]
+[node name="ArmsExportText" type="Node3D" parent="PickaxeV1"]
+transform = Transform3D(1.1845763, -0.04418122, -0.13885172, 0.11061167, 0.54840314, 1.0457336, 0.080347806, -1.0587262, 0.5592937, -0.80088496, -4.7185316, -0.37246966)
+
+[node name="rig" type="Node3D" parent="PickaxeV1/ArmsExportText"]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -0.6383402, -3.074316, 3.0259304)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="ArmsExportText/rig"]
+[node name="Skeleton3D" type="Skeleton3D" parent="PickaxeV1/ArmsExportText/rig"]
 bones/0/name = "root"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 1.9934362e-08, 0, -9.6386685e-08)
@@ -3368,20 +3372,16 @@ bones/215/position = Vector3(3.7360337e-09, 2.4603471e-08, 0)
 bones/215/rotation = Quaternion(0.0019250817, 0, 0, 0.99999815)
 bones/215/scale = Vector3(1, 0.99999994, 1)
 
-[node name="Cube_002" type="MeshInstance3D" parent="ArmsExportText/rig/Skeleton3D"]
+[node name="Cube_002" type="MeshInstance3D" parent="PickaxeV1/ArmsExportText/rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_i05uv")
 skin = SubResource("Skin_i8fww")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="ArmsExportText/rig/Skeleton3D"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="PickaxeV1/ArmsExportText/rig/Skeleton3D"]
 transform = Transform3D(-0.6975046, -0.38651803, -0.6812226, -0.42515272, 0.8832542, 0.013353407, 0.5804037, 0.2821086, -0.7355082, -1.7438054, 2.926298, 1.0162287)
 bone_name = "DEF-hand.L"
 bone_idx = 144
 
-[node name="PickaxeV1" parent="ArmsExportText/rig/Skeleton3D/BoneAttachment3D" instance=ExtResource("1_1senb")]
-transform = Transform3D(0.5923956, -0.5603453, 0.13302565, 0.2931241, 0.17048126, -0.7780518, 0.45071477, 0.6256156, 0.33116767, -1.7158544, 1.1456951, 1.1748515)
-script = ExtResource("2_1senb")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ArmsExportText"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PickaxeV1/ArmsExportText"]
 libraries = {
 &"": SubResource("AnimationLibrary_0jc7t")
 }

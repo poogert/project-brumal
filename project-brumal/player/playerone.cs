@@ -524,6 +524,7 @@ public partial class playerone : CharacterBody3D
 		// position in map
 		PlayerData.player_position = GlobalPosition; 
 
+		PlayerData.camera_position = camera.GlobalPosition; 
 		// direction looking
 		PlayerData.look_direction = camera.GlobalTransform.Basis.Z * -1.0f;
 

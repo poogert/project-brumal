@@ -11,8 +11,10 @@ public partial class BorisLookAt : Node3D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-	{
-		this.GlobalPosition = PlayerData.player_position;
+	{	
+		Vector3 PlayerPos = PlayerData.camera_position;
+		this.GlobalPosition = PlayerPos;
+		
 		//this.transform = Player.Position
 
 	}

@@ -1,21 +1,22 @@
-[gd_scene load_steps=30 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=31 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
-[ext_resource type="Texture2D" uid="uid://bi7n3ro3v7uon" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
-[ext_resource type="Texture2D" uid="uid://c7o511ftojbd8" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
+[ext_resource type="Texture2D" uid="uid://c34hjksmmlxdb" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
+[ext_resource type="Texture2D" uid="uid://dlywkhd0v882w" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
 [ext_resource type="PackedScene" uid="uid://cvn4v80jti17j" path="res://scripts/game-tools/interactLogic/interactableboxscene.tscn" id="8_52sjw"]
-[ext_resource type="AudioStream" uid="uid://bowq8qoaiiy00" path="res://sounds/poocus.wav" id="10_38b5b"]
-[ext_resource type="PackedScene" path="res://3D Assets/Objects/WorldProps/prop_switch/Switch.tscn" id="10_ep2rr"]
+[ext_resource type="AudioStream" uid="uid://dg43j4vpucfn7" path="res://sounds/poocus.wav" id="10_38b5b"]
+[ext_resource type="PackedScene" uid="uid://c5cwdcujmfd8v" path="res://3D Assets/Objects/WorldProps/prop_switch/Switch.tscn" id="10_ep2rr"]
 [ext_resource type="Texture2D" uid="uid://dlpqhmxwhxie3" path="res://3D Assets/MapChunks/fakemountains_FakeMountains.png" id="10_ud8pw"]
-[ext_resource type="PackedScene" uid="uid://douchrf7oc5hr" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
-[ext_resource type="PackedScene" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate.tscn" id="12_j0qli"]
+[ext_resource type="PackedScene" uid="uid://bhau7ko2mtd77" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
+[ext_resource type="PackedScene" uid="uid://b3em27gyxvvw8" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate.tscn" id="12_j0qli"]
 [ext_resource type="PackedScene" uid="uid://dmihgh6q7jbu5" path="res://scripts/game-tools/tool_levelloader/LoadLevelCollision.tscn" id="12_p6wwr"]
-[ext_resource type="PackedScene" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="13_38b5b"]
-[ext_resource type="PackedScene" uid="uid://bukty3jlgfmog" path="res://maps/testLevel.tscn" id="13_j0qli"]
+[ext_resource type="PackedScene" uid="uid://cxlggn0na2ylr" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="13_38b5b"]
+[ext_resource type="PackedScene" uid="uid://x5t500dddovd" path="res://maps/testLevel.tscn" id="13_j0qli"]
 [ext_resource type="PackedScene" uid="uid://cie8veob6lupg" path="res://Models/Characters/Boris/boris.tscn" id="14_vfsg6"]
-[ext_resource type="PackedScene" uid="uid://cucf5no5scdia" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="16_ep2rr"]
-[ext_resource type="PackedScene" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="16_wyl08"]
-[ext_resource type="PackedScene" uid="uid://dcu48sj77xg8k" path="res://player/cinematic_camera.tscn" id="17_wyl08"]
+[ext_resource type="PackedScene" uid="uid://bcutbo6gb0hvk" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="16_ep2rr"]
+[ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="16_wyl08"]
+[ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprUce.tscn" id="17_tamf2"]
+[ext_resource type="PackedScene" uid="uid://bv1s3ttdjglvf" path="res://player/cinematic_camera.tscn" id="17_wyl08"]
 
 [sub_resource type="Environment" id="Environment_1rsa4"]
 background_color = Color(1, 1, 1, 1)
@@ -192,175 +193,6 @@ transform = Transform3D(0.18158054, 0, -0.14116837, 0, 0.23, 0, 0.14116837, 0, 0
 
 [node name="Trees" type="Node" parent="World/BeginningMap"]
 
-[node name="SnowSpruce" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.2, 0, 0, 0, 0.19916163, 0.018293371, 0, -0.018293371, 0.19916163, -40.85878, 8.091024, -62.886974)
-script = null
-
-[node name="SnowSpruce2" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.19961925, -0.012283429, -0.001128256, 0.0123351365, 0.1987825, 0.018258546, 0, -0.018293371, 0.19916166, -35.027466, 7.571001, -72.22099)
-script = null
-
-[node name="SnowSpruce3" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.19971217, -0.01068018, -0.0009809947, 0.010725138, 0.19887505, 0.018267049, -6.967684e-11, -0.018293368, 0.19916162, -28.028593, 8.328265, -75.88535)
-script = null
-
-[node name="SnowSpruce4" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.19995743, 0.004108371, 0.00037736163, -0.004125663, 0.19911927, 0.018289478, -9.2954956e-11, -0.01829337, 0.19916163, -36.756348, 7.571001, -79.113914)
-script = null
-
-[node name="SnowSpruce8" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.1999574, 0.004108371, 0.0003773616, -0.004096955, 0.199888, -0.005291596, -0.00048584933, 0.0052827466, 0.19992962, 6.539774, 7.571005, -17.93836)
-script = null
-
-[node name="SnowSpruce9" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.23926772, 0.018733675, 8.6444554e-05, -0.0187248, 0.23918374, -0.0063654627, -0.00058301934, 0.006339296, 0.23991555, 1.1592445, 9.126648, -19.70638)
-script = null
-
-[node name="SnowSpruce12" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.1999574, 0.004108371, 0.0003773616, -0.004096955, 0.199888, -0.005291596, -0.00048584933, 0.0052827466, 0.19992962, 27.172619, -2.4410267, -20.448706)
-script = null
-
-[node name="SnowSpruce13" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.23939991, -0.01693013, 0.0010291116, 0.01695136, 0.23931819, -0.006282318, -0.00058301934, 0.0063392962, 0.23991555, 18.788374, -1.8412905, -20.960161)
-script = null
-
-[node name="SnowSpruce10" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.24923721, 0.019514244, 9.0046415e-05, -0.019505, 0.24914974, -0.0066306903, -0.00060731184, 0.0066034333, 0.24991204, -31.93659, 8.002014, -72.33503)
-script = null
-
-[node name="SnowSpruce11" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.24950396, -0.015707582, 0.0010213619, 0.01572903, 0.24941866, -0.0065521733, -0.0006073118, 0.006603433, 0.24991201, -45.810364, 7.7168493, -68.565834)
-script = null
-
-[node name="SnowSpruce5" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.19995743, 0.004108371, 0.00037736163, -0.004125663, 0.19911927, 0.018289478, -9.2954956e-11, -0.01829337, 0.19916163, -49.78727, 7.571001, -74.13875)
-script = null
-
-[node name="SnowSpruce6" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.1999574, 0.004108371, 0.0003773616, -0.0039846175, 0.19705431, -0.03396655, -0.001069539, 0.033951804, 0.19709422, -44.46363, 7.571001, -81.841705)
-script = null
-
-[node name="SnowSpruce7" parent="World/BeginningMap/Trees"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.1999574, 0.004108371, 0.0003773616, -0.0039846175, 0.19705431, -0.03396655, -0.001069539, 0.033951804, 0.19709422, -50.732597, 7.571001, -66.920975)
-script = null
-
 [node name="ValleyV2" type="Node3D" parent="World/BeginningMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.495497, -5.198351, -25.275917)
 
@@ -457,3 +289,9 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 14.223848, 0.4884167, 3
 
 [node name="camera" parent="." instance=ExtResource("17_wyl08")]
 transform = Transform3D(-0.8536236, -0.21876086, 0.47272664, 0, 0.90753573, 0.41997492, -0.52089036, 0.35850048, -0.77469397, -5.1823306, 2.0807624, -3.9046247)
+
+[node name="SnowSpruce" parent="." instance=ExtResource("17_tamf2")]
+transform = Transform3D(0.19945984, -0.014689415, 0, 0.014689415, 0.19945984, 0, 0, 0, 0.2, 2.8000064, 0.4424218, -7.919018)
+
+[node name="SnowSpruce2" parent="." instance=ExtResource("17_tamf2")]
+transform = Transform3D(0.19397545, -0.006371837, 0.048300367, 0.0041452106, 0.1997216, 0.009700222, -0.048542187, -0.00840695, 0.19383748, 5.6080947, 0.45577562, -7.241269)

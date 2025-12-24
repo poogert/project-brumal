@@ -1,8 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://x5t500dddovd"]
+[gd_scene load_steps=14 format=3 uid="uid://x5t500dddovd"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
 [ext_resource type="Script" uid="uid://cin1c7ymt2yim" path="res://maps/TestLevelScript.cs" id="1_tgtyk"]
-[ext_resource type="AudioStream" uid="uid://cfl0xpynoyjo1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
+[ext_resource type="PackedScene" uid="uid://yog88nmikhnw" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveRoom1.glb" id="4_jkisn"]
+[ext_resource type="AudioStream" uid="uid://do2jnjbnqrxa1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
+[ext_resource type="PackedScene" uid="uid://cfkrv2tfrt5m4" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite1.glb" id="5_tgtyk"]
+[ext_resource type="PackedScene" uid="uid://mffrqp1uj8mr" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite2.glb" id="6_mblk6"]
+[ext_resource type="PackedScene" uid="uid://dnypjfsimk2pc" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite4.glb" id="7_i61l1"]
+[ext_resource type="PackedScene" uid="uid://dgpv56autf8hx" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite3.glb" id="8_jj0b7"]
+[ext_resource type="PackedScene" uid="uid://00u7f8cmiq88" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveHallwayBend2.glb" id="9_i61l1"]
+[ext_resource type="PackedScene" uid="uid://b8iyurkhjd0il" path="res://3D Assets/Objects/WorldProps/prop_Pinon/Pinon.tscn" id="10_jj0b7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
 
@@ -11,13 +18,17 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 
 [sub_resource type="Environment" id="Environment_aldhi"]
 background_color = Color(1, 1, 1, 1)
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
 tonemap_mode = 2
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 0.2
+sdfgi_cascades = 2
 fog_enabled = true
-fog_light_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
-fog_light_energy = 0.1
-fog_density = 0.25
-volumetric_fog_density = 0.021
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.2688
+fog_depth_curve = 0.46651682
+fog_depth_begin = 1.0
+fog_depth_end = 3.0
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("sound")]
 script = ExtResource("1_tgtyk")
@@ -32,13 +43,6 @@ mesh = SubResource("BoxMesh_kn04o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_8a0p6")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.7071068, 0.49999994, -0.49999994, 0, 0.70710677, 0.70710677, 0.7071067, 0.5, -0.5, 0, 0, 0)
-light_energy = 0.0
-light_angular_distance = 44.54
-shadow_enabled = true
-shadow_blur = 0.2
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_aldhi")
 
@@ -48,3 +52,74 @@ attenuation_model = 3
 
 [node name="Player" parent="." instance=ExtResource("1_8a0p6")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.36954594, 1.500001, -0.8635464)
+
+[node name="CaveTest" type="Node3D" parent="."]
+
+[node name="CaveRoom1" parent="CaveTest" instance=ExtResource("4_jkisn")]
+transform = Transform3D(-0.99863774, 0, 0.052179147, 0, 1, 0, -0.052179147, 0, -0.99863774, -26.726627, 3.0446692, 27.58176)
+
+[node name="Stalagmites" type="Node3D" parent="CaveTest/CaveRoom1"]
+transform = Transform3D(-0.99863774, 0, -0.052179147, 0, 1, 0, 0.052179147, 0, -0.99863774, -8.405045, -3.0446692, 28.058552)
+
+[node name="CaveStalagmite1" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, -12.957886, 7.254305, 27.671204)
+
+[node name="CaveStalagmite2" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.167839, 6.7651625, 20.661133)
+
+[node name="CaveStalagmite3" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -3.1026487, 6.84402, 28.39704)
+
+[node name="CaveStalagmite4" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10.2097, 6.7651625, 34.197)
+
+[node name="CaveStalagmite5" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19.203518, 6.7651625, 24.341778)
+
+[node name="CaveStalagmite6" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("6_mblk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3830814, 7.672402, 26.757582)
+
+[node name="CaveStalagmite7" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("6_mblk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.789255, 7.672402, 24.253595)
+
+[node name="CaveStalagmite8" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("6_mblk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6639185, 7.672402, 30.862286)
+
+[node name="CaveStalagmite9" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("6_mblk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.08228, 7.4480424, 26.66935)
+
+[node name="CaveStalagmite10" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("7_i61l1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.061917, 6.9169106, 26.737127)
+
+[node name="CaveStalagmite11" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.071048, 7.5499244, 26.866951)
+
+[node name="CaveStalagmite12" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.3369741, 7.5499244, 26.927237)
+
+[node name="CaveStalagmite13" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.286938, 7.5499244, 27.661404)
+
+[node name="CaveStalagmite14" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.509517, 7.5499244, 32.22298)
+
+[node name="CaveStalagmite15" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.371295, 7.549924, 23.582546)
+
+[node name="CaveStalagmite16" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.906931, 7.184087, 22.95848)
+
+[node name="CaveStalagmite17" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.6559, 6.899272, 30.365543)
+
+[node name="CaveStalagmite18" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.7105675, 7.21745, 34.237286)
+
+[node name="CaveHallwayBend2" parent="CaveTest" instance=ExtResource("9_i61l1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.211039, 2.4529352, 4.8011017)
+
+[node name="Pinon" parent="CaveTest" instance=ExtResource("10_jj0b7")]
+transform = Transform3D(1, 0, 0, 0, 0.22840182, -0.97356695, 0, 0.97356695, 0.22840182, -29.560425, 2.824553, 19.98228)
+
+[node name="Pinon2" parent="CaveTest" instance=ExtResource("10_jj0b7")]
+transform = Transform3D(1, 0, 0, 0, -0.5914785, -0.8063207, 0, 0.8063207, -0.5914785, -27.70838, 3.987658, 20.436638)
