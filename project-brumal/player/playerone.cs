@@ -16,7 +16,10 @@ public partial class playerone : CharacterBody3D
 	private const float ROTATION_AMOUNT = 35f;
 	private const float ITEM_OUT_OFFSET = -1.0f;
 	private float _itemRestY; // rest
-	private const float RECOVERY_DELAY_MS = 2000f; // 2 seconds delay
+	private const float RECOVERY_DELAY_MS = 2000f; // 2000 miliseconds = 2 seconds
+	public const int STAMINA_REGEN_RATE = 2;
+	public const int SPRINT_USAGE_RATE = 5;
+	public const int JUMP_USAGE_RATE = 15;
 
 
 	// exports
@@ -103,29 +106,21 @@ public partial class playerone : CharacterBody3D
 			
 			handeffects.AddChild(itemReference);
 			await ItemSwitchTween(false);
+
 		}
-		finally
+		finally 
 		{
 			itemsetting = false;
 		}
 	}
 	void RemoveItem()
 	{
+		if (handeffects.GetChildCount() <= 0) return;
 		
-		if (handeffects.GetChildCount() > 0)
-		{
+		Node child = handeffects.GetChild(0);
+		handeffects.RemoveChild(child);
 
-			Node child = handeffects.GetChild(0);
-			handeffects.RemoveChild(child);
-
-			child.QueueFree();
-
-		}
-		else
-		{
-			return;
-		}
-
+		child.QueueFree();
 	}
 	
 	// 1) lamp | 2) pickaxe | 3) flare | 4) grapple hook | 5) map
@@ -197,10 +192,10 @@ public partial class playerone : CharacterBody3D
 		crawling,
 		walking
 	}
-
 	public MovementState currentState = MovementState.idle;
 
-	private bool IsNeutralState() {
+	private bool IsNeutralState() 
+	{
 		// bool return if player is idle or walking.
 		return currentState == MovementState.idle || currentState == MovementState.walking;
 	}
@@ -208,56 +203,69 @@ public partial class playerone : CharacterBody3D
 	{
 		if (IsNeutralState()) currentState = state;
 	}
-	void SetDefaultState() { currentState = MovementState.idle; }
-
-	private ulong lastStaminaDrainTime = 0; // timer for draining
-
-	void SprintDrainStamina() {
-		if (currentState == MovementState.running) {
-			PlayerData.stamina -= 5;
-			lastStaminaDrainTime = Time.GetTicksMsec();
-		}
-		
-		if ( !HasStamina(5) ) oosSprint();
+	void SetDefaultState() 
+	{ 
+		currentState = MovementState.idle; 
 	}
 
-	void oosSprint() {
-		// OUT OF STAMINA so cancel sprinting
+	// timer for draining (ulong is for time, int is too small)
+	private ulong lastStaminaDrainTime = 0; 
+
+	void SprintDrainStamina() {
+
+		if (currentState != MovementState.running) return;
+		if ( !HasMinActionStamina(SPRINT_USAGE_RATE) ) 
+		{
+			StopSprint();
+			return;
+		}
+
+		PlayerData.stamina -= SPRINT_USAGE_RATE;
+		lastStaminaDrainTime = Time.GetTicksMsec();	
+	}
+
+	void StopSprint() {
 		SetDefaultState();
 		SPEED = DEFAULT_SPEED;
 		targetFOV = FOV_DEFAULT;
-	
 	}
 
 	void JumpDrainStamina() { 
-		PlayerData.stamina -= 15; 
+		PlayerData.stamina -= JUMP_USAGE_RATE; 
 		lastStaminaDrainTime = Time.GetTicksMsec();
 	}
 	
-	bool HasStamina(int min) 
+	bool HasMinActionStamina(int min) 
 	{ 
-		// min is the minimum required amount when using this function to check for stamina level
 		return PlayerData.stamina >= min;
 	}
 
 	void RecoverStamina() {
-		if (Time.GetTicksMsec() - lastStaminaDrainTime > RECOVERY_DELAY_MS) {
+		if (PlayerData.stamina == PlayerData.MAX_STAMINA) return;
+		if ( (Time.GetTicksMsec() - lastStaminaDrainTime) <= RECOVERY_DELAY_MS) return;
+		if (!IsNeutralState()) return;
 
-			if (IsNeutralState()) {
-				if (PlayerData.stamina > 95 && PlayerData.stamina < 100) PlayerData.stamina += (100 - PlayerData.stamina);
-				if (PlayerData.stamina < 100) PlayerData.stamina += 5;
-			}
-
+		int minStaminaState = PlayerData.MAX_STAMINA - STAMINA_REGEN_RATE;
+		
+		if ( (PlayerData.stamina > minStaminaState) && (PlayerData.stamina < PlayerData.MAX_STAMINA) ) 
+		{ 
+			PlayerData.stamina += PlayerData.MAX_STAMINA - PlayerData.stamina; 
 		}
+
+		// if less than max then keep the regen rate
+		if (PlayerData.stamina < PlayerData.MAX_STAMINA) PlayerData.stamina += STAMINA_REGEN_RATE;
 	}
 
 	void CalculateStamina() {
+
 		SprintDrainStamina();
 		RecoverStamina();
+		GD.Print("State -> " + currentState);
 		GD.Print("Stamina Level -> " + PlayerData.stamina);
 	}
 
 
+	// godot event methods
 	public override void _Ready()
 	{
 		base._Ready();
@@ -299,7 +307,7 @@ public partial class playerone : CharacterBody3D
 	}
 
 
-	
+	// functions
 	private void _HandleLeaning(double delta)
 	{
 		if (leaningcheck) // if leaning, lerp to target
@@ -395,7 +403,7 @@ public partial class playerone : CharacterBody3D
 
 
 		// Action -> sprinting ---------------------------------------------------------------
-		if (Input.IsActionPressed("sprint") && IsNeutralState() && HasStamina(5))
+		if (Input.IsActionPressed("sprint") && IsNeutralState() && HasMinActionStamina(SPRINT_USAGE_RATE))
 		{
 			//float CurrentFOV = camera.Fov;
 			SetState(MovementState.running);
@@ -404,13 +412,7 @@ public partial class playerone : CharacterBody3D
 
 		}
 		
-		if (Input.IsActionJustReleased("sprint") && currentState == MovementState.running)
-		{   
-			//float CurrentFOV = camera.Fov;
-			SetDefaultState();
-			SPEED = DEFAULT_SPEED;
-			targetFOV = FOV_DEFAULT;
-		}
+		if (Input.IsActionJustReleased("sprint") && currentState == MovementState.running) StopSprint();
 
 
 		// Action -> leaning ---------------------------------------------------------------
@@ -439,7 +441,7 @@ public partial class playerone : CharacterBody3D
 
 
 		// Action -> jumping ------------------------------------------------------------------
-		if (Input.IsActionJustPressed("jump") && IsOnFloor() && HasStamina(15))
+		if (Input.IsActionJustPressed("jump") && IsOnFloor() && HasMinActionStamina(JUMP_USAGE_RATE))
 		{
 			Velocity = new Vector3(Velocity.X, JUMP_VELOCITY, Velocity.Z);
 			JumpDrainStamina();
@@ -523,8 +525,8 @@ public partial class playerone : CharacterBody3D
 	{
 		// position in map
 		PlayerData.player_position = GlobalPosition; 
-
 		PlayerData.camera_position = camera.GlobalPosition; 
+		
 		// direction looking
 		PlayerData.look_direction = camera.GlobalTransform.Basis.Z * -1.0f;
 

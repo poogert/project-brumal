@@ -30,7 +30,6 @@ public partial class BorisScript : Node3D, Interactable
 		sound.Play();
 		
 		line++;
-
 	}
 
 	public void Interact()
