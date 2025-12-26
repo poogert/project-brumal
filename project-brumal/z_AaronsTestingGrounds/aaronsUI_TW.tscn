@@ -1,0 +1,137 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8pgtyfm87bke"]
+
+[ext_resource type="Script" uid="uid://ccr3hx5pc5vlv" path="res://z_AaronsTestingGrounds/hotbarButtonManager.gd" id="1_3sp5r"]
+[ext_resource type="Texture2D" uid="uid://pl75dcrehkkf" path="res://z_AaronsTestingGrounds/ItemSlotsBackpack.png" id="1_thwdi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxycp"]
+texture = ExtResource("1_thwdi")
+expand_margin_left = 20.0
+expand_margin_top = 40.0
+expand_margin_right = 20.0
+region_rect = Rect2(0, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_143ap"]
+texture = ExtResource("1_thwdi")
+region_rect = Rect2(0, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sf0lj"]
+texture = ExtResource("1_thwdi")
+expand_margin_left = 20.0
+expand_margin_top = 40.0
+expand_margin_right = 20.0
+region_rect = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3sp5r"]
+texture = ExtResource("1_thwdi")
+region_rect = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a84ms"]
+texture = ExtResource("1_thwdi")
+expand_margin_left = 20.0
+expand_margin_top = 40.0
+expand_margin_right = 20.0
+region_rect = Rect2(256, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n8xg5"]
+texture = ExtResource("1_thwdi")
+region_rect = Rect2(256, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kefjd"]
+texture = ExtResource("1_thwdi")
+expand_margin_left = 20.0
+expand_margin_top = 40.0
+expand_margin_right = 20.0
+region_rect = Rect2(384, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bxlry"]
+texture = ExtResource("1_thwdi")
+region_rect = Rect2(384, 0, 128, 128)
+
+[node name="AaronsUiTw" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HotbarMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("menu_screen", "buttonPic", "buttonFlare", "buttonLight", "buttonGrapple")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3sp5r")
+menu_screen = NodePath("VBoxContainer")
+buttonPic = NodePath("VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer/PicButton")
+buttonFlare = NodePath("VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer/FlareButton")
+buttonLight = NodePath("VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer/LightButton")
+buttonGrapple = NodePath("VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer/GrappleButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HotbarMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 30
+
+[node name="baseMenuScreen" type="MarginContainer" parent="HotbarMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HotbarMenu/VBoxContainer/baseMenuScreen"]
+layout_mode = 2
+patch_margin_left = 350
+patch_margin_top = 150
+patch_margin_right = 350
+
+[node name="MarginContainer" type="MarginContainer" parent="HotbarMenu/VBoxContainer/baseMenuScreen/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HotbarMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PicButton" type="Button" parent="HotbarMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_vxycp")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_143ap")
+
+[node name="FlareButton" type="Button" parent="HotbarMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_sf0lj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3sp5r")
+
+[node name="LightButton" type="Button" parent="HotbarMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_a84ms")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_n8xg5")
+
+[node name="GrappleButton" type="Button" parent="HotbarMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_kefjd")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bxlry")
+
+[node name="Seperator" type="Control" parent="HotbarMenu/VBoxContainer/baseMenuScreen/NinePatchRect"]
+anchors_preset = 0
+offset_top = -30.0
+offset_bottom = -30.0
