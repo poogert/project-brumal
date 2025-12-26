@@ -174,7 +174,56 @@ shadow_blur = 0.2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1rsa4")
 
+<<<<<<< Updated upstream
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+=======
+[node name="World" type="Node" parent="."]
+
+[node name="Player" parent="World" groups=["Player"] instance=ExtResource("1_s7hj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012494087, 1.0067961, 0.008619785)
+
+[node name="BeginningMap" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.945353, 12.857117, -20.356094)
+
+[node name="FakeMountains" type="MeshInstance3D" parent="World/BeginningMap"]
+transform = Transform3D(-30.025177, 0, 95.38601, 0, 100, 0, -95.38601, 0, -30.025177, -23.988548, 1.2729034, -23.727608)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_d2ih8")
+skeleton = NodePath("")
+
+[node name="CabinTiny" parent="World/BeginningMap" instance=ExtResource("11_66q87")]
+transform = Transform3D(0.18158054, 0, -0.14116837, 0, 0.23, 0, 0.14116837, 0, 0.18158054, -66.680305, -5.74475, -51.73858)
+
+[node name="Trees" type="Node" parent="World/BeginningMap"]
+
+[node name="ValleyV2" type="Node3D" parent="World/BeginningMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.495497, -5.198351, -25.275917)
+
+[node name="MapMesh" type="MeshInstance3D" parent="World/BeginningMap/ValleyV2"]
+transform = Transform3D(22.4, 0, 0, 0, 22.4, 0, 0, 0, 22.4, 0, 0, 0)
+mesh = SubResource("ArrayMesh_hlkpg")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/BeginningMap/ValleyV2/MapMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/BeginningMap/ValleyV2/MapMesh/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_66q87")
+
+[node name="PlaceHolderAvalanche" type="CSGBox3D" parent="World/BeginningMap"]
+transform = Transform3D(-1.0685205, -0.78385264, -12.372879, 12.313365, 0.46190855, -12.768599, 15.723841, -0.41498837, 9.158307, -28.162443, -4.9044294, 39.94947)
+use_collision = true
+size = Vector3(0.9364624, 11.074768, 0.46801758)
+
+[node name="PlaceHolderCar" type="CSGBox3D" parent="World/BeginningMap"]
+transform = Transform3D(18.882353, 0, 6.592164, 0, 0.9999999, 0, -6.592164, 0, 18.882353, -15.042259, -4.1402817, 33.997234)
+use_collision = true
+size = Vector3(0.30137634, 3.100113, 0.16241455)
+material = SubResource("StandardMaterial3D_p6wwr")
+
+[node name="OGTestMap" type="Node3D" parent="World"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="World/OGTestMap"]
+>>>>>>> Stashed changes
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, -0.08036649, -0.07419598, 0.010324717)
 use_collision = true
 
@@ -230,6 +279,7 @@ transform = Transform3D(0.9977603, -0.0544439, -0.03886217, 0.053139616, 0.99801
 [node name="Fence2" parent="." instance=ExtResource("5_epj0r")]
 transform = Transform3D(0.94215107, 0.22206643, -0.2510735, -0.22294968, 0.9745017, 0.025298657, 0.25028956, 0.03214162, 0.96763754, 15.534201, 1.55369, 4.009611)
 
+<<<<<<< Updated upstream
 [node name="Crate" parent="." instance=ExtResource("6_g6lwf")]
 transform = Transform3D(0.980928, 0, 0.19437131, 0, 1, 0, -0.19437131, 0, 0.980928, 13.211747, 0.75371516, 0.85915345)
 
@@ -267,3 +317,41 @@ transform = Transform3D(0.19893698, 0.02059323, 0, -0.02059323, 0.19893698, 0, 0
 
 [node name="SnowSpruce4" parent="ValleySmooth" instance=ExtResource("9_52sjw")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.4898825, -0.054481983, -8.899033)
+=======
+[node name="TestingStuff" type="Node3D" parent="World/OGTestMap"]
+
+[node name="Crate" parent="World/OGTestMap/TestingStuff" instance=ExtResource("12_j0qli")]
+transform = Transform3D(0.68926555, 0, 0.72450876, 0, 1, 0, -0.72450876, 0, 0.68926555, 17.179577, 0.8760606, 0.098232895)
+
+[node name="Crate2" parent="World/OGTestMap/TestingStuff" instance=ExtResource("12_j0qli")]
+transform = Transform3D(-0.1915628, 0, -0.98148036, 0, 1, 0, 0.98148036, 0, -0.1915628, 17.156467, 1.6760609, 0.013790563)
+
+[node name="Crate3" parent="World/OGTestMap/TestingStuff" instance=ExtResource("12_j0qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.860978, 0.80779743, -2.9054508)
+
+[node name="boris" parent="World/OGTestMap/TestingStuff" instance=ExtResource("14_vfsg6")]
+transform = Transform3D(0.23826863, 0, 0.07568396, 0, 0.25, 0, -0.07568396, 0, 0.23826863, -6.1137533, 1.4528075, -2.8644056)
+
+[node name="Ore" parent="World/OGTestMap/TestingStuff" instance=ExtResource("16_ep2rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.887019, 1.8899016, 4.9641023)
+
+[node name="Ore2" parent="World/OGTestMap/TestingStuff" instance=ExtResource("16_ep2rr")]
+transform = Transform3D(0.7116755, 0.7020524, 0.025304573, -0.7022773, 0.71190345, 0, -0.018014412, -0.017770827, 0.9996798, 13.579457, 2.20194, 4.9641023)
+
+[node name="Ore3" parent="World/OGTestMap/TestingStuff" instance=ExtResource("16_ep2rr")]
+transform = Transform3D(0.857095, 0.4622119, 0.22748236, -0.4496945, 0.4558585, 0.76809347, 0.25132215, -0.76062673, 0.5985682, 13.565094, 1.6938556, 4.9641023)
+
+[node name="Flarebundle" parent="World/OGTestMap/TestingStuff" instance=ExtResource("13_38b5b")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 14.223848, 0.4884167, 3.9371126)
+
+[node name="Trees" type="Node3D" parent="World/OGTestMap"]
+
+[node name="SnowSpruce" parent="World/OGTestMap/Trees" instance=ExtResource("17_tamf2")]
+transform = Transform3D(0.19945984, -0.014689415, 0, 0.014689415, 0.19945984, 0, 0, 0, 0.2, 2.8000064, 0.4424218, -7.919018)
+
+[node name="SnowSpruce2" parent="World/OGTestMap/Trees" instance=ExtResource("17_tamf2")]
+transform = Transform3D(0.19397545, -0.006371837, 0.048300367, 0.0041452106, 0.1997216, 0.009700222, -0.048542187, -0.00840695, 0.19383748, 5.6080947, 0.45577562, -7.241269)
+
+[node name="camera" parent="." instance=ExtResource("17_wyl08")]
+transform = Transform3D(-0.8536236, -0.21876086, 0.47272664, 0, 0.90753573, 0.41997492, -0.52089036, 0.35850048, -0.77469397, -5.1823306, 2.0807624, -3.9046247)
+>>>>>>> Stashed changes
