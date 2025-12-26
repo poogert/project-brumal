@@ -133,7 +133,7 @@ transform = Transform3D(1, 0, 0, 0, -0.5914785, -0.8063207, 0, 0.8063207, -0.591
 [node name="JacobCaveLevel1_Pt1" type="Node" parent="."]
 
 [node name="PlayerSizeRefrence Mesh" type="MeshInstance3D" parent="JacobCaveLevel1_Pt1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09999889, 1.5000002, 31.599998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8000011, 1.5000002, 84.000015)
 mesh = SubResource("CapsuleMesh_jj0b7")
 surface_material_override/0 = SubResource("StandardMaterial3D_jj0b7")
 
@@ -383,6 +383,157 @@ radius = 4.2000003
 height = 17.850002
 
 [node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.649999, 0, 41.699997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450001, 0, 41.699997)
 use_collision = true
 size = Vector3(7.5, 1, 16)
+
+[node name="CaveRoom_Medium" type="Node" parent="JacobCaveLevel1_Pt2"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3999985, 0, 57.899994)
+use_collision = true
+radius = 9.2
+height = 1.0
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium"]
+transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, -0.30000305, 0.5, 57.599995)
+radius = 10.2
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium/CSGSphere3D"]
+transform = Transform3D(1.179953, 0, 0, 0, 0.85563076, 0, 0, 0, 1, -0.099999905, 1.0999999, 0.19999695)
+operation = 2
+radius = 8.2
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium/CSGSphere3D"]
+transform = Transform3D(0.5, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.371139e-08, -1.7881393e-07, 0.19999981, -8.418755)
+operation = 2
+radius = 5.0
+height = 3.6375
+
+[node name="ExitRight" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium/CSGSphere3D"]
+transform = Transform3D(0.5, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.371139e-08, -3.0000005, 0.19999981, 8.110935)
+operation = 2
+radius = 5.0
+height = 4.259375
+
+[node name="WideHallway_Medium" type="Node" parent="JacobCaveLevel1_Pt2"]
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Medium"]
+transform = Transform3D(0.66, 0, 0, 0, 9.685755e-08, -1.0000001, 0, 1.0000001, 9.685755e-08, -3.5, -0.19999872, 78.6125)
+use_collision = true
+radius = 5.43
+height = 25.725
+sides = 11
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Medium/CSGCylinder3D2"]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999877, 1.0658141e-12, 0, -1.0658141e-12, 0.9999877, 0, -1.7679367, -0.69999886)
+operation = 2
+radius = 4.2000003
+height = 29.639065
+
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Medium/CSGCylinder3D2"]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99997187, 4.504841e-12, 0, -4.504841e-12, 0.99997187, 5.096969, 6, -1.3999946)
+operation = 2
+size = Vector3(3.4, 2, 1.4)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Medium"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 7.1054274e-15, 0, -7.1054274e-15, 0.99999994, -3.7500007, 3.6237675e-14, 78.05)
+use_collision = true
+size = Vector3(7.1, 1, 26.9)
+
+[node name="WideHallway_Short3" type="Node" parent="JacobCaveLevel1_Pt2"]
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short3"]
+transform = Transform3D(0.65999997, -2.9802322e-08, 3.5527133e-15, 1.0192998e-08, 0.34202024, -0.9396925, 2.8005019e-08, 0.9396927, 0.34202018, 15.1, 2.365886, 95.02365)
+use_collision = true
+radius = 5.43
+height = 16.0
+sides = 11
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short3/CSGCylinder3D2"]
+transform = Transform3D(1, 0, -7.1054274e-14, -6.3948846e-14, 1, 0, 7.993606e-15, 0, 1, 0, 0.41874695, -0.69999695)
+operation = 2
+radius = 4.2000003
+height = 17.0625
+
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short3"]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 15.050002, 2.5709226, 95.00222)
+use_collision = true
+size = Vector3(6.7000003, 1, 15.900001)
+
+[node name="WideHallway_Short4" type="Node" parent="JacobCaveLevel1_Pt2"]
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short4"]
+transform = Transform3D(9.528041e-10, 1, 5.9604645e-08, 1.3322675e-15, 8.940696e-08, -0.99999976, -0.65999997, -1.3909068e-08, -4.759836e-15, 6.150012, -0.20000026, 83.700005)
+use_collision = true
+radius = 5.43
+height = 13.8
+sides = 11
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short4/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.9528385e-13, 5.886879e-20, 8.9528385e-13, 1, 0, 4.1046867, -0.6999999)
+operation = 2
+radius = 4.2000003
+height = 5.8406253
+
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short4/CSGCylinder3D2"]
+transform = Transform3D(-4.371139e-08, 0.99997926, 8.9408445e-08, -0.9999999, -4.3710475e-08, -8.940513e-08, -8.940391e-08, -8.941151e-08, 0.99997926, -0.7091141, -2.9499898, -1.449991)
+operation = 2
+size = Vector3(8.400001, 4.7000003, 1.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short4"]
+transform = Transform3D(-4.371139e-08, 1.4901161e-08, 1, 0, 1, -1.4901161e-08, -1, -6.5135044e-16, -4.371139e-08, 5.39999, 0.15000075, 83.950005)
+use_collision = true
+size = Vector3(7.1, 0.7, 13.7)
+
+[node name="WideHallway_Short6" type="Node" parent="JacobCaveLevel1_Pt2"]
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short6"]
+transform = Transform3D(0.65999997, -2.9802319e-08, 3.877981e-15, 1.3322674e-15, 8.940695e-08, -1.7999995, 2.9802319e-08, 0.99999994, 1.0728836e-07, -3.7999988, -0.8400009, 96.100006)
+use_collision = true
+radius = 5.43
+height = 9.200001
+sides = 11
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short6/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 1.0460857e-19, 1.7763568e-15, 1, 1.4352963e-12, 5.791588e-20, 8.9528385e-13, 1, -0.30303144, 0.5068588, -0.8111106)
+operation = 2
+radius = 4.2000003
+height = 10.131886
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short6/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 6.140989e-20, 1.7763568e-15, 1, 8.1712415e-13, 5.791588e-20, 8.9528385e-13, 0.5999999, 0.30303, -4.2900085, -0.8111104)
+operation = 2
+radius = 3.6000001
+height = 0.6659425
+
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short6"]
+transform = Transform3D(1, 0, 0, 0, 1.8, -1.4901161e-08, 0, 2.682209e-08, 1, -4.0499988, -0.20999882, 96.049995)
+use_collision = true
+size = Vector3(7.1, 0.7, 9.3)
+
+[node name="WideHallway_Short5" type="Node" parent="JacobCaveLevel1_Pt2"]
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short5"]
+transform = Transform3D(0.65999997, -2.980232e-08, 2.154434e-15, 1.3322674e-15, 8.940696e-08, -0.99999976, 2.9802319e-08, 1, 5.9604645e-08, 15.200001, -0.20000009, 83.30001)
+use_collision = true
+radius = 5.43
+height = 8.6
+sides = 11
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short5/CSGCylinder3D2"]
+transform = Transform3D(1, 0, -4.2351647e-22, 0, 1, -8.9528385e-13, -1.0376154e-20, 8.9528385e-13, 1, 0, 1.559372, -0.69999987)
+operation = 2
+radius = 4.2000003
+height = 10.93125
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short5/CSGCylinder3D2"]
+transform = Transform3D(-4.371139e-08, 1, 8.940618e-08, -1, -4.371138e-08, -8.940698e-08, -8.940698e-08, -8.9406086e-08, 1, -4.2898884, 1.2421799, -0.70000017)
+operation = 2
+radius = 2.1000001
+height = 1.8828123
+
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short5"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.4901161e-08, 0, 1.4901161e-08, 1, 15.050001, 0.1500007, 83.399994)
+use_collision = true
+size = Vector3(6.9, 0.7, 8.400001)
