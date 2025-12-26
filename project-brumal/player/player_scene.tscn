@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://cti7pj4dw0gj1"]
 
 [ext_resource type="Script" uid="uid://cmo1vq0u4jar" path="res://player/playerone.cs" id="1_0khpw"]
-[ext_resource type="PackedScene" uid="uid://bv1s3ttdjglvf" path="res://player/cinematic_camera.tscn" id="2_0la1k"]
 [ext_resource type="PackedScene" uid="uid://kanh0xk5woki" path="res://3D Assets/Items/item_lamp/Lamp.tscn" id="3_qcawg"]
 [ext_resource type="PackedScene" uid="uid://ci7t4slbk4i2b" path="res://3D Assets/Items/item_pickaxe/Pickaxe.tscn" id="3_qvpcs"]
 [ext_resource type="PackedScene" uid="uid://cdetuqiat7x7p" path="res://3D Assets/Items/item_flare/Flare.tscn" id="4_tr6w4"]
 [ext_resource type="PackedScene" uid="uid://dpjqjwkbd81rt" path="res://3D Assets/Items/item_grapple_hook/GrappleHook.tscn" id="5_tr6w4"]
 [ext_resource type="Script" uid="uid://lqf6nkq3t8nc" path="res://player/GrapplePointScript.cs" id="7_ulli2"]
 [ext_resource type="PackedScene" uid="uid://h4wvm1qcl6i1" path="res://scripts/game-tools/interactLogic/interactray.tscn" id="8_ulli2"]
-[ext_resource type="Texture2D" uid="uid://dj2k1ywdicf6k" path="res://2D Assets/UI assets/crosshari.png" id="11_x61a0"]
+[ext_resource type="AudioStream" uid="uid://dn4uh6xlq1ru1" path="res://player/misc/test voicelines/tools.mp3" id="9_0la1k"]
+[ext_resource type="Texture2D" uid="uid://b7qgkdjgifqix" path="res://2D Assets/UI assets/crosshari.png" id="11_x61a0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ciewh"]
 
@@ -20,7 +20,7 @@ height = 1.0
 
 [node name="Player" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("StandCol", "CrouchCol", "Player", "head", "camera", "headeffects", "handeffects")]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("StandCol", "CrouchCol", "Player", "head", "camera", "headeffects", "handeffects", "sound", "staminaTimer")]
 disable_mode = 2
 slide_on_ceiling = false
 script = ExtResource("1_0khpw")
@@ -31,7 +31,8 @@ head = NodePath("head_pivot")
 camera = NodePath("head_pivot/head_adjustments/head_camera")
 headeffects = NodePath("head_pivot/head_adjustments")
 handeffects = NodePath("head_pivot/head_adjustments/head_camera/hand_root/hand_root_bobbing")
-cinematics = ExtResource("2_0la1k")
+sound = NodePath("../voice")
+staminaTimer = NodePath("../timer-for-stamina")
 lamp = ExtResource("3_qcawg")
 pickaxe = ExtResource("3_qvpcs")
 flare = ExtResource("4_tr6w4")
@@ -83,3 +84,10 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_x61a0")
+
+[node name="voice" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_0la1k")
+
+[node name="timer-for-stamina" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true

@@ -1,12 +1,13 @@
 [gd_scene load_steps=7 format=4 uid="uid://cvn4v80jti17j"]
 
 [ext_resource type="Script" uid="uid://dgc4jxe1vtyi0" path="res://scripts/game-tools/interactLogic/InteractableBox.cs" id="1_qo54l"]
-[ext_resource type="Texture2D" uid="uid://xli5dhi8kgsx" path="res://3D Assets/Objects/WorldProps/prop_boombox/BoomBox_Boombox.png" id="2_ans1h"]
+[ext_resource type="Texture2D" uid="uid://coyhkkrd8uklg" path="res://3D Assets/Objects/WorldProps/prop_boombox/BoomBox_Boombox.png" id="2_ans1h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lget"]
 resource_name = "Material"
 cull_mode = 2
 albedo_texture = ExtResource("2_ans1h")
+metallic_specular = 0.2
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kxb7h"]

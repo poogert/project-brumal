@@ -1,21 +1,21 @@
 [gd_scene load_steps=31 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
-[ext_resource type="Texture2D" uid="uid://5qbfx160dbvp" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
-[ext_resource type="Texture2D" uid="uid://pfek5hrhdkmq" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
-[ext_resource type="PackedScene" uid="uid://c5cwdcujmfd8v" path="res://3D Assets/Objects/WorldProps/prop_switch/Switch.tscn" id="4_1tbxl"]
-[ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="4_rsmj0"]
+[ext_resource type="Texture2D" uid="uid://c34hjksmmlxdb" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
+[ext_resource type="Texture2D" uid="uid://dlywkhd0v882w" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
 [ext_resource type="PackedScene" uid="uid://cvn4v80jti17j" path="res://scripts/game-tools/interactLogic/interactableboxscene.tscn" id="8_52sjw"]
-[ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprice.tscn" id="9_52sjw"]
-[ext_resource type="AudioStream" uid="uid://bowq8qoaiiy00" path="res://sounds/poocus.wav" id="10_38b5b"]
-[ext_resource type="Texture2D" uid="uid://p0g3uglh6bub" path="res://3D Assets/MapChunks/fakemountains_FakeMountains.png" id="10_ud8pw"]
-[ext_resource type="PackedScene" uid="uid://cxv5e357tvvs1" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
+[ext_resource type="AudioStream" uid="uid://dg43j4vpucfn7" path="res://sounds/poocus.wav" id="10_38b5b"]
+[ext_resource type="PackedScene" uid="uid://c5cwdcujmfd8v" path="res://3D Assets/Objects/WorldProps/prop_switch/Switch.tscn" id="10_ep2rr"]
+[ext_resource type="Texture2D" uid="uid://dlpqhmxwhxie3" path="res://3D Assets/MapChunks/fakemountains_FakeMountains.png" id="10_ud8pw"]
+[ext_resource type="PackedScene" uid="uid://bhau7ko2mtd77" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
 [ext_resource type="PackedScene" uid="uid://b3em27gyxvvw8" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate.tscn" id="12_j0qli"]
 [ext_resource type="PackedScene" uid="uid://dmihgh6q7jbu5" path="res://scripts/game-tools/tool_levelloader/LoadLevelCollision.tscn" id="12_p6wwr"]
 [ext_resource type="PackedScene" uid="uid://cxlggn0na2ylr" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="13_38b5b"]
 [ext_resource type="PackedScene" uid="uid://x5t500dddovd" path="res://maps/testLevel.tscn" id="13_j0qli"]
-[ext_resource type="PackedScene" uid="uid://iwf5gtpuwcof" path="res://Models/Characters/Boris/boris.tscn" id="14_vfsg6"]
+[ext_resource type="PackedScene" uid="uid://cie8veob6lupg" path="res://Models/Characters/Boris/boris.tscn" id="14_vfsg6"]
 [ext_resource type="PackedScene" uid="uid://bcutbo6gb0hvk" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="16_ep2rr"]
+[ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="16_wyl08"]
+[ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprUce.tscn" id="17_tamf2"]
 [ext_resource type="PackedScene" uid="uid://bv1s3ttdjglvf" path="res://player/cinematic_camera.tscn" id="17_wyl08"]
 
 [sub_resource type="Environment" id="Environment_1rsa4"]
@@ -193,45 +193,6 @@ transform = Transform3D(0.18158054, 0, -0.14116837, 0, 0.23, 0, 0.14116837, 0, 0
 
 [node name="Trees" type="Node" parent="World/BeginningMap"]
 
-[node name="SnowSpruce" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.2, 0, 0, 0, 0.19916163, 0.018293371, 0, -0.018293371, 0.19916163, -40.85878, 8.091024, -62.886974)
-
-[node name="SnowSpruce2" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.19961925, -0.012283429, -0.001128256, 0.0123351365, 0.1987825, 0.018258546, 0, -0.018293371, 0.19916166, -35.027466, 7.571001, -72.22099)
-
-[node name="SnowSpruce3" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.19971217, -0.01068018, -0.0009809947, 0.010725138, 0.19887505, 0.018267049, -6.967684e-11, -0.018293368, 0.19916162, -28.028593, 8.328265, -75.88535)
-
-[node name="SnowSpruce4" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.19995743, 0.004108371, 0.00037736163, -0.004125663, 0.19911927, 0.018289478, -9.2954956e-11, -0.01829337, 0.19916163, -36.756348, 7.571001, -79.113914)
-
-[node name="SnowSpruce8" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.1999574, 0.004108371, 0.0003773616, -0.004096955, 0.199888, -0.005291596, -0.00048584933, 0.0052827466, 0.19992962, 6.539774, 7.571005, -17.93836)
-
-[node name="SnowSpruce9" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.23926772, 0.018733675, 8.6444554e-05, -0.0187248, 0.23918374, -0.0063654627, -0.00058301934, 0.006339296, 0.23991555, 1.1592445, 9.126648, -19.70638)
-
-[node name="SnowSpruce12" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.1999574, 0.004108371, 0.0003773616, -0.004096955, 0.199888, -0.005291596, -0.00048584933, 0.0052827466, 0.19992962, 27.172619, -2.4410267, -20.448706)
-
-[node name="SnowSpruce13" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.23939991, -0.01693013, 0.0010291116, 0.01695136, 0.23931819, -0.006282318, -0.00058301934, 0.0063392962, 0.23991555, 18.788374, -1.8412905, -20.960161)
-
-[node name="SnowSpruce10" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.24923721, 0.019514244, 9.0046415e-05, -0.019505, 0.24914974, -0.0066306903, -0.00060731184, 0.0066034333, 0.24991204, -31.93659, 8.002014, -72.33503)
-
-[node name="SnowSpruce11" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.24950396, -0.015707582, 0.0010213619, 0.01572903, 0.24941866, -0.0065521733, -0.0006073118, 0.006603433, 0.24991201, -45.810364, 7.7168493, -68.565834)
-
-[node name="SnowSpruce5" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.19995743, 0.004108371, 0.00037736163, -0.004125663, 0.19911927, 0.018289478, -9.2954956e-11, -0.01829337, 0.19916163, -49.78727, 7.571001, -74.13875)
-
-[node name="SnowSpruce6" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.1999574, 0.004108371, 0.0003773616, -0.0039846175, 0.19705431, -0.03396655, -0.001069539, 0.033951804, 0.19709422, -44.46363, 7.571001, -81.841705)
-
-[node name="SnowSpruce7" parent="World/BeginningMap/Trees" instance=ExtResource("9_52sjw")]
-transform = Transform3D(0.1999574, 0.004108371, 0.0003773616, -0.0039846175, 0.19705431, -0.03396655, -0.001069539, 0.033951804, 0.19709422, -50.732597, 7.571001, -66.920975)
-
 [node name="ValleyV2" type="Node3D" parent="World/BeginningMap"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.495497, -5.198351, -25.275917)
 
@@ -280,16 +241,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -5.684342e-14, 0, 1, 0, 5.684342e-14, 0, 1, 0.0037214155, -0.0018684864, -0.002155304)
 shape = SubResource("ConcavePolygonShape3D_epj0r")
 
-[node name="Switch" parent="World/OGTestMap/HallwayCaveSegmentTest4" instance=ExtResource("4_1tbxl")]
-transform = Transform3D(0.97568774, 0.1376693, -0.17053045, -0.13561352, 0.9904783, 0.023702495, 0.1721698, 0, 0.9850673, -0.011066437, -0.77371573, -1.6240354)
-
-[node name="Switch2" parent="World/OGTestMap/HallwayCaveSegmentTest4" instance=ExtResource("4_1tbxl")]
-transform = Transform3D(0.99971855, 0.016867328, -0.01667671, -0.016679391, 0.9997965, 0.011342935, 0.016864609, -0.011061582, 0.9997965, 0.034023285, -0.77371573, -2.4433987)
-
-[node name="WallLampBody" parent="World/OGTestMap" node_paths=PackedStringArray("_Switch") instance=ExtResource("4_rsmj0")]
-transform = Transform3D(0.29999998, 0, 0, 0, 0.2936923, -0.061195042, 0, 0.061195042, 0.2936923, 19.383831, 4.157125, 2.1900342)
-_Switch = NodePath("../HallwayCaveSegmentTest4/Switch")
-
 [node name="interactablebox" parent="World/OGTestMap" node_paths=PackedStringArray("sound") instance=ExtResource("8_52sjw")]
 transform = Transform3D(0.7350448, 0, 0.67801857, 0, 1, 0, -0.67801857, 0, 0.7350448, -7.9385033, 0.7554387, -8.228663)
 sound = NodePath("coolio")
@@ -305,6 +256,13 @@ attenuation_filter_db = -80.0
 transform = Transform3D(3.4064636, 0, 0, 0, 2.6372397, 0, 0, 0, 1.8967273, 19.063076, 2.408854, -5.119117)
 next_level = ExtResource("13_j0qli")
 
+[node name="WallLampBody" parent="World/OGTestMap" node_paths=PackedStringArray("_Switch") instance=ExtResource("16_wyl08")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 19.235332, 4.3752947, 1.4375219)
+_Switch = NodePath("Switch")
+
+[node name="Switch" parent="World/OGTestMap/WallLampBody" instance=ExtResource("10_ep2rr")]
+transform = Transform3D(3.3333328, 0, 0, 0, 3.3333328, 0, 0, 0, 3.3333328, -8.806252, -8.510425, -10.684543)
+
 [node name="Crate" parent="." instance=ExtResource("12_j0qli")]
 transform = Transform3D(0.68926555, 0, 0.72450876, 0, 1, 0, -0.72450876, 0, 0.68926555, 17.179577, 0.8760606, 0.098232895)
 
@@ -315,7 +273,7 @@ transform = Transform3D(-0.1915628, 0, -0.98148036, 0, 1, 0, 0.98148036, 0, -0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.860978, 0.80779743, -2.9054508)
 
 [node name="boris" parent="." instance=ExtResource("14_vfsg6")]
-transform = Transform3D(0.2001456, 0, 0.06357452, 0, 0.20999998, 0, -0.06357452, 0, 0.2001456, -6.1137533, 1.3089637, -2.8644056)
+transform = Transform3D(0.23826863, 0, 0.07568396, 0, 0.25, 0, -0.07568396, 0, 0.23826863, -6.1137533, 1.4528075, -2.8644056)
 
 [node name="Ore" parent="." instance=ExtResource("16_ep2rr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.887019, 1.8899016, 4.9641023)
@@ -331,3 +289,9 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 14.223848, 0.4884167, 3
 
 [node name="camera" parent="." instance=ExtResource("17_wyl08")]
 transform = Transform3D(-0.8536236, -0.21876086, 0.47272664, 0, 0.90753573, 0.41997492, -0.52089036, 0.35850048, -0.77469397, -5.1823306, 2.0807624, -3.9046247)
+
+[node name="SnowSpruce" parent="." instance=ExtResource("17_tamf2")]
+transform = Transform3D(0.19945984, -0.014689415, 0, 0.014689415, 0.19945984, 0, 0, 0, 0.2, 2.8000064, 0.4424218, -7.919018)
+
+[node name="SnowSpruce2" parent="." instance=ExtResource("17_tamf2")]
+transform = Transform3D(0.19397545, -0.006371837, 0.048300367, 0.0041452106, 0.1997216, 0.009700222, -0.048542187, -0.00840695, 0.19383748, 5.6080947, 0.45577562, -7.241269)

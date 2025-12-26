@@ -18,6 +18,7 @@ public partial class PickaxeScript : Node3D
 
 	public override void _Process(double delta)
 	{
+
 		if (Input.IsActionPressed("leftclick"))
 		{
 			holdingTimer += delta;
@@ -87,8 +88,7 @@ public partial class PickaxeScript : Node3D
 
 	private void PrintTree(Node node, int depth = 0)
 	{
-		if (node == null)
-			return;
+		if (node == null) return;
 
 		string indent = new string(' ', depth * 2);
 

@@ -1,26 +1,52 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo6db23py38y8"]
+[gd_scene load_steps=17 format=3 uid="uid://bo6db23py38y8"]
+
+[sub_resource type="Curve" id="Curve_prink"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.57575756, 0.82022476), -1.1632519, -1.1632519, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cldbv"]
+curve = SubResource("Curve_prink")
+
+[sub_resource type="Gradient" id="Gradient_5obje"]
+colors = PackedColorArray(1, 0, 0.039215688, 1, 1, 0.36862746, 0.24313726, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ab7pr"]
+gradient = SubResource("Gradient_5obje")
+
+[sub_resource type="Curve" id="Curve_426ut"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.3181818, 0.7865169), -0.68452895, -0.68452895, 0, 0, Vector2(0.719697, 0.3146069), -2.0128415, -2.0128415, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_shq7r"]
+curve = SubResource("Curve_426ut")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_prink"]
 lifetime_randomness = 1.0
 emission_shape_scale = Vector3(0, 0, 0)
-angle_min = -346.3
-angle_max = 373.7
-spread = 2.0
-initial_velocity_min = 306.99
-initial_velocity_max = 407.47
-gravity = Vector3(0, 20, 0)
-damping_min = 26.186
-damping_max = 53.048004
+angle_min = -44.99999
+angle_max = 45.00001
+spread = 4.222
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_shq7r")
+color = Color(0.8156863, 0.4627451, 0.3529412, 1)
+color_ramp = SubResource("GradientTexture1D_ab7pr")
+alpha_curve = SubResource("CurveTexture_cldbv")
+sub_emitter_mode = 1
+sub_emitter_frequency = 31.59
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prink"]
+transparency = 1
 cull_mode = 2
-depth_draw_mode = 2
-shading_mode = 0
-disable_fog = true
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0, 0.18281268, 1)
-refraction_enabled = true
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(0.7751965, 0.042391047, 1.92523e-07, 1)
+emission_energy_multiplier = 7.0
 billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
@@ -29,12 +55,42 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_prink")
 size = Vector2(0.07, 0.07)
 
+[sub_resource type="Curve" id="Curve_cldbv"]
+_data = [Vector2(0, 0), 0.0, -0.725795, 0, 0, Vector2(0.21212122, 0.48314613), 0.0, 0.0, 0, 0, Vector2(0.74242425, 0.516854), -0.88357633, -0.88357633, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5obje"]
+curve = SubResource("Curve_cldbv")
+
+[sub_resource type="Curve" id="Curve_ab7pr"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.0075757504, 0), 0.0, -0.49438187, 0, 0, Vector2(0.22727272, 0.15730357), 2.076404, 2.076404, 0, 0, Vector2(0.54545456, 0.51685405), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_426ut"]
+curve = SubResource("Curve_ab7pr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_shq7r"]
+lifetime_randomness = 1.0
+angle_min = -49.99999
+angle_max = 50.00001
+spread = 51.667
+initial_velocity_max = 5.0
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_426ut")
+alpha_curve = SubResource("CurveTexture_5obje")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cldbv"]
 transparency = 1
-blend_mode = 1
-shading_mode = 0
-albedo_color = Color(0.1148968, 0.11489681, 0.1148968, 1)
-billboard_mode = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.5251013, 0.5251013, 0.5251013, 1)
+metallic_specular = 0.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_prink"]
 material = SubResource("StandardMaterial3D_cldbv")
@@ -46,7 +102,7 @@ transform = Transform3D(-2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0, 0, 0,
 [node name="burn" type="GPUParticles3D" parent="."]
 gi_mode = 2
 amount = 750
-lifetime = 0.1
+sub_emitter = NodePath("../smoke")
 preprocess = 0.32
 randomness = 1.0
 visibility_aabb = AABB(-50, -25, -25, 300, 50, 50)
@@ -56,12 +112,9 @@ draw_pass_1 = SubResource("QuadMesh_cldbv")
 
 [node name="smoke" type="GPUParticles3D" parent="."]
 gi_mode = 2
-amount = 500
+amount = 300
 lifetime = 2.0
-preprocess = 0.32
-speed_scale = 0.1
 randomness = 1.0
 visibility_aabb = AABB(0, -150, -150, 500, 300, 300)
-draw_order = 3
-process_material = SubResource("ParticleProcessMaterial_prink")
+process_material = SubResource("ParticleProcessMaterial_shq7r")
 draw_pass_1 = SubResource("QuadMesh_prink")

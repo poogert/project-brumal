@@ -1,4 +1,6 @@
 using Godot;
+using System;
+using System.Collections;
 using System.Threading.Tasks;
 
 public partial class playerone : CharacterBody3D
@@ -13,34 +15,11 @@ public partial class playerone : CharacterBody3D
 	private const float FOV_SPRINT = 85f;
 	private const float ROTATION_AMOUNT = 35f;
 	private const float ITEM_OUT_OFFSET = -1.0f;
-
 	private float _itemRestY; // rest
-
-	public enum MovementState
-	{
-		idle,
-		running,
-		crouching,
-		crawling
-
-	}
-
-	public enum Items
-	{
-		lamp, // 1
-		pickaxe, // 2
-		flare, // 3
-		ghook, // 4
-		map, // 5
-		empty
-
-	}
-
-	// default enum states
-	public MovementState currentState = MovementState.idle; // default state
-	
-	public Items currentItem = Items.empty;
-	
+	private const float RECOVERY_DELAY_MS = 2000f; // 2000 miliseconds = 2 seconds
+	public const int STAMINA_REGEN_RATE = 2;
+	public const int SPRINT_USAGE_RATE = 5;
+	public const int JUMP_USAGE_RATE = 15;
 
 
 	// exports
@@ -54,8 +33,8 @@ public partial class playerone : CharacterBody3D
 	[Export] public Camera3D camera; // camera reference
 	[Export] public Node3D headeffects; // HEAD
 	[Export] public Node3D handeffects; // HAND
-
-
+	[Export] AudioStreamPlayer3D sound; // voice
+	[Export] Timer staminaTimer; // how fast stamina is updated
 
 	// item scenes
 	[Export] PackedScene lamp;
@@ -80,9 +59,29 @@ public partial class playerone : CharacterBody3D
 
 	float targetFOV = 70; 	// fov lerping
 
-	// ENUM FUNCTIONS
+
+	// Item States
+	public enum Items
+	{
+		lamp, // 1
+		pickaxe, // 2
+		flare, // 3
+		ghook, // 4
+		map, // 5
+		empty,
+		all,
+		none
+	}
+
+	public Items currentItem = Items.empty;
+
 	private async Task SetItem(Items selectedItem, PackedScene item)
 	{
+		if (!HasItem(selectedItem)) { 
+			sound.Play();
+			return;
+		}
+
 		if (itemsetting) return;
 		itemsetting = true;
 
@@ -107,45 +106,172 @@ public partial class playerone : CharacterBody3D
 			
 			handeffects.AddChild(itemReference);
 			await ItemSwitchTween(false);
+
 		}
-		finally
+		finally 
 		{
 			itemsetting = false;
 		}
 	}
-
 	void RemoveItem()
 	{
+		if (handeffects.GetChildCount() <= 0) return;
 		
-		if (handeffects.GetChildCount() > 0)
+		Node child = handeffects.GetChild(0);
+		handeffects.RemoveChild(child);
+
+		child.QueueFree();
+	}
+	
+	// 1) lamp | 2) pickaxe | 3) flare | 4) grapple hook | 5) map
+	public static bool[] availableItems = {false, false, false, false, false};
+	public static void equipItem(Items item, bool give = false) {
+		switch (item) 
 		{
-
-			Node child = handeffects.GetChild(0);
-			handeffects.RemoveChild(child);
-
-			child.QueueFree();
-
+			case Items.lamp:
+				availableItems[0] = give;
+				break;
+			case Items.pickaxe:
+				availableItems[1] = give;
+				break;
+			case Items.flare:
+				availableItems[2] = give;
+				break;
+			case Items.ghook:
+				availableItems[3] = give;
+				break;
+			case Items.map:
+				availableItems[4] = give;
+				break;
+			case Items.all:
+				for (int i = 0; i < availableItems.Length; i++) { availableItems[i] = give; }
+				break;
+			default:
+				return;
 		}
-		else
+	}
+	void PrintItems() {
+
+		GD.Print(
+			"1) lamp : " + (availableItems[0] ? "available" : "NOT available") + "\n" + 
+			"2) pickaxe : " + (availableItems[1] ? "available" : "NOT available") + "\n" + 
+			"3) flare : " + (availableItems[2] ? "available" : "NOT available") + "\n" + 
+			"4) grapple-hook : " + (availableItems[3] ? "available" : "NOT available") + "\n" + 
+			"5) map : " + (availableItems[4] ? "available" : "NOT available") + "\n"
+
+		);
+
+	}
+	public bool HasItem(Items item) {
+
+		switch (item) 
 		{
+			case Items.lamp:
+				return availableItems[0];
+			case Items.pickaxe:
+				return availableItems[1];
+			case Items.flare:
+				return availableItems[2];
+			case Items.ghook:
+				return availableItems[3];
+			case Items.map:
+				return availableItems[4];
+			default:
+				return false;
+		}
+
+	}
+
+	
+	// Movement States
+	public enum MovementState
+	{
+		idle,
+		running,
+		crouching,
+		crawling,
+		walking
+	}
+	public MovementState currentState = MovementState.idle;
+
+	private bool IsNeutralState() 
+	{
+		// bool return if player is idle or walking.
+		return currentState == MovementState.idle || currentState == MovementState.walking;
+	}
+	void SetState(MovementState state)
+	{
+		if (IsNeutralState()) currentState = state;
+	}
+	void SetDefaultState() 
+	{ 
+		currentState = MovementState.idle; 
+	}
+
+	// timer for draining (ulong is for time, int is too small)
+	private ulong lastStaminaDrainTime = 0; 
+
+	void SprintDrainStamina() {
+
+		if (currentState != MovementState.running) return;
+		if ( !HasMinActionStamina(SPRINT_USAGE_RATE) ) 
+		{
+			StopSprint();
 			return;
 		}
 
+		PlayerData.stamina -= SPRINT_USAGE_RATE;
+		lastStaminaDrainTime = Time.GetTicksMsec();	
 	}
 
-	void SetState(MovementState state)
-	{
-		if (currentState == MovementState.idle) currentState = state;
+	void StopSprint() {
+		SetDefaultState();
+		SPEED = DEFAULT_SPEED;
+		targetFOV = FOV_DEFAULT;
 	}
 
-	void SetDefaultState() { currentState = MovementState.idle; }
+	void JumpDrainStamina() { 
+		PlayerData.stamina -= JUMP_USAGE_RATE; 
+		lastStaminaDrainTime = Time.GetTicksMsec();
+	}
+	
+	bool HasMinActionStamina(int min) 
+	{ 
+		return PlayerData.stamina >= min;
+	}
+
+	void RecoverStamina() {
+		if (PlayerData.stamina == PlayerData.MAX_STAMINA) return;
+		if ( (Time.GetTicksMsec() - lastStaminaDrainTime) <= RECOVERY_DELAY_MS) return;
+		if (!IsNeutralState()) return;
+
+		int minStaminaState = PlayerData.MAX_STAMINA - STAMINA_REGEN_RATE;
+		
+		if ( (PlayerData.stamina > minStaminaState) && (PlayerData.stamina < PlayerData.MAX_STAMINA) ) 
+		{ 
+			PlayerData.stamina += PlayerData.MAX_STAMINA - PlayerData.stamina; 
+		}
+
+		// if less than max then keep the regen rate
+		if (PlayerData.stamina < PlayerData.MAX_STAMINA) PlayerData.stamina += STAMINA_REGEN_RATE;
+	}
+
+	void CalculateStamina() {
+
+		SprintDrainStamina();
+		RecoverStamina();
+		GD.Print("State -> " + currentState);
+		GD.Print("Stamina Level -> " + PlayerData.stamina);
+	}
 
 
+	// godot event methods
 	public override void _Ready()
 	{
 		base._Ready();
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		_itemRestY = handeffects.Transform.Origin.Y;		
+		_itemRestY = handeffects.Transform.Origin.Y;
+		staminaTimer.Timeout += CalculateStamina;		
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -181,7 +307,7 @@ public partial class playerone : CharacterBody3D
 	}
 
 
-
+	// functions
 	private void _HandleLeaning(double delta)
 	{
 		if (leaningcheck) // if leaning, lerp to target
@@ -216,7 +342,7 @@ public partial class playerone : CharacterBody3D
 		// press o, this is meant to execute a function for testing
 		if (Input.IsActionJustPressed("debug print"))
 		{
-			GD.Print("raycast is hitting -> " + PlayerData.collider.GetParent().GetParent().Name);
+			PrintItems();
 		}
 
 		// items
@@ -229,7 +355,7 @@ public partial class playerone : CharacterBody3D
 		if (Input.IsActionJustPressed("crouch"))
 		{
 
-			if (currentState == MovementState.idle)
+			if (IsNeutralState())
 			{
 				finishedLowering = false;
 				SetState(MovementState.crouching);
@@ -254,7 +380,7 @@ public partial class playerone : CharacterBody3D
 		// Action -> crawling ---------------------------------------------------------------
 		if (Input.IsActionJustPressed("crawl"))
 		{
-			if (currentState == MovementState.idle)
+			if (IsNeutralState())
 			{
 				finishedLowering = false;
 				SetState(MovementState.crawling);
@@ -277,7 +403,7 @@ public partial class playerone : CharacterBody3D
 
 
 		// Action -> sprinting ---------------------------------------------------------------
-		if (Input.IsActionPressed("sprint") && currentState == MovementState.idle)
+		if (Input.IsActionPressed("sprint") && IsNeutralState() && HasMinActionStamina(SPRINT_USAGE_RATE))
 		{
 			//float CurrentFOV = camera.Fov;
 			SetState(MovementState.running);
@@ -286,13 +412,7 @@ public partial class playerone : CharacterBody3D
 
 		}
 		
-		if (Input.IsActionJustReleased("sprint") && currentState == MovementState.running)
-		{   
-			//float CurrentFOV = camera.Fov;
-			SetDefaultState();
-			SPEED = DEFAULT_SPEED;
-			targetFOV = FOV_DEFAULT;
-		}
+		if (Input.IsActionJustReleased("sprint") && currentState == MovementState.running) StopSprint();
 
 
 		// Action -> leaning ---------------------------------------------------------------
@@ -321,10 +441,12 @@ public partial class playerone : CharacterBody3D
 
 
 		// Action -> jumping ------------------------------------------------------------------
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && IsOnFloor() && HasMinActionStamina(JUMP_USAGE_RATE))
 		{
 			Velocity = new Vector3(Velocity.X, JUMP_VELOCITY, Velocity.Z);
+			JumpDrainStamina();
 		}
+
 
 	}
 
@@ -335,6 +457,11 @@ public partial class playerone : CharacterBody3D
 		if (!IsOnFloor()) // if not on floor add gravity to player.
 		{
 			velocity += GetGravity() * (float)delta;
+			PlayerData.IsInAir = true;
+		} 
+		else 
+		{
+			PlayerData.IsInAir = false;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
@@ -343,11 +470,13 @@ public partial class playerone : CharacterBody3D
 
 		if (direction != Vector3.Zero)
 		{
+			if (currentState == MovementState.idle) SetState(MovementState.walking);
 			velocity.X = direction.X * SPEED;
 			velocity.Z = direction.Z * SPEED;
 		}
 		else
 		{
+			if (currentState == MovementState.walking) SetDefaultState();
 			velocity.X = 0;
 			velocity.Z = 0;
 		}
@@ -396,14 +525,21 @@ public partial class playerone : CharacterBody3D
 	{
 		// position in map
 		PlayerData.player_position = GlobalPosition; 
-
+		PlayerData.camera_position = camera.GlobalPosition; 
+		
 		// direction looking
 		PlayerData.look_direction = camera.GlobalTransform.Basis.Z * -1.0f;
 
 		// looking in a x,y axis
 		PlayerData.rot_horizontal = Player.Rotation.Y;
 		PlayerData.rot_vertical = camera.Rotation.X;
+		
+		string state = currentState.ToString();
+		string item = currentItem.ToString();
 
+		PlayerData.CurrentState = state;
+		PlayerData.CurrentItem = item;
+		PlayerData.hotbarinventory = availableItems;
 	}
 
 	private async Task LerpHeadHeight(float offset)

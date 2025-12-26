@@ -1,11 +1,8 @@
 using Godot;
 using System;
 
-public partial class FlareParticlesScript : Node3D
+public partial class BorisLookAt : Node3D
 {
-	[Export] GpuParticles3D flames;
-	[Export] GpuParticles3D smoke;
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -14,7 +11,11 @@ public partial class FlareParticlesScript : Node3D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-	{
+	{	
+		Vector3 PlayerPos = PlayerData.camera_position;
+		this.GlobalPosition = PlayerPos;
 		
+		//this.transform = Player.Position
+
 	}
 }
