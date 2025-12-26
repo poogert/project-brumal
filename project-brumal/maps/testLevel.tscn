@@ -1,10 +1,13 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [gd_scene load_steps=7 format=3 uid="uid://bukty3jlgfmog"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
 [ext_resource type="Script" path="res://maps/TestLevelScript.cs" id="1_tgtyk"]
 [ext_resource type="AudioStream" uid="uid://cfl0xpynoyjo1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
 =======
+=======
+>>>>>>> Stashed changes
 [gd_scene load_steps=16 format=3 uid="uid://x5t500dddovd"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
@@ -345,4 +348,7 @@ transform = Transform3D(0.021902159, 0, -0.9997601, 0, 1, 0, 0.9997601, 0, 0.021
 
 [node name="LargeCaveRoom1" parent="." instance=ExtResource("10_oqr4r")]
 transform = Transform3D(-0.34984773, 0, 0.9368066, 0, 1, 0, -0.9368066, 0, -0.34984773, -63.854996, 1.8038912, 20.833412)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

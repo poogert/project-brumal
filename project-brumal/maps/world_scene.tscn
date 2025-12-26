@@ -280,6 +280,7 @@ transform = Transform3D(0.9977603, -0.0544439, -0.03886217, 0.053139616, 0.99801
 transform = Transform3D(0.94215107, 0.22206643, -0.2510735, -0.22294968, 0.9745017, 0.025298657, 0.25028956, 0.03214162, 0.96763754, 15.534201, 1.55369, 4.009611)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [node name="Crate" parent="." instance=ExtResource("6_g6lwf")]
 transform = Transform3D(0.980928, 0, 0.19437131, 0, 1, 0, -0.19437131, 0, 0.980928, 13.211747, 0.75371516, 0.85915345)
 
@@ -318,6 +319,8 @@ transform = Transform3D(0.19893698, 0.02059323, 0, -0.02059323, 0.19893698, 0, 0
 [node name="SnowSpruce4" parent="ValleySmooth" instance=ExtResource("9_52sjw")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.4898825, -0.054481983, -8.899033)
 =======
+=======
+>>>>>>> Stashed changes
 [node name="TestingStuff" type="Node3D" parent="World/OGTestMap"]
 
 [node name="Crate" parent="World/OGTestMap/TestingStuff" instance=ExtResource("12_j0qli")]
@@ -354,4 +357,7 @@ transform = Transform3D(0.19397545, -0.006371837, 0.048300367, 0.0041452106, 0.1
 
 [node name="camera" parent="." instance=ExtResource("17_wyl08")]
 transform = Transform3D(-0.8536236, -0.21876086, 0.47272664, 0, 0.90753573, 0.41997492, -0.52089036, 0.35850048, -0.77469397, -5.1823306, 2.0807624, -3.9046247)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
