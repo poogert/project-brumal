@@ -24,8 +24,9 @@ public partial class PlayerData : Node
 	public static string CurrentState = "";
     public static string CurrentItem = "";
     public static bool IsInAir = false;
+    public static bool IsBlocking = false;
     public static bool[] hotbarinventory = {false, false, false, false, false};
-
+    
 
     // raycast
     public static (bool colliding, Vector3? point) ray;

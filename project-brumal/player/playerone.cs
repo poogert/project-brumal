@@ -199,6 +199,11 @@ public partial class playerone : CharacterBody3D
 		// bool return if player is idle or walking.
 		return currentState == MovementState.idle || currentState == MovementState.walking;
 	}
+	private bool CanUnCrouchCheck()
+	{
+		return !(PlayerData.IsBlocking);
+	}
+
 	void SetState(MovementState state)
 	{
 		if (IsNeutralState()) currentState = state;
@@ -207,6 +212,7 @@ public partial class playerone : CharacterBody3D
 	{ 
 		currentState = MovementState.idle; 
 	}
+	
 
 	// timer for draining (ulong is for time, int is too small)
 	private ulong lastStaminaDrainTime = 0; 
@@ -260,8 +266,8 @@ public partial class playerone : CharacterBody3D
 
 		SprintDrainStamina();
 		RecoverStamina();
-		GD.Print("State -> " + currentState);
-		GD.Print("Stamina Level -> " + PlayerData.stamina);
+		//GD.Print("State -> " + currentState);
+		//GD.Print("Stamina Level -> " + PlayerData.stamina);
 	}
 
 
@@ -364,7 +370,7 @@ public partial class playerone : CharacterBody3D
 
 				LerpHeadHeight(HEAD_CROUCH_OFFSET);
 			}
-			else
+			else if (CanUnCrouchCheck())
 			{
 				finishedLowering = true;
 				SetDefaultState();
@@ -389,7 +395,7 @@ public partial class playerone : CharacterBody3D
 
 				LerpHeadHeight(HEAD_CRAWL_OFFSET);
 			}
-			else
+			else if ( CanUnCrouchCheck() )
 			{
 				finishedLowering = true;
 				SetDefaultState();
@@ -441,7 +447,7 @@ public partial class playerone : CharacterBody3D
 
 
 		// Action -> jumping ------------------------------------------------------------------
-		if (Input.IsActionJustPressed("jump") && IsOnFloor() && HasMinActionStamina(JUMP_USAGE_RATE))
+		if (Input.IsActionJustPressed("jump") && IsOnFloor() && HasMinActionStamina(JUMP_USAGE_RATE) )
 		{
 			Velocity = new Vector3(Velocity.X, JUMP_VELOCITY, Velocity.Z);
 			JumpDrainStamina();

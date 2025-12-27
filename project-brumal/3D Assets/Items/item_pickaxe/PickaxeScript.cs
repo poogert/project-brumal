@@ -9,11 +9,13 @@ public partial class PickaxeScript : Node3D
 	
 	private Tween swingTween;
 	private Vector3 originalLocalPosition;
+	private Vector3 originalLocalRotation;
 	private bool isHolding = false;
 
 	public override void _Ready()
 	{
 		originalLocalPosition = Position;
+		originalLocalRotation = RotationDegrees;
 	}
 
 	public override void _Process(double delta)
@@ -122,9 +124,10 @@ public partial class PickaxeScript : Node3D
 		swingTween?.Kill();
 		swingTween = CreateTween();
 
-		Vector3 strikeOffset = new Vector3(0, 0, -1f);
+		Vector3 strikeOffset = new Vector3(-0.75f, -0.65f, -0.5f);
+		Vector3 strikeRotation = new Vector3(-30, 60, 0);
 
-		// Fast strike forward
+
 		swingTween.TweenProperty(
 			this,
 			"position",
@@ -132,8 +135,16 @@ public partial class PickaxeScript : Node3D
 			0.03f
 		).SetTrans(Tween.TransitionType.Quad)
 		.SetEase(Tween.EaseType.Out);
+		
+		swingTween.Parallel().TweenProperty(
+			this,
+			"rotation_degrees",
+			originalLocalRotation + strikeRotation,
+			0.03f
+		).SetTrans(Tween.TransitionType.Quad)
+		.SetEase(Tween.EaseType.Out);
 
-		// Return to rest
+
 		swingTween.TweenProperty(
 			this,
 			"position",
@@ -141,16 +152,24 @@ public partial class PickaxeScript : Node3D
 			0.15f
 		).SetTrans(Tween.TransitionType.Quad)
 		.SetEase(Tween.EaseType.In);
+		
+		swingTween.Parallel().TweenProperty(
+			this,
+			"rotation_degrees",
+			originalLocalRotation,
+			0.15f
+		).SetTrans(Tween.TransitionType.Quad)
+		.SetEase(Tween.EaseType.In);
 	}
 
 	private void ResetSwingTween()
 	{
-		// Kill any active tween
+
 		swingTween?.Kill();
 		swingTween = null;
 
-		// Hard reset transform
 		Position = originalLocalPosition;
+		RotationDegrees = originalLocalRotation;
 	}
 
 

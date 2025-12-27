@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://ci7t4slbk4i2b"]
 
-[ext_resource type="PackedScene" uid="uid://yamou6qbb8es" path="res://3D Assets/Items/item_pickaxe/PickaxeV1.glb" id="1_1senb"]
-[ext_resource type="Texture2D" uid="uid://bqcdky7jc8bvv" path="res://player/PlayerArms/ArmsExportText_BlueDudeTexture256t.png" id="1_eurx3"]
+[ext_resource type="PackedScene" uid="uid://tg3pjp4grua0" path="res://3D Assets/Items/item_pickaxe/PickaxeV1.glb" id="1_1senb"]
+[ext_resource type="Texture2D" uid="uid://dlftmv6igm8hd" path="res://player/PlayerArms/ArmsExportText_BlueDudeTexture256t.png" id="1_eurx3"]
 [ext_resource type="Script" uid="uid://c5444pj2s87r2" path="res://3D Assets/Items/item_pickaxe/PickaxeScript.cs" id="2_1senb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjdix"]
@@ -1846,10 +1846,10 @@ _data = {
 }
 
 [node name="pickaxe" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 0.9114679, -0.41137117, 0, 0.41137117, 0.9114679, 0, 0, 0)
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
 
 [node name="PickaxeV1" parent="." instance=ExtResource("1_1senb")]
-transform = Transform3D(0.4167667, 0.050617043, 0.008826909, -0.029065002, 0.40136814, -0.12403938, -0.038143665, 0.119302735, 0.3981168, 0.3086303, 1.2527757, -0.22510493)
+transform = Transform3D(0.37659854, 0.18484163, -0.019012, -0.16852039, 0.32540405, -0.2057709, -0.07595115, 0.19451813, 0.36229467, 0.44475567, 1.1333979, 0.18326871)
 script = ExtResource("2_1senb")
 
 [node name="ArmsExportText" type="Node3D" parent="PickaxeV1"]

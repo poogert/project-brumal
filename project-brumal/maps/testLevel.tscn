@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
 [ext_resource type="Script" uid="uid://cin1c7ymt2yim" path="res://maps/TestLevelScript.cs" id="1_tgtyk"]
 [ext_resource type="PackedScene" uid="uid://yog88nmikhnw" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveRoom1.glb" id="4_jkisn"]
-[ext_resource type="AudioStream" uid="uid://do2jnjbnqrxa1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
+[ext_resource type="AudioStream" uid="uid://cfl0xpynoyjo1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
 [ext_resource type="PackedScene" uid="uid://cfkrv2tfrt5m4" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite1.glb" id="5_tgtyk"]
 [ext_resource type="PackedScene" uid="uid://mffrqp1uj8mr" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite2.glb" id="6_mblk6"]
 [ext_resource type="PackedScene" uid="uid://dnypjfsimk2pc" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite4.glb" id="7_i61l1"]
 [ext_resource type="PackedScene" uid="uid://dgpv56autf8hx" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite3.glb" id="8_jj0b7"]
 [ext_resource type="PackedScene" uid="uid://00u7f8cmiq88" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveHallwayBend2.glb" id="9_i61l1"]
 [ext_resource type="PackedScene" uid="uid://b8iyurkhjd0il" path="res://3D Assets/Objects/WorldProps/prop_Pinon/Pinon.tscn" id="10_jj0b7"]
-[ext_resource type="PackedScene" uid="uid://bcutbo6gb0hvk" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="11_avqxq"]
+[ext_resource type="PackedScene" uid="uid://cucf5no5scdia" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="11_avqxq"]
 [ext_resource type="Texture2D" uid="uid://custjqcbpt1os" path="res://miscellaneous/KeanuAndBookV1.png" id="12_oqr4r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
@@ -133,7 +133,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.6559, 6.899272, 30.365543
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.7105675, 7.21745, 34.237286)
 
 [node name="CaveHallwayBend2" parent="CaveTest" instance=ExtResource("9_i61l1")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.211039, 2.4529352, 4.8011017)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.211039, 2.4529352, 2.8011017)
 
 [node name="Pinon" parent="CaveTest" instance=ExtResource("10_jj0b7")]
 transform = Transform3D(1, 0, 0, 0, 0.22840182, -0.97356695, 0, 0.97356695, 0.22840182, -29.560425, 2.824553, 19.98228)

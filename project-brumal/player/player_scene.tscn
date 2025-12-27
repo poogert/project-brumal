@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://cti7pj4dw0gj1"]
+[gd_scene load_steps=15 format=3 uid="uid://cti7pj4dw0gj1"]
 
 [ext_resource type="Script" uid="uid://cmo1vq0u4jar" path="res://player/playerone.cs" id="1_0khpw"]
-[ext_resource type="PackedScene" uid="uid://kanh0xk5woki" path="res://3D Assets/Items/item_lamp/Lamp.tscn" id="3_qcawg"]
+[ext_resource type="PackedScene" path="res://3D Assets/Items/item_lamp/Lamp.tscn" id="3_qcawg"]
 [ext_resource type="PackedScene" uid="uid://ci7t4slbk4i2b" path="res://3D Assets/Items/item_pickaxe/Pickaxe.tscn" id="3_qvpcs"]
-[ext_resource type="PackedScene" uid="uid://cdetuqiat7x7p" path="res://3D Assets/Items/item_flare/Flare.tscn" id="4_tr6w4"]
-[ext_resource type="PackedScene" uid="uid://dpjqjwkbd81rt" path="res://3D Assets/Items/item_grapple_hook/GrappleHook.tscn" id="5_tr6w4"]
+[ext_resource type="PackedScene" path="res://3D Assets/Items/item_flare/Flare.tscn" id="4_tr6w4"]
+[ext_resource type="PackedScene" path="res://3D Assets/Items/item_grapple_hook/GrappleHook.tscn" id="5_tr6w4"]
 [ext_resource type="Script" uid="uid://lqf6nkq3t8nc" path="res://player/GrapplePointScript.cs" id="7_ulli2"]
 [ext_resource type="PackedScene" uid="uid://h4wvm1qcl6i1" path="res://scripts/game-tools/interactLogic/interactray.tscn" id="8_ulli2"]
+[ext_resource type="Script" uid="uid://bxhm54xcxg4qx" path="res://player/CrouchCheckScript.cs" id="8_x61a0"]
 [ext_resource type="AudioStream" uid="uid://dn4uh6xlq1ru1" path="res://player/misc/test voicelines/tools.mp3" id="9_0la1k"]
-[ext_resource type="Texture2D" uid="uid://b7qgkdjgifqix" path="res://2D Assets/UI assets/crosshari.png" id="11_x61a0"]
+[ext_resource type="PackedScene" uid="uid://c8pgtyfm87bke" path="res://2D Assets/UI/aaronsUI_TW.tscn" id="10_3jmlc"]
+[ext_resource type="Texture2D" uid="uid://dj2k1ywdicf6k" path="res://2D Assets/UI/UI assets/crosshari.png" id="11_x61a0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ciewh"]
 
@@ -69,6 +71,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24933472, -0.6431068, -0.96
 target_position = Vector3(0, 0, -10)
 script = ExtResource("7_ulli2")
 
+[node name="CrouchCheckRay" type="RayCast3D" parent="CharacterBody3D"]
+target_position = Vector3(0, 1, 0)
+script = ExtResource("8_x61a0")
+
 [node name="crosshair_layer_container" type="CanvasLayer" parent="."]
 
 [node name="crosshair" type="TextureRect" parent="crosshair_layer_container"]
@@ -91,3 +97,5 @@ stream = ExtResource("9_0la1k")
 [node name="timer-for-stamina" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
+
+[node name="AaronsUiTw" parent="." instance=ExtResource("10_3jmlc")]

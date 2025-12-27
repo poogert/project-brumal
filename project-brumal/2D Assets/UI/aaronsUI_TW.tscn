@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c8pgtyfm87bke"]
 
-[ext_resource type="Script" uid="uid://ccr3hx5pc5vlv" path="res://z_AaronsTestingGrounds/hotbarButtonManager.gd" id="1_3sp5r"]
-[ext_resource type="Texture2D" uid="uid://pl75dcrehkkf" path="res://z_AaronsTestingGrounds/ItemSlotsBackpack.png" id="1_thwdi"]
+[ext_resource type="Script" uid="uid://ccr3hx5pc5vlv" path="res://2D Assets/UI/hotbarButtonManager.gd" id="1_3sp5r"]
+[ext_resource type="Texture2D" uid="uid://pl75dcrehkkf" path="res://2D Assets/UI/UI assets/ItemSlotsBackpack.png" id="1_thwdi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxycp"]
 texture = ExtResource("1_thwdi")

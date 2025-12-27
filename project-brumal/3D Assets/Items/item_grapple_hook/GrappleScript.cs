@@ -75,7 +75,4 @@ public partial class GrappleScript : Node
 	{
 		return Mathf.Clamp(distance / 10, 0f, 1f);
 	}
-
-
-
 }
