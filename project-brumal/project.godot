@@ -27,6 +27,8 @@ project/assembly_name="project_brumal"
 [global_group]
 
 Player=""
+rope=""
+grapplehook=""
 
 [input]
 

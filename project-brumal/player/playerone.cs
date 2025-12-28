@@ -1,14 +1,21 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 public partial class playerone : CharacterBody3D
 {
-	private const float DEFAULT_SPEED = 3.0f;
+	private const float DEFAULT_SPEED = 2.0f;
 	private const float CROUCH_SPEED = 2.0f;
 	private const float CRAWL_SPEED = 1.0f;
-	private const float SPRINT_SPEED = 6.0f;
+	private const float SPRINT_SPEED = 5.0f;
+	
+	// dev mode
+	private bool devModeCheck = true;
+	private const float DEV_MODE = 3;
+	private const float PLAYER_MODE = 1;
+
 	private const float HEAD_CROUCH_OFFSET = -0.6f;
 	private const float HEAD_CRAWL_OFFSET = -1.2f;
 	private const float FOV_DEFAULT = 70f;
@@ -20,7 +27,7 @@ public partial class playerone : CharacterBody3D
 	public const int STAMINA_REGEN_RATE = 2;
 	public const int SPRINT_USAGE_RATE = 5;
 	public const int JUMP_USAGE_RATE = 15;
-
+	public const float CLIMBING_SPEED = 3.5f;
 
 	// exports
 	[Export] public float SPEED = 3.0f;
@@ -35,6 +42,7 @@ public partial class playerone : CharacterBody3D
 	[Export] public Node3D handeffects; // HAND
 	[Export] AudioStreamPlayer3D sound; // voice
 	[Export] Timer staminaTimer; // how fast stamina is updated
+	[Export] Area3D ropeDetector; // area in front of player to detect rope
 
 	// item scenes
 	[Export] PackedScene lamp;
@@ -190,10 +198,11 @@ public partial class playerone : CharacterBody3D
 		running,
 		crouching,
 		crawling,
-		walking
+		walking,
+		climbing
 	}
 	public MovementState currentState = MovementState.idle;
-
+	public bool isOnRope = false;
 	private bool IsNeutralState() 
 	{
 		// bool return if player is idle or walking.
@@ -201,9 +210,8 @@ public partial class playerone : CharacterBody3D
 	}
 	private bool CanUnCrouchCheck()
 	{
-		return !(PlayerData.IsBlocking);
+		return !PlayerData.IsBlocking;
 	}
-
 	void SetState(MovementState state)
 	{
 		if (IsNeutralState()) currentState = state;
@@ -212,7 +220,23 @@ public partial class playerone : CharacterBody3D
 	{ 
 		currentState = MovementState.idle; 
 	}
-	
+	void OnRopeEntered(Node body)
+	{
+		if (body.IsInGroup("rope") || body.IsInGroup("ropescene")) 
+		{ 
+			isOnRope = true; 
+			//GD.Print("rope = " + isOnRope); 
+		}
+	}
+	void OnRopeExited(Node body)
+	{
+		if (body.IsInGroup("rope") || body.IsInGroup("ropescene")) 
+		{ 
+			isOnRope = false; 
+			//GD.Print("rope = " + isOnRope); 
+		}
+	}
+
 
 	// timer for draining (ulong is for time, int is too small)
 	private ulong lastStaminaDrainTime = 0; 
@@ -226,14 +250,20 @@ public partial class playerone : CharacterBody3D
 			return;
 		}
 
+		GD.Print("Stamina Level -> " + PlayerData.stamina);
 		PlayerData.stamina -= SPRINT_USAGE_RATE;
 		lastStaminaDrainTime = Time.GetTicksMsec();	
 	}
 
 	void StopSprint() {
 		SetDefaultState();
-		SPEED = DEFAULT_SPEED;
+		SPEED = devModeCheck ? DEFAULT_SPEED * DEV_MODE : DEFAULT_SPEED * PLAYER_MODE;
 		targetFOV = FOV_DEFAULT;
+	}
+
+	void SetDefaultSpeed()
+	{
+		SPEED = devModeCheck ? DEFAULT_SPEED * DEV_MODE : DEFAULT_SPEED * PLAYER_MODE;
 	}
 
 	void JumpDrainStamina() { 
@@ -263,11 +293,8 @@ public partial class playerone : CharacterBody3D
 	}
 
 	void CalculateStamina() {
-
 		SprintDrainStamina();
 		RecoverStamina();
-		//GD.Print("State -> " + currentState);
-		//GD.Print("Stamina Level -> " + PlayerData.stamina);
 	}
 
 
@@ -277,7 +304,15 @@ public partial class playerone : CharacterBody3D
 		base._Ready();
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		_itemRestY = handeffects.Transform.Origin.Y;
-		staminaTimer.Timeout += CalculateStamina;		
+		staminaTimer.Timeout += CalculateStamina;
+
+		if (devModeCheck) equipItem(Items.all, true); PlayerData.calcium_fuel += 1000; PlayerData.flare_count += 100;   		
+	
+		if (ropeDetector != null)
+		{
+			ropeDetector.BodyEntered += OnRopeEntered;
+			ropeDetector.BodyExited += OnRopeExited;
+		} 
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -351,7 +386,7 @@ public partial class playerone : CharacterBody3D
 			PrintItems();
 		}
 
-		// items
+		// items (await is for animations that run concurrently with tick rate)
 		if ( Input.IsActionJustPressed("itemone") ) await SetItem(Items.lamp, lamp);
 		if ( Input.IsActionJustPressed("itemtwo") ) await SetItem(Items.pickaxe, pickaxe);
 		if ( Input.IsActionJustPressed("itemthree") ) await SetItem(Items.flare, flare);
@@ -366,7 +401,7 @@ public partial class playerone : CharacterBody3D
 				finishedLowering = false;
 				SetState(MovementState.crouching);
 				StandCol.Disabled = true;
-				SPEED = CROUCH_SPEED;
+				SPEED = devModeCheck ? CROUCH_SPEED * DEV_MODE : CROUCH_SPEED * PLAYER_MODE;
 
 				LerpHeadHeight(HEAD_CROUCH_OFFSET);
 			}
@@ -375,7 +410,7 @@ public partial class playerone : CharacterBody3D
 				finishedLowering = true;
 				SetDefaultState();
 				StandCol.Disabled = false;
-				SPEED = DEFAULT_SPEED;
+				SetDefaultSpeed();
 
 				ResetHeadHeight();
 			}
@@ -391,7 +426,7 @@ public partial class playerone : CharacterBody3D
 				finishedLowering = false;
 				SetState(MovementState.crawling);
 				StandCol.Disabled = true;
-				SPEED = CRAWL_SPEED;
+				SPEED = devModeCheck ? CRAWL_SPEED * DEV_MODE : CRAWL_SPEED * PLAYER_MODE;
 
 				LerpHeadHeight(HEAD_CRAWL_OFFSET);
 			}
@@ -400,7 +435,7 @@ public partial class playerone : CharacterBody3D
 				finishedLowering = true;
 				SetDefaultState();
 				StandCol.Disabled = false;
-				SPEED = DEFAULT_SPEED;
+				SetDefaultSpeed();
 
 				ResetHeadHeight();
 			}
@@ -413,7 +448,7 @@ public partial class playerone : CharacterBody3D
 		{
 			//float CurrentFOV = camera.Fov;
 			SetState(MovementState.running);
-			SPEED = SPRINT_SPEED;
+			SPEED = devModeCheck ? SPRINT_SPEED * DEV_MODE : SPRINT_SPEED * PLAYER_MODE;
 			targetFOV = FOV_SPRINT;
 
 		}
@@ -447,10 +482,17 @@ public partial class playerone : CharacterBody3D
 
 
 		// Action -> jumping ------------------------------------------------------------------
-		if (Input.IsActionJustPressed("jump") && IsOnFloor() && HasMinActionStamina(JUMP_USAGE_RATE) )
+		if (Input.IsActionJustPressed("jump") && IsOnFloor() && HasMinActionStamina(JUMP_USAGE_RATE) && !isOnRope)
 		{
+			//var currentJumpVelocity = devModeCheck ? JUMP_VELOCITY * DEV_MODE : JUMP_VELOCITY * PLAYER_MODE;
+
 			Velocity = new Vector3(Velocity.X, JUMP_VELOCITY, Velocity.Z);
 			JumpDrainStamina();
+		}
+
+		if (Input.IsActionJustPressed("jump") && isOnRope)
+		{
+			Velocity = new Vector3(Velocity.X, CLIMBING_SPEED, Velocity.Z);
 		}
 
 
@@ -460,7 +502,7 @@ public partial class playerone : CharacterBody3D
 	{
 		Vector3 velocity = Velocity;
 
-		if (!IsOnFloor()) // if not on floor add gravity to player.
+		if (!IsOnFloor() && !isOnRope) // Disable gravity when on rope to allow climbing/hanging
 		{
 			velocity += GetGravity() * (float)delta;
 			PlayerData.IsInAir = true;
@@ -548,6 +590,8 @@ public partial class playerone : CharacterBody3D
 		PlayerData.hotbarinventory = availableItems;
 	}
 
+
+	// lerps
 	private async Task LerpHeadHeight(float offset)
 	{
 		if (HeightAdjustmentsRunning) return;

@@ -16,7 +16,7 @@ func enable_only(target: Button):
 	for button in buttonArray:
 		if button:
 			button.disabled = (button != target)
-			print(Input,"changed",buttonArray, "Scale but not any other")
+			#print(Input,"changed",buttonArray, "Scale but not any other")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("itemone") and buttonPic:
@@ -33,5 +33,5 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("toggle_menu"):
 		menu_screen.visible = !menu_screen.visible
-		print(menu_screen.visible)
+		#print(menu_screen.visible)
 		

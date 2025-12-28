@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cti7pj4dw0gj1"]
+[gd_scene load_steps=16 format=3 uid="uid://cti7pj4dw0gj1"]
 
 [ext_resource type="Script" uid="uid://cmo1vq0u4jar" path="res://player/playerone.cs" id="1_0khpw"]
-[ext_resource type="PackedScene" path="res://3D Assets/Items/item_lamp/Lamp.tscn" id="3_qcawg"]
+[ext_resource type="PackedScene" uid="uid://fwax6bmyntfr" path="res://3D Assets/Items/item_lamp/Lamp.tscn" id="3_qcawg"]
 [ext_resource type="PackedScene" uid="uid://ci7t4slbk4i2b" path="res://3D Assets/Items/item_pickaxe/Pickaxe.tscn" id="3_qvpcs"]
 [ext_resource type="PackedScene" path="res://3D Assets/Items/item_flare/Flare.tscn" id="4_tr6w4"]
-[ext_resource type="PackedScene" path="res://3D Assets/Items/item_grapple_hook/GrappleHook.tscn" id="5_tr6w4"]
+[ext_resource type="PackedScene" uid="uid://cc2rh8xtuf8qi" path="res://3D Assets/Items/item_grapple_hook/GrappleHook.tscn" id="5_tr6w4"]
 [ext_resource type="Script" uid="uid://lqf6nkq3t8nc" path="res://player/GrapplePointScript.cs" id="7_ulli2"]
 [ext_resource type="PackedScene" uid="uid://h4wvm1qcl6i1" path="res://scripts/game-tools/interactLogic/interactray.tscn" id="8_ulli2"]
 [ext_resource type="Script" uid="uid://bxhm54xcxg4qx" path="res://player/CrouchCheckScript.cs" id="8_x61a0"]
@@ -20,9 +20,12 @@ height = 1.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ulli2"]
 height = 1.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_x61a0"]
+size = Vector3(1.2277527, 2.522644, 2.2477722)
+
 [node name="Player" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("StandCol", "CrouchCol", "Player", "head", "camera", "headeffects", "handeffects", "sound", "staminaTimer")]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("StandCol", "CrouchCol", "Player", "head", "camera", "headeffects", "handeffects", "sound", "staminaTimer", "ropeDetector")]
 disable_mode = 2
 slide_on_ceiling = false
 script = ExtResource("1_0khpw")
@@ -35,6 +38,7 @@ headeffects = NodePath("head_pivot/head_adjustments")
 handeffects = NodePath("head_pivot/head_adjustments/head_camera/hand_root/hand_root_bobbing")
 sound = NodePath("../voice")
 staminaTimer = NodePath("../timer-for-stamina")
+ropeDetector = NodePath("Area3D")
 lamp = ExtResource("3_qcawg")
 pickaxe = ExtResource("3_qvpcs")
 flare = ExtResource("4_tr6w4")
@@ -74,6 +78,13 @@ script = ExtResource("7_ulli2")
 [node name="CrouchCheckRay" type="RayCast3D" parent="CharacterBody3D"]
 target_position = Vector3(0, 1, 0)
 script = ExtResource("8_x61a0")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109255135, -0.59629077)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06417847, -0.15177917)
+shape = SubResource("BoxShape3D_x61a0")
 
 [node name="crosshair_layer_container" type="CanvasLayer" parent="."]
 

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://br633ah53wtim"]
+
+[ext_resource type="Texture2D" uid="uid://cp8kfufswmmmc" path="res://3D Assets/Items/item_grapple_hook/Elij4hMartin-rope/orangetextures/texture_09.png" id="1_sc217"]
+
+[resource]
+albedo_texture = ExtResource("1_sc217")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar_sharpness = 150.0

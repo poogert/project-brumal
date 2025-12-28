@@ -177,7 +177,7 @@ environment = SubResource("Environment_1rsa4")
 [node name="World" type="Node" parent="."]
 
 [node name="Player" parent="World" groups=["Player"] instance=ExtResource("1_s7hj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8324702, 0.9976176, -1.3892547)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8324702, 0.9976176, -1.1870968)
 
 [node name="BeginningMap" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.945353, 12.857117, -20.356094)
@@ -262,10 +262,6 @@ _Switch = NodePath("Switch")
 
 [node name="Switch" parent="World/OGTestMap/WallLampBody" instance=ExtResource("10_ep2rr")]
 transform = Transform3D(3.3333328, 0, 0, 0, 3.3333328, 0, 0, 0, 3.3333328, -8.806252, -8.510425, -10.684543)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6350867, 2.0485787, 0)
-use_collision = true
 
 [node name="Crate" parent="." instance=ExtResource("12_j0qli")]
 transform = Transform3D(0.68926555, 0, 0.72450876, 0, 1, 0, -0.72450876, 0, 0.68926555, 17.179577, 0.8760606, 0.098232895)
