@@ -17,7 +17,7 @@ public partial class CalciumLamp : Node3D
 	[Export] public double FlickerThreshold = 0.6;
 
 	private const float DefaultSpotAngle = 52.72f;
-	private const float DefaultRange = 15f;
+	private const float DefaultRange = 301f;
 
 	// ==========================
 	// State
@@ -107,7 +107,7 @@ public partial class CalciumLamp : Node3D
 
 		_light.LightEnergy = 3000f;
 		_light.SpotAngle = 179f;
-		_light.SpotRange = 60f;
+		_light.SpotRange = 100f;
 	}
 
 	private void UpdateFlash(float delta)

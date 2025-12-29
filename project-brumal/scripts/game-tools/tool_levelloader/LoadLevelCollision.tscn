@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmihgh6q7jbu5"]
+[gd_scene load_steps=7 format=3 uid="uid://dmihgh6q7jbu5"]
 
 [ext_resource type="Script" uid="uid://ckfgcobsrrv1a" path="res://scripts/game-tools/tool_levelloader/LeveLoadScript.cs" id="1_f040d"]
 [ext_resource type="Script" uid="uid://cevcg6p1pb46y" path="res://scripts/game-tools/tool_levelloader/SetLevelField.cs" id="1_knaxd"]
+[ext_resource type="Script" uid="uid://m7sn0waisycv" path="res://scripts/game-tools/tool_levelloader/LevelName.cs" id="3_c1grv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5t12s"]
 
@@ -23,8 +24,7 @@ shape = SubResource("BoxShape3D_5t12s")
 [node name="Label3D" type="Label3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5069642)
 pixel_size = 0.0025
-text = "this is the next level:
-loads testLevel.tscn rn"
+script = ExtResource("3_c1grv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 mesh = SubResource("BoxMesh_c1grv")

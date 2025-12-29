@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cmo1vq0u4jar" path="res://player/playerone.cs" id="1_0khpw"]
 [ext_resource type="PackedScene" uid="uid://fwax6bmyntfr" path="res://3D Assets/Items/item_lamp/Lamp.tscn" id="3_qcawg"]
 [ext_resource type="PackedScene" uid="uid://ci7t4slbk4i2b" path="res://3D Assets/Items/item_pickaxe/Pickaxe.tscn" id="3_qvpcs"]
-[ext_resource type="PackedScene" path="res://3D Assets/Items/item_flare/Flare.tscn" id="4_tr6w4"]
+[ext_resource type="PackedScene" uid="uid://cjylo30xgtjw2" path="res://3D Assets/Items/item_flare/Flare.tscn" id="4_tr6w4"]
 [ext_resource type="PackedScene" uid="uid://cc2rh8xtuf8qi" path="res://3D Assets/Items/item_grapple_hook/GrappleHook.tscn" id="5_tr6w4"]
 [ext_resource type="Script" uid="uid://lqf6nkq3t8nc" path="res://player/GrapplePointScript.cs" id="7_ulli2"]
 [ext_resource type="PackedScene" uid="uid://h4wvm1qcl6i1" path="res://scripts/game-tools/interactLogic/interactray.tscn" id="8_ulli2"]
@@ -74,6 +74,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24933472, -0.6431068, -0.96
 [node name="grapplepoint" type="RayCast3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera"]
 target_position = Vector3(0, 0, -10)
 script = ExtResource("7_ulli2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D/head_pivot/head_adjustments/head_camera"]
+light_energy = 0.1
+omni_range = 1.6682494
 
 [node name="CrouchCheckRay" type="RayCast3D" parent="CharacterBody3D"]
 target_position = Vector3(0, 1, 0)

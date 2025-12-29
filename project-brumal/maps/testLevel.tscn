@@ -20,7 +20,9 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 
 [sub_resource type="Environment" id="Environment_aldhi"]
 background_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.0
+ambient_light_source = 3
+ambient_light_color = Color(0, 0.050385177, 0.38381222, 1)
+ambient_light_energy = 0.35
 tonemap_mode = 2
 sdfgi_read_sky_light = false
 sdfgi_bounce_feedback = 0.2
@@ -133,7 +135,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.6559, 6.899272, 30.365543
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.7105675, 7.21745, 34.237286)
 
 [node name="CaveHallwayBend2" parent="CaveTest" instance=ExtResource("9_i61l1")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.211039, 2.4529352, 2.8011017)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.19622, 2.4396725, 2.7940657)
 
 [node name="Pinon" parent="CaveTest" instance=ExtResource("10_jj0b7")]
 transform = Transform3D(1, 0, 0, 0, 0.22840182, -0.97356695, 0, 0.97356695, 0.22840182, -29.560425, 2.824553, 19.98228)

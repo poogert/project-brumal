@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=32 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://bi7n3ro3v7uon" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="16_wyl08"]
 [ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprUce.tscn" id="17_tamf2"]
 [ext_resource type="PackedScene" uid="uid://dcu48sj77xg8k" path="res://player/cinematic_camera.tscn" id="17_wyl08"]
+[ext_resource type="PackedScene" uid="uid://c5wxsrxah71gc" path="res://maps/pathfinding_level.tscn" id="18_tamf2"]
 
 [sub_resource type="Environment" id="Environment_1rsa4"]
 background_color = Color(1, 1, 1, 1)
@@ -295,3 +296,7 @@ transform = Transform3D(0.19945984, -0.014689415, 0, 0.014689415, 0.19945984, 0,
 
 [node name="SnowSpruce2" parent="." instance=ExtResource("17_tamf2")]
 transform = Transform3D(0.19397545, -0.006371837, 0.048300367, 0.0041452106, 0.1997216, 0.009700222, -0.048542187, -0.00840695, 0.19383748, 5.6080947, 0.45577562, -7.241269)
+
+[node name="Node3D" parent="." instance=ExtResource("12_p6wwr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, -2.5271106, 2.07755, -9.310187)
+next_level = ExtResource("18_tamf2")

@@ -1,7 +1,4 @@
 using Godot;
-using System;
-using System.Collections;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 public partial class playerone : CharacterBody3D

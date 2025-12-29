@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.IO;
 
 public partial class ThrowableHookScript : RigidBody3D
 {
@@ -18,7 +16,7 @@ public partial class ThrowableHookScript : RigidBody3D
 	{   
 		if (body is CharacterBody3D || hit) return;
 
-		float distance = GlobalPosition.DistanceTo(PlayerData.player_position);
+		//float distance = GlobalPosition.DistanceTo(PlayerData.player_position);
 		
 		//GD.Print("Distance to player: "  + distance);
 
