@@ -15,7 +15,7 @@ point_count = 2
 [node name="Path3DRope" type="Path3D"]
 curve = SubResource("Curve3D_rsokh")
 script = ExtResource("1_fykgp")
-number_of_segments = 40
+number_of_segments = 50
 cable_thickness = 0.05
 fixed_end_point = false
 material = ExtResource("2_f0htr")

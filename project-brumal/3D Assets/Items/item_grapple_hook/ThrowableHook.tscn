@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://x4xnc85khpl5" path="res://3D Assets/Items/item_grapple_hook/Elij4hMartin-rope/path_3d_rope.tscn" id="2_3abnx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_517kl"]
-radius = 0.8828125
-height = 2.095581
+margin = 0.02
+radius = 0.87350464
+height = 1.7470093
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6gjd"]
 resource_name = "Material.056"
@@ -53,6 +54,8 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 [node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("endRef") groups=["grapplehook"]]
 transform = Transform3D(1.9106853e-15, -4.371139e-08, 0.9999999, -0.9999999, -4.371139e-08, 0, 4.3711385e-08, -1, -4.3711385e-08, 0, 0, 0)
 mass = 0.2
+lock_rotation = true
+continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_517kl")
@@ -60,7 +63,7 @@ rope = ExtResource("2_3abnx")
 endRef = NodePath("endReference")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1.07, 0, 3.6422417e-20, 9.166001e-13, 1.07, -9.166001e-13, 7.6232965e-21, 0, 1.07, -0.032999992, 0.043683436, -4.2766453e-09)
+transform = Transform3D(1.07, 0, 6.331571e-20, 1.5951684e-12, 1.07, -1.5951684e-12, 1.3129011e-20, 0, 1.07, -0.032999992, 0.23016934, -4.276644e-09)
 shape = SubResource("CapsuleShape3D_517kl")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="RigidBody3D"]

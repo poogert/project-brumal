@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=4 uid="uid://02kbbpsgn64d"]
+
+[ext_resource type="Texture2D" uid="uid://cuuga68l7g2s0" path="res://3D Assets/MapChunks/MapSegments/CaveSegments/CaveDecor/CaveBoulder/CaveBoulder_CaveWall2.png" id="1_3byth"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_isdp3"]
+resource_name = "CaveText2"
+cull_mode = 2
+albedo_texture = ExtResource("1_3byth")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gnwg5"]
+_surfaces = [{
+"aabb": AABB(-1.0163625, -0.9277817, -1.0078819, 2.1552446, 1.9228156, 2.1474874),
+"format": 34896613377,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAQAEAAIAAQADAAQAAAAFAAMAAgAGAAAABgAFAAAABQAHAAMAAgAIAAYABgAJAAUACAAJAAYACgAIAAIACQALAAUACwAHAAUADAAJAAgADAALAAkACgAMAAgAAgANAAoADQAMAAoAAgAEAA0ADQAOAAwADgALAAwABAAOAA0ADwAHAAsADwALAA4ADwAOAAQABwAPAAMABAADAA8A"),
+"name": "CaveText2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("hO+fJxHPAAD//88dJXgAAMqzAABmJwAA1e1rp2ZTAAATsKssbgYAAPSPDbxV8AAAtzynO///AACAgj/rqokAAAAANy/1lwAAVB9vugm1AAApK28vEUIAAJVK//9jcwAAUh3ArzNJAAALMpJf3gYAAKZZSMQAAAAAl6J2zUYVAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cksa1"]
+resource_name = "CaveBoulder_Icosphere"
+_surfaces = [{
+"aabb": AABB(-1.0163625, -0.9277817, -1.0078819, 2.1552446, 1.9228156, 2.1474874),
+"attribute_data": PackedByteArray("dpoNzXKspMQkxIjOUrpCs3aaK5yxuI+eAf/LnfjeN6f43imAUrpCs3aapMR2miucp70UhwncRYEJ3PeV3PD8w/je4M743iOsqpQR7f9/avT4gDXd29AptzTZ4M4JweDOJ/wP4yf8V/+h7v//J/wP46Hu//9C6mjidpr///9/avSqlBHt+N7cstvQKbfrvEqmhtEw7AbN///rvCnwqpQR7fiANd12mqfM//83p9zw/MP43iOs67xKptvQKbcJweDOCdz3lbvTlKWnvRSHp70Uh7vTlKXrvEqmhtEw7Ou8KfDqzXDc6s1w3Ou8KfDrvODOdpqnzPiANd2Ag83Bw5isuP9/zcGhgLCi3uqd3kLqv+mG0TDs3uqd3obRMOzqzXDclsTO8kq1//8kxIjOJMSIzkq1//92mjT4w5isuKGAsKJ8jAmhJMSIznaaNPh2mg3N"),
+"format": 34896613399,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0AHgAfACAAIQAiACMAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgA3ADgAOQA6ADsAPAA9AD4APwBAAEEAQgBDAEQARQBGAEcASABJAEoASwBMAE0ATgBPAFAAUQBSAFMA"),
+"material": SubResource("StandardMaterial3D_isdp3"),
+"name": "CaveText2",
+"primitive": 3,
+"uv_scale": Vector4(2, 2, 0, 0),
+"vertex_count": 84,
+"vertex_data": PackedByteArray("hO+fJxHPoNX//88dJXig1cqzAABmJ6DVhO+fJxHP+NHV7WunZlP40f//zx0lePjRtzynO///Cub0jw28VfAK5oTvnycRzwrmhO+fJxHPasT0jw28VfBqxNXta6dmU2rEE7CrLG4G7/XV7WunZlPv9Zeids1GFe/1VB9vugm1GeWVSv//Y3MZ5fSPDbxV8BnlUh3ArzNJp/qVSv//Y3On+lQfb7oJtaf6gII/66qJu+GXonbNRhW74dXta6dmU7vhl6J2zUYV4smAgj/rqoniyZVK//9jc+LJl6J2zUYVJdKVSv//Y3Ml0qZZSMQAACXSpllIxAAA3/2VSv//Y3Pf/VIdwK8zSd/9lUr//2Nzf+OAgj/rqol/4/SPDbxV8H/jCzKSX94GZP6mWUjEAABk/lIdwK8zSWT+Uh3ArzNJ7fBUH2+6CbXt8AAANy/1l+3wtzynO///+t9UH2+6CbX63/SPDbxV8Prf9I8NvFXwutyAgj/rqom63NXta6dmU7rcl6J2zUYVFv6mWUjEAAAW/hOwqyxuBhb+E7CrLG4Gbf6mWUjEAABt/gsykl/eBm3+CzKSX94GoOxSHcCvM0mg7Ckrby8RQqDsKStvLxFCt+9SHcCvM0m37wAANy/1l7fvAAA3L/WXQO5UH2+6CbVA7rc8pzv//0Du///PHSV4EfHV7WunZlMR8ROwqyxuBhHxyrMAAGYns+ITsKssbgaz4gsykl/eBrPiyrMAAGYn8toLMpJf3gby2ikrby8RQvLaKStvLxFCB+QAADcv9ZcH5MqzAABmJwfkyrMAAGYnPtsAADcv9Zc+27c8pzv//z7b///PHSV4wv4TsKssbgbC/sqzAABmJ8L+yrMAAGYno9m3PKc7//+j2YTvnycRz6PZY2MjTmNjI05jYyNOC7BtYAuwbWALsG1gCo1IeAqNSHgKjUh4vLSnary0p2q8tKdqRyaePkcmnj5HJp4+tYDYrrWA2K61gNiuy1W+octVvqHLVb6hirurBYq7qwWKu6sFSN4bgkjeG4JI3huCvuhKjb7oSo2+6EqNH9cbLh/XGy4f1xsuOs+nDDrPpww6z6cMUkCnm1JAp5tSQKeb9U/2mvVP9pr1T/aaVnRMnVZ0TJ1WdEydODvyAzg78gM4O/ID1C7pRNQu6UTULulEHzV/TR81f00fNX9NO0IokTtCKJE7QiiRzTyqlM08qpTNPKqUrlepj65XqY+uV6mPn77tX5++7V+fvu1fxBbjjcQW443EFuONzhzKjc4cyo3OHMqNxlGtWcZRrVnGUa1Zc1wJWHNcCVhzXAlYQLoKXkC6Cl5Augpep18pVqdfKVanXylW")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gnwg5")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r1yca"]
+data = PackedVector3Array(1.0001, -0.63019997, 0.7291, 1.1388999, -0.7039, 0, 0.4973, -0.9278, -0.6774, 1.0001, -0.63019997, 0.7291, 0.986, 0.3297, -0.3083, 1.1388999, -0.7039, 0, -0.50519997, -0.4797, 1.1395999, 0.19559999, 0.4847, 1.0081999, 1.0001, -0.63019997, 0.7291, 1.0001, -0.63019997, 0.7291, 0.19559999, 0.4847, 1.0081999, 0.986, 0.3297, -0.3083, 0.466, -0.5923, -0.9539, 0.986, 0.3297, -0.3083, 0.3525, 0.6155, -0.8294, -0.75259995, 0.4725, 0.5108, -0.3885, 0.99499995, -0.039899997, 0.19559999, 0.4847, 1.0081999, -0.76949996, 0.39229998, -0.3938, -0.3885, 0.99499995, -0.039899997, -0.75259995, 0.4725, 0.5108, 0.0823, 0.83919996, 0.1469, 0.3525, 0.6155, -0.8294, 0.986, 0.3297, -0.3083, 0.3525, 0.6155, -0.8294, 0.0823, 0.83919996, 0.1469, -0.3885, 0.99499995, -0.039899997, 0.3525, 0.6155, -0.8294, -0.3885, 0.99499995, -0.039899997, -0.2616, 0.54649997, -1.0079, -0.2616, 0.54649997, -1.0079, -0.3885, 0.99499995, -0.039899997, -0.76949996, 0.39229998, -0.3938, -0.3885, 0.99499995, -0.039899997, 0.0823, 0.83919996, 0.1469, 0.19559999, 0.4847, 1.0081999, -0.59499997, -0.20989999, -0.9503, -0.2616, 0.54649997, -1.0079, -0.76949996, 0.39229998, -0.3938, -0.76949996, 0.39229998, -0.3938, -0.75259995, 0.4725, 0.5108, -1.0164, -0.5731, 0.2668, -0.50519997, -0.4797, 1.1395999, -0.75259995, 0.4725, 0.5108, 0.19559999, 0.4847, 1.0081999, 0.19559999, 0.4847, 1.0081999, 0.0823, 0.83919996, 0.1469, 0.986, 0.3297, -0.3083, 0.3525, 0.6155, -0.8294, -0.2616, 0.54649997, -1.0079, 0.466, -0.5923, -0.9539, 0.466, -0.5923, -0.9539, -0.2616, 0.54649997, -1.0079, -0.59499997, -0.20989999, -0.9503, -0.59499997, -0.20989999, -0.9503, -0.76949996, 0.39229998, -0.3938, -0.653, -0.5715, -0.45369998, -0.653, -0.5715, -0.45369998, -0.76949996, 0.39229998, -0.3938, -1.0164, -0.5731, 0.2668, -1.0164, -0.5731, 0.2668, -0.75259995, 0.4725, 0.5108, -0.50519997, -0.4797, 1.1395999, 1.1388999, -0.7039, 0, 0.986, 0.3297, -0.3083, 0.466, -0.5923, -0.9539, 0.4973, -0.9278, -0.6774, 0.466, -0.5923, -0.9539, -0.59499997, -0.20989999, -0.9503, 0.4973, -0.9278, -0.6774, -0.59499997, -0.20989999, -0.9503, -0.653, -0.5715, -0.45369998, -0.653, -0.5715, -0.45369998, -1.0164, -0.5731, 0.2668, 0.4973, -0.9278, -0.6774, 0.4973, -0.9278, -0.6774, -1.0164, -0.5731, 0.2668, -0.50519997, -0.4797, 1.1395999, 1.1388999, -0.7039, 0, 0.466, -0.5923, -0.9539, 0.4973, -0.9278, -0.6774, 0.4973, -0.9278, -0.6774, -0.50519997, -0.4797, 1.1395999, 1.0001, -0.63019997, 0.7291)
+
+[node name="CaveBoulder" type="Node3D"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="Icosphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9800528, -0.104639456, -0.16895857, 0.06517476, 0.97237074, -0.22415927, 0.18774629, 0.2086761, 0.9597946, 0, 0, 0)
+mesh = SubResource("ArrayMesh_cksa1")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Icosphere"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Icosphere/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_r1yca")

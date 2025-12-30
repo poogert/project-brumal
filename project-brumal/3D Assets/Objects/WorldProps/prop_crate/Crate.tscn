@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://b3em27gyxvvw8"]
 
-[ext_resource type="Texture2D" uid="uid://ci0a8hjhvqi3g" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate_Box.png" id="1_dwi5y"]
+[ext_resource type="Texture2D" uid="uid://ci0a8hjhvqi3g" path="res://3D Assets/Objects/WorldProps/prop_crate/GLBs/Crate_Box.png" id="1_dwi5y"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e34xa"]
 points = PackedVector3Array(1.9171008, 0.9549836, 0.8211678, 1.9171008, 0.9549836, -1.1788322, -1.9171008, 0.9549836, 0.8211678, 1.9171008, -1.0450164, 0.8211678, 1.9171008, -1.0450164, -1.1788322, -1.9171008, 0.9549836, -1.1788322, -1.9171008, -1.0450164, 0.8211678, -1.9171008, -1.0450164, -1.1788322)

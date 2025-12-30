@@ -1,23 +1,23 @@
 [gd_scene load_steps=32 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
-[ext_resource type="Texture2D" uid="uid://bi7n3ro3v7uon" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
-[ext_resource type="Texture2D" uid="uid://c7o511ftojbd8" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
+[ext_resource type="Texture2D" uid="uid://c34hjksmmlxdb" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
+[ext_resource type="Texture2D" uid="uid://dlywkhd0v882w" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_ground-texture-32.png" id="3_rsmj0"]
+[ext_resource type="AudioStream" uid="uid://5lw8r4kskh2" path="res://sounds/BrokeBoiBoiBoi.wav" id="7_tamf2"]
 [ext_resource type="PackedScene" uid="uid://cvn4v80jti17j" path="res://scripts/game-tools/interactLogic/interactableboxscene.tscn" id="8_52sjw"]
-[ext_resource type="AudioStream" uid="uid://bowq8qoaiiy00" path="res://sounds/poocus.wav" id="10_38b5b"]
-[ext_resource type="PackedScene" path="res://3D Assets/Objects/WorldProps/prop_switch/Switch.tscn" id="10_ep2rr"]
+[ext_resource type="PackedScene" uid="uid://c5cwdcujmfd8v" path="res://3D Assets/Objects/WorldProps/prop_switch/Switch.tscn" id="10_ep2rr"]
 [ext_resource type="Texture2D" uid="uid://dlpqhmxwhxie3" path="res://3D Assets/MapChunks/fakemountains_FakeMountains.png" id="10_ud8pw"]
 [ext_resource type="PackedScene" uid="uid://douchrf7oc5hr" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny.glb" id="11_66q87"]
-[ext_resource type="PackedScene" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate.tscn" id="12_j0qli"]
+[ext_resource type="PackedScene" uid="uid://b3em27gyxvvw8" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate.tscn" id="12_j0qli"]
 [ext_resource type="PackedScene" uid="uid://dmihgh6q7jbu5" path="res://scripts/game-tools/tool_levelloader/LoadLevelCollision.tscn" id="12_p6wwr"]
-[ext_resource type="PackedScene" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="13_38b5b"]
+[ext_resource type="PackedScene" uid="uid://cxlggn0na2ylr" path="res://3D Assets/Items/item_flare/flarebundle.tscn" id="13_38b5b"]
 [ext_resource type="PackedScene" uid="uid://x5t500dddovd" path="res://maps/testLevel.tscn" id="13_j0qli"]
 [ext_resource type="PackedScene" uid="uid://cie8veob6lupg" path="res://Models/Characters/Boris/boris.tscn" id="14_vfsg6"]
-[ext_resource type="PackedScene" uid="uid://cucf5no5scdia" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="16_ep2rr"]
-[ext_resource type="PackedScene" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="16_wyl08"]
+[ext_resource type="PackedScene" uid="uid://bcutbo6gb0hvk" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="16_ep2rr"]
+[ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="16_wyl08"]
 [ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprUce.tscn" id="17_tamf2"]
-[ext_resource type="PackedScene" uid="uid://dcu48sj77xg8k" path="res://player/cinematic_camera.tscn" id="17_wyl08"]
-[ext_resource type="PackedScene" uid="uid://c5wxsrxah71gc" path="res://maps/pathfinding_level.tscn" id="18_tamf2"]
+[ext_resource type="PackedScene" uid="uid://bv1s3ttdjglvf" path="res://player/cinematic_camera.tscn" id="17_wyl08"]
+[ext_resource type="PackedScene" uid="uid://dwk6e8xfldtl2" path="res://maps/TestLevelCaveAssets.tscn" id="18_tamf2"]
 
 [sub_resource type="Environment" id="Environment_1rsa4"]
 background_color = Color(1, 1, 1, 1)
@@ -175,7 +175,7 @@ shadow_blur = 0.2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1rsa4")
 
-[node name="World" type="Node" parent="."]
+[node name="World" type="Node3D" parent="."]
 
 [node name="Player" parent="World" groups=["Player"] instance=ExtResource("1_s7hj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8324702, 0.9976176, -1.1870968)
@@ -218,7 +218,7 @@ use_collision = true
 size = Vector3(0.30137634, 3.100113, 0.16241455)
 material = SubResource("StandardMaterial3D_p6wwr")
 
-[node name="OGTestMap" type="Node" parent="World"]
+[node name="OGTestMap" type="Node3D" parent="World"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="World/OGTestMap"]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, -0.08036649, -0.07419598, 0.010324717)
@@ -247,56 +247,59 @@ transform = Transform3D(0.7350448, 0, 0.67801857, 0, 1, 0, -0.67801857, 0, 0.735
 sound = NodePath("coolio")
 
 [node name="coolio" type="AudioStreamPlayer3D" parent="World/OGTestMap/interactablebox"]
-stream = ExtResource("10_38b5b")
+stream = ExtResource("7_tamf2")
 volume_db = -10.0
 max_distance = 100.0
 attenuation_filter_cutoff_hz = 20500.0
 attenuation_filter_db = -80.0
 
-[node name="testlevelload" parent="World/OGTestMap" instance=ExtResource("12_p6wwr")]
+[node name="LevelTransJacobCaveLevel" parent="World/OGTestMap" instance=ExtResource("12_p6wwr")]
 transform = Transform3D(5.5783043, 0, 0, 0, 4.832195, 0, 0, 0, 1.8967273, 19.063076, 2.408854, -5.119117)
 next_level = ExtResource("13_j0qli")
 
 [node name="WallLampBody" parent="World/OGTestMap" node_paths=PackedStringArray("_Switch") instance=ExtResource("16_wyl08")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 19.235332, 4.3752947, 1.4375219)
+transform = Transform3D(0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 19.235332, 4.249021, 1.4375219)
 _Switch = NodePath("Switch")
 
 [node name="Switch" parent="World/OGTestMap/WallLampBody" instance=ExtResource("10_ep2rr")]
 transform = Transform3D(3.3333328, 0, 0, 0, 3.3333328, 0, 0, 0, 3.3333328, -8.806252, -8.510425, -10.684543)
 
-[node name="Crate" parent="." instance=ExtResource("12_j0qli")]
-transform = Transform3D(0.68926555, 0, 0.72450876, 0, 1, 0, -0.72450876, 0, 0.68926555, 17.179577, 0.8760606, 0.098232895)
-
-[node name="Crate2" parent="." instance=ExtResource("12_j0qli")]
-transform = Transform3D(-0.1915628, 0, -0.98148036, 0, 1, 0, 0.98148036, 0, -0.1915628, 17.156467, 1.6760609, 0.013790563)
-
-[node name="Crate3" parent="." instance=ExtResource("12_j0qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.860978, 0.80779743, -2.9054508)
-
-[node name="boris" parent="." instance=ExtResource("14_vfsg6")]
-transform = Transform3D(0.23826863, 0, 0.07568396, 0, 0.25, 0, -0.07568396, 0, 0.23826863, -6.1137533, 1.4528075, -2.8644056)
-
-[node name="Ore" parent="." instance=ExtResource("16_ep2rr")]
+[node name="Ore" parent="World/OGTestMap" instance=ExtResource("16_ep2rr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.887019, 1.8899016, 4.9641023)
 
-[node name="Ore2" parent="." instance=ExtResource("16_ep2rr")]
+[node name="Ore2" parent="World/OGTestMap" instance=ExtResource("16_ep2rr")]
 transform = Transform3D(0.7116755, 0.7020524, 0.025304573, -0.7022773, 0.71190345, 0, -0.018014412, -0.017770827, 0.9996798, 13.579457, 2.20194, 4.9641023)
 
-[node name="Ore3" parent="." instance=ExtResource("16_ep2rr")]
+[node name="Ore3" parent="World/OGTestMap" instance=ExtResource("16_ep2rr")]
 transform = Transform3D(0.857095, 0.4622119, 0.22748236, -0.4496945, 0.4558585, 0.76809347, 0.25132215, -0.76062673, 0.5985682, 13.565094, 1.6938556, 4.9641023)
 
-[node name="Flarebundle" parent="." instance=ExtResource("13_38b5b")]
+[node name="Crate" parent="World/OGTestMap" instance=ExtResource("12_j0qli")]
+transform = Transform3D(0.68926555, 0, 0.72450876, 0, 1, 0, -0.72450876, 0, 0.68926555, 17.179577, 0.8760606, 0.098232895)
+
+[node name="Crate2" parent="World/OGTestMap" instance=ExtResource("12_j0qli")]
+transform = Transform3D(-0.1915628, 0, -0.98148036, 0, 1, 0, 0.98148036, 0, -0.1915628, 17.156467, 1.6760609, 0.013790563)
+
+[node name="Crate3" parent="World/OGTestMap" instance=ExtResource("12_j0qli")]
+transform = Transform3D(0.53612155, 0, -0.8441408, 0, 1, 0, 0.8441408, 0, 0.53612155, 8.004946, 0.80779743, -1.55813)
+
+[node name="boris" parent="World/OGTestMap" instance=ExtResource("14_vfsg6")]
+transform = Transform3D(0.23826863, 0, 0.07568396, 0, 0.25, 0, -0.07568396, 0, 0.23826863, -6.1137533, 1.4528075, -2.8644056)
+
+[node name="Flarebundle" parent="World/OGTestMap" instance=ExtResource("13_38b5b")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 14.223848, 0.4884167, 3.9371126)
 
-[node name="camera" parent="." instance=ExtResource("17_wyl08")]
+[node name="camera" parent="World/OGTestMap" instance=ExtResource("17_wyl08")]
 transform = Transform3D(-0.8536236, -0.21876086, 0.47272664, 0, 0.90753573, 0.41997492, -0.52089036, 0.35850048, -0.77469397, -5.1823306, 2.0807624, -3.9046247)
 
-[node name="SnowSpruce" parent="." instance=ExtResource("17_tamf2")]
+[node name="SnowSpruce" parent="World/OGTestMap" instance=ExtResource("17_tamf2")]
 transform = Transform3D(0.19945984, -0.014689415, 0, 0.014689415, 0.19945984, 0, 0, 0, 0.2, 2.8000064, 0.4424218, -7.919018)
 
-[node name="SnowSpruce2" parent="." instance=ExtResource("17_tamf2")]
+[node name="SnowSpruce2" parent="World/OGTestMap" instance=ExtResource("17_tamf2")]
 transform = Transform3D(0.19397545, -0.006371837, 0.048300367, 0.0041452106, 0.1997216, 0.009700222, -0.048542187, -0.00840695, 0.19383748, 5.6080947, 0.45577562, -7.241269)
 
-[node name="Node3D" parent="." instance=ExtResource("12_p6wwr")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, -2.5271106, 2.07755, -9.310187)
+[node name="LevelTransMaze" parent="World/OGTestMap" instance=ExtResource("12_p6wwr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, -4.60125, 2.07755, -9.310187)
+
+[node name="LevelTransCaveAssetsTest" parent="World/OGTestMap" instance=ExtResource("12_p6wwr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, -0.17748809, 2.07755, -9.310187)
 next_level = ExtResource("18_tamf2")

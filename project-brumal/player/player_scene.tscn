@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bxhm54xcxg4qx" path="res://player/CrouchCheckScript.cs" id="8_x61a0"]
 [ext_resource type="AudioStream" uid="uid://dn4uh6xlq1ru1" path="res://player/misc/test voicelines/tools.mp3" id="9_0la1k"]
 [ext_resource type="PackedScene" uid="uid://c8pgtyfm87bke" path="res://2D Assets/UI/aaronsUI_TW.tscn" id="10_3jmlc"]
-[ext_resource type="Texture2D" uid="uid://dj2k1ywdicf6k" path="res://2D Assets/UI/UI assets/crosshari.png" id="11_x61a0"]
+[ext_resource type="Texture2D" uid="uid://ce8qh7ff3cm7m" path="res://2D Assets/UI/UI assets/crosshari.png" id="11_x61a0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ciewh"]
 
@@ -29,6 +29,7 @@ size = Vector3(1.2277527, 2.522644, 2.2477722)
 disable_mode = 2
 slide_on_ceiling = false
 script = ExtResource("1_0khpw")
+devModeCheck = false
 StandCol = NodePath("StandingCollision")
 CrouchCol = NodePath("CrouchedCollision")
 Player = NodePath(".")

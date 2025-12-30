@@ -9,7 +9,7 @@ public partial class playerone : CharacterBody3D
 	private const float SPRINT_SPEED = 5.0f;
 	
 	// dev mode
-	private bool devModeCheck = true;
+	[Export] public bool devModeCheck = true;
 	private const float DEV_MODE = 3;
 	private const float PLAYER_MODE = 1;
 

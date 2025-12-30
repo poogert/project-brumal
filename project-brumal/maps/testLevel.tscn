@@ -1,16 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://x5t500dddovd"]
+[gd_scene load_steps=14 format=3 uid="uid://x5t500dddovd"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_8a0p6"]
 [ext_resource type="Script" uid="uid://cin1c7ymt2yim" path="res://maps/TestLevelScript.cs" id="1_tgtyk"]
-[ext_resource type="PackedScene" uid="uid://yog88nmikhnw" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveRoom1.glb" id="4_jkisn"]
-[ext_resource type="AudioStream" uid="uid://cfl0xpynoyjo1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
-[ext_resource type="PackedScene" uid="uid://cfkrv2tfrt5m4" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite1.glb" id="5_tgtyk"]
-[ext_resource type="PackedScene" uid="uid://mffrqp1uj8mr" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite2.glb" id="6_mblk6"]
-[ext_resource type="PackedScene" uid="uid://dnypjfsimk2pc" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite4.glb" id="7_i61l1"]
-[ext_resource type="PackedScene" uid="uid://dgpv56autf8hx" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveStalagmite3.glb" id="8_jj0b7"]
-[ext_resource type="PackedScene" uid="uid://00u7f8cmiq88" path="res://3D Assets/MapChunks/MapSegments/NewSegments/CaveHallwayBend2.glb" id="9_i61l1"]
-[ext_resource type="PackedScene" uid="uid://b8iyurkhjd0il" path="res://3D Assets/Objects/WorldProps/prop_Pinon/Pinon.tscn" id="10_jj0b7"]
-[ext_resource type="PackedScene" uid="uid://cucf5no5scdia" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="11_avqxq"]
+[ext_resource type="AudioStream" uid="uid://do2jnjbnqrxa1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
+[ext_resource type="PackedScene" uid="uid://bcutbo6gb0hvk" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="11_avqxq"]
 [ext_resource type="Texture2D" uid="uid://custjqcbpt1os" path="res://miscellaneous/KeanuAndBookV1.png" id="12_oqr4r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
@@ -72,583 +65,514 @@ attenuation_model = 3
 [node name="Player" parent="." instance=ExtResource("1_8a0p6")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.36954594, 1.500001, -0.8635464)
 
-[node name="CaveTest" type="Node3D" parent="."]
+[node name="JacobCaveLevel" type="Node3D" parent="."]
 
-[node name="CaveRoom1" parent="CaveTest" instance=ExtResource("4_jkisn")]
-transform = Transform3D(-0.99863774, 0, 0.052179147, 0, 1, 0, -0.052179147, 0, -0.99863774, -26.726627, 3.0446692, 27.58176)
+[node name="JacobCaveLevel1_Pt1" type="Node" parent="JacobCaveLevel"]
 
-[node name="Stalagmites" type="Node3D" parent="CaveTest/CaveRoom1"]
-transform = Transform3D(-0.99863774, 0, -0.052179147, 0, 1, 0, 0.052179147, 0, -0.99863774, -8.405045, -3.0446692, 28.058552)
-
-[node name="CaveStalagmite1" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
-transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, -12.957886, 7.254305, 27.671204)
-
-[node name="CaveStalagmite2" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -14.167839, 6.7651625, 20.661133)
-
-[node name="CaveStalagmite3" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -3.1026487, 6.84402, 28.39704)
-
-[node name="CaveStalagmite4" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10.2097, 6.7651625, 34.197)
-
-[node name="CaveStalagmite5" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("5_tgtyk")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19.203518, 6.7651625, 24.341778)
-
-[node name="CaveStalagmite6" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("6_mblk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3830814, 7.672402, 26.757582)
-
-[node name="CaveStalagmite7" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("6_mblk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.789255, 7.672402, 24.253595)
-
-[node name="CaveStalagmite8" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("6_mblk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6639185, 7.672402, 30.862286)
-
-[node name="CaveStalagmite9" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("6_mblk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.08228, 7.4480424, 26.66935)
-
-[node name="CaveStalagmite10" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("7_i61l1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.061917, 6.9169106, 26.737127)
-
-[node name="CaveStalagmite11" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.071048, 7.5499244, 26.866951)
-
-[node name="CaveStalagmite12" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.3369741, 7.5499244, 26.927237)
-
-[node name="CaveStalagmite13" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.286938, 7.5499244, 27.661404)
-
-[node name="CaveStalagmite14" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.509517, 7.5499244, 32.22298)
-
-[node name="CaveStalagmite15" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.371295, 7.549924, 23.582546)
-
-[node name="CaveStalagmite16" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.906931, 7.184087, 22.95848)
-
-[node name="CaveStalagmite17" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.6559, 6.899272, 30.365543)
-
-[node name="CaveStalagmite18" parent="CaveTest/CaveRoom1/Stalagmites" instance=ExtResource("8_jj0b7")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.7105675, 7.21745, 34.237286)
-
-[node name="CaveHallwayBend2" parent="CaveTest" instance=ExtResource("9_i61l1")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -9.19622, 2.4396725, 2.7940657)
-
-[node name="Pinon" parent="CaveTest" instance=ExtResource("10_jj0b7")]
-transform = Transform3D(1, 0, 0, 0, 0.22840182, -0.97356695, 0, 0.97356695, 0.22840182, -29.560425, 2.824553, 19.98228)
-
-[node name="Pinon2" parent="CaveTest" instance=ExtResource("10_jj0b7")]
-transform = Transform3D(1, 0, 0, 0, -0.5914785, -0.8063207, 0, 0.8063207, -0.5914785, -27.70838, 3.987658, 20.436638)
-
-[node name="JacobCaveLevel1_Pt1" type="Node" parent="."]
-
-[node name="PlayerSizeRefrence Mesh" type="MeshInstance3D" parent="JacobCaveLevel1_Pt1"]
+[node name="PlayerSizeRefrence Mesh" type="MeshInstance3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8000011, 1.5000002, 84.000015)
 mesh = SubResource("CapsuleMesh_jj0b7")
 surface_material_override/0 = SubResource("StandardMaterial3D_jj0b7")
 
-[node name="WideHallway_Short" type="Node" parent="JacobCaveLevel1_Pt1"]
+[node name="WideHallway_Short" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt1"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/WideHallway_Short"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/WideHallway_Short"]
 transform = Transform3D(1.1, 0, 0, 0, 9.685755e-08, -1.0000001, 0, 1.0000001, 9.685755e-08, 0, -0.19999921, 18.000002)
 use_collision = true
 radius = 5.43
 height = 16.0
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/WideHallway_Short/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/WideHallway_Short/CSGCylinder3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9528385e-13, 0, 8.9528385e-13, 1, 0, 0.024999619, -0.6999999)
 operation = 2
 radius = 4.2000003
 height = 17.850002
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt1/WideHallway_Short"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/WideHallway_Short"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-07, 0, 17.999998)
 use_collision = true
 size = Vector3(11, 1, 16)
 
-[node name="MediumHallway_Short" type="Node" parent="JacobCaveLevel1_Pt1"]
+[node name="MediumHallway_Short" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt1"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/MediumHallway_Short"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/MediumHallway_Short"]
 transform = Transform3D(0.30681005, 0.6778151, -2.247771e-08, -1.706144e-15, -4.6093355e-08, -0.8, -0.25744414, 0.80778843, -2.6787891e-08, 8.4000025, -0.19999968, 33.499992)
 use_collision = true
 radius = 4.5
 height = 6.6
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/MediumHallway_Short/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/MediumHallway_Short/CSGCylinder3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.7213787e-12, 0, 2.7213787e-12, 1, 0, -0.040626526, -0.6999999)
 operation = 2
 radius = 3.5
 height = 7.731251
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt1/MediumHallway_Short"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/MediumHallway_Short"]
 transform = Transform3D(0.76604444, 0, 0.6427875, 0, 1, 0, -0.6427875, 0, 0.76604444, 8.208491, 0, 33.660686)
 use_collision = true
 size = Vector3(4.3, 1, 6.6)
 
-[node name="CaveRoom_Medium" type="Node" parent="JacobCaveLevel1_Pt1"]
+[node name="CaveRoom_Medium" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt1"]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Medium"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Medium"]
 transform = Transform3D(1.8899999, 0, 0, 0, 0.9, 0, 0, 0, 1.08, 0, 0.100000024, 28.599998)
 use_collision = true
 radius = 4.5
 height = 0.8
 sides = 17
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Medium"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Medium"]
 transform = Transform3D(1.6500001, 0, 0, 0, 0.847, 0, 0, 0, 1, 0, 0.8000001, 28.599998)
 radius = 5.4
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 operation = 2
 radius = 4.9
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
 transform = Transform3D(0.60606056, 0, 0, 0, 9.804806e-08, -1.2987012, 0, 1, 7.5497006e-08, 0, -1.0064945, -4.032812)
 operation = 2
 radius = 4.2000003
 height = 2.8656251
 
-[node name="MidExit" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
+[node name="MidExit" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
 transform = Transform3D(0.648, 0, 0, 0, 8.304766e-08, -1.7599993, 0, 1.1, 1.3287631e-07, -0.06060605, -0.3541909, 4.174999)
 operation = 2
 radius = 2.3
 height = 2.45
 sides = 15
 
-[node name="RightExit" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
+[node name="RightExit" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
 transform = Transform3D(0.30853805, -0.7660443, -1.0178915e-07, 1.5423109e-15, 7.549788e-08, -1.7599993, 0.3677013, 0.6427876, 8.5411244e-08, -4.0606055, -0.3541909, 3.0750027)
 operation = 2
 radius = 1.78
 height = 2.45
 sides = 15
 
-[node name="LeftExit" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
+[node name="LeftExit" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Medium/CSGSphere3D"]
 transform = Transform3D(0.30853805, 0.7660445, 1.01789205e-07, 4.963164e-16, 7.549788e-08, -1.7599993, -0.36770132, 0.6427875, 8.541123e-08, 3.878788, -0.3541909, 2.7750034)
 operation = 2
 radius = 1.78
 height = 2.45
 sides = 15
 
-[node name="CaveRoom_Small" type="Node" parent="JacobCaveLevel1_Pt1"]
+[node name="CaveRoom_Small" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt1"]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small"]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -12.854903, 0, 37.11208)
 use_collision = true
 radius = 4.9
 height = 1.0
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small"]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 0.9, 0, 0.5, 0, 0.8660254, -13.245097, 0.5, 38.387913)
 radius = 6.5
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small/CSGSphere3D"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small/CSGSphere3D"]
 transform = Transform3D(1.179953, 0, 0, 0, 0.85563064, 0, 0, 0, 1, 0.3, 1.0999999, 0)
 operation = 2
 radius = 4.8
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small/CSGSphere3D"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small/CSGSphere3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.3, 0.19999981, -4.8374977)
 operation = 2
 radius = 3.8
 height = 3.4750001
 
-[node name="Exit" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small/CSGSphere3D"]
+[node name="Exit" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small/CSGSphere3D"]
 transform = Transform3D(0.51961523, -0.5000001, -2.1854339e-08, 0, -4.8565187e-08, 1.1111112, -0.3, -0.86602557, -3.785281e-08, 1.3675766, 3.177082, 3.729969)
 operation = 2
 radius = 1.8000001
 height = 3.5478516
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small/CSGSphere3D/Exit"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small/CSGSphere3D/Exit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050001144, 0.15000153, -1.8000016)
 operation = 2
 size = Vector3(7.3, 8.7, 3.6000001)
 
-[node name="CaveRoom_Small2" type="Node" parent="JacobCaveLevel1_Pt1"]
+[node name="CaveRoom_Small2" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt1"]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small2"]
 transform = Transform3D(0.76604444, 0, 0.6427876, 0, 1, 0, -0.6427876, 0, 0.76604444, 12.617282, -0.3, 39.148483)
 use_collision = true
 radius = 4.9
 height = 1.0
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small2"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small2"]
 transform = Transform3D(0.76604444, 0, 0.6427876, 0, 0.9, 0, -0.6427876, 0, 0.76604444, 13.682719, 0.19999999, 39.951508)
 radius = 6.5
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small2/CSGSphere3D"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small2/CSGSphere3D"]
 transform = Transform3D(1.179953, 0, 0, 0, 0.85563064, 0, 0, 0, 1, 0.3, 1.0999999, 0)
 operation = 2
 radius = 4.8
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small2/CSGSphere3D"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small2/CSGSphere3D"]
 transform = Transform3D(0.37990716, 8.940697e-08, 0, 0, -2.6111705e-08, 1, 2.9802322e-08, -0.5973661, -4.371139e-08, -0.3000002, 0.19999982, -5.1218224)
 operation = 2
 radius = 3.4
 height = 4.3187504
 
-[node name="Exit" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small2/CSGSphere3D"]
+[node name="Exit" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small2/CSGSphere3D"]
 transform = Transform3D(0.4596267, 0.64278764, 2.8095391e-08, 0, -4.8565187e-08, 1.1111112, 0.3856726, -0.7660445, -3.3482785e-08, -3.6258383, 2.510415, 2.4811287)
 operation = 2
 radius = 3.3
 height = 5.7656255
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt1/CaveRoom_Small2/CSGSphere3D/Exit"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CaveRoom_Small2/CSGSphere3D/Exit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050001144, 0.15000153, -1.8000016)
 operation = 2
 size = Vector3(7.3, 8.7, 3.6000001)
 
-[node name="CrampedHallway_Short" type="Node" parent="JacobCaveLevel1_Pt1"]
+[node name="CrampedHallway_Short" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt1"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CrampedHallway_Short"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CrampedHallway_Short"]
 transform = Transform3D(0.44995126, -0.7660444, 3.3484852e-08, 1.6752952e-15, -4.371139e-08, -1, 0.5362311, 0.6427876, -2.809713e-08, -9.099999, -0.19999968, 32.7)
 use_collision = true
 radius = 4.5
 height = 6.6
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CrampedHallway_Short/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CrampedHallway_Short/CSGCylinder3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.7213787e-12, 0, 2.7213787e-12, 1, 0, -0.040626526, -0.6999999)
 operation = 2
 radius = 3.5
 height = 7.731251
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt1/CrampedHallway_Short"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CrampedHallway_Short"]
 transform = Transform3D(0.6427876, 0, -0.7660444, 0, 1, 0, 0.7660444, 0, 0.6427876, -9.099999, 0, 32.7)
 use_collision = true
 size = Vector3(5.6, 1, 6.6)
 
-[node name="TEMPORARY_CrouchBlocker" type="CSGBox3D" parent="JacobCaveLevel1_Pt1/CrampedHallway_Short"]
+[node name="TEMPORARY_CrouchBlocker" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CrampedHallway_Short"]
 transform = Transform3D(0.7660445, 0, 0.64278764, 0, 1, 0, -0.64278764, 0, 0.7660445, 6.5, 2.8999999, 31.6)
 use_collision = true
 size = Vector3(2.4, 2.6000001, 1)
 
-[node name="CrampedHallway_Long" type="Node" parent="JacobCaveLevel1_Pt1"]
+[node name="CrampedHallway_Long" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt1"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CrampedHallway_Long"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CrampedHallway_Long"]
 transform = Transform3D(0.48999995, 0, -3.5527137e-15, 5.059302e-16, -4.371139e-08, -1, 4.172325e-08, 1, -4.3711374e-08, 12.500002, 1.8000003, 48.2)
 use_collision = true
 radius = 4.5
 height = 7.8
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt1/CrampedHallway_Long/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CrampedHallway_Long/CSGCylinder3D2"]
 transform = Transform3D(1, 4.543839e-28, 1.3854162e-29, 0, 1, -2.7213787e-12, -5.293956e-21, 2.6325608e-12, 1, 0, -0.15781403, -0.6999999)
 operation = 2
 radius = 3.5
 height = 7.9656253
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt1/CrampedHallway_Long"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/CrampedHallway_Long"]
 transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 12.600001, 2, 48.3)
 use_collision = true
 size = Vector3(4, 1, 7.6)
 
-[node name="OreWall" type="Node" parent="JacobCaveLevel1_Pt1"]
+[node name="OreWall" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt1"]
 
-[node name="Ore" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 33.29999)
 
-[node name="Ore2" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore2" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.6, 33.29999)
 
-[node name="Ore3" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore3" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.6, 33.29999)
 
-[node name="Ore4" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore4" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.6, 33.29999)
 
-[node name="Ore5" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore5" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 1.6, 33.29999)
 
-[node name="Ore6" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore6" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.6, 33.29999)
 
-[node name="Ore7" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore7" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 1.6, 33.29999)
 
-[node name="Ore8" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore8" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 2.9, 33.29999)
 
-[node name="Ore9" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore9" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 2.9, 33.29999)
 
-[node name="Ore10" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore10" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 2.9, 33.29999)
 
-[node name="Ore11" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore11" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.9, 33.29999)
 
-[node name="Ore12" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore12" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.9, 33.29999)
 
-[node name="Ore13" parent="JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
+[node name="Ore13" parent="JacobCaveLevel/JacobCaveLevel1_Pt1/OreWall" instance=ExtResource("11_avqxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.9, 33.29999)
 
-[node name="JacobCaveLevel1_Pt2" type="Node" parent="."]
+[node name="JacobCaveLevel1_Pt2" type="Node" parent="JacobCaveLevel"]
 
-[node name="WideHallway_Short" type="Node" parent="JacobCaveLevel1_Pt2"]
+[node name="WideHallway_Short" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt2"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short"]
 transform = Transform3D(0.66, 0, 0, 0, 9.685755e-08, -1.0000001, 0, 1.0000001, 9.685755e-08, 0, -0.19999921, 41.700005)
 use_collision = true
 radius = 5.43
 height = 16.0
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short/CSGCylinder3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9528385e-13, 0, 8.9528385e-13, 1, 0, 0.024999619, -0.6999999)
 operation = 2
 radius = 4.2000003
 height = 17.850002
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.450001, 0, 41.699997)
 use_collision = true
 size = Vector3(7.5, 1, 16)
 
-[node name="CaveRoom_Medium" type="Node" parent="JacobCaveLevel1_Pt2"]
+[node name="CaveRoom_Medium" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt2"]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/CaveRoom_Medium"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3999985, 0, 57.899994)
 use_collision = true
 radius = 9.2
 height = 1.0
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/CaveRoom_Medium"]
 transform = Transform3D(1, 0, 0, 0, 0.9, 0, 0, 0, 1, -0.30000305, 0.5, 57.599995)
 radius = 10.2
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium/CSGSphere3D"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/CaveRoom_Medium/CSGSphere3D"]
 transform = Transform3D(1.179953, 0, 0, 0, 0.85563076, 0, 0, 0, 1, -0.099999905, 1.0999999, 0.19999695)
 operation = 2
 radius = 8.2
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium/CSGSphere3D"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/CaveRoom_Medium/CSGSphere3D"]
 transform = Transform3D(0.5, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.371139e-08, -1.7881393e-07, 0.19999981, -8.418755)
 operation = 2
 radius = 5.0
 height = 3.6375
 
-[node name="ExitRight" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/CaveRoom_Medium/CSGSphere3D"]
+[node name="ExitRight" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/CaveRoom_Medium/CSGSphere3D"]
 transform = Transform3D(0.5, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.371139e-08, -3.0000005, 0.19999981, 8.110935)
 operation = 2
 radius = 5.0
 height = 4.259375
 
-[node name="WideHallway_Medium" type="Node" parent="JacobCaveLevel1_Pt2"]
+[node name="WideHallway_Medium" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt2"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Medium"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Medium"]
 transform = Transform3D(0.66, 0, 0, 0, 9.685755e-08, -1.0000001, 0, 1.0000001, 9.685755e-08, -3.5, -0.19999872, 78.6125)
 use_collision = true
 radius = 5.43
 height = 25.725
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Medium/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Medium/CSGCylinder3D2"]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999877, 1.0658141e-12, 0, -1.0658141e-12, 0.9999877, 0, -1.7679367, -0.69999886)
 operation = 2
 radius = 4.2000003
 height = 29.639065
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Medium/CSGCylinder3D2"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Medium/CSGCylinder3D2"]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.99997187, 4.504841e-12, 0, -4.504841e-12, 0.99997187, 5.096969, 6, -1.3999946)
 operation = 2
 size = Vector3(3.4, 2, 1.4)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Medium"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Medium"]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 7.1054274e-15, 0, -7.1054274e-15, 0.99999994, -3.7500007, 3.6237675e-14, 78.05)
 use_collision = true
 size = Vector3(7.1, 1, 26.9)
 
-[node name="WideHallway_Short3" type="Node" parent="JacobCaveLevel1_Pt2"]
+[node name="WideHallway_Short3" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt2"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short3"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short3"]
 transform = Transform3D(0.65999997, -2.9802322e-08, 3.5527133e-15, 1.0192998e-08, 0.34202024, -0.9396925, 2.8005019e-08, 0.9396927, 0.34202018, 15.1, 2.365886, 95.02365)
 use_collision = true
 radius = 5.43
 height = 16.0
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short3/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short3/CSGCylinder3D2"]
 transform = Transform3D(1, 0, -7.194245e-14, -6.3948846e-14, 1, 0, 7.993606e-15, 0, 1, 0, 0.41874695, -0.69999504)
 operation = 2
 radius = 4.2000003
 height = 17.0625
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short3"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short3"]
 transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 15.050002, 2.5709226, 95.00222)
 use_collision = true
 size = Vector3(6.7000003, 1, 15.900001)
 
-[node name="WideHallway_Short4" type="Node" parent="JacobCaveLevel1_Pt2"]
+[node name="WideHallway_Short4" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt2"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short4"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short4"]
 transform = Transform3D(9.528041e-10, 1, 5.9604645e-08, 1.3322675e-15, 8.940696e-08, -0.99999976, -0.65999997, -1.3909068e-08, -4.759836e-15, 6.150012, -0.20000026, 83.700005)
 use_collision = true
 radius = 5.43
 height = 13.8
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short4/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short4/CSGCylinder3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9528385e-13, 5.886879e-20, 8.9528385e-13, 1, 0, 4.1046867, -0.6999999)
 operation = 2
 radius = 4.2000003
 height = 5.8406253
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short4/CSGCylinder3D2"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short4/CSGCylinder3D2"]
 transform = Transform3D(-4.371139e-08, 0.99997926, 8.9408445e-08, -0.9999999, -4.3710475e-08, -8.940513e-08, -8.940391e-08, -8.941151e-08, 0.99997926, -0.7091141, -2.9499898, -1.449991)
 operation = 2
 size = Vector3(8.400001, 4.7000003, 1.5)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short4"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short4"]
 transform = Transform3D(-4.371139e-08, 1.4901161e-08, 1, 0, 1, -1.4901161e-08, -1, -6.5135044e-16, -4.371139e-08, 5.39999, 0.15000075, 83.950005)
 use_collision = true
 size = Vector3(7.1, 0.7, 13.7)
 
-[node name="WideHallway_Short6" type="Node" parent="JacobCaveLevel1_Pt2"]
+[node name="WideHallway_Short6" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt2"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short6"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short6"]
 transform = Transform3D(0.65999997, -2.9802319e-08, 3.877981e-15, 1.3322674e-15, 8.940695e-08, -1.7999995, 2.9802319e-08, 0.99999994, 1.0728836e-07, -3.7999988, -0.8400009, 96.100006)
 use_collision = true
 radius = 5.43
 height = 9.200001
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short6/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short6/CSGCylinder3D2"]
 transform = Transform3D(1, 0, 1.0460857e-19, 1.7763568e-15, 1, 1.4352963e-12, 5.791588e-20, 8.9528385e-13, 1, -0.30303144, 0.5068588, -0.8111106)
 operation = 2
 radius = 4.2000003
 height = 10.131886
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short6/CSGCylinder3D2"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short6/CSGCylinder3D2"]
 transform = Transform3D(1, 0, 6.140989e-20, 1.7763568e-15, 1, 8.1712415e-13, 5.791588e-20, 8.9528385e-13, 0.5999999, 0.30303, -4.2900085, -0.8111104)
 operation = 2
 radius = 3.6000001
 height = 0.6659425
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short6"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short6"]
 transform = Transform3D(1, 0, 0, 0, 1.8, -1.4901161e-08, 0, 2.682209e-08, 1, -4.0499988, -0.20999882, 96.049995)
 use_collision = true
 size = Vector3(7.1, 0.7, 9.3)
 
-[node name="WideHallway_Short5" type="Node" parent="JacobCaveLevel1_Pt2"]
+[node name="WideHallway_Short5" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_Pt2"]
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short5"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short5"]
 transform = Transform3D(0.65999997, -2.980232e-08, 2.154434e-15, 1.3322674e-15, 8.940696e-08, -0.99999976, 2.9802319e-08, 1, 5.9604645e-08, 15.200001, -0.20000009, 83.30001)
 use_collision = true
 radius = 5.43
 height = 8.6
 sides = 11
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short5/CSGCylinder3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short5/CSGCylinder3D2"]
 transform = Transform3D(1, 0, -4.2351647e-22, 0, 1, -8.9528385e-13, -1.0376154e-20, 8.9528385e-13, 1, 0, 1.559372, -0.69999987)
 operation = 2
 radius = 4.2000003
 height = 10.93125
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short5/CSGCylinder3D2"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short5/CSGCylinder3D2"]
 transform = Transform3D(-4.371139e-08, 1, 8.940618e-08, -1, -4.371138e-08, -8.940698e-08, -8.940698e-08, -8.9406086e-08, 1, -4.2898884, 1.2421799, -0.70000017)
 operation = 2
 radius = 2.1000001
 height = 1.8828123
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_Pt2/WideHallway_Short5"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_Pt2/WideHallway_Short5"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.4901161e-08, 0, 1.4901161e-08, 1, 15.050001, 0.1500007, 83.399994)
 use_collision = true
 size = Vector3(6.9, 0.7, 8.400001)
 
-[node name="JacobCaveLevel1_P3" type="Node" parent="."]
+[node name="JacobCaveLevel1_P3" type="Node" parent="JacobCaveLevel"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel1_P3"]
+[node name="CSGBox3D" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_P3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.000001, 1.5499997, 102.65)
 use_collision = true
 size = Vector3(6.4, 4.5, 3.9)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="JacobCaveLevel1_P3"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_P3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65, 3.3000004, 106.549995)
 use_collision = true
 size = Vector3(27.1, 1, 8.7)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="JacobCaveLevel1_P3"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_P3"]
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 7.05, 3.3000004, 117.049995)
 use_collision = true
 size = Vector3(27.1, 1, 8.7)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="JacobCaveLevel1_P3"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_P3"]
 transform = Transform3D(-0.64278764, 0, -0.76604444, 0, 1, 0, 0.76604444, 0, -0.64278764, 42.076595, 3.3000004, 109.332466)
 use_collision = true
 size = Vector3(33.3, 1, 10.7)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="JacobCaveLevel1_P3"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_P3"]
 transform = Transform3D(0.9848078, 0, 0.17364818, 0, 1, 0, -0.17364818, 0, 0.9848078, 22.25, 3.3000004, 122.35)
 use_collision = true
 size = Vector3(27.1, 1, 8.7)
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="JacobCaveLevel1_P3"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_P3"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -11.097856, 3.3000004, 100.12499)
 use_collision = true
 size = Vector3(4.1, 1, 7.9)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="JacobCaveLevel1_P3"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_P3"]
 transform = Transform3D(-1.4901161e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -1.4901161e-08, -13.950001, 2.9000003, 72.00001)
 use_collision = true
 size = Vector3(57, 1, 2.3)
 
-[node name="CaveRoom_ExtraLarge" type="Node" parent="JacobCaveLevel1_P3"]
+[node name="CaveRoom_ExtraLarge" type="Node" parent="JacobCaveLevel/JacobCaveLevel1_P3"]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
 transform = Transform3D(-0.9, 0, 1.1622905e-07, 0, 1, 0, -8.0466265e-08, 0, -1.3, 54.599995, 3.1999998, 61.19999)
 use_collision = true
 radius = 34.0
 height = 1.0
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
 transform = Transform3D(-0.99999994, 0, 1.3411045e-07, 0, 2.4299998, 0, -8.940697e-08, 0, -1.4999999, 53.900005, 3.5, 57.1)
 radius = 32.600002
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel1_P3/CaveRoom_ExtraLarge/CSGSphere3D"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="JacobCaveLevel/JacobCaveLevel1_P3/CaveRoom_ExtraLarge/CSGSphere3D"]
 transform = Transform3D(1.0619574, 0, 0, 0, 0.8556305, 0, 0, 0, 0.9999999, 0.40000153, 1.0999998, 0.19999695)
 operation = 2
 radius = 28.5
 
-[node name="ExitRight" type="CSGCylinder3D" parent="JacobCaveLevel1_P3/CaveRoom_ExtraLarge/CSGSphere3D"]
+[node name="ExitRight" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_P3/CaveRoom_ExtraLarge/CSGSphere3D"]
 transform = Transform3D(0.4698412, 0.34201556, 7.474952e-09, 8.310517e-29, -4.371078e-08, 0.49999157, 0.17100686, -0.9396924, -2.0537632e-08, 4.980091, 0.19999981, -28.535412)
 operation = 2
 radius = 5.5
 height = 6.714844
 
-[node name="Label3D" type="Label3D" parent="JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
+[node name="Label3D" type="Label3D" parent="JacobCaveLevel/JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
 transform = Transform3D(0.9396926, 0, -0.34202012, 0, 1, 0, 0.34202012, 0, 0.9396926, 51.3, 4.5, 93.399994)
 text = "Boris: Oh... Oh no. We need to leave."
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="JacobCaveLevel/JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
 transform = Transform3D(0.8660254, -0.49240386, -0.08682412, 0, 0.17364825, -0.98480785, 0.50000006, 0.8528686, 0.1503838, 56.3, 6.0000005, 84.3)
 mesh = SubResource("PlaneMesh_00g4h")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
+[node name="SpotLight3D" type="SpotLight3D" parent="JacobCaveLevel/JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
 transform = Transform3D(0.9396927, 0.05939116, -0.3368241, 0, 0.9848078, 0.17364815, 0.34202015, -0.16317588, 0.9254166, 55.6, 8.599999, 85.19999)
 visible = false
 light_energy = 3.952
 light_volumetric_fog_energy = 0.885
 light_size = 0.456
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JacobCaveLevel/JacobCaveLevel1_P3/CaveRoom_ExtraLarge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1, 0.5, 60.4)
 material_override = SubResource("StandardMaterial3D_oqr4r")
 radius = 8.3
 height = 1.0
 
-[node name="Label3D" type="Label3D" parent="JacobCaveLevel1_P3/CaveRoom_ExtraLarge/CSGCylinder3D2"]
+[node name="Label3D" type="Label3D" parent="JacobCaveLevel/JacobCaveLevel1_P3/CaveRoom_ExtraLarge/CSGCylinder3D2"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4.6000004, 0)
 text = "THE PIT"
 font_size = 300
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="JacobCaveLevel1_P3"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="JacobCaveLevel/JacobCaveLevel1_P3"]
 transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 15.1, 2.788302, 102.78215)
 use_collision = true
 size = Vector3(6.6, 4.5, 4)
