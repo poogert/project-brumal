@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://cnsxxtqfapbae"]
 
-[ext_resource type="Texture2D" uid="uid://ciccnksb7olrw" path="res://3D Assets/MapChunks/MapSegments/CaveSegments/CaveHallways/CaveHallway3Way/GLBs/CaveHallway3Way_CaveWall2.png" id="1_qoqe7"]
+[ext_resource type="Texture2D" uid="uid://ciccnksb7olrw" path="res://3D Assets/MapChunks/MapSegments/CaveSegments/CaveHallways/CaveHallway3Way/CaveHallway3Way_CaveWall2.png" id="1_qoqe7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgqxj"]
 resource_name = "CaveText2"

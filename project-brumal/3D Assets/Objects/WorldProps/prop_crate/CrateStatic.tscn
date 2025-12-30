@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://c7uc5bb4dnwnr"]
 
-[ext_resource type="Texture2D" uid="uid://ci0a8hjhvqi3g" path="res://3D Assets/Objects/WorldProps/prop_crate/GLBs/Crate_Box.png" id="1_to558"]
+[ext_resource type="Texture2D" uid="uid://ci0a8hjhvqi3g" path="res://3D Assets/Objects/WorldProps/prop_crate/Crate_Box.png" id="1_to558"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4esi"]
 resource_name = "Material.014"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://b8iyurkhjd0il"]
 
-[ext_resource type="Texture2D" uid="uid://bfogm6shry16f" path="res://3D Assets/Objects/WorldProps/prop_Pinon/GLBs/PinionStake_Pinon.png" id="1_wgokp"]
-[ext_resource type="Texture2D" uid="uid://b7l65nmldjv6m" path="res://3D Assets/Objects/WorldProps/prop_Pinon/GLBs/PinionLoop_Pinon.png" id="2_gyown"]
+[ext_resource type="Texture2D" uid="uid://bfogm6shry16f" path="res://3D Assets/Objects/WorldProps/prop_Pinon/PinionStake_Pinon.png" id="1_wgokp"]
+[ext_resource type="Texture2D" uid="uid://b7l65nmldjv6m" path="res://3D Assets/Objects/WorldProps/prop_Pinon/PinionLoop_Pinon.png" id="2_gyown"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_di5xg"]
 resource_name = "Material.019"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://dvqria0pnf74m"]
 
-[ext_resource type="Texture2D" uid="uid://cj45ufy5mernr" path="res://3D Assets/Objects/WorldProps/prop_plank/GLBs/Plank_Plank.png" id="1_skc8n"]
+[ext_resource type="Texture2D" uid="uid://cj45ufy5mernr" path="res://3D Assets/Objects/WorldProps/prop_plank/Plank_Plank.png" id="1_skc8n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4le0"]
 resource_name = "Material.022"

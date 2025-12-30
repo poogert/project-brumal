@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://jg61dgwpswbo"]
 
-[ext_resource type="Texture2D" uid="uid://yk57q6l23q6t" path="res://3D Assets/MapChunks/MapSegments/Bridges/RopeBridge/GLBs/RopeEnds_rope.png" id="1_x6pf6"]
+[ext_resource type="Texture2D" uid="uid://yk57q6l23q6t" path="res://3D Assets/MapChunks/MapSegments/Bridges/RopeBridge/RopeEnds_rope.png" id="1_x6pf6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlia2"]
 resource_name = "rope"

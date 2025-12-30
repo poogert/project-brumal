@@ -29,7 +29,6 @@ size = Vector3(1.2277527, 2.522644, 2.2477722)
 disable_mode = 2
 slide_on_ceiling = false
 script = ExtResource("1_0khpw")
-devModeCheck = false
 StandCol = NodePath("StandingCollision")
 CrouchCol = NodePath("CrouchedCollision")
 Player = NodePath(".")
