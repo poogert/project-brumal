@@ -16,8 +16,9 @@ public partial class CalciumLamp : Node3D
 	[Export] public float FlickerIntensity = 0.3f;
 	[Export] public double FlickerThreshold = 0.6;
 
-	private const float DefaultSpotAngle = 52.72f;
-	private const float DefaultRange = 301f;
+	private const float DefaultSpotAngle = 60f;
+	private const float DefaultRange = 50f;
+	private const float DefaultBrightness = 8;
 
 	// ==========================
 	// State
@@ -69,6 +70,9 @@ public partial class CalciumLamp : Node3D
 		if (isOn || PlayerData.calcium_fuel <= 0) return;
 
 		isOn = true;
+		_light.LightEnergy = DefaultBrightness;
+		_light.SpotAngle = DefaultSpotAngle;
+		_light.SpotRange = DefaultRange;
 		FuelTimer.Start();
 	}
 
@@ -89,7 +93,7 @@ public partial class CalciumLamp : Node3D
 		double r1 = GD.Randfn(0.0, 1.0);
 		double r2 = GD.Randfn(0.0, 1.0);
 
-		return (r1 > FlickerThreshold) ? (float)(2 + r2 * FlickerIntensity) : 2f;
+		return (r1 > FlickerThreshold) ? (float)(2 + r2 * FlickerIntensity) : DefaultBrightness;
 	}
 
 	// ==========================
@@ -97,7 +101,7 @@ public partial class CalciumLamp : Node3D
 	// ==========================
 	private void StartFlash()
 	{
-		if (isFlashing || PlayerData.calcium_fuel < 20) return;
+		if (isFlashing || PlayerData.calcium_fuel <= 20) return;
 
 		isFlashing = true;
 		flickerEnabled = false;
@@ -107,7 +111,7 @@ public partial class CalciumLamp : Node3D
 
 		_light.LightEnergy = 3000f;
 		_light.SpotAngle = 179f;
-		_light.SpotRange = 100f;
+		_light.SpotRange = 200f;
 	}
 
 	private void UpdateFlash(float delta)
@@ -116,17 +120,16 @@ public partial class CalciumLamp : Node3D
 
 		float time = 6f;
 
-		_light.LightEnergy = Mathf.Lerp(_light.LightEnergy, 1f, time * delta);
+		_light.LightEnergy = Mathf.Lerp(_light.LightEnergy, DefaultBrightness-1, time * delta);
 		_light.SpotAngle = Mathf.Lerp(_light.SpotAngle, DefaultSpotAngle, time * delta);
 		_light.SpotRange = Mathf.Lerp(_light.SpotRange, DefaultRange, time * delta);
 
-		if (_light.LightEnergy <= 2f) EndFlash();
-		
+		if (_light.LightEnergy <= DefaultBrightness) EndFlash();
 	}
 
 	private void EndFlash()
 	{
-		_light.LightEnergy = 0;
+		_light.LightEnergy = isOn ? DefaultBrightness : 0f;
 		_light.SpotAngle = DefaultSpotAngle;
 		_light.SpotRange = DefaultRange;
 
@@ -153,7 +156,7 @@ public partial class CalciumLamp : Node3D
 		}
 		else
 		{
-			_light.LightEnergy = 6f;
+			_light.LightEnergy = DefaultBrightness;
 		}
 	}
 
