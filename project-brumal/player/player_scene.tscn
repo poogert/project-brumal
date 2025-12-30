@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bxhm54xcxg4qx" path="res://player/CrouchCheckScript.cs" id="8_x61a0"]
 [ext_resource type="AudioStream" uid="uid://dn4uh6xlq1ru1" path="res://player/misc/test voicelines/tools.mp3" id="9_0la1k"]
 [ext_resource type="PackedScene" uid="uid://c8pgtyfm87bke" path="res://2D Assets/UI/aaronsUI_TW.tscn" id="10_3jmlc"]
-[ext_resource type="Texture2D" uid="uid://ce8qh7ff3cm7m" path="res://2D Assets/UI/UI assets/crosshari.png" id="11_x61a0"]
+[ext_resource type="Texture2D" uid="uid://dj2k1ywdicf6k" path="res://2D Assets/UI/UI assets/crosshari.png" id="11_x61a0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ciewh"]
 
@@ -21,7 +21,7 @@ height = 1.0
 height = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x61a0"]
-size = Vector3(1.2277527, 2.522644, 2.2477722)
+size = Vector3(1.2277527, 2.522644, 1.6583786)
 
 [node name="Player" type="Node3D"]
 
@@ -87,7 +87,7 @@ script = ExtResource("8_x61a0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109255135, -0.59629077)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06417847, -0.15177917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06417847, 0.14291763)
 shape = SubResource("BoxShape3D_x61a0")
 
 [node name="crosshair_layer_container" type="CanvasLayer" parent="."]

@@ -487,9 +487,14 @@ public partial class playerone : CharacterBody3D
 			JumpDrainStamina();
 		}
 
-		if (Input.IsActionJustPressed("jump") && isOnRope)
+		if (Input.IsActionPressed("jump") && isOnRope)
 		{
 			Velocity = new Vector3(Velocity.X, CLIMBING_SPEED, Velocity.Z);
+		}
+
+		if (Input.IsActionJustReleased("jump") && isOnRope)
+		{
+			Velocity = new Vector3(Velocity.X, 0, Velocity.Z);
 		}
 
 
