@@ -156,7 +156,7 @@ points = PackedVector3Array(0.53999996, 0.11313373, -0.00014489889, 0.53999996, 
 render_priority = 0
 shader = ExtResource("6_svf6b")
 shader_parameter/outline_color = Color(0.36589682, 0.5627717, 1, 1)
-shader_parameter/outline_width = 5.0
+shader_parameter/outline_width = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyylr"]
 resource_name = "Material.006"

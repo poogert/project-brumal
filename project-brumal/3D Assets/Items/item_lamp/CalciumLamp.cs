@@ -93,7 +93,7 @@ public partial class CalciumLamp : Node3D
 		double r1 = GD.Randfn(0.0, 1.0);
 		double r2 = GD.Randfn(0.0, 1.0);
 
-		return (r1 > FlickerThreshold) ? (float)(2 + r2 * FlickerIntensity) : DefaultBrightness;
+		return (r1 > FlickerThreshold) ? (float)(2 + (r2 * FlickerIntensity)) : DefaultBrightness;
 	}
 
 	// ==========================

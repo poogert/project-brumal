@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=4 uid="uid://cie8veob6lupg"]
 
 [ext_resource type="Script" uid="uid://dorv5day0fyr4" path="res://Models/Characters/Boris/BorisScript.cs" id="1_ddx8q"]
-[ext_resource type="Texture2D" uid="uid://yj65d02fsljn" path="res://Models/Characters/Boris/boris3_OLDMANTEXTURE2.png" id="1_ga26f"]
-[ext_resource type="Texture2D" uid="uid://nkqsutwof00d" path="res://Models/Characters/Boris/boris3_beanER.png" id="2_j535s"]
-[ext_resource type="Texture2D" uid="uid://cf023b8rg8i7y" path="res://Models/Characters/Boris/BorisLamp_Ucupaint Material.png" id="4_8kae6"]
+[ext_resource type="Texture2D" uid="uid://docdrl52gjqog" path="res://Models/Characters/Boris/boris3_OLDMANTEXTURE2.png" id="1_ga26f"]
+[ext_resource type="Texture2D" uid="uid://csocxh88ytitc" path="res://Models/Characters/Boris/boris3_beanER.png" id="2_j535s"]
+[ext_resource type="Texture2D" uid="uid://t7hvqrywfniw" path="res://Models/Characters/Boris/BorisLamp_Ucupaint Material.png" id="4_8kae6"]
 [ext_resource type="Script" uid="uid://cxb8fnrp0rms3" path="res://Models/Characters/Boris/BorisLookAt.cs" id="5_8ul2g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvdea"]
@@ -653,7 +653,7 @@ _data = {
 }
 
 [node name="boris" type="Node3D" node_paths=PackedStringArray("sound")]
-transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0, 0)
+transform = Transform3D(0.21556714, 0, 0, 0, 0.21, 0, 0, 0, 0.20990816, 0, 0, 0)
 script = ExtResource("1_ddx8q")
 sound = NodePath("AudioStreamPlayer3D")
 

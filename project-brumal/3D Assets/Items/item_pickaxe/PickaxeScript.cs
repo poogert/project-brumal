@@ -1,58 +1,81 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class PickaxeScript : Node3D
 {
 	
+	AnimationTree animationTree;
+	AnimationNodeStateMachinePlayback stateMachine;
 	const double HOLD_TIME = .5; 
 	double holdingTimer = 0;
-	
-	private Tween swingTween;
-	private Vector3 originalLocalPosition;
-	private Vector3 originalLocalRotation;
+
+	int defaultAnim = 1;
+	private string[] Anim = { "Equip", "IdleReal", "Charge", "Hit", "Miss", "Sprint" };
 	private bool isHolding = false;
 
 	public override void _Ready()
-	{
-		originalLocalPosition = Position;
-		originalLocalRotation = RotationDegrees;
+    {
+        animationTree = GetNode<AnimationTree>("AnimationTree");
+        stateMachine = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
+		stateMachine.Start(Anim[0]);
 	}
 
 	public override void _Process(double delta)
 	{
-
-		if (Input.IsActionPressed("leftclick"))
+		//GD.Print(holdingTimer);
+		if (PlayerData.CurrentState == "running" && isHolding == false && !(Input.IsActionPressed("leftclick")))
+		{
+			stateMachine.Travel(Anim[5]);
+		}else if (!(PlayerData.CurrentState == "running") && isHolding == false && !(Input.IsActionPressed("leftclick"))){
+			stateMachine.Travel(Anim[1]);
+		}
+		if (Input.IsActionPressed("leftclick") && !(stateMachine.GetCurrentNode() == Anim[4]) && !(stateMachine.GetCurrentNode() == Anim[3]))
 		{
 			holdingTimer += delta;
 			
 			if (!isHolding)
 			{
 				isHolding = true;
-				PlayWindupTween();
+				//PlayWindupTween();
+				stateMachine.Travel(Anim[2]);
 			}
 
+			
+		}else
+		{	
 			if (holdingTimer >= HOLD_TIME)
 			{
 				Mine();
-				PlayStrikeTween();
+				if (Mine() == true)
+				{
+					stateMachine.Travel(Anim[3]);
+				}
+				else
+				{
+					stateMachine.Travel(Anim[4]);
+
+				}
+				
+				//PlayStrikeTween();
 				holdingTimer = 0.0;
 				
-			}
-		}
-		else
-		{
-			if (isHolding) 
+			}else 	if (isHolding) 
 			{ 
-				ResetSwingTween();
+				//ResetSwingTween();
+				stateMachine.Travel(Anim[1]);
 				isHolding = false;
 			}
-
+			
 			holdingTimer = 0.0;
 		}
+		
+			
+		
 
 	}
 
-	public void Mine()
+	public bool Mine()
 	{
 
 		GD.Print("Attempting mining");
@@ -60,21 +83,23 @@ public partial class PickaxeScript : Node3D
 		if (PlayerData.collider == null) 
 		{ 
 			GD.Print("raycast isnt grabbing anything");
-			return;
+			return false;
 		}
 
 		Node nodeobject = PlayerData.collider.GetParent().GetParent();
 		Mineable mineable = findObject(nodeobject);
-
+			
 		if (mineable != null) 
 		{ 
 			mineable.Mine(); 
 			GD.Print("success");
+			return true;
 
 		} else
 		{
-			GD.Print("the thing youre mining is wrong -> " + PlayerData.collider.GetParent().GetParent().Name);
+			GD.Print("the thing youre mining is wrong -> " + nodeobject.Name);
 			GD.Print("failed");
+			return false;
 		}
 		
 	}
@@ -101,75 +126,6 @@ public partial class PickaxeScript : Node3D
 		{
 			PrintTree(child, depth + 1);
 		}
-	}
-
-	private void PlayWindupTween()
-	{
-		swingTween?.Kill();
-		swingTween = CreateTween();
-
-		Vector3 windupOffset = new Vector3(0, 0, 0.7f);
-
-		swingTween.TweenProperty(
-			this,
-			"position",
-			originalLocalPosition + windupOffset,
-			0.5f
-		).SetTrans(Tween.TransitionType.Quad)
-		.SetEase(Tween.EaseType.Out);
-	}
-
-	private void PlayStrikeTween()
-	{
-		swingTween?.Kill();
-		swingTween = CreateTween();
-
-		Vector3 strikeOffset = new Vector3(-0.75f, -0.65f, -0.5f);
-		Vector3 strikeRotation = new Vector3(-30, 60, 0);
-
-
-		swingTween.TweenProperty(
-			this,
-			"position",
-			originalLocalPosition + strikeOffset,
-			0.03f
-		).SetTrans(Tween.TransitionType.Quad)
-		.SetEase(Tween.EaseType.Out);
-		
-		swingTween.Parallel().TweenProperty(
-			this,
-			"rotation_degrees",
-			originalLocalRotation + strikeRotation,
-			0.03f
-		).SetTrans(Tween.TransitionType.Quad)
-		.SetEase(Tween.EaseType.Out);
-
-
-		swingTween.TweenProperty(
-			this,
-			"position",
-			originalLocalPosition,
-			0.15f
-		).SetTrans(Tween.TransitionType.Quad)
-		.SetEase(Tween.EaseType.In);
-		
-		swingTween.Parallel().TweenProperty(
-			this,
-			"rotation_degrees",
-			originalLocalRotation,
-			0.15f
-		).SetTrans(Tween.TransitionType.Quad)
-		.SetEase(Tween.EaseType.In);
-	}
-
-	private void ResetSwingTween()
-	{
-
-		swingTween?.Kill();
-		swingTween = null;
-
-		Position = originalLocalPosition;
-		RotationDegrees = originalLocalRotation;
 	}
 
 

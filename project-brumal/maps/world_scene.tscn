@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=33 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://c34hjksmmlxdb" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
@@ -17,13 +17,21 @@
 [ext_resource type="PackedScene" uid="uid://qbyx7k7uun84" path="res://3D Assets/Objects/WorldProps/prop_walllamp/WallLamp.tscn" id="16_wyl08"]
 [ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprUce.tscn" id="17_tamf2"]
 [ext_resource type="PackedScene" uid="uid://bv1s3ttdjglvf" path="res://player/cinematic_camera.tscn" id="17_wyl08"]
+[ext_resource type="PackedScene" uid="uid://c5wxsrxah71gc" path="res://maps/pathfinding_level.tscn" id="18_3ovan"]
 [ext_resource type="PackedScene" uid="uid://dwk6e8xfldtl2" path="res://maps/TestLevelCaveAssets.tscn" id="18_tamf2"]
 
 [sub_resource type="Environment" id="Environment_1rsa4"]
 background_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 1.1
+ssao_intensity = 5.0
+ssao_horizon = 0.0
+ssao_light_affect = 1.0
+ssao_ao_channel_affect = 1.0
 glow_enabled = true
 fog_enabled = true
+fog_density = 0.0423
 volumetric_fog_density = 0.021
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stdo8"]
@@ -299,6 +307,7 @@ transform = Transform3D(0.19397545, -0.006371837, 0.048300367, 0.0041452106, 0.1
 
 [node name="LevelTransMaze" parent="World/OGTestMap" instance=ExtResource("12_p6wwr")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, -4.60125, 2.07755, -9.310187)
+next_level = ExtResource("18_3ovan")
 
 [node name="LevelTransCaveAssetsTest" parent="World/OGTestMap" instance=ExtResource("12_p6wwr")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, -0.17748809, 2.07755, -9.310187)

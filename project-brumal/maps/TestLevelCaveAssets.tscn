@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://dwk6e8xfldtl2"]
+[gd_scene load_steps=28 format=3 uid="uid://dwk6e8xfldtl2"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_xk15h"]
 [ext_resource type="PackedScene" uid="uid://cxgapfp4kincy" path="res://3D Assets/MapChunks/MapSegments/CaveSegments/CaveRooms/CaveRoom2/CaveRoom2.tscn" id="2_d2gc5"]
 [ext_resource type="PackedScene" uid="uid://dfmtv15oveang" path="res://3D Assets/MapChunks/MapSegments/CaveSegments/CaveHallways/CaveHallway1/CaveHallway1.tscn" id="3_s3ph5"]
 [ext_resource type="PackedScene" uid="uid://cnsxxtqfapbae" path="res://3D Assets/MapChunks/MapSegments/CaveSegments/CaveHallways/CaveHallway3Way/CaveHallway3Way.tscn" id="4_d2gc5"]
+[ext_resource type="Texture2D" uid="uid://dkexksqlq3slb" path="res://miscellaneous/NOTSAFE1.png" id="4_dr6xw"]
 [ext_resource type="PackedScene" uid="uid://civy5u8qb5av" path="res://3D Assets/MapChunks/MapSegments/CaveSegments/CaveHallways/CaveHallwayBend2/CaveHallwayBend2.tscn" id="5_b480w"]
 [ext_resource type="PackedScene" uid="uid://bqjxnqmi32853" path="res://3D Assets/MapChunks/MapSegments/CaveSegments/CaveHallways/CaveHallway2/CaveHallway2.tscn" id="6_8h3nk"]
 [ext_resource type="PackedScene" uid="uid://0dc1c4ek6t4l" path="res://3D Assets/MapChunks/MapSegments/CaveSegments/CaveDecor/CaveStalagmite1/CaveStalagmite1.tscn" id="6_uf8x1"]
@@ -32,6 +33,10 @@ ambient_light_source = 3
 ambient_light_color = Color(0, 0.050385177, 0.38381222, 1)
 ambient_light_energy = 0.35
 tonemap_mode = 2
+ssao_enabled = true
+ssao_intensity = 6.0
+ssao_light_affect = 1.0
+ssao_ao_channel_affect = 1.0
 sdfgi_read_sky_light = false
 sdfgi_bounce_feedback = 0.2
 sdfgi_cascades = 2
@@ -65,6 +70,12 @@ transform = Transform3D(0.22928537, 0, -0.9733593, 0, 1, 0, 0.9733593, 0, 0.2292
 
 [node name="CaveHallway3Way3" parent="CaveLevel/CaveHallways" instance=ExtResource("4_d2gc5")]
 transform = Transform3D(0.9762621, 0, 0.21659307, 0, 1, 0, -0.21659307, 0, 0.9762621, -11.203077, -0.49610567, 65.63694)
+
+[node name="Decal" type="Decal" parent="CaveLevel/CaveHallways/CaveHallway3Way3"]
+transform = Transform3D(-1.1732814, -1.729237, -0.20772612, 0.034380198, 0.22742006, -2.087366, 1.7413293, -1.1696237, -0.09875062, 15.0174885, 0.37208813, 2.2561378)
+texture_albedo = ExtResource("4_dr6xw")
+texture_normal = ExtResource("4_dr6xw")
+modulate = Color(1, 0, 0, 0.68235296)
 
 [node name="CaveHallway1" parent="CaveLevel/CaveHallways" instance=ExtResource("3_s3ph5")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.40359902, -0.36426508, 19.026602)
@@ -190,6 +201,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7154574, 1.3976898, 62.8479
 [node name="CaveStalagmite10" parent="CaveLevel/CaveDecor" instance=ExtResource("6_uf8x1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5927596, 1.0066957, 58.57551)
 
+[node name="CaveStalagmite11" parent="CaveLevel/CaveDecor" instance=ExtResource("6_uf8x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.611881, 1.1500673, 70.59017)
+
+[node name="CaveStalagmite12" parent="CaveLevel/CaveDecor" instance=ExtResource("14_c4mmb")]
+transform = Transform3D(-0.10893622, 0, 0.9940487, 0, 1, 0, -0.9940487, 0, -0.10893622, -25.222002, 1.5862168, 67.70211)
+
 [node name="CaveProps" type="Node3D" parent="CaveLevel"]
 
 [node name="Crate" parent="CaveLevel/CaveProps" instance=ExtResource("16_r1uqv")]
@@ -224,7 +241,7 @@ transform = Transform3D(0.29816476, -0.014852051, -0.029616293, 0.008495299, 0.2
 _Switch = NodePath("../Switch")
 
 [node name="Switch" parent="CaveLevel/CaveProps/Lamps+Buttons" instance=ExtResource("20_5bdap")]
-transform = Transform3D(1, 0, 0, 0, 0.9864407, -0.16411798, 0, 0.16411798, 0.9864407, 0.4881475, -1.0293016, 62.242435)
+transform = Transform3D(0.9967071, 0.01734018, -0.07921036, -0.013307691, 0.9986021, 0.05115576, 0.07998667, -0.04993318, 0.99554443, 0.41250014, -1.0282916, 62.236366)
 
 [node name="Fence" parent="CaveLevel/CaveProps" instance=ExtResource("21_50lk3")]
 transform = Transform3D(0.9975604, 0, -0.06980871, 0, 1, 0, 0.06980871, 0, 0.9975604, -0.7055249, -1.04718, 64.3311)
@@ -297,9 +314,3 @@ transform = Transform3D(-0.04309623, 0.06483776, 0.9969648, 0, -0.9978919, 0.064
 
 [node name="CaveStalagmite8" parent="CaveLevel/CaveProps" instance=ExtResource("13_rr5oc")]
 transform = Transform3D(0.043012265, -0.0024531744, -0.99907154, -0.0026887644, 0.999993, -0.0025712028, 0.9990707, 0.0027968609, 0.043005373, -12.676748, 1.4757242, 60.052643)
-
-[node name="CaveStalagmite1" parent="." instance=ExtResource("6_uf8x1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.611881, 1.1500673, 70.59017)
-
-[node name="CaveStalagmite2" parent="." instance=ExtResource("14_c4mmb")]
-transform = Transform3D(-0.10893622, 0, 0.9940487, 0, 1, 0, -0.9940487, 0, -0.10893622, -25.222002, 1.5862168, 67.70211)
