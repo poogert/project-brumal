@@ -29,15 +29,17 @@ ssao_intensity = 5.0
 ssao_horizon = 0.0
 ssao_light_affect = 1.0
 ssao_ao_channel_affect = 1.0
-glow_enabled = true
 fog_enabled = true
 fog_density = 0.0423
+fog_sky_affect = 0.912
 volumetric_fog_density = 0.021
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stdo8"]
 resource_name = "Material"
 transparency = 4
 cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("10_ud8pw")
 texture_filter = 2
 
