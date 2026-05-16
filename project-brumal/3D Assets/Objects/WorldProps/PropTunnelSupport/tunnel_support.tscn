@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5tqfxlot3tns"]
+
+[ext_resource type="PackedScene" uid="uid://ve7v2boapbm8" path="res://3D Assets/Objects/WorldProps/prop_planks/Plank1/plank_1.tscn" id="1_bf1k3"]
+[ext_resource type="PackedScene" uid="uid://co068gu8jdmyb" path="res://3D Assets/Objects/WorldProps/prop_planks/Plank2/plank_2.tscn" id="2_wsl2k"]
+[ext_resource type="PackedScene" uid="uid://dvqria0pnf74m" path="res://3D Assets/Objects/WorldProps/prop_planks/plank.tscn" id="3_yjge8"]
+
+[node name="TunnelSupport" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2673048)
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32047617, 0, 0)
+
+[node name="Plank2" parent="Node3D2" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(0.99494445, 0.0014419657, 0.10041593, 0.10042395, -0.021102646, -0.9947209, 0.0006846883, 0.9997763, -0.02114077, 1.2746379, -0.48803943, -0.050175786)
+
+[node name="Plank16" parent="Node3D2" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(0.9949517, 0.0057021193, 0.10019241, 0.100318, -0.0834485, -0.9914497, 0.0027075424, 0.99649566, -0.08359926, 1.2741373, -0.4807118, -0.65558565)
+
+[node name="Plank19" parent="Node3D2" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(-0.016590774, 0.9953894, 0.0944708, -0.036393847, 0.09382002, -0.9949236, -0.9991997, -0.019944701, 0.034669504, 1.2747339, -0.48944396, -2.0459526)
+
+[node name="Plank11" parent="Node3D2" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(0.99432576, 0.035163213, 0.1003987, 0.10103279, -0.016741024, -0.99474233, -0.033297565, 0.9992416, -0.020198673, 1.2716982, -0.4882403, -2.4807444)
+
+[node name="Plank22" parent="Node3D2" instance=ExtResource("2_wsl2k")]
+transform = Transform3D(0.068151645, -0.9976736, -0.0016679626, -0.9973749, -0.068172045, 0.02441005, -0.024466971, -1.0694895e-09, -0.9997006, 1.1268078, -1.0774765, -1.1593266)
+
+[node name="Plank23" parent="Node3D2" instance=ExtResource("2_wsl2k")]
+transform = Transform3D(0.068151645, -0.9976736, -0.0016679626, -0.9973749, -0.068172045, 0.02441005, -0.024466971, -1.0694895e-09, -0.9997006, 0.9993267, -0.20739675, -1.1593266)
+
+[node name="Node3D3" type="Node3D" parent="."]
+
+[node name="Plank20" parent="Node3D3" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(-0.032370247, 4.3688477e-08, 0.99947596, -0.027017727, 0.99963456, -0.0008750728, -0.99911076, -0.027031906, -0.032358415, -0.17769909, 1.4399598, -2.048088)
+
+[node name="Plank12" parent="Node3D3" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(-0.06627395, 4.2131713e-08, 0.9978015, -4.368848e-08, 1, -4.5126338e-08, -0.9978015, -4.658313e-08, -0.06627395, -0.17804445, 1.440718, -2.377676)
+
+[node name="Plank" parent="Node3D3" instance=ExtResource("3_yjge8")]
+transform = Transform3D(-0.99771035, 0, -0.06763229, 0, 1, 0, 0.06763229, 0, -0.99771035, -0.101092465, 1.6590253, -1.0755956)
+
+[node name="Plank6" parent="Node3D3" instance=ExtResource("3_yjge8")]
+transform = Transform3D(-0.9974794, 0, -0.07095786, 0, 1, 0, 0.07095786, 0, -0.9974794, 1.3466425, 1.6590253, -1.3735981)
+
+[node name="Plank14" parent="Node3D3" instance=ExtResource("3_yjge8")]
+transform = Transform3D(-0.99999857, 0, 0.0017277822, 0, 1, 0, -0.0017277822, 0, -0.99999857, 0.8905984, 1.6590253, -1.2126553)
+
+[node name="Plank7" parent="Node3D3" instance=ExtResource("3_yjge8")]
+transform = Transform3D(-0.99972045, 0, -0.023647103, 0, 1, 0, 0.023647103, 0, -0.99972045, -1.1072158, 1.6590253, -1.120935)
+
+[node name="Plank8" parent="Node3D3" instance=ExtResource("3_yjge8")]
+transform = Transform3D(-0.99972045, 0, -0.023647103, 0, 1, 0, 0.023647103, 0, -0.99972045, -1.5052018, 1.6590253, -1.1957468)
+
+[node name="Plank9" parent="Node3D3" instance=ExtResource("3_yjge8")]
+transform = Transform3D(0.99788517, -8.70791e-08, -0.06500246, -8.7398334e-08, -1, -2.0672957e-09, -0.06500246, 7.744029e-09, -0.99788517, 0.22734705, 1.6590253, -1.3124982)
+
+[node name="Plank13" parent="Node3D3" instance=ExtResource("3_yjge8")]
+transform = Transform3D(0.99788517, -8.70791e-08, -0.06500246, -8.7398334e-08, -1, -2.0672957e-09, -0.06500246, 7.744029e-09, -0.99788517, -0.43174404, 1.6590253, -1.1664503)
+
+[node name="Plank3" parent="Node3D3" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(-0.032370247, 4.368848e-08, 0.99947596, -4.368848e-08, 1, -4.5126338e-08, -0.99947596, -4.5126338e-08, -0.032370247, -0.17769909, 1.440718, 0)
+
+[node name="Plank17" parent="Node3D3" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(-0.032370247, 4.3688477e-08, 0.99947596, 0.08359918, 0.9964958, 0.0027075014, -0.9959736, 0.08364301, -0.03225682, -0.17769909, 1.437087, -0.44377875)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08849096, 0, 0)
+
+[node name="Plank1" parent="Node3D" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(0.12523909, 0.9912805, -0.04096442, -0.037930623, -0.03647531, -0.9986144, -0.99140126, 0.12661932, 0.033031754, -1.8595724, -0.4893706, 0.08203483)
+
+[node name="Plank15" parent="Node3D" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(0.99407715, -0.08079927, -0.07267839, -0.076721735, -0.048113972, -0.995891, 0.07697041, 0.9955684, -0.054028064, -1.8598342, -0.49307516, -0.5238384)
+
+[node name="Plank18" parent="Node3D" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(0.9946797, -0.07301821, -0.07266797, -0.06819435, 0.062000252, -0.9957438, 0.07721286, 0.9954017, 0.05669096, -1.8594198, -0.48720998, -1.9137902)
+
+[node name="Plank10" parent="Node3D" instance=ExtResource("1_bf1k3")]
+transform = Transform3D(0.99089956, 0.11673576, -0.06701471, -0.06675349, -0.006150272, -0.99775046, -0.11688533, 0.99314386, 0.0016982201, -1.8562886, -0.48960268, -2.3254402)
+
+[node name="Plank4" parent="Node3D" instance=ExtResource("2_wsl2k")]
+transform = Transform3D(-0.06889732, -0.99751264, -0.014888592, -0.9750068, 0.07048766, -0.21069714, 0.21122253, 9.232826e-09, -0.97743803, -1.6694727, -0.60496813, -1.1593266)
+
+[node name="Plank21" parent="Node3D" instance=ExtResource("2_wsl2k")]
+transform = Transform3D(-0.070365846, -0.99751264, -0.0041423063, -0.9957887, 0.07048766, -0.058620192, 0.058766365, 2.5687554e-09, -0.99827176, -1.7027034, -1.0752355, -1.1593266)
