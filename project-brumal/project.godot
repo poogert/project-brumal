@@ -24,6 +24,10 @@ PlayerScript="*res://player/playerone.cs"
 
 project/assembly_name="project_brumal"
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [global_group]
 
 Player=""

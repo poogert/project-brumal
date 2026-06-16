@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cin1c7ymt2yim" path="res://maps/TestLevelScript.cs" id="1_tgtyk"]
 [ext_resource type="AudioStream" uid="uid://do2jnjbnqrxa1" path="res://sounds/niceandscary.wav" id="5_a0rh3"]
 [ext_resource type="PackedScene" uid="uid://bcutbo6gb0hvk" path="res://3D Assets/Objects/WorldProps/prop_ore/ore.tscn" id="11_avqxq"]
-[ext_resource type="Texture2D" uid="uid://custjqcbpt1os" path="res://miscellaneous/KeanuAndBookV1.png" id="12_oqr4r"]
+[ext_resource type="Texture2D" uid="uid://custjqcbpt1os" path="res://miscellaneous/Decals/KeanuAndBookV1.png" id="12_oqr4r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kn04o"]
 
