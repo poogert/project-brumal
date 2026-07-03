@@ -46,7 +46,7 @@ data = PackedVector3Array(-1.9171, -1.045, 0.82119995, -1.9171, 0.955, -1.1788, 
 [node name="Crate" type="Node3D"]
 
 [node name="Cube_033" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.45, 0, 0, 0, -0.45, -6.794811e-08, 0, 6.794811e-08, -0.45, 0, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, -0.4, -6.039832e-08, 0, 6.039832e-08, -0.4, 0, 0, 0)
 mesh = SubResource("ArrayMesh_evk3k")
 skeleton = NodePath("")
 
