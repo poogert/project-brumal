@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://c86q2ic77i40y"]
+[gd_scene load_steps=35 format=4 uid="uid://c86q2ic77i40y"]
 
 [ext_resource type="PackedScene" uid="uid://cti7pj4dw0gj1" path="res://player/player_scene.tscn" id="1_s7hj5"]
 [ext_resource type="Texture2D" uid="uid://c34hjksmmlxdb" path="res://3D Assets/MapChunks/HallwayCaveSegmentTest4_img.jpg" id="2_1rsa4"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://c5wxsrxah71gc" path="res://maps/pathfinding_level.tscn" id="18_3ovan"]
 [ext_resource type="PackedScene" uid="uid://dwk6e8xfldtl2" path="res://maps/TestLevelCaveAssets.tscn" id="18_tamf2"]
 [ext_resource type="PackedScene" uid="uid://bhl4pmg7jfxyg" path="res://TestMap2.tscn" id="20_o2pru"]
+[ext_resource type="PackedScene" uid="uid://by70165hoimte" path="res://Models/Characters/Boris/NewBoris/FurShader.tscn" id="21_rirqk"]
 
 [sub_resource type="Environment" id="Environment_1rsa4"]
 background_color = Color(1, 1, 1, 1)
@@ -319,3 +320,6 @@ next_level = ExtResource("18_tamf2")
 [node name="LevelTransCaveAssetsTest2" parent="World/OGTestMap" instance=ExtResource("12_p6wwr")]
 transform = Transform3D(0.060890414, 0, 0.999794, 0, 3, 0, -2.999382, 0, 0.020296805, -9.260189, 2.07755, -4.513017)
 next_level = ExtResource("20_o2pru")
+
+[node name="Node3D" parent="." instance=ExtResource("21_rirqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.681124, 1.481205, -0.14756513)
