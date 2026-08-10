@@ -7,12 +7,20 @@ public partial class BorisScript : Node3D, Interactable
 	AnimationPlayer borisAP;
 	[Export] AnimationTree borisAT;
 	[Export] AudioStreamPlayer3D sound;
-	string[] lines =
+	/*string[] lines =
 	{
 		"res://Models/Characters/Boris/Voicelines/items.mp3",
 		"res://Models/Characters/Boris/Voicelines/speech_one.wav",
 		"res://Models/Characters/Boris/Voicelines/speech_two.wav",
 		"res://Models/Characters/Boris/Voicelines/speech_three.wav",
+	};
+		*/
+	string[] lines =
+	{
+		"res://Models/Characters/Boris/Voicelines/NewVL/VoiceMeno1.wav",
+		"res://Models/Characters/Boris/Voicelines/NewVL/VoiceMeno2.wav",
+		"res://Models/Characters/Boris/Voicelines/NewVL/Voicemeno3.wav",
+		"res://Models/Characters/Boris/Voicelines/NewVL/Voicemeno4.wav",
 	};
 	int line = 0;
 
