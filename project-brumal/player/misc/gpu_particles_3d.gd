@@ -1,5 +1,6 @@
-extends MeshInstance3D
+extends GPUParticles3D
 
+AnimatedTexture texture = "albedo_texture"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,6 +9,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.rotate_y(.07 * randf())
-	#self.rotate_x(.002)
-	#pass
+	if(self.finished):
+		
