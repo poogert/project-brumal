@@ -78,6 +78,8 @@ script = ExtResource("7_ulli2")
 light_energy = 0.05
 omni_range = 1.0
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="head_pivot/head_adjustments/head_camera"]
+
 [node name="CrouchCheckRay" type="RayCast3D" parent="."]
 target_position = Vector3(0, 1, 0)
 script = ExtResource("8_x61a0")

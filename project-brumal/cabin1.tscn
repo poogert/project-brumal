@@ -139,8 +139,9 @@ cull_mode = 2
 shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.8431839, 0.8431839, 0.84318376, 1)
 albedo_texture = ExtResource("5_kfea6")
-texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wfxio"]
 _surfaces = [{
@@ -196,6 +197,8 @@ turbulence_influence_max = 0.26000002
 shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.74978, 0.74978, 0.74977994, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ropi8"]
 material = SubResource("StandardMaterial3D_1qbjf")
@@ -277,6 +280,13 @@ autoplay = true
 
 [node name="Sphere" type="MeshInstance3D" parent="Player/Node3D"]
 transform = Transform3D(6.6057405, -5.349223, 0, 5.349223, 6.6057405, 0, 0, 0, 8.5, 0, 3.4219766, 0)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_r0m1n")
+skeleton = NodePath("")
+script = ExtResource("6_1qbjf")
+
+[node name="Sphere2" type="MeshInstance3D" parent="Player/Node3D"]
+transform = Transform3D(-10, 8.742278e-07, 0, -8.742278e-07, -10, 0, 0, 0, 10, 0, 3.4219766, 0)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_r0m1n")
 skeleton = NodePath("")
@@ -510,7 +520,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -15.25, 3, -38.75)
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.25, 1, -39.75)
 
 [node name="SnowSpruce75" parent="trees" instance=ExtResource("5_56pv8")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -17.25, 2, -48.75)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -17.25, 1.332905, -48.75)
 
 [node name="SnowSpruce76" parent="trees" instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19999999, 0, 0, 0, 0.17320508, -0.099999994, 0, 0.099999994, 0.17320508, 8.878906, -0.58676624, -16.90575)
