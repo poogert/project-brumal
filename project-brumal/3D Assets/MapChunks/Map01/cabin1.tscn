@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=4 uid="uid://cdv881ia8ry2b"]
+[gd_scene format=4 uid="uid://cdv881ia8ry2b"]
 
 [ext_resource type="Texture2D" uid="uid://eofvn2ilfvvw" path="res://3D Assets/MapChunks/Map01/CabinLevel1_Roadtile3.png" id="1_ueqdn"]
 [ext_resource type="Texture2D" uid="uid://b6365wuorqp3k" path="res://3D Assets/MapChunks/Map01/CabinLevel1_SNOW.png" id="2_4iiq7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dwktn800331te" path="res://3D Assets/MapChunks/Map01/truckPlaceholder_truckbody.png" id="3_ya2ek"]
 [ext_resource type="AudioStream" uid="uid://co1bk03jxjgjc" path="res://3D Assets/MapChunks/Map01/505999__dblover__howling-winter-storm-ambient-sounds.wav" id="4_4iiq7"]
 [ext_resource type="Texture2D" uid="uid://82wacos52mrk" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny_Cobblestone.png" id="4_6wibw"]
+[ext_resource type="Shader" uid="uid://walwxi1wo4it" path="res://experiments/Ice_3d.gdshader" id="4_fvo1e"]
 [ext_resource type="PackedScene" uid="uid://fwax6bmyntfr" path="res://3D Assets/Items/item_lamp/Lamp.tscn" id="4_gixew"]
 [ext_resource type="Texture2D" uid="uid://s1n1qals8sch" path="res://3D Assets/Objects/WorldProps/prop_cabin/CabinTiny_woodd.png" id="5_8mvqj"]
 [ext_resource type="PackedScene" uid="uid://4a1fr51i7cu3" path="res://3D Assets/Objects/WorldProps/prop_snowspruce/SnowSprUce.tscn" id="5_56pv8"]
@@ -245,6 +246,31 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jgwgq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1w70b"]
+transparency = 1
+albedo_color = Color(0.19215687, 0.42745098, 1, 0.69803923)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hh4cl"]
+material = SubResource("StandardMaterial3D_1w70b")
+size = Vector3(250, 50, 150)
+
+[sub_resource type="BoxMesh" id="BoxMesh_todnt"]
+size = Vector3(250, 50, 150)
+subdivide_width = 1
+subdivide_height = 1
+subdivide_depth = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1w70b"]
+render_priority = 0
+shader = ExtResource("4_fvo1e")
+shader_parameter/zoom = 50.0
+shader_parameter/pan = Vector2(0, 0)
+shader_parameter/rotation = 0.0
+shader_parameter/tint = Color(0.654902, 0.7921569, 1, 1)
+shader_parameter/cellSize = 1.0
+shader_parameter/lit = false
+shader_parameter/glow = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpnr1"]
 resource_name = "Material.006"
@@ -4494,47 +4520,47 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_wq5rx")
 nodes/Animation/position = Vector2(20.125032, 196.7778)
 node_connections = [&"output", 0, &"Animation"]
 
-[node name="cABIN1" type="Node3D"]
+[node name="cABIN1" type="Node3D" unique_id=424949119]
 
-[node name="CabinLevel1" type="Node3D" parent="."]
+[node name="CabinLevel1" type="Node3D" parent="." unique_id=1734676861]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.018729448, -1.1920929e-07, -0.043760538)
 
-[node name="Cube_003" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Cube_003" type="MeshInstance3D" parent="CabinLevel1" unique_id=1229604720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.332387, -86.52936)
 mesh = SubResource("ArrayMesh_jl4on")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CabinLevel1/Cube_003"]
+[node name="StaticBody3D" type="StaticBody3D" parent="CabinLevel1/Cube_003" unique_id=1363451816]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinLevel1/Cube_003/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinLevel1/Cube_003/StaticBody3D" unique_id=382777203]
 shape = SubResource("ConcavePolygonShape3D_56pv8")
 
-[node name="Plane" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Plane" type="MeshInstance3D" parent="CabinLevel1" unique_id=1905057937]
 transform = Transform3D(106.49601, 0, 0, 0, 106.49601, 0, 0, 0, 106.49601, -0.027680548, -6.979959, -2.6753767)
 mesh = SubResource("ArrayMesh_y5t0o")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CabinLevel1/Plane"]
+[node name="StaticBody3D" type="StaticBody3D" parent="CabinLevel1/Plane" unique_id=218154387]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinLevel1/Plane/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinLevel1/Plane/StaticBody3D" unique_id=1522469109]
 shape = SubResource("ConcavePolygonShape3D_6egdi")
 
-[node name="bridgeplaceholder" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="bridgeplaceholder" type="MeshInstance3D" parent="CabinLevel1" unique_id=1970342947]
 transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.965, -0.90133667, -2.8176103, 226.31328)
 mesh = SubResource("ArrayMesh_dev6o")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CabinLevel1/bridgeplaceholder"]
+[node name="StaticBody3D" type="StaticBody3D" parent="CabinLevel1/bridgeplaceholder" unique_id=1898065746]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinLevel1/bridgeplaceholder/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinLevel1/bridgeplaceholder/StaticBody3D" unique_id=1651832059]
 shape = SubResource("ConcavePolygonShape3D_oxhn6")
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="CabinLevel1/bridgeplaceholder"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="CabinLevel1/bridgeplaceholder" unique_id=2030680964]
 transform = Transform3D(0.024209268, 0.96481043, -0.26183, -0.9954295, 0.047465947, 0.08286679, 0.09237876, 0.25862718, 0.9615499, 0.019388067, 2.9259279, -61.22195)
 mesh = SubResource("ArrayMesh_kloyc")
 skeleton = NodePath("")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001"]
+[node name="SpotLight3D" type="SpotLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001" unique_id=175529416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1026218, -2.4590795, -10.295085)
 light_color = Color(1, 1, 0.12156863, 1)
 light_energy = 4.0
@@ -4544,7 +4570,7 @@ shadow_enabled = true
 spot_range = 20.0
 spot_angle = 70.0
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001" unique_id=1948910513]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1026218, 2.9358704, -10.295085)
 light_color = Color(1, 1, 0.12156863, 1)
 light_energy = 4.0
@@ -4554,122 +4580,136 @@ shadow_enabled = true
 spot_range = 20.0
 spot_angle = 70.0
 
-[node name="OmniLight3D" type="OmniLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001" unique_id=817331297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0373771, 3.130431, -11.91569)
 light_color = Color(0.680652, 0.67891574, 7.70092e-07, 1)
 light_energy = 2.0
 light_size = 1.0
 omni_range = 2.0
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001"]
+[node name="OmniLight3D3" type="OmniLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001" unique_id=384168781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8183594, -0.050163187, -3.7172058)
 light_energy = 4.0
 light_size = 1.0
 omni_range = 1.0
 omni_attenuation = -2.245
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="CabinLevel1/bridgeplaceholder/Cylinder_001" unique_id=2013593702]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0373771, -2.0368931, -11.91569)
 light_color = Color(0.680652, 0.67891574, 7.70092e-07, 1)
 light_energy = 2.0
 light_size = 1.0
 omni_range = 2.0
 
-[node name="Cube_008" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Node3D" type="Node3D" parent="CabinLevel1/bridgeplaceholder" unique_id=1424377195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, -33.917168, 0)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CabinLevel1/bridgeplaceholder/Node3D" unique_id=1287402828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89265, -14.184158, -7.03389)
+calculate_tangents = false
+mesh = SubResource("BoxMesh_hh4cl")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CabinLevel1/bridgeplaceholder/Node3D" unique_id=2075892300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89265, -4.339443, -7.03389)
+use_collision = true
+mesh = SubResource("BoxMesh_todnt")
+material = SubResource("ShaderMaterial_1w70b")
+
+[node name="Cube_008" type="MeshInstance3D" parent="CabinLevel1" unique_id=1427565864]
 transform = Transform3D(0.9646559, 0.14651051, 0.21902885, -0.15015656, 0.98866224, 0, -0.21654557, -0.03288862, 0.97571844, 19.217772, 3.4510422, 118.359726)
 mesh = SubResource("ArrayMesh_ch6jf")
 skeleton = NodePath("")
 
-[node name="Cube_009" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Cube_009" type="MeshInstance3D" parent="CabinLevel1" unique_id=86940243]
 transform = Transform3D(0.98744076, 0.14651051, 0.059120342, -0.1481548, 0.98866224, 0.024436554, -0.054869875, -0.03288862, 0.99795175, 15.148166, 3.493212, 101.49832)
 mesh = SubResource("ArrayMesh_ch6jf")
 skeleton = NodePath("")
 
-[node name="Cube_011" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Cube_011" type="MeshInstance3D" parent="CabinLevel1" unique_id=2110175338]
 transform = Transform3D(0.9971086, -0.054426618, 0.05302979, 0.055520274, 0.9982696, -0.019373164, -0.051883653, 0.022261385, 0.99840486, -21.69588, 8.200853, -152.6771)
 mesh = SubResource("ArrayMesh_ch6jf")
 skeleton = NodePath("")
 
-[node name="Cube_012" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Cube_012" type="MeshInstance3D" parent="CabinLevel1" unique_id=943003448]
 transform = Transform3D(0.98888576, -0.13942619, 0.05162828, 0.13863428, 0.9901684, 0.018631421, -0.05371844, -0.011266896, 0.99849266, -22.542988, 8.621979, -169.4696)
 mesh = SubResource("ArrayMesh_ch6jf")
 skeleton = NodePath("")
 
-[node name="Cube_013" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Cube_013" type="MeshInstance3D" parent="CabinLevel1" unique_id=1431734183]
 transform = Transform3D(0.990138, -0.13819763, -0.022981506, 0.13746838, 0.9900284, -0.030759867, 0.027003236, 0.027297286, 0.9992626, -22.789318, 8.576019, -186.40515)
 mesh = SubResource("ArrayMesh_ch6jf")
 skeleton = NodePath("")
 
-[node name="Cube_014" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Cube_014" type="MeshInstance3D" parent="CabinLevel1" unique_id=2141460751]
 transform = Transform3D(0.4966574, 0.030564282, 0.8674084, 0.022089895, 0.9986109, -0.04783555, -0.86766547, 0.042918846, 0.49529254, -21.377703, 10.255871, -202.29861)
 mesh = SubResource("ArrayMesh_ch6jf")
 skeleton = NodePath("")
 
-[node name="Cube_015" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Cube_015" type="MeshInstance3D" parent="CabinLevel1" unique_id=1834849363]
 transform = Transform3D(0.99565804, 0.030564278, 0.08792423, -0.023472324, 0.99647063, -0.080592245, -0.090077214, 0.078178525, 0.99286175, -21.334064, 10.739077, -219.8057)
 mesh = SubResource("ArrayMesh_ch6jf")
 skeleton = NodePath("")
 
-[node name="Cube_010" type="MeshInstance3D" parent="CabinLevel1"]
+[node name="Cube_010" type="MeshInstance3D" parent="CabinLevel1" unique_id=823613936]
 transform = Transform3D(-0.03819824, -0.86609596, 0.49841622, 0.99698555, -0.066742316, -0.039569728, 0.06753661, 0.49540204, 0.8660343, 4.2054143, -5.6895576, 88.36931)
 mesh = SubResource("ArrayMesh_ch6jf")
 skeleton = NodePath("")
 
-[node name="CabinTiny" type="Node3D" parent="CabinLevel1"]
+[node name="CabinTiny" type="Node3D" parent="CabinLevel1" unique_id=2088193348]
 transform = Transform3D(0.9999761, 0, 0.0069114487, 0, 1, 0, -0.0069114487, 0, 0.9999761, -57.40685, 2.4434586, -216.55022)
 
-[node name="Cube_014" type="MeshInstance3D" parent="CabinLevel1/CabinTiny"]
+[node name="Cube_014" type="MeshInstance3D" parent="CabinLevel1/CabinTiny" unique_id=2128924178]
 transform = Transform3D(3.1860592, 0, -0.40690023, 0, 3.2119372, 0, 0.40690023, 0, 3.1860592, -11.683892, 0, -3.2441354)
 mesh = SubResource("ArrayMesh_fwt1j")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CabinLevel1/CabinTiny/Cube_014"]
+[node name="StaticBody3D" type="StaticBody3D" parent="CabinLevel1/CabinTiny/Cube_014" unique_id=1614433612]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinLevel1/CabinTiny/Cube_014/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CabinLevel1/CabinTiny/Cube_014/StaticBody3D" unique_id=2113065997]
 shape = SubResource("ConcavePolygonShape3D_fvo1e")
 
-[node name="Boris11" parent="CabinLevel1/CabinTiny" instance=ExtResource("12_todnt")]
+[node name="Boris11" parent="CabinLevel1/CabinTiny" unique_id=718616555 instance=ExtResource("12_todnt")]
 transform = Transform3D(3.1196692, 0, -2.5035307, 0, 4, 0, 2.5035307, 0, 3.1196692, 1.657283, 8.520264, -4.1538615)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CabinLevel1/CabinTiny"]
+[node name="CSGBox3D" type="CSGBox3D" parent="CabinLevel1/CabinTiny" unique_id=1091232679]
 transform = Transform3D(0.9916144, -0.090426184, -0.09241836, 1.7462298e-08, 0.71476567, -0.69936997, 0.1292988, 0.69349337, 0.7087719, -0.15877533, 1.6110067, 7.7248383)
 layers = 0
 use_collision = true
 size = Vector3(7.404663, 1, 6.119629)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CabinLevel1/CabinTiny"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="CabinLevel1/CabinTiny" unique_id=877701636]
 transform = Transform3D(0.9916142, -0.0012208439, -0.12929302, 1.0244548e-08, 0.9999555, -0.009442156, 0.12929879, 0.00936278, 0.99157006, 0.46782964, 3.6615617, 2.7732189)
 layers = 0
 use_collision = true
 size = Vector3(7.404663, 1, 6.119629)
 
-[node name="Plank1" parent="CabinLevel1" instance=ExtResource("44_8wsg1")]
+[node name="Plank1" parent="CabinLevel1" unique_id=2129771064 instance=ExtResource("44_8wsg1")]
 transform = Transform3D(4, 0, 0, 0, 0.34862322, -3.984779, 0, 3.984779, 0.34862322, -18.833721, 7.278235, -221.18217)
 
-[node name="Plank2" parent="CabinLevel1" instance=ExtResource("44_8wsg1")]
+[node name="Plank2" parent="CabinLevel1" unique_id=508852953 instance=ExtResource("44_8wsg1")]
 transform = Transform3D(4, 0, 0, 0, 0.34862322, -3.984779, 0, 3.984779, 0.34862322, -18.833721, 21.49709, -222.42616)
 
-[node name="Plank4" parent="CabinLevel1" instance=ExtResource("45_sy2av")]
+[node name="Plank4" parent="CabinLevel1" unique_id=2007427271 instance=ExtResource("45_sy2av")]
 transform = Transform3D(4, 0, 0, 0, 3.969077, 0.4964149, 0, -0.4964149, 3.969077, -18.863327, 26.917774, -221.45174)
 
-[node name="WallLampBody" type="Node3D" parent="CabinLevel1"]
+[node name="WallLampBody" type="Node3D" parent="CabinLevel1" unique_id=270831885]
 transform = Transform3D(1.2, 0, 0, 0, 1.0557079, 0.5705096, 0, -0.5705096, 1.0557079, -18.842209, 26.042892, -219.36534)
 script = ExtResource("15_fcuu0")
 
-[node name="Cylinder" type="MeshInstance3D" parent="CabinLevel1/WallLampBody"]
+[node name="Cylinder" type="MeshInstance3D" parent="CabinLevel1/WallLampBody" unique_id=1531020378]
 mesh = SubResource("ArrayMesh_lp76w")
 skeleton = NodePath("")
 
-[node name="LightBulb" type="Node3D" parent="CabinLevel1/WallLampBody"]
+[node name="LightBulb" type="Node3D" parent="CabinLevel1/WallLampBody" unique_id=337370421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5092627, 0)
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="CabinLevel1/WallLampBody/LightBulb"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="CabinLevel1/WallLampBody/LightBulb" unique_id=1844939019]
 transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_2pc85")
 skeleton = NodePath("")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="CabinLevel1/WallLampBody/LightBulb"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CabinLevel1/WallLampBody/LightBulb" unique_id=1983933592]
 transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 0, 0.1175729, 0)
 light_color = Color(1, 1, 0.5294118, 1)
 light_energy = 4.0
@@ -4680,7 +4720,7 @@ shadow_enabled = true
 shadow_blur = 3.175
 omni_range = 14.145097
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("StandCol", "CrouchCol", "Player", "head", "camera", "headeffects", "handeffects", "sound", "staminaTimer", "ropeDetector")]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1455594901 node_paths=PackedStringArray("StandCol", "CrouchCol", "Player", "head", "camera", "headeffects", "handeffects", "sound", "staminaTimer", "ropeDetector")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34.302372)
 disable_mode = 2
 slide_on_ceiling = false
@@ -4701,47 +4741,47 @@ pickaxe = ExtResource("5_m6apx")
 flare = ExtResource("6_do3va")
 ghook = ExtResource("7_4ex4a")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=866531717]
 visible = false
 mesh = SubResource("CapsuleMesh_ciewh")
 
-[node name="StandingCollision" type="CollisionShape3D" parent="Player"]
+[node name="StandingCollision" type="CollisionShape3D" parent="Player" unique_id=370712413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_0khpw")
 debug_color = Color(1, 0.5224338, 0.6987175, 0.41960785)
 
-[node name="CrouchedCollision" type="CollisionShape3D" parent="Player"]
+[node name="CrouchedCollision" type="CollisionShape3D" parent="Player" unique_id=507364070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("CapsuleShape3D_ulli2")
 
-[node name="head_pivot" type="Node3D" parent="Player"]
+[node name="head_pivot" type="Node3D" parent="Player" unique_id=606305258]
 
-[node name="head_adjustments" type="Node3D" parent="Player/head_pivot"]
+[node name="head_adjustments" type="Node3D" parent="Player/head_pivot" unique_id=162182625]
 
-[node name="head_camera" type="Camera3D" parent="Player/head_pivot/head_adjustments"]
+[node name="head_camera" type="Camera3D" parent="Player/head_pivot/head_adjustments" unique_id=65165154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
-[node name="interact_ray" parent="Player/head_pivot/head_adjustments/head_camera" instance=ExtResource("8_5rbm5")]
+[node name="interact_ray" parent="Player/head_pivot/head_adjustments/head_camera" unique_id=26809823 instance=ExtResource("8_5rbm5")]
 
-[node name="hand_root" type="Node3D" parent="Player/head_pivot/head_adjustments/head_camera"]
+[node name="hand_root" type="Node3D" parent="Player/head_pivot/head_adjustments/head_camera" unique_id=346742386]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24933472, -0.6431068, -0.96922857)
 
-[node name="hand_root_bobbing" type="Node3D" parent="Player/head_pivot/head_adjustments/head_camera/hand_root"]
+[node name="hand_root_bobbing" type="Node3D" parent="Player/head_pivot/head_adjustments/head_camera/hand_root" unique_id=59560821]
 
-[node name="grapplepoint" type="RayCast3D" parent="Player/head_pivot/head_adjustments/head_camera"]
+[node name="grapplepoint" type="RayCast3D" parent="Player/head_pivot/head_adjustments/head_camera" unique_id=1519024857]
 target_position = Vector3(0, 0, -10)
 script = ExtResource("9_yf3j1")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Player/head_pivot/head_adjustments/head_camera"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Player/head_pivot/head_adjustments/head_camera" unique_id=1446349462]
 light_energy = 0.05
 omni_range = 1.0
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Player/head_pivot/head_adjustments/head_camera"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Player/head_pivot/head_adjustments/head_camera" unique_id=891596362]
 
-[node name="breathingnode" type="Node3D" parent="Player/head_pivot/head_adjustments/head_camera"]
+[node name="breathingnode" type="Node3D" parent="Player/head_pivot/head_adjustments/head_camera" unique_id=1816604101]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51722, -0.42737198)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Player/head_pivot/head_adjustments/head_camera/breathingnode"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Player/head_pivot/head_adjustments/head_camera/breathingnode" unique_id=797360907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6419288, 0.24512863)
 amount = 5
 lifetime = 2.0
@@ -4751,28 +4791,28 @@ randomness = 0.55
 process_material = SubResource("ParticleProcessMaterial_m6apx")
 draw_pass_1 = SubResource("QuadMesh_5rbm5")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player/head_pivot/head_adjustments/head_camera/breathingnode"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player/head_pivot/head_adjustments/head_camera/breathingnode" unique_id=1767320857]
 stream = SubResource("AudioStreamRandomizer_dev6o")
 volume_db = -15.0
 autoplay = true
 script = ExtResource("24_ebchb")
 
-[node name="CrouchCheckRay" type="RayCast3D" parent="Player"]
+[node name="CrouchCheckRay" type="RayCast3D" parent="Player" unique_id=1148957877]
 target_position = Vector3(0, 1, 0)
 script = ExtResource("22_0jets")
 
-[node name="Area3D" type="Area3D" parent="Player"]
+[node name="Area3D" type="Area3D" parent="Player" unique_id=1463799793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109255135, -0.59629077)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D" unique_id=488742962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06417847, 0.14291763)
 shape = SubResource("BoxShape3D_x61a0")
 
-[node name="Player" type="Node3D" parent="Player"]
+[node name="Player" type="Node3D" parent="Player" unique_id=1265649423]
 
-[node name="crosshair_layer_container" type="CanvasLayer" parent="Player/Player"]
+[node name="crosshair_layer_container" type="CanvasLayer" parent="Player/Player" unique_id=1331704375]
 
-[node name="crosshair" type="TextureRect" parent="Player/Player/crosshair_layer_container"]
+[node name="crosshair" type="TextureRect" parent="Player/Player/crosshair_layer_container" unique_id=705928667]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -4786,37 +4826,37 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("23_lypfu")
 
-[node name="voice" type="AudioStreamPlayer3D" parent="Player/Player"]
+[node name="voice" type="AudioStreamPlayer3D" parent="Player/Player" unique_id=1480350087]
 stream = ExtResource("24_mclek")
 
-[node name="timer-for-stamina" type="Timer" parent="Player/Player"]
+[node name="timer-for-stamina" type="Timer" parent="Player/Player" unique_id=341642226]
 wait_time = 0.2
 autostart = true
 
-[node name="AaronsUiTw" parent="Player/Player" instance=ExtResource("25_r27f8")]
+[node name="AaronsUiTw" parent="Player/Player" unique_id=1295689809 instance=ExtResource("25_r27f8")]
 
-[node name="Node3D" type="Node3D" parent="Player"]
+[node name="Node3D" type="Node3D" parent="Player" unique_id=100893353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0269933, 0)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Node3D"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Node3D" unique_id=677329367]
 stream = SubResource("AudioStreamSynchronized_0ms01")
 autoplay = true
 
-[node name="Sphere" type="MeshInstance3D" parent="Player/Node3D"]
-transform = Transform3D(6.6057405, -5.349223, 0, 5.349223, 6.6057405, 0, 0, 0, 8.5, 0, 3.4219766, 0)
+[node name="Sphere" type="MeshInstance3D" parent="Player/Node3D" unique_id=1829941624]
+transform = Transform3D(7.771459, -6.2932043, 0, 6.2932043, 7.771459, 0, 0, 0, 10, 0, 3.4219766, 0)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_r0m1n")
 skeleton = NodePath("")
 script = ExtResource("6_1qbjf")
 
-[node name="Sphere2" type="MeshInstance3D" parent="Player/Node3D"]
-transform = Transform3D(-10, 8.742278e-07, 0, -8.742278e-07, -10, 0, 0, 0, 10, 0, 3.4219766, 0)
+[node name="Sphere2" type="MeshInstance3D" parent="Player/Node3D" unique_id=1792302423]
+transform = Transform3D(-11, 1.6609538e-06, 0, -1.6609538e-06, -11, 0, 0, 0, 11, 0, 3.4219766, 0)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_r0m1n")
 skeleton = NodePath("")
 script = ExtResource("6_1qbjf")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Player/Node3D"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Player/Node3D" unique_id=2138837605]
 transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1.3, 0, -0.25, 0)
 amount = 3000
 lifetime = 5.0
@@ -4825,10 +4865,10 @@ visibility_aabb = AABB(-4, -4, -4, 20, 20, 20)
 process_material = SubResource("ParticleProcessMaterial_kfea6")
 draw_pass_1 = SubResource("CapsuleMesh_ropi8")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=218262981]
 environment = SubResource("Environment_6egdi")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1876886797]
 transform = Transform3D(1, 0, 0, 0, 0.16893671, 0.98562694, 0, -0.98562694, 0.16893671, 0, 5.4909897, 0)
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 0.0
@@ -4839,973 +4879,973 @@ directional_shadow_max_distance = 4.4
 directional_shadow_pancake_size = 21.0
 sky_mode = 1
 
-[node name="trees" type="Node3D" parent="."]
+[node name="trees" type="Node3D" parent="." unique_id=791560663]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
-[node name="SnowSpruce" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce" parent="trees" unique_id=1887442761 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.19923893, 0.017431146, 0, -0.017431146, 0.19923893, 8.878904, 1.1632339, 0.34424877)
 
-[node name="SnowSpruce2" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce2" parent="trees" unique_id=1775950910 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0.05176381, 0, -0.05176381, 0.19318517, 0, 0, 0, 0.2, -8.121096, 0.5730417, -1.6049638)
 
-[node name="SnowSpruce3" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce3" parent="trees" unique_id=2075045340 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16730325, -0.044828765, 0.099999994, 0.051763803, 0.19318515, -1.4901161e-09, -0.096592575, 0.025881905, 0.17320508, -13, 1.25, 1)
 
-[node name="SnowSpruce4" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce4" parent="trees" unique_id=202745439 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 0.25, 4)
 
-[node name="SnowSpruce5" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce5" parent="trees" unique_id=1856796201 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0, 0.05176381, 0, 0.2, 0, -0.05176381, 0, 0.19318517, -17, 1.25, 8)
 
-[node name="SnowSpruce6" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce6" parent="trees" unique_id=771349026 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14, 0.5, 5)
 
-[node name="SnowSpruce7" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce7" parent="trees" unique_id=2003233296 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 1, -16)
 
-[node name="SnowSpruce8" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce8" parent="trees" unique_id=13569311 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14, 3, -7)
 
-[node name="SnowSpruce9" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce9" parent="trees" unique_id=1887676433 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -7, 1, -8)
 
-[node name="SnowSpruce10" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce10" parent="trees" unique_id=1173784584 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -16, 2, -17)
 
-[node name="SnowSpruce26" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce26" parent="trees" unique_id=1394356581 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.19923893, 0.017431146, 0, -0.017431146, 0.19923893, 8.878904, 1.1632339, -8.155751)
 
-[node name="SnowSpruce27" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce27" parent="trees" unique_id=1865448068 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0.05176381, 0, -0.05176381, 0.19318517, 0, 0, 0, 0.2, -8.121096, 0.5730417, -10.104963)
 
-[node name="SnowSpruce28" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce28" parent="trees" unique_id=837841166 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16730326, -0.044828773, 0.1, 0.05176381, 0.19318517, 0, -0.09659258, 0.025881905, 0.17320508, -13, 1.25, -7.5)
 
-[node name="SnowSpruce29" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce29" parent="trees" unique_id=701829008 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 0.25, -4.5)
 
-[node name="SnowSpruce30" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce30" parent="trees" unique_id=38934263 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0, 0.05176381, 0, 0.2, 0, -0.05176381, 0, 0.19318517, -17, 1.25, -0.5)
 
-[node name="SnowSpruce31" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce31" parent="trees" unique_id=1471154796 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14, 0.5, -3.5)
 
-[node name="SnowSpruce32" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce32" parent="trees" unique_id=728478688 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 1, -24.5)
 
-[node name="SnowSpruce33" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce33" parent="trees" unique_id=132695225 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14, 3, -15.5)
 
-[node name="SnowSpruce34" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce34" parent="trees" unique_id=629253381 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -7, 1, -16.5)
 
-[node name="SnowSpruce35" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce35" parent="trees" unique_id=842569939 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -16, 2, -25.5)
 
-[node name="SnowSpruce36" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce36" parent="trees" unique_id=1176822543 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.19923893, 0.017431146, 0, -0.017431146, 0.19923893, 8.878904, 1.1632339, 19.09425)
 
-[node name="SnowSpruce37" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce37" parent="trees" unique_id=1922426262 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0.05176381, 0, -0.05176381, 0.19318517, 0, 0, 0, 0.2, -8.121096, 0.5730417, 17.145037)
 
-[node name="SnowSpruce38" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce38" parent="trees" unique_id=196172392 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16730326, -0.044828773, 0.1, 0.05176381, 0.19318517, 0, -0.09659258, 0.025881905, 0.17320508, -13, 1.25, 19.75)
 
-[node name="SnowSpruce39" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce39" parent="trees" unique_id=510997984 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 0.25, 22.75)
 
-[node name="SnowSpruce40" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce40" parent="trees" unique_id=2022439223 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0, 0.05176381, 0, 0.2, 0, -0.05176381, 0, 0.19318517, -17, 1.25, 26.75)
 
-[node name="SnowSpruce41" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce41" parent="trees" unique_id=1332701462 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14, 0.5, 23.75)
 
-[node name="SnowSpruce42" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce42" parent="trees" unique_id=521877823 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 1, 2.75)
 
-[node name="SnowSpruce43" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce43" parent="trees" unique_id=366257364 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14, 3, 11.75)
 
-[node name="SnowSpruce44" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce44" parent="trees" unique_id=155902719 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.13790557, 0.07038017, -0.12660445, -0.106224254, 0.16798231, -0.022323776, 0.09848078, 0.082635164, 0.1532089, -5.5, -0.5, 10.75)
 
-[node name="SnowSpruce45" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce45" parent="trees" unique_id=535388701 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -16, 2, 1.75)
 
-[node name="SnowSpruce46" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce46" parent="trees" unique_id=1039349427 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.19923893, 0.017431146, 0, -0.017431146, 0.19923893, 8.878904, 1.1632339, 11.84425)
 
-[node name="SnowSpruce96" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce96" parent="trees" unique_id=2044685821 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.17850776, -0.041852277, 0.07989589, 0.031475738, 0.19493282, 0.031787854, -0.08452366, -0.015797984, 0.18057178, 4.3789043, -1.5867661, 12.59425)
 
-[node name="SnowSpruce103" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce103" parent="trees" unique_id=1968157433 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.018373024, -0.19718309, -0.02795109, 0.18111439, 0.0048695942, 0.08469861, -0.08282514, -0.033092562, 0.17901082, 4.3789043, -1.0580299, 18.34425)
 
-[node name="SnowSpruce97" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce97" parent="trees" unique_id=1740143396 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.17850776, -0.041852277, 0.07989589, 0.031475738, 0.19493282, 0.031787854, -0.08452366, -0.015797984, 0.18057178, 9.878904, -0.086766124, 14.09425)
 
-[node name="SnowSpruce98" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce98" parent="trees" unique_id=1171689417 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.17850776, -0.041852277, 0.07989589, 0.031475738, 0.19493282, 0.031787854, -0.08452366, -0.015797984, 0.18057178, -5.1210957, -1.5867661, 15.09425)
 
-[node name="SnowSpruce99" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce99" parent="trees" unique_id=2041932476 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.17850776, -0.041852277, 0.07989589, 0.031475738, 0.19493282, 0.031787854, -0.08452366, -0.015797984, 0.18057178, -5.8710957, -1.5867661, 23.09425)
 
-[node name="SnowSpruce100" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce100" parent="trees" unique_id=743002641 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.06864404, -0.019385537, 0.18684804, 0.031475738, 0.19493282, 0.03178785, -0.18519521, 0.040316127, -0.06385399, 4.8789043, -1.3367661, 20.09425)
 
-[node name="SnowSpruce47" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce47" parent="trees" unique_id=1675227820 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0.05176381, 0, -0.05176381, 0.19318517, 0, 0, 0, 0.2, -8.121096, 0.5730417, 9.895037)
 
-[node name="SnowSpruce48" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce48" parent="trees" unique_id=1356634471 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16730326, -0.044828773, 0.1, 0.05176381, 0.19318517, 0, -0.09659258, 0.025881905, 0.17320508, -13, 1.25, 12.5)
 
-[node name="SnowSpruce49" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce49" parent="trees" unique_id=333217609 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 0.25, 15.5)
 
-[node name="SnowSpruce50" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce50" parent="trees" unique_id=284685730 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0, 0.05176381, 0, 0.2, 0, -0.05176381, 0, 0.19318517, -17, 1.25, 19.5)
 
-[node name="SnowSpruce51" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce51" parent="trees" unique_id=2007747995 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14, 0.5, 16.5)
 
-[node name="SnowSpruce52" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce52" parent="trees" unique_id=455494175 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 1, -4.5)
 
-[node name="SnowSpruce53" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce53" parent="trees" unique_id=1846697459 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14, 3, 4.5)
 
-[node name="SnowSpruce54" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce54" parent="trees" unique_id=780555161 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -7, 1, 3.5)
 
-[node name="SnowSpruce101" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce101" parent="trees" unique_id=1380729703 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16730325, -0.044828765, 0.099999994, 0.051763803, 0.19318515, -1.4901161e-09, -0.096592575, 0.025881905, 0.17320508, -4, -0.75, -5.25)
 
-[node name="SnowSpruce102" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce102" parent="trees" unique_id=286718457 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.18793853, 0.06840403, 0, -0.06840403, 0.18793853, 4, -0.75, -2.75)
 
-[node name="SnowSpruce55" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce55" parent="trees" unique_id=2018434351 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -16, 2, -5.5)
 
-[node name="SnowSpruce56" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce56" parent="trees" unique_id=929043735 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.19923893, 0.017431146, 0, -0.017431146, 0.19923893, 7.6289043, -0.086766124, -19.40575)
 
-[node name="SnowSpruce57" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce57" parent="trees" unique_id=2093235477 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0.05176381, 0, -0.05176381, 0.19318517, 0, 0, 0, 0.2, -9.371096, 0.5730417, -21.354963)
 
-[node name="SnowSpruce58" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce58" parent="trees" unique_id=1732328588 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16730326, -0.044828773, 0.1, 0.05176381, 0.19318517, 0, -0.09659258, 0.025881905, 0.17320508, -14.25, 1.25, -18.75)
 
-[node name="SnowSpruce59" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce59" parent="trees" unique_id=223304172 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11.25, 0.25, -15.75)
 
-[node name="SnowSpruce60" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce60" parent="trees" unique_id=2041253017 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0, 0.05176381, 0, 0.2, 0, -0.05176381, 0, 0.19318517, -18.25, 1.25, -11.75)
 
-[node name="SnowSpruce61" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce61" parent="trees" unique_id=1292310841 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -15.25, 0.5, -14.75)
 
-[node name="SnowSpruce62" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce62" parent="trees" unique_id=2058806305 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11.25, 1, -35.75)
 
-[node name="SnowSpruce63" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce63" parent="trees" unique_id=1213393638 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -15.25, 3, -26.75)
 
-[node name="SnowSpruce64" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce64" parent="trees" unique_id=5958811 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.25, 1, -27.75)
 
-[node name="SnowSpruce65" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce65" parent="trees" unique_id=1697648118 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -17.25, 2, -36.75)
 
-[node name="SnowSpruce66" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce66" parent="trees" unique_id=1924641821 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.19923893, 0.017431146, 0, -0.017431146, 0.19923893, 7.6289043, 0.41323388, -31.40575)
 
-[node name="SnowSpruce67" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce67" parent="trees" unique_id=529804554 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0.05176381, 0, -0.05176381, 0.19318517, 0, 0, 0, 0.2, -9.371096, 0.5730417, -33.354965)
 
-[node name="SnowSpruce68" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce68" parent="trees" unique_id=1495885269 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16730326, -0.044828773, 0.1, 0.05176381, 0.19318517, 0, -0.09659258, 0.025881905, 0.17320508, -14.25, 1.25, -30.75)
 
-[node name="SnowSpruce69" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce69" parent="trees" unique_id=533892578 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11.25, 0.25, -27.75)
 
-[node name="SnowSpruce70" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce70" parent="trees" unique_id=873664814 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0, 0.05176381, 0, 0.2, 0, -0.05176381, 0, 0.19318517, -18.25, 1.25, -23.75)
 
-[node name="SnowSpruce71" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce71" parent="trees" unique_id=1693986465 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -15.25, 0.5, -26.75)
 
-[node name="SnowSpruce72" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce72" parent="trees" unique_id=1502526402 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11.25, 1, -47.75)
 
-[node name="SnowSpruce73" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce73" parent="trees" unique_id=101499823 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -15.25, 3, -38.75)
 
-[node name="SnowSpruce74" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce74" parent="trees" unique_id=1224956542 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.25, 1, -39.75)
 
-[node name="SnowSpruce75" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce75" parent="trees" unique_id=2045519751 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -17.25, 1.332905, -48.75)
 
-[node name="SnowSpruce76" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce76" parent="trees" unique_id=1838655444 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19999999, 0, 0, 0, 0.17320508, -0.099999994, 0, 0.099999994, 0.17320508, 8.878906, -0.58676624, -16.90575)
 
-[node name="SnowSpruce77" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce77" parent="trees" unique_id=907226983 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318517, 0.05176381, 0, -0.05176381, 0.19318517, 0, 0, 0, 0.2, 17.128904, 2.8230417, -33.354965)
 
-[node name="SnowSpruce78" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce78" parent="trees" unique_id=923989524 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16730326, -0.044828773, 0.1, 0.05176381, 0.19318517, 0, -0.09659258, 0.025881905, 0.17320508, 12.25, 1.5, -30.75)
 
-[node name="SnowSpruce79" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce79" parent="trees" unique_id=1547692836 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 15.25, 2.5, -27.75)
 
-[node name="SnowSpruce80" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce80" parent="trees" unique_id=1554485661 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.18660253, -0.05176381, 0.05, 0.05, 0.19318517, 0.01339746, -0.05176381, 0, 0.19318517, 8.25, 1, -23.75)
 
-[node name="SnowSpruce81" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce81" parent="trees" unique_id=2079980463 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 11.25, 0.75, -26.75)
 
-[node name="SnowSpruce82" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce82" parent="trees" unique_id=101320622 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 15.25, 3.25, -47.75)
 
-[node name="SnowSpruce83" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce83" parent="trees" unique_id=271023684 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 11.25, 1, -38.75)
 
-[node name="SnowSpruce84" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce84" parent="trees" unique_id=1466414328 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 18.25, 3.25, -39.75)
 
-[node name="SnowSpruce85" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce85" parent="trees" unique_id=1671991704 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9.25, 0, -48.75)
 
-[node name="SnowSpruce86" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce86" parent="trees" unique_id=800987622 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19318515, 0.0045115133, -0.05156684, 0, 0.19923893, 0.017431146, 0.05176383, 0.016837193, -0.19245002, -12.431423, -0.08676624, -61.835663)
 
-[node name="SnowSpruce87" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce87" parent="trees" unique_id=878290805 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.18660253, -0.05, -0.05176383, -0.05176381, 0.19318517, 0, 0.050000016, 0.0133974645, -0.19318517, 4.4938135, -0.6769583, -64.35279)
 
-[node name="SnowSpruce88" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce88" parent="trees" unique_id=1623101838 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.13660252, 0.036602527, -0.14142135, 0.051763803, 0.19318515, -1.4901164e-09, 0.13660255, -0.03660254, -0.14142133, 8.532258, 0, -68.131744)
 
-[node name="SnowSpruce89" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce89" parent="trees" unique_id=824016459 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19318517, 0, -0.05176383, 0, 0.2, 0, 0.05176383, 0, -0.19318517, 4.8580236, -1, -70.25307)
 
-[node name="SnowSpruce90" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce90" parent="trees" unique_id=1522308331 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.17320506, 0, -0.10000002, 0, 0.2, 0, 0.10000002, 0, -0.17320506, 10.584228, 0, -75.928505)
 
-[node name="SnowSpruce91" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce91" parent="trees" unique_id=1890497206 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19318517, 0, -0.05176383, 0, 0.2, 0, 0.05176383, 0, -0.19318517, 8.462908, -0.75, -72.25427)
 
-[node name="SnowSpruce92" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce92" parent="trees" unique_id=1951098354 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19318517, 0, -0.05176383, 0, 0.2, 0, 0.05176383, 0, -0.19318517, 10.034406, -0.25, -50.93455)
 
-[node name="SnowSpruce93" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce93" parent="trees" unique_id=232610905 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19318517, 0, -0.05176383, 0, 0.2, 0, 0.05176383, 0, -0.19318517, 9.818737, -0.25, -60.663162)
 
-[node name="SnowSpruce94" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce94" parent="trees" unique_id=1723538037 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19318517, 0, -0.05176383, 0, 0.2, 0, 0.05176383, 0, -0.19318517, 5.0660753, -0.25, -57.8855)
 
-[node name="SnowSpruce95" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce95" parent="trees" unique_id=1745679605 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19318517, 0, -0.05176383, 0, 0.2, 0, 0.05176383, 0, -0.19318517, 16.08878, 0.75, -51.52154)
 
-[node name="SnowSpruce11" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce11" parent="trees" unique_id=1596960922 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -12, 1, 11)
 
-[node name="SnowSpruce12" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce12" parent="trees" unique_id=122042611 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.17320508, 0, 0.1, 0, 0.2, 0, -0.1, 0, 0.17320508, -12, 2, -4)
 
-[node name="SnowSpruce13" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce13" parent="trees" unique_id=58351573 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -20, -0.5, 24)
 
-[node name="SnowSpruce14" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce14" parent="trees" unique_id=1266061651 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.19696155, 0.034729637, 0, -0.034729637, 0.19696155, -17, 0.75, 15)
 
-[node name="SnowSpruce15" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce15" parent="trees" unique_id=1491039217 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19318523, 0, 0.05176378, 0, 0.2, 0, -0.051763788, 0, 0.19318525, 16.62476, 1.196456, -4.4023314)
 
-[node name="SnowSpruce16" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce16" parent="trees" unique_id=1774404145 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -13, -1.5, 28)
 
-[node name="SnowSpruce17" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce17" parent="trees" unique_id=26551445 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11, 1, 18)
 
-[node name="SnowSpruce18" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce18" parent="trees" unique_id=405772678 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, -1.25, 33)
 
-[node name="SnowSpruce19" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce19" parent="trees" unique_id=468314295 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -20, -0.5, 33)
 
-[node name="SnowSpruce20" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce20" parent="trees" unique_id=540986203 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -21, 2, -4)
 
-[node name="SnowSpruce21" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce21" parent="trees" unique_id=1910366465 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -17, 4, -14)
 
-[node name="SnowSpruce22" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce22" parent="trees" unique_id=183050526 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 1, -7)
 
-[node name="SnowSpruce23" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce23" parent="trees" unique_id=208082545 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11, 2, 0)
 
-[node name="SnowSpruce24" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce24" parent="trees" unique_id=1315334949 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2, 0, 0, 0, 0.19923893, 0.017431146, 0, -0.017431146, 0.19923893, 9, -0.40797865, -8.949213)
 
-[node name="SnowSpruce25" parent="trees" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce25" parent="trees" unique_id=1980742907 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.17057371, -0.034729645, 0.09848078, 0.030076746, 0.19696154, 0.01736482, -0.099999994, 0, 0.17320506, 5, 1, 2)
 
-[node name="trees2" type="Node3D" parent="."]
+[node name="trees2" type="Node3D" parent="." unique_id=498000469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 
-[node name="SnowSpruce" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce" parent="trees2" unique_id=1098271825 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.1834084, 0, 0.07975813, 0, 0.2, 0, -0.07975813, 0, 0.1834084, 9.541497, 0.27098465, 5.0537424)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (1)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (1)" parent="trees2" unique_id=571429421 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.09960574, 0, 0.17343211, 0, 0.2, 0, -0.17343211, 0, 0.09960574, 14.234867, 2.498519, 4.962259)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (2)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (2)" parent="trees2" unique_id=1066538030 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.12357586, -0.07899163, -0.13597631, 0.06584062, 0.1830394, -0.046495378, 0.14280844, -0.01603525, 0.13910016, 14.125138, 0.6438198, 10.213837)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (3)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (3)" parent="trees2" unique_id=975386378 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19441544, 0.00534306, -0.046628803, -0.015196647, 0.19516228, -0.04099824, 0.04440557, 0.04339639, 0.19011848, 6.6606746, 0.3688259, 7.2996597)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (4)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (4)" parent="trees2" unique_id=302046226 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19424763, 0.046631556, 0.009663125, -0.047613576, 0.1893969, 0.043148715, 0.0009096293, -0.044208147, 0.19505093, -6.396538, 0.4756813, 5.862693)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (5)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (5)" parent="trees2" unique_id=1198470657 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.06302618, -0.09747525, -0.16286941, -0.018641949, 0.17396253, -0.09690041, 0.18889245, -0.015355267, -0.06390648, 7.2199407, 0.86959076, -4.036955)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (6)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (6)" parent="trees2" unique_id=300610936 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.025078429, 0.046805654, 0.19282244, 0.035977636, 0.19220743, -0.041977126, -0.19513291, 0.02942281, -0.032521013, -5.9901514, 0.585989, 0.8938837)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (7)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (7)" parent="trees2" unique_id=857791784 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.14082521, -0.0035840445, 0.14197014, -0.019490054, 0.19853252, -0.014320907, -0.14067163, -0.023918718, -0.14014098, -4.9604955, 0.81970024, -13.57992)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (8)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (8)" parent="trees2" unique_id=415406272 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.13103583, -0.0011842524, 0.15109047, -0.032006457, 0.19567314, -0.02622446, -0.14766623, -0.04136102, -0.1283903, 6.1729727, -0.07807922, -12.268049)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (9)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (9)" parent="trees2" unique_id=917861477 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.18291639, -0.07548957, 0.029034244, -0.059338298, 0.17403921, 0.07867261, -0.054960247, 0.06333828, -0.18157007, 13.941494, 1.6429405, -13.176302)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (10)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (10)" parent="trees2" unique_id=1299584059 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.09308584, 0.0024268604, 0.17700046, -0.020261092, 0.19852091, -0.013377385, -0.17585376, -0.024157334, -0.09215157, 17.949745, 3.0972004, -9.306854)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (11)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (11)" parent="trees2" unique_id=300117247 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.06121357, -0.01749412, 0.18959698, -0.013308658, 0.1990605, 0.014070465, -0.18993668, -0.008309871, -0.06208999, 23.442898, 3.8061733, -1.0126333)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (12)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (12)" parent="trees2" unique_id=1313274925 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.14989227, -0.048422173, -0.12323859, -0.016483292, 0.1915228, -0.055203747, 0.13138022, -0.031216132, -0.14752948, 20.861279, 3.628065, 1.0928001)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (13)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (13)" parent="trees2" unique_id=469907021 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19295543, -0.040983424, 0.032994937, 0.029211355, 0.18776087, 0.0623912, -0.043760758, -0.0553744, 0.18713306, 13.784346, 1.2112904, 0.8389206)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (14)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (14)" parent="trees2" unique_id=278578138 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.17706329, -0.0036911885, 0.092925, -7.517193e-05, 0.19983676, 0.008081199, -0.09299824, -0.00718934, 0.17691727, 12.966945, 0.35866547, -7.6881924)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (15)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (15)" parent="trees2" unique_id=1039404583 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.0032211847, -0.016820265, 0.24828894, 0.0537963, 0.24248552, 0.015729187, -0.24297379, 0.053465202, 0.006774214, 20.981752, 1.959527, 8.56291)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (16)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (16)" parent="trees2" unique_id=829851554 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.12289322, -0.020725518, 0.24410376, -0.081157245, 0.2542306, 0.062443677, -0.23114863, -0.10028045, 0.107856736, 10.901116, 1.6283531, -3.7148366)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (17)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (17)" parent="trees2" unique_id=778432867 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.03808779, -0.06491209, -0.20998329, -0.037788853, 0.21187344, -0.05864207, 0.2165146, 0.025559926, -0.04717381, 12.089392, 1.3435698, 3.8691828)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (18)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (18)" parent="trees2" unique_id=640598392 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.24655816, 0.09622033, -0.076319, -0.08573563, 0.25741318, 0.04755778, 0.08793377, -0.018814526, 0.26036045, 8.504733, 0.9180193, 17.45006)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (19)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (19)" parent="trees2" unique_id=1692552094 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.11348531, -0.17626189, -0.043116093, 0.17083682, 0.120926, -0.044697337, 0.06117215, -0.010715285, 0.20481533, 14.426563, 1.8034725, 15.39987)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (20)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (20)" parent="trees2" unique_id=165114573 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.23568171, 0.017526988, 0.18475404, 0.08867951, 0.27297303, 0.08722808, -0.16302514, 0.123148695, -0.21964592, 10.390874, -1.0314751, 24.552704)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (21)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (21)" parent="trees2" unique_id=565517532 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.23072284, -0.007919034, 0.09811403, -0.008734057, 0.25069037, -0.00030495902, -0.098044835, -0.0036967178, -0.2308585, 7.4667673, -1.6754389, 30.903646)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (22)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (22)" parent="trees2" unique_id=351275756 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.0001525642, -0.08253624, 0.2139482, -0.05486676, 0.20772092, 0.080173045, -0.22265601, -0.05124304, -0.019609604, 16.855486, -0.044262886, 28.906181)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (23)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (23)" parent="trees2" unique_id=2137679429 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.05991124, -0.035724733, 0.23475094, -0.016428994, 0.24215108, 0.032658022, -0.23688465, -0.0077589913, -0.06163657, 12.485639, -1.5042887, 33.65627)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (24)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (24)" parent="trees2" unique_id=1399934293 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.08082982, 0.0033797782, 0.25345823, 0.015224351, 0.26561704, 0.0013132532, -0.25302315, 0.014902439, -0.08088979, 23.10962, -1.5697958, 34.028893)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (25)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (25)" parent="trees2" unique_id=522915676 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.20491084, -0.007784195, 0.08208394, -0.010448924, 0.2205696, -0.005167167, -0.08178747, -0.008676751, -0.20499359, 7.2366314, 1.082413, 18.440487)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (26)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (26)" parent="trees2" unique_id=2120804528 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.05826003, -0.07299433, -0.18266661, 0.033499233, 0.19140853, -0.06580332, 0.19383773, -0.011140179, 0.06627463, 13.784221, 2.363462, -17.001581)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (27)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (27)" parent="trees2" unique_id=390470987 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.004868729, -0.02315586, 0.21824443, 0.05081245, 0.21224777, 0.023653168, -0.21350624, 0.05104102, 0.0006524554, 17.48773, 2.8669956, -21.85476)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (28)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (28)" parent="trees2" unique_id=544567783 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.26567218, -0.051213384, 0.08174863, -0.049307328, 0.27796248, 0.01389399, -0.08291223, -0.0012013718, -0.27020633, 18.528395, 3.7578762, -25.3841)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (29)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (29)" parent="trees2" unique_id=1098852940 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.16438644, 0.019525155, 0.12776771, 0.03574025, 0.20552097, 0.01457632, -0.12421133, 0.0332957, -0.16489895, -13.537907, 0.6938905, -10.143759)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (30)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (30)" parent="trees2" unique_id=2022849128 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.21272843, 0.061426103, -0.09670417, 0.032756645, 0.22804782, 0.07279748, 0.10978098, 0.05098333, -0.20911019, -14.455211, 2.1990511, -22.307652)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (31)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (31)" parent="trees2" unique_id=2063734572 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.011945837, 0.106120005, 0.27818468, 0.06614859, 0.27050447, -0.106030785, -0.29029718, 0.06600537, -0.012713309, -19.23962, 3.5439682, -8.082505)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (32)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (32)" parent="trees2" unique_id=977497372 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.17002839, 0.08895055, 0.12585145, 0.041578244, 0.20692402, -0.0900786, -0.14839824, -0.04393976, -0.16943347, -17.254892, 3.98262, 4.2948446)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (33)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (33)" parent="trees2" unique_id=1587846723 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.27501452, 0.0031719108, 0.03575458, 0.007985043, 0.274746, 0.037045136, -0.034995582, 0.037762973, -0.27252662, -11.742176, -1.0708431, 22.017557)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (34)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (34)" parent="trees2" unique_id=1446379939 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.23098455, -0.006126138, 0.018178014, 0.006381905, 0.23167221, -0.0030182258, -0.018089818, 0.0035083927, 0.23104624, -9.334607, -1.5437381, 27.425879)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (35)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (35)" parent="trees2" unique_id=106549232 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.23923333, 0.053977825, 0.07240906, 0.053493135, 0.24987368, -0.009533304, -0.07276788, 0.006228478, -0.24506189, -18.696924, 1.189568, 10.924016)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (36)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (36)" parent="trees2" unique_id=1470565402 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.15131211, -0.015508396, 0.15798382, 0.012311296, 0.21874525, 0.00968162, -0.15826507, 0.0021889089, 0.15179636, -14.670142, -1.2591184, 32.13272)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (37)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (37)" parent="trees2" unique_id=1065334803 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.11187294, -0.03149773, 0.22042163, 0.020698614, 0.24708258, 0.024802132, -0.22169656, 0.007174314, 0.11354522, -12.643314, -0.7839749, 34.85667)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (37)2" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (37)2" parent="trees2" unique_id=1520528979 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.07094618, 0.29124635, -0.011923987, 0.025150927, -0.018342707, -0.2983806, -0.2904033, 0.06956354, -0.02875487, -5.9001694, 0.0316056, 36.019485)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (38)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (38)" parent="trees2" unique_id=1650161831 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.057848297, 0.038778372, -0.19844364, -0.05273722, 0.19636752, 0.053746097, 0.19519842, 0.0645453, -0.044289324, -10.858028, -0.714432, 38.6851)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (39)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (39)" parent="trees2" unique_id=1458692769 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.23438592, -0.10381842, -2.0695466e-05, 0.10315682, 0.23289797, -0.028848367, 0.011702045, 0.02636837, 0.25472105, 16.743109, -0.06292191, 31.970318)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (40)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (40)" parent="trees2" unique_id=923479910 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.18888481, -0.09097754, 0.18413076, 0.019713495, 0.24097541, 0.1392865, -0.20443197, 0.10729604, -0.15669604, 18.954292, 1.5047215, 26.30661)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (41)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (41)" parent="trees2" unique_id=1987727256 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.07392319, -0.12921673, 0.1474457, 0.07756448, 0.16399771, 0.10483479, -0.18005817, 0.017595893, 0.10569425, 13.150532, 2.7655315, 21.004345)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (42)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (42)" parent="trees2" unique_id=420584747 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.24526227, 0.015735261, 0.029988611, 0.017135076, 0.2467653, 0.010659741, -0.029211342, 0.012634994, -0.24553505, 7.5599375, -1.5814136, 28.02077)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (43)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (43)" parent="trees2" unique_id=1939576306 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.089937225, -0.027341714, 0.2755532, -0.024413241, 0.28781196, 0.03652627, -0.2758281, -0.034389015, 0.0866147, 5.62297, 0.18445122, -38.571896)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (44)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (44)" parent="trees2" unique_id=1321023545 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.04024214, -0.083807364, 0.24262758, -0.012905245, 0.24594092, 0.08281139, -0.2563694, 0.00077489094, -0.042253703, 7.084067, 1.0361865, -43.12382)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (45)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (45)" parent="trees2" unique_id=1479095651 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.1392547, -0.019656427, -0.20310114, 0.062239602, 0.23826416, 0.019614544, 0.19432622, -0.062226396, 0.13926062, 12.027645, 1.5393835, -44.429207)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (46)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (46)" parent="trees2" unique_id=1224466330 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.10902172, -0.025327196, 0.2549996, 0.038809374, 0.27228963, 0.043636918, -0.25329843, 0.052620165, -0.103068046, 5.616454, 1.3111564, -62.05756)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (47)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (47)" parent="trees2" unique_id=1244795329 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.24195729, 0.04149994, -0.15050402, 0.085906506, 0.26718011, -0.06443514, 0.13036019, -0.09904328, -0.23688327, -10.319995, 0.9568328, -66.57644)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (48)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (48)" parent="trees2" unique_id=774896017 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.0064150165, 0.02996287, 0.2934697, 3.5476016e-05, 0.2935391, -0.029969187, -0.29499528, -0.0006162765, -0.006385444, -15.549784, 2.2392502, -44.747097)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (49)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (49)" parent="trees2" unique_id=2084182607 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.22908282, 0.00705579, -0.058842752, 0.0163207, 0.23336801, -0.03555572, 0.0569727, -0.038481034, -0.22641669, -17.162676, 2.0149636, -40.65991)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (50)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (50)" parent="trees2" unique_id=1093833347 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.04797185, 0.061591625, 0.27413794, 0.008012516, 0.27769178, -0.0637922, -0.2808575, 0.018442363, 0.0450042, -11.665699, 1.0427867, -42.666306)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (51)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (51)" parent="trees2" unique_id=286232536 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.1699916, 0.07382809, 0.13738061, -0.091297425, 0.21186121, -0.00088449265, -0.12644684, -0.053716063, 0.18532932, -11.241411, 1.516239, -31.06742)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (52)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (52)" parent="trees2" unique_id=1208286679 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.024631025, 0.0742358, -0.2562035, -0.014463583, 0.25654298, 0.07572468, 0.26634932, 0.020796146, -0.019580677, -11.355165, 0.6942811, -12.9870405)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (53)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (53)" parent="trees2" unique_id=113697920 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19113816, 0.05633993, -0.16420934, -0.058602516, 0.25083825, 0.017849378, 0.16341554, 0.024055494, 0.19846758, -11.792498, 1.0793405, -20.172098)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (54)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (54)" parent="trees2" unique_id=510392962 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.17934123, -0.1287509, 0.20306075, 0.1368406, 0.2629532, 0.045869533, -0.19769958, 0.0652117, 0.21595384, 11.481911, 2.2685156, -21.763445)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (54)2" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (54)2" parent="trees2" unique_id=387715367 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.11878824, -0.2716276, 0.04562405, 0.2086473, -0.056306582, 0.20801358, -0.17980382, 0.11411299, 0.21124053, 4.7319107, 1.5185156, -0.0134449005)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (55)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (55)" parent="trees2" unique_id=1542464530 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.034969285, -0.06412062, -0.19634248, 0.005567285, 0.19935681, -0.064113475, 0.20647235, 0.0054843947, 0.03498238, 15.980434, 2.9592936, -14.922096)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (56)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (56)" parent="trees2" unique_id=328811387 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.00015418931, -0.012760863, 0.23212487, -0.003824937, 0.23209363, 0.0127566075, -0.2324439, -0.0038107084, -0.00036389165, 14.7233095, 3.1363223, -24.037535)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (57)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (57)" parent="trees2" unique_id=942652419 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.12874691, -0.008464653, 0.2277507, -0.035723694, 0.2575957, 0.0297684, -0.22509076, -0.045724034, 0.12554388, 16.958464, 2.981315, -17.39201)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (58)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (58)" parent="trees2" unique_id=299684692 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.28982332, -0.001351319, 0.066795446, -0.0131023135, 0.29273832, -0.05092823, -0.065511726, -0.05256926, -0.28531682, 17.992579, 2.9318676, -11.641497)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (59)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (59)" parent="trees2" unique_id=2023003523 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.17278726, -0.045143656, 0.22780022, -0.022790562, 0.28586245, 0.039363254, -0.23110923, 0.0055613294, -0.17419505, 11.362536, 0.8007987, -34.569828)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (60)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (60)" parent="trees2" unique_id=256180564 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.13521019, -0.13066222, 0.19178924, -0.010161545, 0.22508772, 0.14618401, -0.23184577, 0.06633556, -0.11825667, 15.6432905, 2.2686067, -32.063763)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (61)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (61)" parent="trees2" unique_id=670651322 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.017987205, 0.0018635838, 0.29589316, 0.14514947, 0.2582677, -0.010450179, -0.25785238, 0.14551322, 0.014758258, 10.0774555, 1.2765319, -41.8119)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (62)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (62)" parent="trees2" unique_id=222270125 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.285035, 0, -0.045646656, 0, 0.2886669, 0, 0.045646656, 0, 0.285035, 14.640791, 2.506522, -36.769745)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (63)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (63)" parent="trees2" unique_id=889745998 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.28550076, 0, 0.05721222, 0, 0.2911768, 0, -0.05721222, 0, 0.28550076, 16.242899, 1.7326494, -43.59561)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (64)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (64)" parent="trees2" unique_id=1602804386 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.21789752, 0, 0.087113366, 0, 0.23466578, 0, -0.087113366, 0, 0.21789752, -18.063978, 2.3588707, -20.648771)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (65)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (65)" parent="trees2" unique_id=1319884727 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.20800675, 0, 0.13010362, 0, 0.24534416, 0, -0.13010362, 0, 0.20800675, -16.032442, 0.9666848, -10.459635)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (66)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (66)" parent="trees2" unique_id=1828506030 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.24387392, 0, 0.1370924, 0, 0.27976564, 0, -0.1370924, 0, -0.24387392, 19.268988, 3.1424031, -6.020735)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (67)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (67)" parent="trees2" unique_id=1774277258 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.26330763, 0, 0.0642679, 0, 0.2710374, 0, -0.0642679, 0, -0.26330763, 11.2534275, 0.23734793, -10.241591)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (68)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (68)" parent="trees2" unique_id=2138265707 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.23675853, 0, 0.066575184, 0, 0.2459407, 0, -0.066575184, 0, 0.23675853, -14.365073, 2.0119758, -35.07393)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (69)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (69)" parent="trees2" unique_id=1510184328 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.07750327, 0, 0.22785771, 0, 0.24067795, 0, -0.22785771, 0, -0.07750327, 13.268228, 1.4536378, -49.39496)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (70)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (70)" parent="trees2" unique_id=288439333 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.23412071, 0, 0.050915506, 0, 0.23959313, 0, -0.050915506, 0, 0.23412071, 18.235657, 2.5325985, -53.702778)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (71)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (71)" parent="trees2" unique_id=1587843351 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.07799595, 0, 0.26724157, 0, 0.27839077, 0, -0.26724157, 0, -0.07799595, 16.384315, 1.09356, -56.534958)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (72)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (72)" parent="trees2" unique_id=1986797237 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.046870265, 0, 0.19987203, 0, 0.20529404, 0, -0.19987203, 0, 0.046870265, 7.0030284, 1.8130649, -68.82581)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (73)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (73)" parent="trees2" unique_id=233391050 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.17188534, 0, 0.22306149, 0, 0.2816043, 0, -0.22306149, 0, -0.17188534, -12.483411, 3.8943362, -73.33507)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (74)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (74)" parent="trees2" unique_id=1142624224 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.16220422, 0, 0.20560178, 0, 0.26188222, 0, -0.20560178, 0, -0.16220422, 5.3702817, 0.4617716, -76.43655)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (75)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (75)" parent="trees2" unique_id=1393283889 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.24010058, 0, 0.022304134, 0, 0.24113432, 0, -0.022304134, 0, 0.24010058, -9.604087, 1.8875185, -71.8266)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (76)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (76)" parent="trees2" unique_id=652002347 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.08303655, 0, 0.20603417, 0, 0.22213767, 0, -0.20603417, 0, 0.08303655, -9.125848, 1.1219575, -62.913643)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (77)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (77)" parent="trees2" unique_id=458334050 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.09232377, 0, 0.24384199, 0, 0.26073474, 0, -0.24384199, 0, -0.09232377, -17.227627, 1.2122542, -62.00792)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (78)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (78)" parent="trees2" unique_id=1263339612 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.012220434, 0, 0.26831135, 0, 0.2685895, 0, -0.26831135, 0, -0.012220434, -21.781155, 2.3530307, -59.36469)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (79)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (79)" parent="trees2" unique_id=807977834 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.23158792, 0, 0.031128341, 0, 0.23367058, 0, -0.031128341, 0, -0.23158792, -21.811567, 2.8466573, -50.58039)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (80)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (80)" parent="trees2" unique_id=565033825 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.031255234, 0, 0.26811552, 0, 0.26993114, 0, -0.26811552, 0, 0.031255234, -22.45076, 2.0155344, -54.036243)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (81)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (81)" parent="trees2" unique_id=2019649523 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.097908065, 0, 0.24373445, 0, 0.26266414, 0, -0.24373445, 0, -0.097908065, -19.448444, 1.4111143, -44.732162)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (82)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (82)" parent="trees2" unique_id=578920396 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.294674, 0, 0.016908215, 0, 0.29515865, 0, -0.016908215, 0, 0.294674, -7.526678, 0.67195714, -47.2202)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (83)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (83)" parent="trees2" unique_id=1679212259 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19309077, 0, 0.1153247, 0, 0.22490847, 0, -0.1153247, 0, -0.19309077, -15.49127, 1.48826, -66.28055)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (84)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (84)" parent="trees2" unique_id=612939373 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.24708368, 0, 0.1582824, 0, 0.29343426, 0, -0.1582824, 0, 0.24708368, -21.33148, 3.4081483, -66.30438)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (85)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (85)" parent="trees2" unique_id=662744450 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.20115629, 0, 0.009404854, 0, 0.20137602, 0, -0.009404854, 0, -0.20115629, -23.513088, 4.9531355, -63.401188)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (86)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (86)" parent="trees2" unique_id=715806320 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.07295211, 0, 0.23333712, 0, 0.24447541, 0, -0.23333712, 0, -0.07295211, -24.333715, 6.5364504, -57.03107)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (87)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (87)" parent="trees2" unique_id=1576617035 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.21055356, 0, 0.13496588, 0, 0.25009716, 0, -0.13496588, 0, 0.21055356, -22.06264, 5.3232765, -45.238697)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (88)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (88)" parent="trees2" unique_id=679494456 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2417889, 0, 0.15330045, 0, 0.28629163, 0, -0.15330045, 0, 0.2417889, -22.070183, 6.417791, -36.884552)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (89)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (89)" parent="trees2" unique_id=2029623336 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.03262009, 0, 0.20544581, 0, 0.20801936, 0, -0.20544581, 0, 0.03262009, -23.255724, 7.6823583, -30.521713)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (90)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (90)" parent="trees2" unique_id=1795658368 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.21146955, 0, 0.1966767, 0, 0.28879246, 0, -0.1966767, 0, 0.21146955, -22.19006, 6.4586616, -41.18978)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (91)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (91)" parent="trees2" unique_id=1906596918 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.14483564, 0, 0.2134524, 0, 0.2579521, 0, -0.2134524, 0, 0.14483564, -19.529934, 5.3743134, -30.659615)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (92)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (92)" parent="trees2" unique_id=446667353 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.22536342, 0, 0.04918974, 0, 0.23066923, 0, -0.04918974, 0, 0.22536342, -21.91811, 5.445688, -22.250532)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (93)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (93)" parent="trees2" unique_id=64257173 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.12790743, 0, 0.15605304, 0, 0.20177428, 0, -0.15605304, 0, -0.12790743, -23.060555, 4.303663, -13.478094)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (94)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (94)" parent="trees2" unique_id=146571246 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.13405256, 0, 0.2614, 0, 0.2937687, 0, -0.2614, 0, -0.13405256, -24.552288, 3.6700923, 1.6732864)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (95)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (95)" parent="trees2" unique_id=1572696967 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.23428945, 0, 0.12269388, 0, 0.2644718, 0, -0.12269388, 0, -0.23428945, -22.23045, 1.462172, 16.457886)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (96)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (96)" parent="trees2" unique_id=634992006 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.055327665, 0, 0.24839213, 0, 0.25447947, 0, -0.24839213, 0, -0.055327665, -22.387104, 3.2497797, 8.263542)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (97)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (97)" parent="trees2" unique_id=1420133277 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.078922145, 0, 0.23064384, 0, 0.24377301, 0, -0.23064384, 0, -0.078922145, -20.061731, 3.918788, -14.135941)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (98)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (98)" parent="trees2" unique_id=1716983909 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.021086648, 0, 0.2200081, 0, 0.2210163, 0, -0.2200081, 0, 0.021086648, -17.827368, 3.5409932, -69.36594)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (99)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (99)" parent="trees2" unique_id=2094799138 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.23399252, 0, 0.06114641, 0, 0.2418499, 0, -0.06114641, 0, -0.23399252, -21.360228, 5.7534018, -73.39355)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (100)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (100)" parent="trees2" unique_id=1793240 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.26454547, 0, 0.11059699, 0, 0.28673333, 0, -0.11059699, 0, 0.26454547, -18.154636, 5.029824, -72.305916)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (101)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (101)" parent="trees2" unique_id=148600243 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.120321736, 0, 0.2212719, 0, 0.25187016, 0, -0.2212719, 0, 0.120321736, -14.927985, 4.38929, -78.60496)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (102)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (102)" parent="trees2" unique_id=734342666 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.061645295, 0, 0.22506669, 0, 0.23335631, 0, -0.22506669, 0, 0.061645295, -10.621441, 3.8441684, -78.35526)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (103)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (103)" parent="trees2" unique_id=838017335 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.29273555, 0, 0.031663503, 0, 0.29444295, 0, -0.031663503, 0, 0.29273555, -12.557658, 3.496702, -76.8653)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (104)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (104)" parent="trees2" unique_id=558963243 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.18904445, 0, 0.19374785, 0, 0.27069545, 0, -0.19374785, 0, 0.18904445, -12.672674, 1.3228203, -65.54467)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (105)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (105)" parent="trees2" unique_id=992493107 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.2032156, 0, 0.19097951, 0, 0.27887225, 0, -0.19097951, 0, 0.2032156, -18.3686, 0.6884948, -66.220634)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (106)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (106)" parent="trees2" unique_id=1445400678 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.10069425, 0, 0.2535402, 0, 0.27280387, 0, -0.2535402, 0, 0.10069425, -14.275673, 4.925753, -70.80916)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (107)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (107)" parent="trees2" unique_id=1436771389 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.11435348, 0, 0.17490293, 0, 0.20896831, 0, -0.17490293, 0, -0.11435348, -23.800097, 5.3596883, -48.904964)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (108)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (108)" parent="trees2" unique_id=2038759481 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.07018928, 0, 0.24884246, 0, 0.25855193, 0, -0.24884246, 0, 0.07018928, -21.718237, 4.761155, -47.78811)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (109)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (109)" parent="trees2" unique_id=912884611 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.22161579, 0.08263621, 0.049336765, 0.08066155, 0.22704114, -0.017957114, -0.05250309, 0, -0.2358386, 9.883102, 0.13954294, -65.322266)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (110)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (110)" parent="trees2" unique_id=1959952136 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.13872723, 0, 0.16741925, 0, 0.21742688, 0, -0.16741925, 0, -0.13872723, 21.013866, 3.7715247, -69.342575)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (111)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (111)" parent="trees2" unique_id=54073803 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.16073465, 0, 0.15957956, 0, 0.22649783, 0, -0.15957956, 0, -0.16073465, 16.906216, 0.86086065, -75.220856)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (112)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (112)" parent="trees2" unique_id=1577213847 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.14902787, 0, 0.19665435, 0, 0.24674326, 0, -0.19665435, 0, -0.14902787, 22.2422, 3.2388532, -62.547447)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (113)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (113)" parent="trees2" unique_id=17735105 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.18017243, 0, 0.14552024, 0, 0.23159929, 0, -0.14552024, 0, -0.18017243, 20.04615, 3.135039, -65.91018)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (114)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (114)" parent="trees2" unique_id=912816317 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.12726638, 0, 0.20483218, 0, 0.24114923, 0, -0.20483218, 0, 0.12726638, 16.641216, 1.0532792, -72.70388)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (115)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (115)" parent="trees2" unique_id=146860015 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.11831174, 0, 0.18834242, 0, 0.22241974, 0, -0.18834242, 0, -0.11831174, 13.500866, 0.2294702, -73.12684)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (116)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (116)" parent="trees2" unique_id=986813072 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.22616298, 0, 0.0043690884, 0, 0.22620519, 0, -0.0043690884, 0, 0.22616298, 12.988817, 1.2890359, -67.176636)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (117)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (117)" parent="trees2" unique_id=1163997126 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.011810716, 0, 0.27667692, 0, 0.2769289, 0, -0.27667692, 0, -0.011810716, 19.97151, 2.6764157, -61.765438)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (118)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (118)" parent="trees2" unique_id=2115713143 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.14123255, 0, 0.15157972, 0, 0.20717877, 0, -0.15157972, 0, -0.14123255, 22.27514, 4.2374735, -56.772305)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (119)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (119)" parent="trees2" unique_id=866019958 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.12291067, 0, 0.21597582, 0, 0.24850067, 0, -0.21597582, 0, 0.12291067, 20.58348, 3.7534788, -51.454304)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (120)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (120)" parent="trees2" unique_id=95772092 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.20343158, 0, 0.21254858, 0, 0.29421303, 0, -0.21254858, 0, 0.20343158, 22.239943, 3.901654, -46.138123)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (121)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (121)" parent="trees2" unique_id=495938909 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.27218845, 0, 0.11318783, 0, 0.29478472, 0, -0.11318783, 0, -0.27218845, 22.079618, 5.181511, -38.42106)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (122)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (122)" parent="trees2" unique_id=569787898 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.18249877, 0, 0.22315386, 0, 0.28827664, 0, -0.22315386, 0, 0.18249877, 21.350407, 4.473306, -32.43603)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (123)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (123)" parent="trees2" unique_id=1864952062 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.13949504, 0, 0.23931302, 0, 0.27700108, 0, -0.23931302, 0, -0.13949504, 21.670227, 3.4259303, -28.250826)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (124)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (124)" parent="trees2" unique_id=377321978 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.25611272, 0, 0.04900656, 0, 0.26075923, 0, -0.04900656, 0, -0.25611272, 21.73348, 3.1883311, -22.684258)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (125)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (125)" parent="trees2" unique_id=401189227 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.12877785, 0, 0.21926858, 0, 0.2542881, 0, -0.21926858, 0, -0.12877785, 21.677877, 2.8442583, -14.422815)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (126)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (126)" parent="trees2" unique_id=762776379 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19077398, 0, 0.22027549, 0, 0.2914035, 0, -0.22027549, 0, -0.19077398, 23.695555, 2.6456373, -9.0755415)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (127)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (127)" parent="trees2" unique_id=1482670093 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.15143022, 0, 0.19658326, 0, 0.2481453, 0, -0.19658326, 0, -0.15143022, 22.849041, 3.5262623, 3.0066743)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (128)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (128)" parent="trees2" unique_id=1433510373 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.27315927, 0, 0.1081866, 0, 0.29380322, 0, -0.1081866, 0, -0.27315927, 17.594633, 2.860253, 5.940045)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (129)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (129)" parent="trees2" unique_id=1625794198 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19966672, 0, 0.09653217, 0, 0.2217775, 0, -0.09653217, 0, 0.19966672, 16.199224, 2.8035922, 12.695601)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (130)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (130)" parent="trees2" unique_id=2064563187 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.10088128, 0, 0.27626738, 0, 0.29411003, 0, -0.27626738, 0, -0.10088128, 15.456358, 3.2911332, 19.296295)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (131)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (131)" parent="trees2" unique_id=1564900949 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.14508562, 0, 0.21981986, 0, 0.263383, 0, -0.21981986, 0, -0.14508562, 7.726299, 0.41062674, 22.400982)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (132)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (132)" parent="trees2" unique_id=815417500 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.078063175, 0, 0.26181749, 0, 0.27320728, 0, -0.26181749, 0, 0.078063175, 13.261852, -1.2065352, 29.294487)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (133)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (133)" parent="trees2" unique_id=948130918 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.035957884, 0, 0.25179893, 0, 0.25435343, 0, -0.25179893, 0, -0.035957884, 15.94683, 1.470709, 23.027607)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (134)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (134)" parent="trees2" unique_id=1620976809 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.059905633, 0, 0.28593573, 0, 0.29214367, 0, -0.28593573, 0, -0.059905633, 14.260351, -3.34169, 38.01635)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (135)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (135)" parent="trees2" unique_id=274940022 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.24993502, 0, 0.1286614, 0, 0.28110722, 0, -0.1286614, 0, 0.24993502, -9.137671, -1.2771661, 75.0158)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (136)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (136)" parent="trees2" unique_id=445266440 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.05067407, 0, 0.20727037, 0, 0.21337475, 0, -0.20727037, 0, 0.05067407, -15.091764, -1.1823969, 74.83688)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (137)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (137)" parent="trees2" unique_id=1924529402 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.28822264, 0, 0.054870408, 0, 0.29339913, 0, -0.054870408, 0, 0.28822264, -21.171171, -2.0433426, 75.50254)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (138)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (138)" parent="trees2" unique_id=1974740235 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.042175632, 0, 0.27680784, 0, 0.28000244, 0, -0.27680784, 0, -0.042175632, -22.343903, -1.4519497, 78.423744)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (139)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (139)" parent="trees2" unique_id=1459994454 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.17413348, 0, 0.19373405, 0, 0.2604906, 0, -0.19373405, 0, -0.17413348, -15.427317, -1.3712573, 79.95981)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (140)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (140)" parent="trees2" unique_id=474529786 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.045336403, 0, 0.2351363, 0, 0.23946705, 0, -0.2351363, 0, -0.045336403, -12.217187, -1.3807633, 79.334564)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (141)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (141)" parent="trees2" unique_id=2084352028 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.052559316, 0, 0.24311388, 0, 0.24873045, 0, -0.24311388, 0, 0.052559316, -13.250153, -1.3265567, 75.824425)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (142)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (142)" parent="trees2" unique_id=163620086 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.24062936, 0, 0.06286567, 0, 0.24870582, 0, -0.06286567, 0, 0.24062936, 8.965117, -1.4270512, 74.346695)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (143)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (143)" parent="trees2" unique_id=688499560 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.121766604, 0, 0.19774623, 0, 0.23222978, 0, -0.19774623, 0, 0.121766604, 18.964022, -2.859361, 72.14336)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (144)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (144)" parent="trees2" unique_id=789215881 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.06312397, 0, 0.21312357, 0, 0.22227527, 0, -0.21312357, 0, 0.06312397, 21.493177, -1.5178413, 74.59564)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (145)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (145)" parent="trees2" unique_id=1170328842 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.03179073, 0, 0.2845009, 0, 0.28627157, 0, -0.2845009, 0, -0.03179073, 21.967133, -1.4431481, 75.059326)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (146)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (146)" parent="trees2" unique_id=1839120317 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.22149307, 0, 0.19859274, 0, 0.29748654, 0, -0.19859274, 0, -0.22149307, 17.002844, -1.9167418, 74.86899)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (147)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (147)" parent="trees2" unique_id=1428035876 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.27103877, 0, 0.028494086, 0, 0.27253243, 0, -0.028494086, 0, -0.27103877, 10.802255, -0.9893894, 78.445244)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (148)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (148)" parent="trees2" unique_id=825545749 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.23463115, 0, 0.15418938, 0, 0.28075993, 0, -0.15418938, 0, 0.23463115, 15.097593, -1.2926445, 80.22206)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (149)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (149)" parent="trees2" unique_id=247565913 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.10117064, 0, 0.23421896, 0, 0.2551353, 0, -0.23421896, 0, -0.10117064, 24.334333, -1.4627545, 79.636955)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (150)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (150)" parent="trees2" unique_id=103947298 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.11624054, 0, 0.21540868, 0, 0.24477084, 0, -0.21540868, 0, 0.11624054, 18.492472, -1.2652937, 78.645454)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (151)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (151)" parent="trees2" unique_id=644910077 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.19302565, 0, 0.11183826, 0, 0.22308451, 0, -0.11183826, 0, 0.19302565, 8.55668, -1.2724261, 79.825134)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (152)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (152)" parent="trees2" unique_id=1076643756 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16096543, 0, 0.18477574, 0, 0.24505498, 0, -0.18477574, 0, 0.16096543, 7.7404623, -1.3940077, 77.02598)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (153)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (153)" parent="trees2" unique_id=238118633 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.18447526, 0, 0.17794268, 0, 0.2563098, 0, -0.17794268, 0, -0.18447526, -6.186267, -1.568115, 79.54563)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (154)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (154)" parent="trees2" unique_id=575818151 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.19579507, 0.052190706, -0.16070573, 0.07159366, 0.24842995, -0.0065458296, 0.15305081, -0.04944319, -0.2025259, 13.389997, -1.700484, 74.874214)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (155)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (155)" parent="trees2" unique_id=1570159728 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.27047732, -0.062565565, 0.031979293, -0.070181854, 0.2467306, -0.11087678, -0.0034109317, -0.11534603, -0.25451687, 23.7353, -1.5710411, 73.289444)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (156)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (156)" parent="trees2" unique_id=1878260224 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.1769808, -0.03156654, -0.10104173, -0.009748812, 0.2008648, -0.045676738, 0.10540797, -0.034423195, -0.17387433, -16.221584, -1.2290796, 74.19725)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (157)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (157)" parent="trees2" unique_id=1939033010 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.16370083, 0.012457201, 0.13762748, -0.008322031, 0.21385911, -0.009458596, -0.13793929, 0.0018813426, 0.16390143, -11.8152685, -1.5328103, 74.78648)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (158)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (158)" parent="trees2" unique_id=1841206248 instance=ExtResource("5_56pv8")]
 transform = Transform3D(0.08052816, 0.032872174, 0.21404877, -0.07641105, 0.21799362, -0.004731087, -0.20262973, -0.0691408, 0.08685033, -24.717447, -1.7491715, 74.02506)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="SnowSpruce (159)" parent="trees2" instance=ExtResource("5_56pv8")]
+[node name="SnowSpruce (159)" parent="trees2" unique_id=543425297 instance=ExtResource("5_56pv8")]
 transform = Transform3D(-0.25099054, 0.005293889, -0.045467958, 0.0073250206, 0.25479805, -0.010768868, 0.045185238, -0.011899544, -0.2508154, -8.777779, -1.2638056, 78.66389)
 metadata/asset_placer_res_id = "uid://4a1fr51i7cu3"
 
-[node name="Simon" type="Node3D" parent="."]
+[node name="Simon" type="Node3D" parent="." unique_id=1895647358]
 transform = Transform3D(0.10946205, 0, 0.17921509, 0, 0.21, 0, -0.17921509, 0, 0.10946205, -2.1193202, -0.17210734, 32.04194)
 
-[node name="quinten" type="Node3D" parent="Simon"]
+[node name="quinten" type="Node3D" parent="Simon" unique_id=1462211284]
 metadata/extras = {
 "rig_ui": {
 "name": "rig.001_ui.py",
@@ -5813,7 +5853,7 @@ metadata/extras = {
 }
 }
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Simon/quinten"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Simon/quinten" unique_id=1499000484]
 bones/0/name = "MCH-foot_ik.parent.L"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.52228534, -5.275645, -0.14519988)
@@ -5993,8 +6033,8 @@ bones/25/name = "hand_ik.L"
 bones/25/parent = 24
 bones/25/rest = Transform3D(-0.17070225, 0.94553214, -0.2771826, 0.2464635, -0.23139472, -0.9411229, -0.9540004, -0.22896723, -0.19353949, 0, 0, 0)
 bones/25/enabled = true
-bones/25/position = Vector3(-2.3256445, 0.42154276, -2.30312)
-bones/25/rotation = Quaternion(0.24598317, 0.5675857, -0.61557806, -0.48826474)
+bones/25/position = Vector3(-2.3258324, 0.42189476, -2.3022077)
+bones/25/rotation = Quaternion(0.24608012, 0.5679293, -0.61526555, -0.48821026)
 bones/25/scale = Vector3(1.0000001, 1.0000002, 1)
 bones/26/name = "MCH-upper_arm_ik_target.L"
 bones/26/parent = 25
@@ -6014,8 +6054,8 @@ bones/28/name = "hand_ik.R"
 bones/28/parent = 27
 bones/28/rest = Transform3D(-0.17070225, -0.94553214, 0.2771826, -0.2464635, -0.23139472, -0.9411229, 0.9540004, -0.22896723, -0.19353949, 0, 0, 0)
 bones/28/enabled = true
-bones/28/position = Vector3(2.4100413, -0.2524208, -1.8101424)
-bones/28/rotation = Quaternion(0.22707511, -0.089222185, 0.6717859, -0.6994142)
+bones/28/position = Vector3(2.4100413, -0.2524208, -1.8096889)
+bones/28/rotation = Quaternion(0.22679605, -0.08869686, 0.6718787, -0.6994823)
 bones/28/scale = Vector3(1.0000001, 1.0000002, 1)
 bones/29/name = "MCH-upper_arm_ik_target.R"
 bones/29/parent = 28
@@ -6028,7 +6068,7 @@ bones/30/name = "MCH-thigh_ik_target.parent.L"
 bones/30/parent = -1
 bones/30/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.52228534, -2.9687128, 4.670037)
 bones/30/enabled = true
-bones/30/position = Vector3(0.092181236, -2.5251896, 4.9247246)
+bones/30/position = Vector3(0.09217441, -2.525451, 4.9247303)
 bones/30/rotation = Quaternion(-0.73633456, 0.02660021, -0.04662689, 0.67448485)
 bones/30/scale = Vector3(1, 1, 1)
 bones/31/name = "thigh_ik_target.L"
@@ -6042,7 +6082,7 @@ bones/32/name = "MCH-thigh_ik_target.parent.R"
 bones/32/parent = -1
 bones/32/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.52228534, -2.9687128, 4.670037)
 bones/32/enabled = true
-bones/32/position = Vector3(-0.946369, -2.4185686, 4.89048)
+bones/32/position = Vector3(-0.94637585, -2.41883, 4.890486)
 bones/32/rotation = Quaternion(-0.73633456, 0.02660021, -0.04662689, 0.67448485)
 bones/32/scale = Vector3(1, 1, 1)
 bones/33/name = "thigh_ik_target.R"
@@ -6071,20 +6111,20 @@ bones/36/parent = 35
 bones/36/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16710508, 0.9769573)
 bones/36/enabled = true
 bones/36/position = Vector3(0, -0.16710508, 0.9769573)
-bones/36/rotation = Quaternion(-0.06481055, 0.0061577056, 0.0087265335, 0.99784046)
+bones/36/rotation = Quaternion(-0.06464139, 0.006279334, 0.008612251, 0.9978517)
 bones/36/scale = Vector3(1, 1, 1)
 bones/37/name = "hips"
 bones/37/parent = 35
 bones/37/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16710508, 0.9769573)
 bones/37/enabled = true
-bones/37/position = Vector3(0, -0.16710508, 1.0234171)
+bones/37/position = Vector3(0, -0.16710508, 1.0231556)
 bones/37/rotation = Quaternion(-0.043734364, 0.05177935, -0.014161009, 0.99759996)
 bones/37/scale = Vector3(1, 1, 1)
 bones/38/name = "MCH-spine.001"
 bones/38/parent = 35
 bones/38/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16710508, 0.9769573)
 bones/38/enabled = true
-bones/38/position = Vector3(0, -0.16710508, 1.0001469)
+bones/38/position = Vector3(0, -0.16710508, 0.99991804)
 bones/38/rotation = Quaternion(-0.021880275, 0.025905263, -0.00708476, 0.9993998)
 bones/38/scale = Vector3(1, 1, 1)
 bones/39/name = "spine_fk.001"
@@ -6098,7 +6138,7 @@ bones/40/name = "MCH-spine"
 bones/40/parent = 39
 bones/40/rest = Transform3D(1, 0, 0, 0, -0.12295389, 0.99241245, 0, -0.99241245, -0.12295389, 0, -0.6377843, 6.7055225e-08)
 bones/40/enabled = true
-bones/40/position = Vector3(-4.7939746e-09, -0.61477077, -0.0028511703)
+bones/40/position = Vector3(-4.6143502e-09, -0.6149978, -0.0028230324)
 bones/40/rotation = Quaternion(-0.7633573, 0.011845985, -0.024102842, 0.645418)
 bones/40/scale = Vector3(1, 1, 1)
 bones/41/name = "spine_fk"
@@ -6134,21 +6174,21 @@ bones/45/parent = 44
 bones/45/rest = Transform3D(0.99999994, 9.094945e-11, -0.00032152163, -0.00010600916, -0.9440822, -0.32970902, -0.0003035438, 0.32971007, -0.9440792, 0.52228534, 0.33056223, 0.121091664)
 bones/45/enabled = true
 bones/45/position = Vector3(0.52228534, 0.33056223, 0.121091664)
-bones/45/rotation = Quaternion(0.990057, 0.08910987, -0.015274822, 0.107764974)
-bones/45/scale = Vector3(1.0029731, 0.9940813, 1.0029727)
+bones/45/rotation = Quaternion(0.989989, 0.089260995, -0.015300458, 0.10825994)
+bones/45/scale = Vector3(1.0030669, 0.99389535, 1.0030665)
 bones/46/name = "DEF-thigh.L.001"
 bones/46/parent = 45
 bones/46/rest = Transform3D(1, 7.7203435e-12, -2.194156e-11, -7.7203435e-12, 1, -2.2351795e-08, 2.194156e-11, 2.2351795e-08, 1, 3.007699e-09, 1.1447325, -2.1100277e-09)
 bones/46/enabled = true
 bones/46/position = Vector3(3.007699e-09, 1.1447325, -2.1100277e-09)
-bones/46/rotation = Quaternion(2.699892e-08, -0.06775927, 3.6957413e-08, 0.99770176)
+bones/46/rotation = Quaternion(2.6703544e-08, -0.06765518, 3.420781e-08, 0.9977088)
 bones/46/scale = Vector3(1, 1, 1)
 bones/47/name = "DEF-shin.L"
 bones/47/parent = 46
 bones/47/rest = Transform3D(0.99999994, 5.5473392e-05, 0.00031646248, -4.0974555e-08, 0.9850036, -0.17253393, -0.00032128772, 0.17253393, 0.98500353, 2.9976945e-09, 1.1447326, -5.84987e-09)
 bones/47/enabled = true
 bones/47/position = Vector3(2.9976945e-09, 1.1447326, -5.84987e-09)
-bones/47/rotation = Quaternion(0.14593826, -0.06807193, 0.009996065, 0.98689836)
+bones/47/rotation = Quaternion(0.14619556, -0.06806365, 0.010012653, 0.9868607)
 bones/47/scale = Vector3(0.9999494, 0.9983832, 1.0017079)
 bones/48/name = "DEF-shin.L.001"
 bones/48/parent = 47
@@ -6162,8 +6202,8 @@ bones/49/parent = 48
 bones/49/rest = Transform3D(1, -2.2702011e-07, -8.808404e-07, 9.0808453e-07, 0.30549052, 0.952195, 5.2920967e-08, -0.952195, 0.30549052, -1.8607043e-08, 1.1670287, 8.537825e-09)
 bones/49/enabled = true
 bones/49/position = Vector3(-1.8607043e-08, 1.1670287, 8.537825e-09)
-bones/49/rotation = Quaternion(-0.6380303, -0.04047475, 0.022859268, 0.768607)
-bones/49/scale = Vector3(0.9974999, 0.997136, 1.0053902)
+bones/49/rotation = Quaternion(-0.6382031, -0.04047952, 0.022890292, 0.76846236)
+bones/49/scale = Vector3(0.9974404, 0.9970641, 1.005523)
 bones/50/name = "DEF-toe.L"
 bones/50/parent = 49
 bones/50/rest = Transform3D(-1, -3.7152464e-07, -7.909075e-07, -3.40577e-08, 0.920996, -0.38957176, 8.7315817e-07, -0.38957164, -0.9209963, -2.1059606e-08, 0.820747, -1.407875e-07)
@@ -6176,8 +6216,8 @@ bones/51/parent = 44
 bones/51/rest = Transform3D(0.99999994, 9.094945e-11, -0.00032152163, -0.00010600916, -0.9440822, -0.32970902, -0.0003035438, 0.32971007, -0.9440792, -0.52228534, 0.33056223, 0.121091664)
 bones/51/enabled = true
 bones/51/position = Vector3(-0.52228534, 0.33056223, 0.121091664)
-bones/51/rotation = Quaternion(0.9956526, 0.01001629, -0.0018613148, 0.092585854)
-bones/51/scale = Vector3(0.99729496, 1.0054328, 0.9972946)
+bones/51/rotation = Quaternion(0.99561536, 0.009760359, -0.0018179162, 0.09301439)
+bones/51/scale = Vector3(0.99746096, 1.0050982, 0.99746066)
 bones/52/name = "DEF-thigh.R.001"
 bones/52/parent = 51
 bones/52/rest = Transform3D(1, 7.7203435e-12, -2.194156e-11, -7.7203435e-12, 1, -2.2351795e-08, 2.194156e-11, 2.2351795e-08, 1, 3.007699e-09, 1.1447325, -2.0241714e-08)
@@ -6190,7 +6230,7 @@ bones/53/parent = 52
 bones/53/rest = Transform3D(0.99999994, 5.5473392e-05, 0.00031693932, 4.1300154e-08, 0.9850036, -0.17253393, -0.0003217574, 0.17253393, 0.98500353, 2.9976945e-09, 1.1447327, -2.3952452e-08)
 bones/53/enabled = true
 bones/53/position = Vector3(2.9976945e-09, 1.1447327, -2.3952452e-08)
-bones/53/rotation = Quaternion(0.047301438, 0.13218635, -0.0063676457, 0.99007523)
+bones/53/rotation = Quaternion(0.047926772, 0.13218008, -0.0064504594, 0.99004537)
 bones/53/scale = Vector3(0.9999944, 0.99996626, 1.0000387)
 bones/54/name = "DEF-shin.R.001"
 bones/54/parent = 53
@@ -6204,14 +6244,14 @@ bones/55/parent = 54
 bones/55/rest = Transform3D(1, 2.2702011e-07, 8.808404e-07, -9.0808453e-07, 0.30549052, 0.952195, -5.2920967e-08, -0.952195, 0.30549052, 1.8607064e-08, 1.1670287, 1.0639553e-08)
 bones/55/enabled = true
 bones/55/position = Vector3(1.8607064e-08, 1.1670287, 1.0639553e-08)
-bones/55/rotation = Quaternion(-0.5695245, 0.009862584, -0.021572825, 0.8216321)
-bones/55/scale = Vector3(1.0019674, 1.0018904, 0.99616176)
+bones/55/rotation = Quaternion(-0.5698995, 0.009860745, -0.02159032, 0.82137156)
+bones/55/scale = Vector3(1.0018506, 1.0018195, 0.9963477)
 bones/56/name = "DEF-toe.R"
 bones/56/parent = 55
 bones/56/rest = Transform3D(-1, 3.7152464e-07, 7.909074e-07, 3.4057713e-08, 0.920996, -0.38957176, -8.7315806e-07, -0.38957164, -0.9209963, 2.1059606e-08, 0.82074714, -1.4013608e-07)
 bones/56/enabled = true
 bones/56/position = Vector3(2.1059606e-08, 0.82074714, -1.4013608e-07)
-bones/56/rotation = Quaternion(8.504293e-06, 0.9800163, -0.19891728, -1.2836963e-06)
+bones/56/rotation = Quaternion(7.896621e-06, 0.98001873, -0.19890533, -1.1608034e-06)
 bones/56/scale = Vector3(0.9997598, 1.0003725, 0.9998704)
 bones/57/name = "MCH-thigh_parent.L"
 bones/57/parent = 44
@@ -6232,14 +6272,14 @@ bones/59/parent = 58
 bones/59/rest = Transform3D(1, -2.8109776e-05, -1.2310467e-06, 2.810977e-05, 0.9961709, 0.08742701, -1.231221e-06, -0.08742701, 0.9961709, -2.0785308e-08, 5.6656063e-08, -5.545735e-08)
 bones/59/enabled = true
 bones/59/position = Vector3(-2.0785308e-08, 5.6656063e-08, -5.545735e-08)
-bones/59/rotation = Quaternion(-0.0732819, -0.1471871, -0.010911569, 0.9863299)
-bones/59/scale = Vector3(0.99403304, 0.9940334, 0.9940333)
+bones/59/rotation = Quaternion(-0.07350878, -0.14718501, -0.01094536, 0.98631305)
+bones/59/scale = Vector3(0.9938996, 0.9939, 0.9938997)
 bones/60/name = "MCH-shin_ik.L"
 bones/60/parent = 59
 bones/60/rest = Transform3D(0.99999994, 5.5473407e-05, 0.00031646265, -4.1120074e-08, 0.98500377, -0.17253348, -0.00032128784, 0.17253345, 0.98500377, -5.6603312e-08, 2.2894647, 3.1897798e-08)
 bones/60/enabled = true
 bones/60/position = Vector3(-5.6603312e-08, 2.2894647, 3.1897798e-08)
-bones/60/rotation = Quaternion(0.1462869, 0.00015890553, -2.3519402e-05, 0.9892422)
+bones/60/rotation = Quaternion(0.14605498, 0.00015891442, -2.348264e-05, 0.9892765)
 bones/60/scale = Vector3(1.0001011, 1.0001011, 1.0001011)
 bones/61/name = "thigh_fk.L"
 bones/61/parent = 57
@@ -6302,14 +6342,14 @@ bones/69/parent = 68
 bones/69/rest = Transform3D(1, -2.8109776e-05, -1.2310467e-06, 2.810977e-05, 0.9961709, 0.08742701, -1.231221e-06, -0.08742701, 0.9961709, -2.0785308e-08, 5.6616045e-08, -4.4659828e-08)
 bones/69/enabled = true
 bones/69/position = Vector3(-2.0785308e-08, 5.6616045e-08, -4.4659828e-08)
-bones/69/rotation = Quaternion(-0.023113389, 0.26153508, 0.006272883, 0.9648969)
-bones/69/scale = Vector3(1.0053115, 1.0053116, 1.0053118)
+bones/69/rotation = Quaternion(-0.023600303, 0.2615335, 0.0064050583, 0.96488464)
+bones/69/scale = Vector3(1.0050893, 1.0050893, 1.0050895)
 bones/70/name = "MCH-shin_ik.R"
 bones/70/parent = 69
 bones/70/rest = Transform3D(0.99999994, 5.5473403e-05, 0.00031693946, 4.114736e-08, 0.98500377, -0.17253348, -0.00032175748, 0.17253345, 0.98500377, 6.260598e-08, 2.2894647, 1.2805685e-08)
 bones/70/enabled = true
 bones/70/position = Vector3(6.260598e-08, 2.2894647, 1.2805685e-08)
-bones/70/rotation = Quaternion(0.0477264, 0.00016067359, -7.659858e-06, 0.9988604)
+bones/70/rotation = Quaternion(0.04835726, 0.00016067234, -7.75932e-06, 0.99883014)
 bones/70/scale = Vector3(1.0000106, 1.0000107, 1.0000106)
 bones/71/name = "thigh_fk.R"
 bones/71/parent = 67
@@ -6358,7 +6398,7 @@ bones/77/parent = 44
 bones/77/rest = Transform3D(0.99999994, 9.458742e-11, -0.0003215215, -0.000106009174, -0.94408214, -0.32970896, -0.0003035438, 0.32971013, -0.9440789, 0.52228534, 0.33056223, 0.121091664)
 bones/77/enabled = true
 bones/77/position = Vector3(0.52228534, 0.33056223, 0.121091664)
-bones/77/rotation = Quaternion(0.990057, 0.089109875, -0.015274824, 0.10776499)
+bones/77/rotation = Quaternion(0.989989, 0.08926104, -0.015300466, 0.108259924)
 bones/77/scale = Vector3(1, 0.99999994, 0.99999654)
 bones/78/name = "thigh_tweak.L"
 bones/78/parent = 77
@@ -6372,7 +6412,7 @@ bones/79/parent = 44
 bones/79/rest = Transform3D(0.99999994, 9.458742e-11, -0.0003215215, -0.000106009174, -0.94408214, -0.32970896, -0.0003035438, 0.32971013, -0.9440789, -0.52228534, 0.33056223, 0.121091664)
 bones/79/enabled = true
 bones/79/position = Vector3(-0.52228534, 0.33056223, 0.121091664)
-bones/79/rotation = Quaternion(0.9956527, 0.010016278, -0.0018613139, 0.09258591)
+bones/79/rotation = Quaternion(0.9956153, 0.009760347, -0.0018179148, 0.09301445)
 bones/79/scale = Vector3(1, 0.99999994, 0.99999654)
 bones/80/name = "thigh_tweak.R"
 bones/80/parent = 79
@@ -6414,22 +6454,22 @@ bones/85/parent = 44
 bones/85/rest = Transform3D(0.99999994, 9.094944e-11, -0.00032152145, -0.00010600916, -0.94408214, -0.32970896, -0.00030354375, 0.32971013, -0.9440789, 0.52228534, 0.33056223, 0.121091664)
 bones/85/enabled = true
 bones/85/position = Vector3(0.52228534, 0.33056223, 0.121091664)
-bones/85/rotation = Quaternion(0.9785976, 0.073576525, -0.15066603, 0.11930236)
-bones/85/scale = Vector3(0.9940337, 0.99403346, 0.99403286)
+bones/85/rotation = Quaternion(0.97853625, 0.0736632, -0.15062888, 0.119798474)
+bones/85/scale = Vector3(0.99390024, 0.9939, 0.9938993)
 bones/86/name = "MCH-thigh_parent_widget.L"
 bones/86/parent = 85
 bones/86/rest = Transform3D(1, -5.861613e-11, -1.6984814e-10, 5.861613e-11, 1, -6.855628e-14, 1.6984814e-10, 6.8556265e-14, 1, 3.0104275e-09, 5.5140887e-08, 7.6091965e-08)
 bones/86/enabled = true
 bones/86/position = Vector3(3.0104275e-09, 5.5140887e-08, 7.6091965e-08)
 bones/86/rotation = Quaternion(3.4278136e-14, -8.492407e-11, 2.9308066e-11, 1)
-bones/86/scale = Vector3(1.0060029, 1.0060025, 1.0060028)
+bones/86/scale = Vector3(1.006138, 1.0061376, 1.006138)
 bones/87/name = "MCH-thigh_tweak.L.001"
 bones/87/parent = 85
 bones/87/rest = Transform3D(1, -1.6637555e-12, 0.00016045864, 1.0660054e-12, 1, 3.7252605e-09, -0.00016045864, -3.7252605e-09, 1, 3.0104275e-09, 1.1447326, 6.11908e-08)
 bones/87/enabled = true
 bones/87/position = Vector3(3.0104275e-09, 1.1447326, 6.11908e-08)
 bones/87/rotation = Quaternion(-1.9435006e-08, 0.068186834, 2.7749634e-08, 0.9976726)
-bones/87/scale = Vector3(1.0060025, 1.0060025, 1.0060027)
+bones/87/scale = Vector3(1.0061377, 1.0061376, 1.0061378)
 bones/88/name = "thigh_tweak.L.001"
 bones/88/parent = 87
 bones/88/rest = Transform3D(1, -2.8279575e-12, -0.0001604593, 4.62122e-12, 1, 1.1175811e-08, 0.00016045928, -1.1175811e-08, 1.0000001, 8.657753e-08, 8.7271516e-08, 6.373739e-09)
@@ -6442,7 +6482,7 @@ bones/89/parent = 85
 bones/89/rest = Transform3D(0.99999994, 5.5473363e-05, 0.00031646248, -4.0936357e-08, 0.9850036, -0.17253396, -0.00032128772, 0.17253396, 0.98500353, 2.9958755e-09, 2.289465, 9.036739e-09)
 bones/89/enabled = true
 bones/89/position = Vector3(2.9958755e-09, 2.289465, 9.036739e-09)
-bones/89/rotation = Quaternion(0.14627632, 0.0001589272, -2.3518991e-05, 0.98924387)
+bones/89/rotation = Quaternion(0.14653413, 0.00015892246, -2.3561535e-05, 0.9892056)
 bones/89/scale = Vector3(1.0001011, 1.0001012, 1.0001012)
 bones/90/name = "MCH-shin_tweak.L"
 bones/90/parent = 89
@@ -6450,7 +6490,7 @@ bones/90/rest = Transform3D(1, 3.641248e-12, -1.1342118e-09, -3.641248e-12, 1, 2
 bones/90/enabled = true
 bones/90/position = Vector3(-1.822433e-08, 2.6262416e-07, -2.077789e-08)
 bones/90/rotation = Quaternion(0, -5.671059e-10, -1.820624e-12, 1)
-bones/90/scale = Vector3(1.0059218, 1.0059217, 1.0059218)
+bones/90/scale = Vector3(1.0060555, 1.0060552, 1.0060556)
 bones/91/name = "shin_tweak.L"
 bones/91/parent = 90
 bones/91/rest = Transform3D(1, 5.9931366e-16, 3.1530334e-14, -5.993129e-16, 1, -2.2351742e-08, -3.1530334e-14, 2.2351742e-08, 1, -1.8607082e-08, 2.644887e-07, -2.8820864e-08)
@@ -6464,7 +6504,7 @@ bones/92/rest = Transform3D(1, 3.6617905e-12, -1.8889392e-07, -3.6758643e-12, 1,
 bones/92/enabled = true
 bones/92/position = Vector3(-1.8220083e-08, 1.1670283, -1.70526e-08)
 bones/92/rotation = Quaternion(5.2300557e-08, -0.041002117, 2.2504697e-08, 0.99915916)
-bones/92/scale = Vector3(1.0059218, 1.0059214, 1.0059206)
+bones/92/scale = Vector3(1.0060555, 1.0060549, 1.0060544)
 bones/93/name = "shin_tweak.L.001"
 bones/93/parent = 92
 bones/93/rest = Transform3D(1, -7.47606e-15, 1.877604e-07, 3.279288e-15, 1, 2.2351742e-08, -1.877604e-07, -2.2351742e-08, 1, -2.0596186e-08, 1.5296284e-07, -2.257687e-08)
@@ -6477,8 +6517,8 @@ bones/94/parent = 89
 bones/94/rest = Transform3D(1, -2.2593899e-07, -8.8118406e-07, 9.080814e-07, 0.30549082, 0.952195, 5.4055675e-08, -0.952195, 0.30549082, -1.821584e-08, 2.3340569, -5.0580212e-08)
 bones/94/enabled = true
 bones/94/position = Vector3(-1.821584e-08, 2.3340569, -5.0580212e-08)
-bones/94/rotation = Quaternion(-0.63837993, -0.0716678, -0.0030057095, 0.76637185)
-bones/94/scale = Vector3(1.0059218, 1.0059217, 1.0059195)
+bones/94/rotation = Quaternion(-0.6387767, -0.07167416, -0.0029593632, 0.7660407)
+bones/94/scale = Vector3(1.0060555, 1.0060556, 1.0060531)
 bones/95/name = "MCH-foot_tweak.L"
 bones/95/parent = 94
 bones/95/rest = Transform3D(1, -2.4868994e-14, 1.3997691e-12, 2.4868996e-14, 0.99999994, -9.992007e-16, -1.3997692e-12, 9.992007e-16, 0.99999994, 3.8546453e-08, 4.5802377e-08, 1.683764e-07)
@@ -6512,22 +6552,22 @@ bones/99/parent = 44
 bones/99/rest = Transform3D(0.99999994, 9.094944e-11, -0.00032152145, -0.00010600916, -0.94408214, -0.32970896, -0.00030354375, 0.32971013, -0.9440789, -0.52228534, 0.33056223, 0.121091664)
 bones/99/enabled = true
 bones/99/position = Vector3(-0.52228534, 0.33056223, 0.121091664)
-bones/99/rotation = Quaternion(0.9613936, 0.033912517, 0.25893983, 0.08673175)
-bones/99/scale = Vector3(1.0053123, 1.0053117, 1.005311)
+bones/99/rotation = Quaternion(0.9613498, 0.03377656, 0.25895905, 0.08721279)
+bones/99/scale = Vector3(1.0050901, 1.0050894, 1.0050887)
 bones/100/name = "MCH-thigh_parent_widget.R"
 bones/100/parent = 99
 bones/100/rest = Transform3D(1, -5.861613e-11, -1.6984814e-10, 5.861613e-11, 1, -6.855628e-14, 1.6984814e-10, 6.8556265e-14, 1, 3.0104275e-09, 5.4755176e-08, 5.8018486e-08)
 bones/100/enabled = true
 bones/100/position = Vector3(3.0104275e-09, 5.4755176e-08, 5.8018486e-08)
 bones/100/rotation = Quaternion(3.4278136e-14, -8.492407e-11, 2.9308066e-11, 1)
-bones/100/scale = Vector3(0.99471664, 0.99471664, 0.9947164)
+bones/100/scale = Vector3(0.9949366, 0.9949367, 0.99493647)
 bones/101/name = "MCH-thigh_tweak.R.001"
 bones/101/parent = 99
 bones/101/rest = Transform3D(1, -1.6637555e-12, 0.00016045864, 1.0660054e-12, 1, 3.7252605e-09, -0.00016045864, -3.7252605e-09, 1, 3.0104275e-09, 1.1447326, 4.3117325e-08)
 bones/101/enabled = true
 bones/101/position = Vector3(3.0104275e-09, 1.1447326, 4.3117325e-08)
 bones/101/rotation = Quaternion(7.656852e-08, -0.13199322, -1.594125e-08, 0.99125063)
-bones/101/scale = Vector3(0.9947165, 0.99471647, 0.99471647)
+bones/101/scale = Vector3(0.9949364, 0.99493635, 0.99493635)
 bones/102/name = "thigh_tweak.R.001"
 bones/102/parent = 101
 bones/102/rest = Transform3D(1, -2.8279575e-12, -0.0001604593, 4.62122e-12, 1, 1.1175811e-08, 0.00016045928, -1.1175811e-08, 1.0000001, -3.263176e-08, -3.2323484e-08, 1.5978003e-08)
@@ -6540,7 +6580,7 @@ bones/103/parent = 99
 bones/103/rest = Transform3D(0.99999994, 5.5473363e-05, 0.00031693926, 4.132926e-08, 0.9850036, -0.17253396, -0.00032175734, 0.17253396, 0.98500353, 2.9958755e-09, 2.289465, -9.036739e-09)
 bones/103/enabled = true
 bones/103/position = Vector3(2.9958755e-09, 2.289465, -9.036739e-09)
-bones/103/rotation = Quaternion(0.0477264, 0.00016067692, -7.660528e-06, 0.9988604)
+bones/103/rotation = Quaternion(0.048357256, 0.00016068584, -7.757815e-06, 0.9988301)
 bones/103/scale = Vector3(1.0000106, 1.0000108, 1.0000107)
 bones/104/name = "MCH-shin_tweak.R"
 bones/104/parent = 103
@@ -6548,7 +6588,7 @@ bones/104/rest = Transform3D(1, 9.133319e-16, -1.1359074e-09, -9.133319e-16, 1, 
 bones/104/enabled = true
 bones/104/position = Vector3(1.8979701e-08, 2.6264073e-07, -1.9649988e-08)
 bones/104/rotation = Quaternion(0, -5.679537e-10, -4.5666596e-16, 1)
-bones/104/scale = Vector3(0.9948104, 0.9948103, 0.9948102)
+bones/104/scale = Vector3(0.99502647, 0.99502647, 0.99502635)
 bones/105/name = "shin_tweak.R"
 bones/105/parent = 104
 bones/105/rest = Transform3D(1, -4.542866e-15, -2.9531932e-14, 4.542865e-15, 1, -2.2351742e-08, 2.9531932e-14, 2.2351742e-08, 1, 1.8607068e-08, 2.6450337e-07, -2.6507308e-08)
@@ -6562,7 +6602,7 @@ bones/106/rest = Transform3D(1, -1.695991e-14, 1.8662368e-07, 3.0864458e-14, 1, 
 bones/106/enabled = true
 bones/106/position = Vector3(1.8979698e-08, 1.1670283, -1.5924698e-08)
 bones/106/rotation = Quaternion(3.911227e-08, 0.009762914, 2.711712e-08, 0.9999523)
-bones/106/scale = Vector3(0.99481046, 0.9948103, 0.9948094)
+bones/106/scale = Vector3(0.9950264, 0.99502635, 0.99502546)
 bones/107/name = "shin_tweak.R.001"
 bones/107/parent = 106
 bones/107/rest = Transform3D(1, 1.0092674e-14, -1.8776026e-07, -5.895905e-15, 1, 2.2351742e-08, 1.8776026e-07, -2.2351742e-08, 1, 2.0596136e-08, 1.529775e-07, -2.0263258e-08)
@@ -6575,8 +6615,8 @@ bones/108/parent = 103
 bones/108/rest = Transform3D(1, 2.2810163e-07, 8.8049393e-07, -9.080849e-07, 0.30549082, 0.952195, -5.1785605e-08, -0.952195, 0.30549082, 1.8979701e-08, 2.3340569, -4.945231e-08)
 bones/108/enabled = true
 bones/108/position = Vector3(1.8979701e-08, 2.3340569, -4.945231e-08)
-bones/108/rotation = Quaternion(-0.5697845, 0.017961735, -0.015983965, 0.8214423)
-bones/108/scale = Vector3(0.99481046, 0.99481016, 0.99480814)
+bones/108/rotation = Quaternion(-0.57019275, 0.017955275, -0.015999129, 0.8211589)
+bones/108/scale = Vector3(0.9950265, 0.9950263, 0.9950243)
 bones/109/name = "MCH-foot_tweak.R"
 bones/109/parent = 108
 bones/109/rest = Transform3D(1, 3.5527126e-15, -1.215028e-12, -3.5527128e-15, 0.99999994, 9.992007e-16, 1.2150281e-12, -9.992007e-16, 0.99999994, -3.8545988e-08, 1.6281322e-07, 1.6909729e-07)
@@ -6602,7 +6642,7 @@ bones/112/name = "ORG-toe.R"
 bones/112/parent = 108
 bones/112/rest = Transform3D(-1, 3.715255e-07, 7.909074e-07, 3.405789e-08, 0.92099607, -0.38957208, -8.7315857e-07, -0.3895722, -0.92099583, -3.8545608e-08, 0.8207474, -3.9342154e-07)
 bones/112/enabled = true
-bones/112/position = Vector3(1.3660815e-05, 0.8206294, -0.0002690385)
+bones/112/position = Vector3(1.7793725e-05, 0.82059455, -0.0003500866)
 bones/112/rotation = Quaternion(1.0345986e-07, 0.98004997, -0.19875117, 4.2448502e-07)
 bones/112/scale = Vector3(1, 1.0000001, 0.9999999)
 bones/113/name = "thigh_parent.L"
@@ -6638,21 +6678,21 @@ bones/117/parent = 35
 bones/117/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16710508, 0.9769573)
 bones/117/enabled = true
 bones/117/position = Vector3(0, -0.16710508, 0.9769573)
-bones/117/rotation = Quaternion(-0.03220809, 0.0032346877, 0.004220699, 0.99946713)
+bones/117/rotation = Quaternion(-0.03190029, 0.0034557516, 0.004012941, 0.999477)
 bones/117/scale = Vector3(1, 1, 1)
 bones/118/name = "spine_fk.002"
 bones/118/parent = 117
 bones/118/rest = Transform3D(1, 0, 0, 0, 0.03181255, -0.9994939, 0, 0.99949384, 0.031812556, 0, 0, 0)
 bones/118/enabled = true
 bones/118/position = Vector3(0, 0, 0)
-bones/118/rotation = Quaternion(0.68764293, 2.8521128e-05, -0.00011749948, 0.7260491)
+bones/118/rotation = Quaternion(0.68794316, 2.7472393e-05, -0.00011317921, 0.7257645)
 bones/118/scale = Vector3(1, 0.99999994, 1)
 bones/119/name = "MCH-pivot"
 bones/119/parent = 118
 bones/119/rest = Transform3D(1, 0, 0, 0, 0.98799866, -0.15446278, 0, 0.15446278, 0.9879986, 0, 3.306195e-08, -5.5879354e-09)
 bones/119/enabled = true
-bones/119/position = Vector3(-7.82455e-05, 0.011224905, 0.0013393515)
-bones/119/rotation = Quaternion(0.08764671, -0.005461217, -0.011061864, 0.99607533)
+bones/119/position = Vector3(-7.9750665e-05, 0.010813883, 0.001275121)
+bones/119/rotation = Quaternion(0.087376386, -0.005389705, -0.010979012, 0.9961003)
 bones/119/scale = Vector3(1, 1, 0.99999994)
 bones/120/name = "tweak_spine.002"
 bones/120/parent = 119
@@ -6673,7 +6713,7 @@ bones/122/parent = 118
 bones/122/rest = Transform3D(1, 0, 0, 0, 0.03181261, 0.99949384, 0, -0.99949384, 0.03181261, 0, 0.8069934, 3.7252903e-09)
 bones/122/enabled = true
 bones/122/position = Vector3(0, 0.8069934, 3.7252903e-09)
-bones/122/rotation = Quaternion(-0.7186279, 0.0052536163, 0.0009173241, 0.6953745)
+bones/122/rotation = Quaternion(-0.7186022, 0.0052553327, 0.000880923, 0.695401)
 bones/122/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/123/name = "spine_fk.003"
 bones/123/parent = 122
@@ -6687,7 +6727,7 @@ bones/124/parent = 123
 bones/124/rest = Transform3D(1, 0, 0, 0, 0.028559625, 0.99959224, 0, -0.9995921, 0.028559629, 4.440892e-16, 0.8989057, -3.7252903e-09)
 bones/124/enabled = true
 bones/124/position = Vector3(4.440892e-16, 0.8989057, -3.7252903e-09)
-bones/124/rotation = Quaternion(-0.669277, -0.005273471, -0.00072989054, 0.7429939)
+bones/124/rotation = Quaternion(-0.66958886, -0.0052842926, -0.00048466196, 0.7427129)
 bones/124/scale = Vector3(1, 1, 1.0000001)
 bones/125/name = "neck"
 bones/125/parent = 124
@@ -6701,7 +6741,7 @@ bones/126/parent = 125
 bones/126/rest = Transform3D(1, 0, 0, 0, -0.2814069, 0.95958865, 0, -0.95958865, -0.2814069, 4.440892e-16, 0.5987966, 1.1175871e-08)
 bones/126/enabled = true
 bones/126/position = Vector3(4.440892e-16, 0.5987966, 1.1175871e-08)
-bones/126/rotation = Quaternion(-0.7771614, -0.0053228117, 0.000103221064, 0.6292789)
+bones/126/rotation = Quaternion(-0.77742547, -0.0052951644, 0.00034708096, 0.6289528)
 bones/126/scale = Vector3(1, 1.0000001, 1.0000001)
 bones/127/name = "head"
 bones/127/parent = 126
@@ -6715,15 +6755,15 @@ bones/128/parent = 125
 bones/128/rest = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 4.440892e-16, 5.9604645e-08, 2.9802322e-08)
 bones/128/enabled = true
 bones/128/position = Vector3(4.440892e-16, 5.9604645e-08, 2.9802322e-08)
-bones/128/rotation = Quaternion(-0.11316483, -4.5768392e-10, 0.02342581, 0.99330014)
-bones/128/scale = Vector3(0.99420863, 1.0116843, 0.99420863)
+bones/128/rotation = Quaternion(-0.11317456, -5.5637445e-10, 0.023519676, 0.99329674)
+bones/128/scale = Vector3(0.99431705, 1.0114638, 0.994317)
 bones/129/name = "MCH-spine.005"
 bones/129/parent = 128
 bones/129/rest = Transform3D(1, 0, 0, 0, 1.0000001, -2.0861626e-07, 0, 2.0861626e-07, 1.0000001, 4.440892e-16, 0.30751505, 0.02850812)
 bones/129/enabled = true
 bones/129/position = Vector3(4.440892e-16, 0.30751505, 0.02850812)
 bones/129/rotation = Quaternion(-1.7235045e-05, -0.0058936067, -1.712156e-07, 0.99998266)
-bones/129/scale = Vector3(1.005825, 0.98845077, 1.0058252)
+bones/129/scale = Vector3(1.0057155, 0.98866636, 1.0057155)
 bones/130/name = "tweak_spine.005"
 bones/130/parent = 129
 bones/130/rest = Transform3D(1, 0, 0, 0, 0.9952447, 0.09740605, 0, -0.09740605, 0.9952447, 0, 1.7462298e-08, -2.7939677e-09)
@@ -6750,8 +6790,8 @@ bones/133/parent = 123
 bones/133/rest = Transform3D(1, 0, 0, 0, 0.9186037, -0.39518, 0, 0.39518, 0.9186037, 4.440892e-16, 0.8989057, -3.7252903e-09)
 bones/133/enabled = true
 bones/133/position = Vector3(4.440892e-16, 0.8989057, -3.7252903e-09)
-bones/133/rotation = Quaternion(0.1264245, -0.0094165355, 0.02558979, 0.9916014)
-bones/133/scale = Vector3(0.99428153, 1.0115365, 0.9942814)
+bones/133/rotation = Quaternion(0.12601867, -0.009240222, 0.025808131, 0.99164915)
+bones/133/scale = Vector3(0.99438846, 1.0113188, 0.9943883)
 bones/134/name = "ORG-spine.005"
 bones/134/parent = 133
 bones/134/rest = Transform3D(1, 0, 0, 0, 0.98200405, 0.18885988, 0, -0.18885988, 0.98200405, 0, 0.30883363, 1.7695129e-08)
@@ -6764,8 +6804,8 @@ bones/135/parent = 134
 bones/135/rest = Transform3D(1, 0, 0, 0, 0.9824362, 0.1865989, 0, -0.1865989, 0.9824362, -4.440892e-16, 0.29267326, 1.8626451e-08)
 bones/135/enabled = true
 bones/135/position = Vector3(-4.440892e-16, 0.29267326, 1.8626451e-08)
-bones/135/rotation = Quaternion(0.05634754, -0.0069309403, -0.020238336, 0.9981821)
-bones/135/scale = Vector3(1.0058683, 0.98855454, 1.0056847)
+bones/135/rotation = Quaternion(0.05593022, -0.0067359717, -0.02008755, 0.99820995)
+bones/135/scale = Vector3(1.0057344, 0.98881006, 1.0055583)
 bones/136/name = "tweak_spine.003"
 bones/136/parent = 123
 bones/136/rest = Transform3D(1, 0, 0, 0, 0.99999994, 1.1175872e-08, 0, -1.1175871e-08, 1, 4.440892e-16, 1.4202669e-08, 7.450581e-09)
@@ -6841,36 +6881,36 @@ bones/146/parent = 144
 bones/146/rest = Transform3D(-0.25349104, 0.43519387, 0.8639148, 0.024460033, 0.89568305, -0.44401994, -0.96702856, -0.09142368, -0.23769246, 0.03636885, 0.93723935, -0.095151514)
 bones/146/enabled = true
 bones/146/position = Vector3(0.03636885, 0.93723935, -0.095151514)
-bones/146/rotation = Quaternion(-0.39599833, 0.75101566, -0.31054744, 0.42745906)
-bones/146/scale = Vector3(1.0039756, 0.99209565, 1.0039754)
+bones/146/rotation = Quaternion(-0.3959429, 0.75100684, -0.31066152, 0.42744288)
+bones/146/scale = Vector3(1.0038581, 0.99232835, 1.0038577)
 bones/147/name = "DEF-upper_arm.L.001"
 bones/147/parent = 146
 bones/147/rest = Transform3D(1, 7.4505797e-09, 4.9825758e-08, -7.450581e-09, 1.0000001, 3.4458935e-08, -4.9825758e-08, -3.445894e-08, 1, 1.2293458e-07, 0.68757826, -2.9802322e-08)
 bones/147/enabled = true
 bones/147/position = Vector3(1.2293458e-07, 0.68757826, -2.9802322e-08)
-bones/147/rotation = Quaternion(-5.8602804e-08, 0.09163761, 6.484945e-08, 0.9957925)
+bones/147/rotation = Quaternion(-5.1592796e-08, 0.09107388, 3.818386e-08, 0.9958442)
 bones/147/scale = Vector3(1, 1.0000001, 1)
 bones/148/name = "DEF-forearm.L"
 bones/148/parent = 147
 bones/148/rest = Transform3D(1, -3.0596564e-08, -1.9896734e-07, -3.990979e-08, 0.9386305, -0.3449242, 1.9731033e-07, 0.3449242, 0.9386305, -9.685755e-08, 0.6875784, -2.9802322e-08)
 bones/148/enabled = true
 bones/148/position = Vector3(-9.685755e-08, 0.6875784, -2.9802322e-08)
-bones/148/rotation = Quaternion(0.35832417, 0.09158783, -0.035253778, 0.92842484)
-bones/148/scale = Vector3(0.999991, 0.9953182, 1.0047759)
+bones/148/rotation = Quaternion(0.35878116, 0.0916727, -0.03533896, 0.92823666)
+bones/148/scale = Vector3(0.9999903, 0.9954996, 1.0045907)
 bones/149/name = "DEF-forearm.L.001"
 bones/149/parent = 148
 bones/149/rest = Transform3D(1, -1.1175876e-08, -6.332994e-08, 1.1175867e-08, 1.0000001, -1.13621354e-07, 6.3329935e-08, 1.13621354e-07, 1.0000001, -1.1920929e-07, 0.70683986, 0)
 bones/149/enabled = true
 bones/149/position = Vector3(-1.1920929e-07, 0.70683986, 0)
-bones/149/rotation = Quaternion(-9.68354e-08, 0.19073418, 7.360911e-08, 0.9816418)
+bones/149/rotation = Quaternion(-7.8325016e-08, 0.19032118, 5.2371487e-08, 0.9817219)
 bones/149/scale = Vector3(1, 1.0000001, 1.0000001)
 bones/150/name = "DEF-hand.L"
 bones/150/parent = 149
 bones/150/rest = Transform3D(0.99782294, 0.06594886, -9.491313e-09, -0.06594241, 0.9977254, 0.013981569, 0.00092207803, -0.01395113, 0.9999022, -1.7974526e-07, 0.70683956, 2.2351742e-08)
 bones/150/enabled = true
 bones/150/position = Vector3(-1.7974526e-07, 0.70683956, 2.2351742e-08)
-bones/150/rotation = Quaternion(0.005268675, 0.19054115, -0.2773083, 0.9416828)
-bones/150/scale = Vector3(0.9989831, 1.0042883, 0.9967896)
+bones/150/rotation = Quaternion(0.0047053928, 0.1905936, -0.2775431, 0.941606)
+bones/150/scale = Vector3(0.9989503, 1.0041884, 0.996919)
 bones/151/name = "MCH-upper_arm_parent.L"
 bones/151/parent = 144
 bones/151/rest = Transform3D(0.5070948, -0.8618904, -7.3986506e-05, 0.8618902, 0.50709474, -0.0005705209, 0.0005292446, 0.00022553992, 0.99999994, 0.03636885, 0.9372392, -0.095151514)
@@ -6883,21 +6923,21 @@ bones/152/parent = 151
 bones/152/rest = Transform3D(-0.11295058, 0.986653, -0.11729582, 0.19018474, -0.09439991, -0.97719926, -0.9752294, -0.13268308, -0.17698376, 6.990353e-11, -3.848926e-08, -4.5472525e-08)
 bones/152/enabled = true
 bones/152/position = Vector3(6.990353e-11, -3.848926e-08, -4.5472525e-08)
-bones/152/rotation = Quaternion(0.114443034, 0.7712716, -0.62451637, 0.044970218)
+bones/152/rotation = Quaternion(0.11487667, 0.7709783, -0.62480545, 0.04487775)
 bones/152/scale = Vector3(1.0000001, 1.0000001, 0.99999994)
 bones/153/name = "upper_arm_ik.L"
 bones/153/parent = 152
 bones/153/rest = Transform3D(0.99913454, -0.0073867673, 0.04093394, -9.639189e-08, 0.9841045, 0.17758976, -0.041595094, -0.17743605, 0.9832528, 3.3527613e-08, -1.4901161e-08, -2.9802322e-08)
 bones/153/enabled = true
 bones/153/position = Vector3(3.3527613e-08, -1.4901161e-08, -2.9802322e-08)
-bones/153/rotation = Quaternion(-0.18568437, 0.020440163, 0.0038633684, 0.9823893)
-bones/153/scale = Vector3(0.99246645, 0.9924661, 0.9924662)
+bones/153/rotation = Quaternion(-0.18507406, 0.020442558, 0.0038506894, 0.98250437)
+bones/153/scale = Vector3(0.9926151, 0.9926148, 0.9926149)
 bones/154/name = "MCH-forearm_ik.L"
 bones/154/parent = 153
 bones/154/rest = Transform3D(1, -1.9182709e-08, -2.752203e-07, -7.69247e-08, 0.9386305, -0.34492433, 2.6494675e-07, 0.34492433, 0.9386305, 6.7055225e-08, 1.3751566, -2.9802322e-08)
 bones/154/enabled = true
 bones/154/position = Vector3(6.7055225e-08, 1.3751566, -2.9802322e-08)
-bones/154/rotation = Quaternion(0.36005408, -1.2719141e-07, 5.2022333e-09, 0.9329314)
+bones/154/rotation = Quaternion(0.3605172, -1.2516894e-07, 7.836022e-09, 0.9327526)
 bones/154/scale = Vector3(1.0000316, 1.0000315, 1.0000317)
 bones/155/name = "upper_arm_fk.L"
 bones/155/parent = 151
@@ -6932,7 +6972,7 @@ bones/159/parent = 144
 bones/159/rest = Transform3D(-0.2534912, 0.4351937, 0.8639146, 0.024460036, 0.8956829, -0.4440198, -0.96702856, -0.091423705, -0.23769256, 0.03636885, 0.93723935, -0.095151514)
 bones/159/enabled = true
 bones/159/position = Vector3(0.03636885, 0.93723935, -0.095151514)
-bones/159/rotation = Quaternion(-0.39599842, 0.7510156, -0.3105476, 0.4274591)
+bones/159/rotation = Quaternion(-0.39594284, 0.75100684, -0.31066158, 0.42744285)
 bones/159/scale = Vector3(1.0000001, 0.9999998, 0.9999999)
 bones/160/name = "upper_arm_tweak.L"
 bones/160/parent = 159
@@ -6946,22 +6986,22 @@ bones/161/parent = 144
 bones/161/rest = Transform3D(-0.25349107, 0.43519402, 0.8639148, 0.02446011, 0.89568305, -0.4440201, -0.96702856, -0.09142365, -0.23769253, 0.03636885, 0.9372392, -0.095151514)
 bones/161/enabled = true
 bones/161/position = Vector3(0.03636885, 0.9372392, -0.095151514)
-bones/161/rotation = Quaternion(-0.3300459, 0.8183825, -0.37988824, 0.27749738)
-bones/161/scale = Vector3(0.9924666, 0.9924663, 0.99246615)
+bones/161/rotation = Quaternion(-0.3302656, 0.81850064, -0.37955028, 0.27734983)
+bones/161/scale = Vector3(0.99261534, 0.99261504, 0.992615)
 bones/162/name = "MCH-upper_arm_parent_widget.L"
 bones/162/parent = 161
 bones/162/rest = Transform3D(1, 9.313306e-10, -1.4761463e-07, -9.313155e-10, 1.0000001, 1.0151415e-07, 1.4761463e-07, -1.0151417e-07, 1, 1.899898e-07, 6.519258e-09, 8.940697e-08)
 bones/162/enabled = true
 bones/162/position = Vector3(1.899898e-07, 6.519258e-09, 8.940697e-08)
 bones/162/rotation = Quaternion(-5.0757077e-08, -7.3807314e-08, -4.656615e-10, 1)
-bones/162/scale = Vector3(1.0075905, 1.0075909, 1.007591)
+bones/162/scale = Vector3(1.0074397, 1.00744, 1.0074401)
 bones/163/name = "MCH-upper_arm_tweak.L.001"
 bones/163/parent = 161
 bones/163/rest = Transform3D(0.99999994, 4.2840874e-08, -3.5297128e-07, -4.2840806e-08, 1.0000001, 1.6670674e-07, 3.5297123e-07, -1.6670673e-07, 1.0000001, 2.3469329e-07, 0.68757844, -5.2154064e-08)
 bones/163/enabled = true
 bones/163/position = Vector3(2.3469329e-07, 0.68757844, -5.2154064e-08)
-bones/163/rotation = Quaternion(-6.93883e-08, -0.09833098, 9.902571e-08, 0.99515384)
-bones/163/scale = Vector3(1.0075907, 1.0075909, 1.0075908)
+bones/163/rotation = Quaternion(3.886243e-08, -0.09809245, 6.401964e-08, 0.9951774)
+bones/163/scale = Vector3(1.0074399, 1.00744, 1.0074399)
 bones/164/name = "upper_arm_tweak.L.001"
 bones/164/parent = 163
 bones/164/rest = Transform3D(1, -8.661298e-08, 2.6240014e-07, 8.661302e-08, 1, -1.7695127e-07, -2.6240014e-07, 1.769513e-07, 1, 8.568168e-08, 1.3411045e-07, 4.4703484e-08)
@@ -6974,7 +7014,7 @@ bones/165/parent = 161
 bones/165/rest = Transform3D(0.99999994, -6.509955e-08, -3.6048888e-07, -6.323691e-08, 0.9386305, -0.3449242, 3.6082025e-07, 0.3449242, 0.9386305, 1.4156103e-07, 1.3751564, 2.9802322e-08)
 bones/165/enabled = true
 bones/165/position = Vector3(1.4156103e-07, 1.3751564, 2.9802322e-08)
-bones/165/rotation = Quaternion(0.36005402, -1.2311104e-07, 1.09546185e-08, 0.9329315)
+bones/165/rotation = Quaternion(0.3605172, -1.2653071e-07, 1.1142145e-08, 0.9327526)
 bones/165/scale = Vector3(1.0000316, 1.0000316, 1.0000317)
 bones/166/name = "MCH-forearm_tweak.L"
 bones/166/parent = 165
@@ -6982,7 +7022,7 @@ bones/166/rest = Transform3D(0.99999994, 3.5017726e-07, -3.5576528e-07, -3.50177
 bones/166/enabled = true
 bones/166/position = Vector3(9.685755e-08, 8.940697e-08, -3.2782555e-07)
 bones/166/rotation = Quaternion(1.2759119e-07, -1.7788264e-07, -1.7508864e-07, 1)
-bones/166/scale = Vector3(1.0075728, 1.0075731, 1.0075731)
+bones/166/scale = Vector3(1.0074204, 1.0074208, 1.0074208)
 bones/167/name = "forearm_tweak.L"
 bones/167/parent = 166
 bones/167/rest = Transform3D(0.99999994, -3.0733648e-07, 4.0978193e-07, 3.073364e-07, 1, 1.4156109e-07, -4.09782e-07, -1.4156097e-07, 0.99999994, -1.4901161e-08, 1.4901161e-07, -2.9802322e-08)
@@ -6995,8 +7035,8 @@ bones/168/parent = 165
 bones/168/rest = Transform3D(0.99999994, 3.8740896e-07, -0.00023045392, -3.8745148e-07, 0.99999994, -1.8435722e-07, 0.00023045391, 1.8444649e-07, 1, 1.8440187e-07, 0.7068399, -3.5762787e-07)
 bones/168/enabled = true
 bones/168/position = Vector3(1.8440187e-07, 0.7068399, -3.5762787e-07)
-bones/168/rotation = Quaternion(-3.5910457e-08, 0.19017117, 5.523687e-08, 0.981751)
-bones/168/scale = Vector3(1.0075728, 1.0075734, 1.0075731)
+bones/168/rotation = Quaternion(-2.5211744e-08, 0.18985543, 7.598116e-08, 0.98181206)
+bones/168/scale = Vector3(1.0074204, 1.0074209, 1.0074207)
 bones/169/name = "forearm_tweak.L.001"
 bones/169/parent = 168
 bones/169/rest = Transform3D(0.99999994, -3.5577767e-07, 0.00023049676, 3.5575275e-07, 1, 1.08074424e-07, -0.00023049675, -1.0799242e-07, 1, -3.5390258e-08, 5.5879354e-09, -2.30968e-07)
@@ -7009,8 +7049,8 @@ bones/170/parent = 165
 bones/170/rest = Transform3D(0.9978229, 0.065948896, 1.2936651e-07, -0.06594245, 0.99772537, 0.013981898, 0.00092196174, -0.013951468, 0.9999021, 1.899898e-07, 1.4136791, -6.7055225e-08)
 bones/170/enabled = true
 bones/170/position = Vector3(1.899898e-07, 1.4136791, -6.7055225e-08)
-bones/170/rotation = Quaternion(-0.04839084, 0.36725432, -0.2730765, 0.887813)
-bones/170/scale = Vector3(1.0075732, 1.0075734, 1.007573)
+bones/170/rotation = Quaternion(-0.049004316, 0.36734065, -0.2731957, 0.887707)
+bones/170/scale = Vector3(1.0074209, 1.0074209, 1.0074207)
 bones/171/name = "MCH-hand_tweak.L"
 bones/171/parent = 170
 bones/171/rest = Transform3D(1, 5.5134296e-07, -7.096679e-07, -5.51343e-07, 1, -1.02445306e-07, 7.096678e-07, 1.0244568e-07, 1.0000001, 1.17346644e-07, 1.937151e-07, -2.1606684e-07)
@@ -7051,36 +7091,36 @@ bones/176/parent = 174
 bones/176/rest = Transform3D(-0.25349113, -0.43519387, -0.86391467, -0.02445994, 0.89568305, -0.44401994, 0.9670284, -0.09142383, -0.23769252, -0.036368784, 0.9372392, -0.095151335)
 bones/176/enabled = true
 bones/176/position = Vector3(-0.036368784, 0.9372392, -0.095151335)
-bones/176/rotation = Quaternion(-0.3296904, -0.7684727, 0.3028442, 0.45720845)
-bones/176/scale = Vector3(1.0118345, 0.9767442, 1.0118347)
+bones/176/rotation = Quaternion(-0.3297267, -0.76845104, 0.30291808, 0.45716953)
+bones/176/scale = Vector3(1.011751, 0.9769053, 1.0117512)
 bones/177/name = "DEF-upper_arm.R.001"
 bones/177/parent = 176
 bones/177/rest = Transform3D(1, 8.009375e-08, -3.5157427e-08, -8.009374e-08, 1.0000001, 4.5634806e-08, 3.515743e-08, -4.563481e-08, 1, 1.8626451e-08, 0.6875781, 2.2351742e-08)
 bones/177/enabled = true
 bones/177/position = Vector3(1.8626451e-08, 0.6875781, 2.2351742e-08)
-bones/177/rotation = Quaternion(-8.5082397e-10, -0.106590465, 1.7895738e-08, 0.99430305)
+bones/177/rotation = Quaternion(-2.408314e-08, -0.10595793, 1.5407617e-08, 0.99437064)
 bones/177/scale = Vector3(1, 1.0000001, 1)
 bones/178/name = "DEF-forearm.R"
 bones/178/parent = 177
 bones/178/rest = Transform3D(1, 2.4286319e-08, 6.6298064e-08, 7.1936235e-11, 0.9386305, -0.34492433, -7.0606326e-08, 0.34492433, 0.9386305, -1.8626451e-07, 0.6875781, 1.4901161e-08)
 bones/178/enabled = true
 bones/178/position = Vector3(-1.8626451e-07, 0.6875781, 1.4901161e-08)
-bones/178/rotation = Quaternion(0.59700865, -0.10659321, 0.08092012, 0.79099345)
-bones/178/scale = Vector3(1.00028, 0.96761835, 1.0333676)
+bones/178/rotation = Quaternion(0.5965482, -0.10627549, 0.08057346, 0.79141885)
+bones/178/scale = Vector3(1.0002759, 0.9678067, 1.0331749)
 bones/179/name = "DEF-forearm.R.001"
 bones/179/parent = 178
 bones/179/rest = Transform3D(1, 1.8626454e-09, 2.7939679e-08, -1.8626442e-09, 1.0000001, -3.9115545e-08, -2.7939675e-08, 3.9115545e-08, 1.0000001, -4.656613e-08, 0.7068398, 5.2154064e-08)
 bones/179/enabled = true
 bones/179/position = Vector3(-4.656613e-08, 0.7068398, 5.2154064e-08)
-bones/179/rotation = Quaternion(-2.3327823e-08, -0.16563448, -1.8414923e-08, 0.9861872)
+bones/179/rotation = Quaternion(-1.1834722e-08, -0.16617773, -8.534702e-09, 0.9860959)
 bones/179/scale = Vector3(1, 1.0000001, 1.0000001)
 bones/180/name = "DEF-hand.R"
 bones/180/parent = 179
 bones/180/rest = Transform3D(0.9978229, -0.065948926, 1.5748415e-07, 0.065942466, 0.9977255, 0.013981592, -0.0009222281, -0.013951146, 0.9999021, 9.406358e-08, 0.70683986, -2.2351742e-08)
 bones/180/enabled = true
 bones/180/position = Vector3(9.406358e-08, 0.70683986, -2.2351742e-08)
-bones/180/rotation = Quaternion(0.315332, -0.16349354, 0.41586196, 0.8371945)
-bones/180/scale = Vector3(1.0005547, 0.9954061, 1.0048857)
+bones/180/rotation = Quaternion(0.31498, -0.16331846, 0.41577363, 0.837405)
+bones/180/scale = Vector3(1.0004671, 0.9952868, 1.0050849)
 bones/181/name = "MCH-upper_arm_parent.R"
 bones/181/parent = 174
 bones/181/rest = Transform3D(0.5070946, 0.8618903, 7.388909e-05, -0.86189, 0.5070946, -0.00057052623, -0.0005291998, 0.00022562659, 0.99999976, -0.036368784, 0.93723917, -0.095151335)
@@ -7093,21 +7133,21 @@ bones/182/parent = 181
 bones/182/rest = Transform3D(-0.11295054, -0.9866526, 0.11729582, -0.19018471, -0.09439987, -0.9771992, 0.9752291, -0.13268305, -0.17698377, -3.6515864e-08, -1.9490415e-08, 1.5589858e-07)
 bones/182/enabled = true
 bones/182/position = Vector3(-3.6515864e-08, -1.9490415e-08, 1.5589858e-07)
-bones/182/rotation = Quaternion(-0.20560664, 0.6734168, -0.7096747, 0.024445776)
+bones/182/rotation = Quaternion(-0.20561466, 0.67339873, -0.7096888, 0.024465322)
 bones/182/scale = Vector3(0.9999999, 0.9999997, 0.9999999)
 bones/183/name = "upper_arm_ik.R"
 bones/183/parent = 182
 bones/183/rest = Transform3D(0.99913454, 0.007386709, -0.04093395, 1.5599653e-07, 0.9841045, 0.17758976, 0.041595098, -0.17743605, 0.9832528, -4.8428774e-08, -3.7252903e-09, 7.4505806e-08)
 bones/183/enabled = true
 bones/183/position = Vector3(-4.8428774e-08, -3.7252903e-09, 7.4505806e-08)
-bones/183/rotation = Quaternion(-0.32255474, -0.008029472, -0.0027364253, 0.9465128)
-bones/183/scale = Vector3(0.97700137, 0.9770015, 0.9770014)
+bones/183/rotation = Quaternion(-0.32271117, -0.008430525, -0.002874571, 0.9464556)
+bones/183/scale = Vector3(0.97710633, 0.9771064, 0.97710633)
 bones/184/name = "MCH-forearm_ik.R"
 bones/184/parent = 183
 bones/184/rest = Transform3D(0.99999994, 2.1332674e-08, 1.09098984e-07, 1.7607384e-08, 0.93863046, -0.34492427, -1.09761785e-07, 0.34492424, 0.9386305, 2.9802322e-08, 1.3751568, -8.940697e-08)
 bones/184/enabled = true
 bones/184/position = Vector3(2.9802322e-08, 1.3751568, -8.940697e-08)
-bones/184/rotation = Quaternion(0.60253334, 4.876426e-08, -1.4636196e-08, 0.7980938)
+bones/184/rotation = Quaternion(0.60203075, 4.6126992e-08, -2.1220321e-08, 0.79847294)
 bones/184/scale = Vector3(0.99964154, 0.9996413, 0.9996416)
 bones/185/name = "upper_arm_fk.R"
 bones/185/parent = 181
@@ -7142,7 +7182,7 @@ bones/189/parent = 174
 bones/189/rest = Transform3D(-0.25349143, -0.43519366, -0.86391455, -0.024460005, 0.89568293, -0.4440198, 0.9670284, -0.091423854, -0.23769277, -0.036368784, 0.9372392, -0.095151335)
 bones/189/enabled = true
 bones/189/position = Vector3(-0.036368784, 0.9372392, -0.095151335)
-bones/189/rotation = Quaternion(-0.32969043, -0.7684727, 0.30284426, 0.45720845)
+bones/189/rotation = Quaternion(-0.32972685, -0.7684511, 0.30291808, 0.4571695)
 bones/189/scale = Vector3(1, 0.9999999, 0.9999999)
 bones/190/name = "upper_arm_tweak.R"
 bones/190/parent = 189
@@ -7156,22 +7196,22 @@ bones/191/parent = 174
 bones/191/rest = Transform3D(-0.25349116, -0.4351939, -0.8639146, -0.024460077, 0.895683, -0.44401994, 0.96702844, -0.09142371, -0.23769258, -0.036368784, 0.93723917, -0.095151335)
 bones/191/enabled = true
 bones/191/position = Vector3(-0.036368784, 0.93723917, -0.095151335)
-bones/191/rotation = Quaternion(-0.24737643, -0.85574585, 0.3730836, 0.25944686)
-bones/191/scale = Vector3(0.97700113, 0.9770013, 0.9770011)
+bones/191/rotation = Quaternion(-0.24726966, -0.8558557, 0.3729732, 0.25934502)
+bones/191/scale = Vector3(0.97710603, 0.9771062, 0.97710586)
 bones/192/name = "MCH-upper_arm_parent_widget.R"
 bones/192/parent = 191
 bones/192/rest = Transform3D(1, 1.2852253e-07, 1.6530976e-07, -1.2852252e-07, 1.0000001, -3.3527623e-08, -1.6530974e-07, 3.3527602e-08, 1.0000001, -1.8253922e-07, 1.4714897e-07, 2.9802322e-08)
 bones/192/enabled = true
 bones/192/position = Vector3(-1.8253922e-07, 1.4714897e-07, 2.9802322e-08)
 bones/192/rotation = Quaternion(1.6763805e-08, 8.265487e-08, -6.426126e-08, 1)
-bones/192/scale = Vector3(1.0237248, 1.0237249, 1.0237247)
+bones/192/scale = Vector3(1.0236043, 1.0236044, 1.0236042)
 bones/193/name = "MCH-upper_arm_tweak.R.001"
 bones/193/parent = 191
 bones/193/rest = Transform3D(1, -1.7695154e-08, 3.9441514e-07, 1.7695106e-08, 1.0000001, 1.15484006e-07, -3.9441508e-07, -1.15484e-07, 1.0000001, -2.0861626e-07, 0.6875784, -8.940697e-08)
 bones/193/enabled = true
 bones/193/position = Vector3(-2.0861626e-07, 0.6875784, -8.940697e-08)
-bones/193/rotation = Quaternion(4.4426777e-08, 0.13410008, -7.510254e-08, 0.9909678)
-bones/193/scale = Vector3(1.0237248, 1.0237249, 1.0237248)
+bones/193/rotation = Quaternion(-7.97409e-08, 0.13347109, -9.0002054e-08, 0.9910528)
+bones/193/scale = Vector3(1.0236042, 1.0236043, 1.0236042)
 bones/194/name = "upper_arm_tweak.R.001"
 bones/194/parent = 193
 bones/194/rest = Transform3D(0.99999994, 8.7544294e-08, -2.6449564e-07, -8.7544336e-08, 1, -1.8347053e-07, 2.6449558e-07, 1.8347056e-07, 1, -2.3841858e-07, 6.891787e-08, 4.4703484e-08)
@@ -7184,7 +7224,7 @@ bones/195/parent = 191
 bones/195/rest = Transform3D(1, 1.0376434e-07, 2.3759249e-07, -1.5444936e-08, 0.93863046, -0.34492442, -2.5880237e-07, 0.3449244, 0.9386306, -8.195639e-08, 1.3751565, 2.9802322e-08)
 bones/195/enabled = true
 bones/195/position = Vector3(-8.195639e-08, 1.3751565, 2.9802322e-08)
-bones/195/rotation = Quaternion(0.6025332, 4.846937e-08, -1.8472395e-08, 0.79809386)
+bones/195/rotation = Quaternion(0.60203075, 5.5929693e-08, -1.4715177e-08, 0.798473)
 bones/195/scale = Vector3(0.9996415, 0.99964136, 0.99964154)
 bones/196/name = "MCH-forearm_tweak.R"
 bones/196/parent = 195
@@ -7192,7 +7232,7 @@ bones/196/rest = Transform3D(1, -1.7695127e-07, 4.5448544e-07, 1.7695132e-07, 1.
 bones/196/enabled = true
 bones/196/position = Vector3(-1.0430813e-07, 2.4586916e-07, -2.0861626e-07)
 bones/196/rotation = Quaternion(5.4948032e-08, 2.2724271e-07, 8.8475645e-08, 1)
-bones/196/scale = Vector3(1.0242327, 1.0242332, 1.0242327)
+bones/196/scale = Vector3(1.0241117, 1.0241122, 1.0241119)
 bones/197/name = "forearm_tweak.R"
 bones/197/parent = 196
 bones/197/rest = Transform3D(1, 1.3597311e-07, -4.2282045e-07, -1.3597308e-07, 1, 8.1956415e-08, 4.2282045e-07, -8.195636e-08, 1, -5.2154064e-08, 5.2154064e-08, 1.4901161e-07)
@@ -7205,8 +7245,8 @@ bones/198/parent = 195
 bones/198/rest = Transform3D(1, -3.9114173e-07, 0.00023077615, 3.9116924e-07, 1, -1.19164156e-07, -0.00023077615, 1.1925442e-07, 1, -5.5879354e-08, 0.7068399, -2.8312206e-07)
 bones/198/enabled = true
 bones/198/position = Vector3(-5.5879354e-08, 0.7068399, -2.8312206e-07)
-bones/198/rotation = Quaternion(1.7899346e-08, -0.16552067, 3.291077e-08, 0.98620635)
-bones/198/scale = Vector3(1.0242332, 1.0242336, 1.0242329)
+bones/198/rotation = Quaternion(1.8608866e-08, -0.16606392, 3.783338e-08, 0.98611504)
+bones/198/scale = Vector3(1.0241123, 1.0241126, 1.0241119)
 bones/199/name = "forearm_tweak.R.001"
 bones/199/parent = 198
 bones/199/rest = Transform3D(0.99999994, 3.7626853e-07, -0.00023076871, -3.7624017e-07, 0.99999994, 1.22978e-07, 0.0002307687, -1.2289115e-07, 1, 8.009374e-08, 1.4714897e-07, -1.937151e-07)
@@ -7219,8 +7259,8 @@ bones/200/parent = 195
 bones/200/rest = Transform3D(0.99782294, -0.065948896, -1.5832358e-08, 0.06594244, 0.9977255, 0.013981991, -0.000922081, -0.013951554, 0.99990225, -2.9802322e-08, 1.4136791, -8.940697e-08)
 bones/200/enabled = true
 bones/200/position = Vector3(-2.9802322e-08, 1.4136791, -8.940697e-08)
-bones/200/rotation = Quaternion(0.23947816, -0.3021078, 0.459769, 0.799996)
-bones/200/scale = Vector3(1.0242331, 1.0242333, 1.0242331)
+bones/200/rotation = Quaternion(0.23953916, -0.30217525, 0.4598135, 0.7999267)
+bones/200/scale = Vector3(1.0241122, 1.0241123, 1.0241122)
 bones/201/name = "MCH-hand_tweak.R"
 bones/201/parent = 200
 bones/201/rest = Transform3D(1, -5.34579e-07, 7.4319547e-07, 5.345792e-07, 0.99999994, -1.9371491e-07, -7.4319536e-07, 1.937153e-07, 1, 5.9604645e-08, -3.75323e-07, -3.5390258e-07)
@@ -7260,8 +7300,8 @@ bones/206/name = "MCH-upper_arm_ik_target.parent.L"
 bones/206/parent = -1
 bones/206/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 2.6112955, 2.193597, -2.9620428)
 bones/206/enabled = true
-bones/206/position = Vector3(2.9969897, 1.5047804, -2.8136106)
-bones/206/rotation = Quaternion(-0.74982834, -0.0005964824, -0.083935775, 0.6562866)
+bones/206/position = Vector3(2.9963925, 1.5041802, -2.8145013)
+bones/206/rotation = Quaternion(-0.7498318, -0.0005969816, -0.08393275, 0.656283)
 bones/206/scale = Vector3(1, 1, 1)
 bones/207/name = "upper_arm_ik_target.L"
 bones/207/parent = 206
@@ -7274,8 +7314,8 @@ bones/208/name = "MCH-upper_arm_ik_target.parent.R"
 bones/208/parent = -1
 bones/208/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -2.6112955, 2.193597, -2.9620428)
 bones/208/enabled = true
-bones/208/position = Vector3(-3.0627382, 1.5878882, -2.7141623)
-bones/208/rotation = Quaternion(-0.74834836, 0.021656448, 0.087133266, 0.6572013)
+bones/208/position = Vector3(-3.0633314, 1.5863488, -2.7140172)
+bones/208/rotation = Quaternion(-0.7480218, 0.021617543, 0.086834386, 0.6576138)
 bones/208/scale = Vector3(1, 1, 1)
 bones/209/name = "upper_arm_ik_target.R"
 bones/209/parent = 208
@@ -7295,7 +7335,7 @@ bones/211/name = "DEF-spine"
 bones/211/parent = 210
 bones/211/rest = Transform3D(1, 0, 0, 0, -0.24963965, -0.96833897, 0, 0.96833885, -0.24963968, -5.355105e-09, 0.32724166, -0.9593897)
 bones/211/enabled = true
-bones/211/position = Vector3(-0.098462135, 0.24094, -0.92440224)
+bones/211/position = Vector3(-0.09846895, 0.24093434, -0.92466354)
 bones/211/rotation = Quaternion(0.7617702, 0.020522239, -0.0496032, 0.6456196)
 bones/211/scale = Vector3(1, 1, 1.0000001)
 bones/212/name = "DEF-spine.001"
@@ -7303,29 +7343,29 @@ bones/212/parent = 211
 bones/212/rest = Transform3D(1, 0, 0, 0, 0.99168557, 0.12868467, 0, -0.12868467, 0.99168557, 4.440892e-16, 0.7105205, 1.4901161e-08)
 bones/212/enabled = true
 bones/212/position = Vector3(4.440892e-16, 0.7105205, 1.4901161e-08)
-bones/212/rotation = Quaternion(-0.039244365, 0.0015507854, 0.024001945, 0.9989401)
-bones/212/scale = Vector3(1.028346, 0.9456305, 1.0283461)
+bones/212/rotation = Quaternion(-0.039497156, 0.0015537249, 0.024047451, 0.99892914)
+bones/212/scale = Vector3(1.0280136, 0.94624233, 1.0280137)
 bones/213/name = "DEF-spine.002"
 bones/213/parent = 212
 bones/213/rest = Transform3D(1, 0, 0, 0, 0.9879986, 0.15446274, 0, -0.15446272, 0.9879986, -4.440892e-16, 0.63778424, -3.7252903e-09)
 bones/213/enabled = true
 bones/213/position = Vector3(-4.440892e-16, 0.63778424, -3.7252903e-09)
-bones/213/rotation = Quaternion(-0.10299745, 0.016630946, 0.024465526, 0.99424165)
-bones/213/scale = Vector3(0.9796582, 1.0387621, 0.9832659)
+bones/213/rotation = Quaternion(-0.10243719, 0.016569093, 0.024300957, 0.9943046)
+bones/213/scale = Vector3(0.9798918, 1.0383164, 0.9834364)
 bones/214/name = "DEF-spine.003"
 bones/214/parent = 213
 bones/214/rest = Transform3D(1, 0, 0, 0, 0.99999464, -0.0032542816, 0, 0.0032542816, 0.99999464, 0, 0.8069932, 0)
 bones/214/enabled = true
 bones/214/position = Vector3(0, 0.8069932, 0)
-bones/214/rotation = Quaternion(-0.029923499, 0.009218347, -0.0027781308, 0.9995059)
-bones/214/scale = Vector3(0.99285495, 1.0143692, 0.9929323)
+bones/214/rotation = Quaternion(-0.029791096, 0.009075657, -0.0028925121, 0.9995108)
+bones/214/scale = Vector3(0.9929545, 1.0141672, 0.99303013)
 bones/215/name = "DEF-spine.004"
 bones/215/parent = 214
 bones/215/rest = Transform3D(1, 0, 0, 0, 0.9186037, -0.39518, 0, 0.39518, 0.9186037, -4.440892e-16, 0.8989056, 0)
 bones/215/enabled = true
 bones/215/position = Vector3(-4.440892e-16, 0.8989056, 0)
-bones/215/rotation = Quaternion(0.12642455, -0.009416535, 0.02558979, 0.9916014)
-bones/215/scale = Vector3(0.99428165, 1.0115364, 0.9942814)
+bones/215/rotation = Quaternion(0.1260187, -0.009240223, 0.025808133, 0.99164915)
+bones/215/scale = Vector3(0.9943885, 1.0113187, 0.99438834)
 bones/216/name = "DEF-spine.005"
 bones/216/parent = 215
 bones/216/rest = Transform3D(1, 0, 0, 0, 0.98200387, 0.18885985, 0, -0.18885984, 0.982004, 0, 0.3088334, -7.543713e-08)
@@ -7338,42 +7378,42 @@ bones/217/parent = 216
 bones/217/rest = Transform3D(1, 0, 0, 0, 0.9824362, 0.18659888, 0, -0.18659888, 0.9824362, 0, 0.29267323, -3.7252903e-08)
 bones/217/enabled = true
 bones/217/position = Vector3(0, 0.29267323, -3.7252903e-08)
-bones/217/rotation = Quaternion(0.05634755, -0.0069309426, -0.020238336, 0.9981821)
-bones/217/scale = Vector3(1.0058683, 0.9885545, 1.0056846)
+bones/217/rotation = Quaternion(0.055930242, -0.0067359735, -0.020087555, 0.99820995)
+bones/217/scale = Vector3(1.0057344, 0.98880994, 1.0055581)
 bones/218/name = "VIS_thigh_ik_pole.L"
 bones/218/parent = 210
 bones/218/rest = Transform3D(1, 0, -2.3841855e-07, -2.3841855e-07, 0, -1, 0, 1, 0, 0.52228534, -0.063914776, -2.9509747)
 bones/218/enabled = true
-bones/218/position = Vector3(0.6209196, -0.07339478, -2.939419)
-bones/218/rotation = Quaternion(0.99620354, -0.052662823, 0.052662697, 0.045077253)
-bones/218/scale = Vector3(0.99999994, 20.98327, 0.99999994)
+bones/218/position = Vector3(0.6207966, -0.07293248, -2.9392767)
+bones/218/rotation = Quaternion(0.99618906, -0.052805822, 0.052805703, 0.0450625)
+bones/218/scale = Vector3(0.99999994, 20.98618, 0.99999994)
 bones/219/name = "VIS_thigh_ik_pole.R"
 bones/219/parent = 210
 bones/219/rest = Transform3D(1, 0, 2.3841855e-07, 2.3841855e-07, 0, -1, 0, 1, 0, -0.52228534, -0.063914776, -2.9509747)
 bones/219/enabled = true
-bones/219/position = Vector3(-0.7821964, 0.038620144, -2.8602686)
-bones/219/rotation = Quaternion(0.9987667, -0.015307425, 0.015307551, 0.04468173)
-bones/219/scale = Vector3(0.99999994, 21.214819, 0.99999994)
+bones/219/position = Vector3(-0.78226525, 0.0385113, -2.8603003)
+bones/219/rotation = Quaternion(0.99877524, -0.015129321, 0.015129448, 0.044612084)
+bones/219/scale = Vector3(1, 21.217176, 1)
 bones/220/name = "VIS_upper_arm_ik_pole.L"
 bones/220/parent = 210
 bones/220/rest = Transform3D(-0.40444946, -5.9604645e-08, 0.9145603, 0.9145603, 0, 0.4044495, 5.9604645e-08, 1, 1.1920929e-07, 2.2766118, 0.30296707, 1.5966897)
 bones/220/enabled = true
-bones/220/position = Vector3(1.2456522, 0.78151536, 0.390975)
-bones/220/rotation = Quaternion(0.37351662, 0.8816941, 0.10448466, 0.26867086)
-bones/220/scale = Vector3(1, 20.546942, 0.99999994)
+bones/220/position = Vector3(1.2455188, 0.78296185, 0.39150155)
+bones/220/rotation = Quaternion(0.37356582, 0.88159287, 0.104848266, 0.26879248)
+bones/220/scale = Vector3(1, 20.539156, 0.99999994)
 bones/221/name = "VIS_upper_arm_ik_pole.R"
 bones/221/parent = 210
 bones/221/rest = Transform3D(-0.4044497, -2.9802322e-08, -0.9145603, -0.9145603, 0, 0.40444973, 2.9802322e-08, 1.0000001, -1.1920929e-07, -2.2766118, 0.30296707, 1.5966897)
 bones/221/enabled = true
-bones/221/position = Vector3(-1.4576356, 0.6655411, 0.48489833)
-bones/221/rotation = Quaternion(-0.3557873, 0.88297176, 0.10509612, -0.2876303)
-bones/221/scale = Vector3(1, 19.994791, 0.99999994)
+bones/221/position = Vector3(-1.4582628, 0.6656204, 0.48498523)
+bones/221/rotation = Quaternion(-0.35593513, 0.8828037, 0.10567622, -0.28775075)
+bones/221/scale = Vector3(1, 19.98736, 0.9999999)
 
-[node name="Circle_004" type="MeshInstance3D" parent="Simon/quinten/Skeleton3D"]
+[node name="Circle_004" type="MeshInstance3D" parent="Simon/quinten/Skeleton3D" unique_id=1269350802]
 mesh = SubResource("ArrayMesh_y34jc")
 skin = SubResource("Skin_5u1wi")
 
-[node name="Cube_003" type="MeshInstance3D" parent="Simon/quinten/Skeleton3D"]
+[node name="Cube_003" type="MeshInstance3D" parent="Simon/quinten/Skeleton3D" unique_id=224389771]
 mesh = SubResource("ArrayMesh_1gl2g")
 skin = SubResource("Skin_5u1wi")
 metadata/extras = {
@@ -7382,7 +7422,7 @@ metadata/extras = {
 }
 }
 
-[node name="Cube_017" type="MeshInstance3D" parent="Simon/quinten/Skeleton3D"]
+[node name="Cube_017" type="MeshInstance3D" parent="Simon/quinten/Skeleton3D" unique_id=796449201]
 mesh = SubResource("ArrayMesh_wi1a5")
 skin = SubResource("Skin_5u1wi")
 metadata/extras = {
@@ -7391,7 +7431,7 @@ metadata/extras = {
 }
 }
 
-[node name="hair1" type="MeshInstance3D" parent="Simon/quinten/Skeleton3D"]
+[node name="hair1" type="MeshInstance3D" parent="Simon/quinten/Skeleton3D" unique_id=1208971451]
 mesh = SubResource("ArrayMesh_muqw6")
 skin = SubResource("Skin_5u1wi")
 metadata/extras = {
@@ -7400,7 +7440,7 @@ metadata/extras = {
 }
 }
 
-[node name="LookAtModifier3D2" type="LookAtModifier3D" parent="Simon/quinten/Skeleton3D"]
+[node name="LookAtModifier3D2" type="LookAtModifier3D" parent="Simon/quinten/Skeleton3D" unique_id=1754646502]
 transform = Transform3D(-4.3711385e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711385e-08, 0, 0, 0)
 target_node = NodePath("TargetNode")
 bone_name = "DEF-spine.006"
@@ -7412,14 +7452,14 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 1.0471976
 secondary_damp_threshold = 1.0
 
-[node name="TargetNode" type="Node3D" parent="Simon/quinten/Skeleton3D/LookAtModifier3D2"]
+[node name="TargetNode" type="Node3D" parent="Simon/quinten/Skeleton3D/LookAtModifier3D2" unique_id=323821288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
 script = ExtResource("40_l78o1")
 
-[node name="breathingnode" type="Node3D" parent="Simon/quinten/Skeleton3D/LookAtModifier3D2"]
+[node name="breathingnode" type="Node3D" parent="Simon/quinten/Skeleton3D/LookAtModifier3D2" unique_id=1422812880]
 transform = Transform3D(1, 0, 2.0861626e-07, 0, 1, 0, -2.0861626e-07, 0, 1, 0.17212677, 2.695603, -0.028457642)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Simon/quinten/Skeleton3D/LookAtModifier3D2/breathingnode"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Simon/quinten/Skeleton3D/LookAtModifier3D2/breathingnode" unique_id=843237465]
 amount = 4
 lifetime = 2.0
 explosiveness = 0.7
@@ -7427,11 +7467,9 @@ randomness = 0.75
 process_material = SubResource("ParticleProcessMaterial_m6apx")
 draw_pass_1 = SubResource("QuadMesh_5rbm5")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Simon"]
-libraries = {
-&"": SubResource("AnimationLibrary_244nd")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Simon" unique_id=1663766466]
+libraries/ = SubResource("AnimationLibrary_244nd")
 
-[node name="AnimationTree" type="AnimationTree" parent="Simon"]
+[node name="AnimationTree" type="AnimationTree" parent="Simon" unique_id=1460890983]
 tree_root = SubResource("AnimationNodeBlendTree_wq5rx")
 anim_player = NodePath("../AnimationPlayer")
