@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class Switch : Node3D, Interactable
+public partial class BSwitch : Node3D, Interactable
 {	
-	public bool SwitchToggle =	false; // sets this as default when game starts
+	public bool SwitchToggle = false; // sets this as default when game starts
 
 	[Signal] public delegate void SwitchStatusEventHandler(bool Status);
 	
@@ -28,35 +28,33 @@ public partial class Switch : Node3D, Interactable
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
 		Vector3 currentRotation = SwitchHandle.Rotation;
 
-		if (SwitchToggle)
-		{
+		if (SwitchToggle) {
+		
 			targetRotation = Off;
-		}
-		else
-		{
+		
+		} else {
+		
 			targetRotation = On;
-		}
-		if (currentRotation != targetRotation)
-		{
+		
+		} if (currentRotation != targetRotation) {
 
 			SwitchHandle.RotationDegrees = SwitchHandle.RotationDegrees.Lerp(targetRotation, .2f);
+		
 		}
 
 
 	}
-
-
-
 	
 	// i deadass was staring at the interact code for like a hour drooling like a retard figuring out how tf u made that work, 
 	// then when i realized i was like OOHHHH brah i tried finding the interact method thang for so long.
 	public void Interact()
 	{
-	SwitchToggle = !SwitchToggle;
 
+	SwitchToggle = !SwitchToggle;
 	EmitSignal(SignalName.SwitchStatus, SwitchToggle);
-	//GD.Print(SwitchToggle);	
+
 	}
 }

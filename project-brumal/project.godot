@@ -16,19 +16,19 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="project_brumal"
 run/main_scene="uid://c86q2ic77i40y"
-config/features=PackedStringArray("4.7", "C#", "Forward Plus")
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0.14050123, 5.0055983e-06, 0.6258102, 1)
 
 [autoload]
 
-PlayerData="*res://player/playerdata.cs"
 PlayerStateController="*res://player/PlayerStateController.cs"
 PlayerScript="*res://player/playerone.cs"
+PlayerData="*res://player/PlayerData.cs"
 
 [display]
 
-window/size/viewport_width=1440
-window/size/viewport_height=1080
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/borderless=true
 window/frame_pacing/android/enable_frame_pacing=false
 

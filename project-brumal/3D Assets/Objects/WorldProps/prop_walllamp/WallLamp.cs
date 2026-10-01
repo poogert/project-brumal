@@ -3,7 +3,7 @@ using System;
 
 public partial class WallLamp : Node3D
 {
-	[Export] private Switch _Switch;
+	[Export] private BSwitch _Switch;
 	OmniLight3D OLight;
 	
 	public override void _Ready()

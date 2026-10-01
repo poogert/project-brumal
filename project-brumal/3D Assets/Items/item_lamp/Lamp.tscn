@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=4 uid="uid://fwax6bmyntfr"]
 
-[ext_resource type="Script" uid="uid://dn5t76fy6h4cy" path="res://3D Assets/Items/item_lamp/CalciumLamp.cs" id="1_kv88a"]
+[ext_resource type="Script" uid="uid://kw6731cjytct" path="res://3D Assets/Items/item_lamp/calcium_lamp.gd" id="1_kv88a"]
 [ext_resource type="Texture2D" uid="uid://be2gede0j8gn0" path="res://3D Assets/Items/item_lamp/CalciumLamp_LampBody.png" id="2_kbwh8"]
 [ext_resource type="Texture2D" uid="uid://crwimtrvx0h13" path="res://3D Assets/Items/item_lamp/CalciumLamp_LampGuard.png" id="3_mfqcp"]
 [ext_resource type="Texture2D" uid="uid://cjn6t062jfjc4" path="res://3D Assets/Items/item_lamp/CalciumLamp_Untitled.png" id="4_734tv"]
@@ -167,11 +167,10 @@ shadow_mesh = SubResource("ArrayMesh_hhomj")
 
 [node name="lamp" type="Node3D"]
 
-[node name="CalciumLamp" type="Node3D" parent="." node_paths=PackedStringArray("FuelTimer")]
+[node name="CalciumLamp" type="Node3D" parent="." node_paths=PackedStringArray("_fuel_timer")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_kv88a")
-FuelTimer = NodePath("FuelTimer")
-FlickerThreshold = 2.0
+_fuel_timer = NodePath("FuelTimer")
 
 [node name="lamp_model" type="MeshInstance3D" parent="CalciumLamp"]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)

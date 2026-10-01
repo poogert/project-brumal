@@ -13,18 +13,30 @@ public partial class Interactray : RayCast3D
 	public override void _Process(double delta)
 	{
 
-		if (IsColliding() == true)
+		if ( !IsColliding() ) return;
+		if (!Input.IsActionJustPressed("interact")) return;
+
+
+		Node node_target = GetCollider() as Node;
+
+		Interactable cs_script = findInteractable(node_target);
+		
+		
+
+		if (cs_script != null)
 		{
-
-			Node nodeobject = GetCollider() as Node;
-			Interactable interactable = findInteractable(nodeobject);
-
-			if (interactable != null)
-			{
-				if (Input.IsActionJustPressed("interact")) interactable.Interact();
-			}
-
+			cs_script.Interact();
+			return;
 		}
+
+		Node gd_script = findGDInteractable(node_target);
+		
+		if (gd_script != null)
+		{
+			GD.Print("GDSCRIPT FOUND");
+			gd_script.Call("interact");
+		}
+		
 	}
 
 	// recursion to find an interactable part of the the node
@@ -37,6 +49,15 @@ public partial class Interactray : RayCast3D
 		if (target is Interactable interactable) return interactable;
 
 		return findInteractable(target.GetParent());
+	}
+
+	private Node findGDInteractable(Node target) 
+	{
+		if (target == null) return null;
+
+		if (target.HasMethod("interact")) return target;
+
+		return findGDInteractable(target.GetParent());
 	}
 
 }

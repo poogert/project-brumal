@@ -15,9 +15,9 @@ public partial class PickaxeScript : Node3D
 	private bool isHolding = false;
 
 	public override void _Ready()
-    {
-        animationTree = GetNode<AnimationTree>("AnimationTree");
-        stateMachine = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
+	{
+		animationTree = GetNode<AnimationTree>("AnimationTree");
+		stateMachine = (AnimationNodeStateMachinePlayback)animationTree.Get("parameters/playback");
 		stateMachine.Start(Anim[0]);
 	}
 
